@@ -5,54 +5,64 @@ import static org.junit.Assert.*;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-import com.jms.pages.MainPage;
+import com.jms.pages.GenericPage;
 
 public class GlobalSteps extends ScenarioSteps {
 
 	private static final long serialVersionUID = 1L;
 	
-	private MainPage mainPage() {
-		return getPages().currentPageAt(MainPage.class);
+	private GenericPage genericPage() {
+		return getPages().currentPageAt(GenericPage.class);
 	}
 	
 	@Step
 	public void checkAlertText(String expectedText) {
-		assertEquals(expectedText, mainPage().getAlertText());
+		assertEquals(expectedText, genericPage().getAlertText());
 	}
 	
 	@Step
 	public void checkMessageText(String expectedText) {
-		String actualText = mainPage().getMessageText();
+		String actualText = genericPage().getMessageText();
 		assertTrue("No expected string ["+expectedText+"] was found in ["+actualText+"]", actualText.contains(expectedText));
 	}
 	
 	@Step
 	public void clickOkMessagePopup() {
-		mainPage().clickOkMessagePopup();
+		genericPage().clickOkMessagePopup();
+	}
+	
+	@Step
+	public void checkTextPresent(String text) {
+		assertTrue("Expected text ["+text+"] is not present", genericPage().isTextPresent(text));
+	}
+	
+	@Step
+	public void checkTextNotPresent(String text) {
+		assertFalse("Expected text ["+text+"] is present", genericPage().isTextPresent(text));
 	}
 	
 	@Step
 	public void clickSideMenuItem(String linkText) throws InterruptedException {
-		if (mainPage().isSideBarDisplayed())
-			mainPage().openSideBar();
-		mainPage().clickSideBarLink(linkText);
+		if (genericPage().isSideBarDisplayed())
+			genericPage().openSideBar();
+		genericPage().clickSideBarLink(linkText);
 	}
 	
 	@Step
 	public void clickCreateJobIcon() {
-		mainPage().clickCreateJobIcon();
+		genericPage().clickCreateJobIcon();
 	}
 	
 	@Step
 	public void openWidgetIn(int zoneId) throws InterruptedException {
-		mainPage().openWidgetIn(zoneId);
+		genericPage().openWidgetIn(zoneId);
 		Thread.sleep(3000);
 	}
 	
 	@Step
 	public void searchJobById(String jobId) throws InterruptedException {
-		mainPage().setJobInSearchField(jobId);
-		mainPage().clickJobSearchButton();
+		genericPage().setJobInSearchField(jobId);
+		genericPage().clickJobSearchButton();
 		Thread.sleep(4000);
 	}
 	

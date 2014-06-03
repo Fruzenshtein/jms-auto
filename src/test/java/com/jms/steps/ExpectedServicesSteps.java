@@ -20,14 +20,12 @@ public class ExpectedServicesSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void clickVendorServiceIconSection(VendorService vendor) throws InterruptedException {
-		Thread.sleep(2000);
+	public void clickVendorServiceIconSection(VendorService vendor) {
 		expectedServicesPopup().clickVendorServiceIcon(vendor);
 	}
 	
 	@Step
-	public void clickVendorTBDIconSection(VendorService vendor) throws InterruptedException {
-		Thread.sleep(2000);
+	public void clickVendorTBDIconSection(VendorService vendor) {
 		expectedServicesPopup().clickVendorTBDIcon(vendor);
 	}
 	

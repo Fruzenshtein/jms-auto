@@ -31,7 +31,7 @@ public class ExpectedServicesInterpreterTest extends BasicTest {
 	public ExpectedServicesSteps expectedServicesSteps;
 	
 	private String jobId = "1251";
-	
+	/*
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc4_5_1() throws InterruptedException {
@@ -58,6 +58,37 @@ public class ExpectedServicesInterpreterTest extends BasicTest {
 		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.INTERPRETER, true);
 		
 		//TODO: Check Vendor tab
+		
+		
+	}
+	*/
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	public void tc4_5_2() throws InterruptedException {
+		
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById(jobId);
+		jobDetailSteps.clickExpectedServicesButton();
+		
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.INTERPRETER);
+		expectedServicesSteps.clickVendorTBDIconSection(VendorService.INTERPRETER);
+		
+		expectedServicesSteps.clickAddLanguageLink();
+		expectedServicesSteps.clickUpdate();
+		
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "English");
+		jobDetailSteps.isServiceIconInVendorSection(VendorService.INTERPRETER, true);
+		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.INTERPRETER, true);
+		
+		//TODO: Check Vendor tab
+		
+		jobDetailSteps.clickExpectedServicesButton();
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.INTERPRETER);
+		expectedServicesSteps.clickUpdate();
+	
+		jobDetailSteps.isServiceIconInVendorSection(VendorService.INTERPRETER, false);
+		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.INTERPRETER, false);
+		globalSteps.checkTextNotPresent("English");
 		
 		
 	}

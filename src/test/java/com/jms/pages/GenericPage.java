@@ -5,7 +5,7 @@ import net.thucydides.core.pages.PageObject;
 
 import org.openqa.selenium.WebElement;
 
-public class MainPage extends PageObject {
+public class GenericPage extends PageObject {
 
 	@FindBy(id="sidemenu-open-link")
 	private WebElement sideMenuPlusButton;
@@ -42,6 +42,10 @@ public class MainPage extends PageObject {
 	
 	public void clickOkMessagePopup() {
 		messagePopupOkBtn.click();
+	}
+	
+	public boolean isTextPresent(String text) {
+		return containsText(text);
 	}
 	
 	public void openSideBar() {

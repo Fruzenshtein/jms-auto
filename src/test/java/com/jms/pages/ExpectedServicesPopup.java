@@ -80,6 +80,7 @@ public class ExpectedServicesPopup extends PageObject {
 	private WebElement addLanguageLink;
 	
 	public void clickVendorServiceIcon(VendorService vendor) {
+		getClock().pauseFor(1000);
 		//TODO: Re-implement after unique selectors will be assigned
 		$("(//div[@class='service-row']//img)["+vendor.getOrder()+"]")
 			.waitUntilPresent()
@@ -87,6 +88,7 @@ public class ExpectedServicesPopup extends PageObject {
 	}
 	
 	public void clickVendorTBDIcon(VendorService vendor) {
+		getClock().pauseFor(1000);
 		//TODO: Re-implement after unique selectors will be assigned
 		$("(//div[@class='service-row clr']//img)["+vendor.getOrder()+"]")
 			.waitUntilPresent()
