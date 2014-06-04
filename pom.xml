@@ -62,7 +62,7 @@
 					<argLine>-Xmx512m</argLine>
 					<parallel>classes</parallel>
 					<perCoreThreadCount>false</perCoreThreadCount>
-					<threadCount>2</threadCount>
+					<threadCount>1</threadCount>
 					
 					<systemPropertyVariables>
 						<webdriver.driver>${webdriver.driver}</webdriver.driver>

@@ -137,7 +137,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.LOCATION, false);
 		
 	}
-	
+	/*
 	@Test
 	@Pending
 	@Screenshots(onlyOnFailures = true)
@@ -165,5 +165,5 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 	public void tc4_4_7() throws InterruptedException {
 		
 	}
-
+*/
 }

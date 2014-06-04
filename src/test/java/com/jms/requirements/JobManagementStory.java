@@ -8,5 +8,10 @@ public class JobManagementStory {
 	public class JobCreation {
 		
 	}
+	
+	@Feature
+	public class JobDetailFieldsStory {
+		
+	}
 
 }

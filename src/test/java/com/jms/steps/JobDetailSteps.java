@@ -75,7 +75,6 @@ public class JobDetailSteps extends ScenarioSteps {
 	
 	@Step
 	public void clickExpectedServicesButton() throws InterruptedException {
-		Thread.sleep(1000);
 		jobDetailPage().clickExpectedServicesButton();
 	}
 	
@@ -102,5 +101,45 @@ public class JobDetailSteps extends ScenarioSteps {
 	@Step
 	public void clickAddWitnessButton() {
 		jobDetailPage().clickAddWitnessButton();
+	}
+	
+	@Step
+	public void selectCaseType(String type) {
+		jobDetailPage().selectCaseType(type);
+	}
+	
+	@Step
+	public void clickCaseInfoCheckBox(String checkBoxLabel) {
+		jobDetailPage().clickCaseInfoCheckBox(checkBoxLabel);
+	}
+	
+	@Step
+	public void setActionNumber(String number) {
+		jobDetailPage().setActionNumber(number);
+	}
+	
+	@Step
+	public void clickAddConferenceLink() {
+		jobDetailPage().clickAddConferenceLink();
+	}
+	
+	@Step
+	public void setCaseInfoPhoneNumber(String number) {
+		jobDetailPage().setCaseInfoPhoneNumber(number);
+	}
+	
+	@Step
+	public void selectCaseInfoPhoneNumber(int index) {
+		jobDetailPage().selectCaseInfoPhoneNumber(index);
+	}
+	
+	@Step
+	public void setCaseInfoPassCode(String code) {
+		jobDetailPage().setCaseInfoPassCode(code);
+	}
+	
+	@Step
+	public void setCaseInstructions(String instructions) {
+		jobDetailPage().setCaseInstructions(instructions);
 	}
 }

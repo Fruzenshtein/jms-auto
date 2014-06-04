@@ -83,12 +83,14 @@ public class GenericPage extends PageObject {
 	}
 	
 	public void setJobInSearchField(String jobId) {
-		jobSearchField.click();
+		getClock().pauseFor(2000);
+		jobSearchField.clear();
 		jobSearchField.sendKeys(jobId);
 	}
 	
 	public void clickJobSearchButton() {
 		jobSearchButton.click();
+		$("//div[@class='jobdetail-view scroll-view']").waitUntilPresent();
 	}
 	
 	public void activeWidget() {

@@ -31,7 +31,7 @@ public class ExpectedServicesInterpreterTest extends BasicTest {
 	public ExpectedServicesSteps expectedServicesSteps;
 	
 	private String jobId = "1251";
-	/*
+	
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc4_5_1() throws InterruptedException {
@@ -61,7 +61,7 @@ public class ExpectedServicesInterpreterTest extends BasicTest {
 		
 		
 	}
-	*/
+	
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc4_5_2() throws InterruptedException {

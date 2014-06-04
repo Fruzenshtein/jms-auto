@@ -53,6 +53,24 @@ public class JobDetailPage extends PageObject {
 	@FindBy(xpath="//span[text()='Add Witness']")
 	private WebElement addWitnessButton;
 	
+	@FindBy(className="typeDpl")
+	private WebElement caseTypeDropDown;
+	
+	@FindBy(className="actionnumber")
+	private WebElement actionNumber;
+	
+	@FindBy(linkText="Add Conference Line")
+	private WebElement addConferenceLine;
+	
+	@FindBy(className="phonenumberprovided")
+	private WebElement caseInfoPhoneNumber;
+	
+	@FindBy(xpath="//span[text()='Passcode']/../input")
+	private WebElement passCode;
+	
+	@FindBy(xpath="//span[text()='Instructions']/../textarea")
+	private WebElement instructionsTextarea;
+	
 	public void setSchedulingFirm(String name) throws InterruptedException {
 		scheduleFirmField.sendKeys(name);
 		Thread.sleep(3000);
@@ -120,9 +138,9 @@ public class JobDetailPage extends PageObject {
 				.getText();
 	}
 	
-	public void clickExpectedServicesButton() throws InterruptedException {
-		$(expectedServicesButton).waitUntilEnabled().click();
-		Thread.sleep(2000);
+	public void clickExpectedServicesButton() {
+		getClock().pauseFor(3000);
+		$(expectedServicesButton).waitUntilVisible().click();
 	}
 	
 	public void activeWidget() {
@@ -147,5 +165,44 @@ public class JobDetailPage extends PageObject {
 	
 	public void clickAddWitnessButton() {
 		addWitnessButton.click();
+	}
+	
+	public void selectCaseType(String type) {
+		$(caseTypeDropDown).selectByVisibleText(type);
+	}
+	
+	public void clickCaseInfoCheckBox(String checkBoxLabel) {
+		$("//span[text()='"+checkBoxLabel+"']").click();
+	}
+	
+	public void setActionNumber(String number) {
+		actionNumber.clear();
+		actionNumber.sendKeys(number);
+	}
+	
+	public void clickAddConferenceLink() {
+		addConferenceLine.click();
+	}
+	
+	/**
+	 * Method for activated 'Client Provided'
+	 */
+	public void setCaseInfoPhoneNumber(String number) {
+		caseInfoPhoneNumber.sendKeys(number);
+	}
+	
+	/**
+	 * Method for activated 'TSG Provided'
+	 */
+	public void selectCaseInfoPhoneNumber(int index) {
+		$(caseInfoPhoneNumber).selectByIndex(index);
+	}
+	
+	public void setCaseInfoPassCode(String code) {
+		passCode.sendKeys(code);
+	}
+	
+	public void setCaseInstructions(String instructions) {
+		instructionsTextarea.sendKeys(instructions);
 	}
 }

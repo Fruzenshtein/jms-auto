@@ -4,6 +4,7 @@ public enum JobDetailHeaderLabel {
 	
 	JOB_N("Job #:"),
 	JOB_DATE("Job Date:"),
+	JOB_TYPE("Job Type:"),
 	REPORTERS("Reporters:"),
 	VIDEOGRAPHERS("Videographers:"),
 	STREAMING("Streaming:"),

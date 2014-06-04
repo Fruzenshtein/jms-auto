@@ -60,10 +60,9 @@ public class GlobalSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void searchJobById(String jobId) throws InterruptedException {
+	public void searchJobById(String jobId) {
 		genericPage().setJobInSearchField(jobId);
 		genericPage().clickJobSearchButton();
-		Thread.sleep(4000);
 	}
 	
 }
