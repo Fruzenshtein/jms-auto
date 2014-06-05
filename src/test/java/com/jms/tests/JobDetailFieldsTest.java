@@ -35,8 +35,6 @@ public class JobDetailFieldsTest extends BasicTest {
 		globalSteps.clickCreateJobIcon();
 		globalSteps.openWidgetIn(1);
 		
-		String jobId = jobDetailSteps.getJobId();
-		
 		jobDetailSteps.setDate(futureDate);
 		jobDetailSteps.setCaseName("Sony presentation");
 		//TODO: Mark Case name as TBD
@@ -57,9 +55,33 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.selectCaseInfoPhoneNumber(1);
 		
 		jobDetailSteps.setSchedulingFirm("Sony Electronics Inc.");
+	
+	}
+	
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	public void jobDetailPageWitnessInfoSection() throws InterruptedException {
 		
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.clickCreateJobIcon();
+		globalSteps.openWidgetIn(1);
 		
+		jobDetailSteps.setWitnessName(1, "Robert");
+		//TODO: TBD
+		jobDetailSteps.setWitnessStartingPgN(1, "7");
+		jobDetailSteps.clickCaseInfoCheckBox("30(b)(6)");
 		
+		globalSteps.checkTextPresent("Robert");
+		
+		jobDetailSteps.clickAddWitnessButton();
+		
+		jobDetailSteps.setWitnessName(2, "Peter");
+		jobDetailSteps.setWitnessStartingPgN(2, "2");
+		
+		globalSteps.checkTextPresent("Robert");
+		globalSteps.checkTextPresent("Peter");
+		
+		//TODO: Delete operation
 	}
 	
 }

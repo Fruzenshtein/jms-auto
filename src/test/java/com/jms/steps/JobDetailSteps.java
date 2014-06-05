@@ -43,7 +43,12 @@ public class JobDetailSteps extends ScenarioSteps {
 	
 	@Step
 	public void setWitnessName(int index, String name) {
-		jobDetailPage().setWitnessName(1, name);
+		jobDetailPage().setWitnessName(index, name);
+	}
+	
+	@Step
+	public void setWitnessStartingPgN(int index, String value) {
+		jobDetailPage().setWitnessStartingPgN(index, value);
 	}
 	
 	@Step

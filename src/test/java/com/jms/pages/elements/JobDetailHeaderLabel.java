@@ -9,7 +9,8 @@ public enum JobDetailHeaderLabel {
 	VIDEOGRAPHERS("Videographers:"),
 	STREAMING("Streaming:"),
 	CONF_SERVICES("Conference Services:"),
-	INTERPRETERS("Interpreters:");
+	INTERPRETERS("Interpreters:"),
+	WITNESS("Witness:");
 	
 	private final String label;
 	

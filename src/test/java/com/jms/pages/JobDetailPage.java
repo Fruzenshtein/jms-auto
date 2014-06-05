@@ -105,6 +105,12 @@ public class JobDetailPage extends PageObject {
 		el.sendKeys(name);
 	}
 	
+	public void setWitnessStartingPgN(int index, String value) {
+		WebElement el = $("(//span[text()='Starting Pg #']/../input[@type='text'])["+index+"]");
+		el.clear();
+		el.sendKeys(value);
+	}
+	
 	public boolean isServiceIconInWitnessInfo(VendorService vendor, boolean is) {
 		if (is)
 			return $("(//label[@class='vendor-services "+
