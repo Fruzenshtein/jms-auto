@@ -6,6 +6,7 @@ import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import com.jms.model.Address;
 import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.pages.elements.VendorService;
 
@@ -210,5 +211,15 @@ public class JobDetailPage extends PageObject {
 	
 	public void setCaseInstructions(String instructions) {
 		instructionsTextarea.sendKeys(instructions);
+	}
+	
+	public Address getLocationAddress(int index) {
+		Address address = new Address();
+		int companyIndex = 1 + index;
+		address.setCompany($("(//span[text()='Company']/../input[@type='text'])[" + companyIndex +"]").getValue())
+			.setAddress($("(//span[text()='Address']/../input[@type='text'])["+index+"]").getValue())
+			.setCity($("(//span[text()='City']/../input[@type='text'])["+index+"]").getValue())
+			.setZip($("(//span[text()='Zip']/../input[@type='text'])["+index+"]").getValue());
+		return address;
 	}
 }

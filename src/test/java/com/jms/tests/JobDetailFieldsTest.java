@@ -2,6 +2,7 @@ package com.jms.tests;
 
 import org.junit.Test;
 
+import com.jms.model.Address;
 import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.requirements.JobManagementStory.JobDetailFieldsStory;
 import com.jms.steps.GlobalSteps;
@@ -24,7 +25,7 @@ public class JobDetailFieldsTest extends BasicTest {
 	
 	@Steps
 	public JobDetailSteps jobDetailSteps;
-	
+	/*
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void jobDetailPageCaseInfoSection() throws InterruptedException {
@@ -83,5 +84,25 @@ public class JobDetailFieldsTest extends BasicTest {
 		
 		//TODO: Delete operation
 	}
+	*/
 	
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	public void jobDetailPageLocationInfoSection() throws InterruptedException {
+		
+		Address address = new Address();
+		address.setCompany("Century City Bar Association")
+			.setAddress("1616 Ocean Park Boulevard")
+			.setCity("Santa Monica")
+			.setZip("90405");
+		
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.clickCreateJobIcon();
+		globalSteps.openWidgetIn(1);
+		
+		jobDetailSteps.setLocation("Century City Bar Association");
+		//TODO: TBD
+		jobDetailSteps.checkLocationAddress(1, address);
+		
+	}
 }

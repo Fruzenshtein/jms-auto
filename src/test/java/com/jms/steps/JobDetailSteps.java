@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import com.jms.model.Address;
 import com.jms.pages.JobDetailPage;
 import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.pages.elements.VendorService;
@@ -146,5 +147,10 @@ public class JobDetailSteps extends ScenarioSteps {
 	@Step
 	public void setCaseInstructions(String instructions) {
 		jobDetailPage().setCaseInstructions(instructions);
+	}
+	
+	@Step
+	public void checkLocationAddress(int index, Address address) {
+		assertEquals(address, jobDetailPage().getLocationAddress(index));
 	}
 }
