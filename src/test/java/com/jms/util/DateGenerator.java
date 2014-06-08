@@ -18,9 +18,8 @@ public class DateGenerator {
 	
 	public static DateGenerator getInstance() {
 		if (dg == null)
-			return new DateGenerator();
-		else
-			return dg;
+			dg = new DateGenerator();
+		return dg;
 	}
 	
 	public String currentDate() {		

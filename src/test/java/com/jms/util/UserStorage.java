@@ -16,9 +16,8 @@ public class UserStorage {
 	
 	public static UserStorage getInstance() {
 		if (storage == null)
-			return new UserStorage();
-		else
-			return storage;
+            storage = new UserStorage();
+		return storage;
 	}
 	
 	private void populateUserList() {
