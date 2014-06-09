@@ -2,20 +2,24 @@ package com.jms.model;
 
 public class Address {
 	
+	private String notes;
 	private String company;
 	private String address;
 	private String city;
 	private String state;
 	private String zip;
+	private String country;
 	private String contact;
 	private String phone;
 	
 	public Address() {
+		this.notes = "";
 		this.company = "";
 		this.address = "";
 		this.city = "";
 		this.state = "";
 		this.zip = "";
+		this.country = "";
 		this.contact = "";
 		this.phone = "";
 	}
@@ -29,15 +33,26 @@ public class Address {
 		
 		Address a = (Address) o;
 		return  (
+				notes.equals(a.notes) &&
 				company.equals(a.company) &&
 				address.equals(a.address) &&
 				city.equals(a.city) &&
 				state.equals(a.state) &&
 				zip.equals(a.zip) &&
+				country.equals(a.country) &&
 				contact.equals(a.contact) &&
 				phone.equals(a.phone)
 		);
 	
+	}
+	
+	public String getNotes() {
+		return notes;
+	}
+
+	public Address setNotes(String notes) {
+		this.notes = notes;
+		return this;
 	}
 
 	public String getCompany() {
@@ -82,6 +97,15 @@ public class Address {
 
 	public Address setZip(String zip) {
 		this.zip = zip;
+		return this;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public Address setCountry(String country) {
+		this.country = country;
 		return this;
 	}
 

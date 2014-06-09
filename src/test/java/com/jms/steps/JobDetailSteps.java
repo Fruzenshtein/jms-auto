@@ -153,4 +153,34 @@ public class JobDetailSteps extends ScenarioSteps {
 	public void checkLocationAddress(int index, Address address) {
 		assertEquals(address, jobDetailPage().getLocationAddress(index));
 	}
+	
+	@Step
+	public void setLocationAddressNotes(int index, String notes) {
+		jobDetailPage().setLocationAddressNotes(index, notes);
+	}
+	
+	@Step
+	public void setLocationAddressConfRm(int index, String confRm) {
+		jobDetailPage().setLocationAddressConfRm(index, confRm);
+	}
+
+	@Step
+	public void setLocationAddressContact(int index, String contact) {
+		jobDetailPage().setLocationAddressContact(index, contact);
+	}
+	
+	@Step
+	public void setLocationAddressPhone(int index, String phone) {
+		jobDetailPage().setLocationAddressPhone(index, phone);
+	}
+	
+	@Step
+	public void clickClearAddressFields(int index) {
+		jobDetailPage().clickClearAddressFields(index);
+	}
+	
+	@Step
+	public void clickOkButton() {
+		jobDetailPage().clickOkButton();
+	}
 }

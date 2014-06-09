@@ -90,11 +90,15 @@ public class JobDetailFieldsTest extends BasicTest {
 	@Screenshots(onlyOnFailures = true)
 	public void jobDetailPageLocationInfoSection() throws InterruptedException {
 		
-		Address address = new Address();
-		address.setCompany("Century City Bar Association")
+		Address address1 = new Address();
+		address1.setCompany("Century City Bar Association")
 			.setAddress("1616 Ocean Park Boulevard")
 			.setCity("Santa Monica")
-			.setZip("90405");
+			.setZip("90405")
+			.setCountry("United States of America");
+		
+		Address address2 = new Address();
+		address2.setCountry("United States of America");
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.clickCreateJobIcon();
@@ -102,7 +106,19 @@ public class JobDetailFieldsTest extends BasicTest {
 		
 		jobDetailSteps.setLocation("Century City Bar Association");
 		//TODO: TBD
-		jobDetailSteps.checkLocationAddress(1, address);
+		jobDetailSteps.checkLocationAddress(1, address1);
 		
+		jobDetailSteps.clickCaseInfoCheckBox("Names Required for Security");
+		jobDetailSteps.setLocationAddressNotes(1, "Some notes");
+		jobDetailSteps.setLocationAddressConfRm(1, "55");
+		jobDetailSteps.setLocationAddressContact(1, "Jane Lee");
+		//TODO: TBD
+		jobDetailSteps.setLocationAddressPhone(1, "553 77 88");
+		
+		jobDetailSteps.clickClearAddressFields(1);
+		jobDetailSteps.clickOkButton();
+		
+		jobDetailSteps.checkLocationAddress(1, address2);
+		//BUG: 'Clear address' link doesn't work
 	}
 }

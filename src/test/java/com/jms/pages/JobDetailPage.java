@@ -72,6 +72,9 @@ public class JobDetailPage extends PageObject {
 	@FindBy(xpath="//span[text()='Instructions']/../textarea")
 	private WebElement instructionsTextarea;
 	
+	@FindBy(xpath="//button[text()='Yes']")
+	private WebElement clearAddressOkButton;
+	
 	public void setSchedulingFirm(String name) throws InterruptedException {
 		scheduleFirmField.sendKeys(name);
 		Thread.sleep(3000);
@@ -216,10 +219,39 @@ public class JobDetailPage extends PageObject {
 	public Address getLocationAddress(int index) {
 		Address address = new Address();
 		int companyIndex = 1 + index;
-		address.setCompany($("(//span[text()='Company']/../input[@type='text'])[" + companyIndex +"]").getValue())
+		address.setNotes($("(//span[text()='Notes']/../textarea)["+index+"]").getValue())
+			.setCompany($("(//span[text()='Company']/../input[@type='text'])[" + companyIndex +"]").getValue())
 			.setAddress($("(//span[text()='Address']/../input[@type='text'])["+index+"]").getValue())
 			.setCity($("(//span[text()='City']/../input[@type='text'])["+index+"]").getValue())
-			.setZip($("(//span[text()='Zip']/../input[@type='text'])["+index+"]").getValue());
+			.setZip($("(//span[text()='Zip']/../input[@type='text'])["+index+"]").getValue())
+			.setCountry($("(//select[@class='Country'])["+index+"]").getSelectedVisibleTextValue())
+			.setContact($("(//span[text()='Contact']/../input[@type='text'])["+index+"]").getValue())
+			.setPhone($("(//span[text()='Phone']/../input[@type='text'])["+index+"]").getValue());
 		return address;
 	}
+	
+	public void setLocationAddressNotes(int index, String notes) {
+		$("(//span[text()='Notes']/../textarea)["+index+"]").sendKeys(notes);
+	}
+	
+	public void setLocationAddressConfRm(int index, String confRm) {
+		$("(//span[text()='Conf Rm']/../input[@type='text'])["+index+"]").sendKeys(confRm);
+	}
+	
+	public void setLocationAddressContact(int index, String contact) {
+		$("(//span[text()='Contact']/../input[@type='text'])["+index+"]").sendKeys(contact);
+	}
+	
+	public void setLocationAddressPhone(int index, String phone) {
+		$("(//span[text()='Phone']/../input[@type='text'])["+index+"]").sendKeys(phone);
+	}
+	
+	public void clickClearAddressFields(int index) {
+		$("(//a[text()='Clear Address Fields'])["+index+"]").click();
+	}
+	
+	public void clickOkButton() {
+		clearAddressOkButton.click();
+	}
+	
 }
