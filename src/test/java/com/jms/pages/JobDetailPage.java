@@ -15,6 +15,9 @@ public class JobDetailPage extends PageObject {
 	@FindBy(xpath="//span[text()='Scheduling Firm']/../input[@type='text']")
 	private WebElement scheduleFirmField;
 	
+	@FindBy(xpath="//span[text()='Client Matter #']/../input[@type='text']")
+	private WebElement clientMatterNField;
+	
 	@FindBy(xpath="//span[text()='Date']/../input")
 	private WebElement dateField;
 	
@@ -75,10 +78,20 @@ public class JobDetailPage extends PageObject {
 	@FindBy(xpath="//button[text()='Yes']")
 	private WebElement clearAddressOkButton;
 	
-	public void setSchedulingFirm(String name) throws InterruptedException {
+	public void setSchedulingFirm(String name) {
 		scheduleFirmField.sendKeys(name);
-		Thread.sleep(3000);
+		getClock().pauseFor(2500);
 		getDriver().findElement(By.xpath("//strong[text()='"+name+"']")).click();
+	}
+	
+	public void setClientMatterN(String number) {
+		clientMatterNField.clear();
+		clientMatterNField.sendKeys(number);
+	}
+	
+	public String getClientMatterN() {
+		getClock().pauseFor(2000);
+		return clientMatterNField.getText();
 	}
 	
 	public void setDate(String date) {
@@ -89,6 +102,8 @@ public class JobDetailPage extends PageObject {
 	public void setCaseName(String name) {
 		caseNameField.clear();
 		caseNameField.sendKeys(name);
+		getClock().pauseFor(1500);
+		getDriver().findElement(By.xpath("//strong[text()='"+name+"']")).click();
 	}
 	
 	public void setContributingFirm(String name) throws InterruptedException {
@@ -219,14 +234,11 @@ public class JobDetailPage extends PageObject {
 	public Address getLocationAddress(int index) {
 		Address address = new Address();
 		int companyIndex = 1 + index;
-		address.setNotes($("(//span[text()='Notes']/../textarea)["+index+"]").getValue())
-			.setCompany($("(//span[text()='Company']/../input[@type='text'])[" + companyIndex +"]").getValue())
+		address.setCompany($("(//span[text()='Company']/../input[@type='text'])[" + companyIndex +"]").getValue())
 			.setAddress($("(//span[text()='Address']/../input[@type='text'])["+index+"]").getValue())
 			.setCity($("(//span[text()='City']/../input[@type='text'])["+index+"]").getValue())
 			.setZip($("(//span[text()='Zip']/../input[@type='text'])["+index+"]").getValue())
-			.setCountry($("(//select[@class='Country'])["+index+"]").getSelectedVisibleTextValue())
-			.setContact($("(//span[text()='Contact']/../input[@type='text'])["+index+"]").getValue())
-			.setPhone($("(//span[text()='Phone']/../input[@type='text'])["+index+"]").getValue());
+			.setCountry($("(//select[@class='Country'])["+index+"]").getSelectedVisibleTextValue());
 		return address;
 	}
 	

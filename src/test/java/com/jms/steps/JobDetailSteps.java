@@ -19,8 +19,18 @@ public class JobDetailSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void setSchedulingFirm(String name) throws InterruptedException {
+	public void setSchedulingFirm(String name) {
 		jobDetailPage().setSchedulingFirm(name);
+	}
+	
+	@Step
+	public void setClientMatterN(String number) {
+		jobDetailPage().setClientMatterN(number);
+	}
+	
+	@Step
+	public void assertClientMatterN(String number) {
+		assertEquals(number, jobDetailPage().getClientMatterN());
 	}
 	
 	@Step

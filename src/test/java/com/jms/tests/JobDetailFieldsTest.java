@@ -10,6 +10,7 @@ import com.jms.steps.JobDetailSteps;
 import com.jms.steps.LoginSteps;
 import com.jms.util.DateGenerator;
 
+import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Screenshots;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Story;
@@ -25,7 +26,7 @@ public class JobDetailFieldsTest extends BasicTest {
 	
 	@Steps
 	public JobDetailSteps jobDetailSteps;
-	/*
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void jobDetailPageCaseInfoSection() throws InterruptedException {
@@ -84,8 +85,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		
 		//TODO: Delete operation
 	}
-	*/
-	
+		
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void jobDetailPageLocationInfoSection() throws InterruptedException {
@@ -121,4 +121,56 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.checkLocationAddress(1, address2);
 		//BUG: 'Clear address' link doesn't work
 	}
+
+	@Test
+	@Pending
+	@Screenshots(onlyOnFailures = true)
+	public void jobDetailPageClientInfoSection() throws InterruptedException {
+		
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.clickCreateJobIcon();
+		globalSteps.openWidgetIn(1);
+		
+		jobDetailSteps.setSchedulingFirm("Altesse Co., Ltd");
+		//TODO: Continue
+	
+	}
+
+	@Test	
+	@Screenshots(onlyOnFailures = true)
+	public void jobDetailPageClientMatter() throws InterruptedException {
+		
+		String futureDate = DateGenerator.getInstance().modifiedDate(0, 0, 1);
+		
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.clickCreateJobIcon();
+		globalSteps.openWidgetIn(1);
+		
+		String jobId1 = jobDetailSteps.getJobId();
+		
+		jobDetailSteps.setSchedulingFirm("Banner");
+		jobDetailSteps.setDate(futureDate);
+		jobDetailSteps.setCaseName("Daily meeting");
+		jobDetailSteps.setClientMatterN("33");
+		
+		jobDetailSteps.clickSave();
+		
+		globalSteps.clickCreateJobIcon();
+		globalSteps.openWidgetIn(1);
+		
+		String jobId2 = jobDetailSteps.getJobId();
+		
+		jobDetailSteps.setSchedulingFirm("Banner");
+		jobDetailSteps.setDate(futureDate);
+		jobDetailSteps.setCaseName("Daily meeting");
+		
+		jobDetailSteps.clickSave();
+		
+		globalSteps.searchJobById(jobId2);
+		
+		jobDetailSteps.assertClientMatterN("33");
+	
+		//TODO: Complete the test
+	}
+	
 }
