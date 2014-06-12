@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import com.jms.model.Address;
 import com.jms.pages.elements.JobDetailHeaderLabel;
+import com.jms.pages.elements.VendorService;
 import com.jms.requirements.JobManagementStory.JobDetailFieldsStory;
 import com.jms.steps.GlobalSteps;
 import com.jms.steps.JobDetailSteps;
@@ -171,6 +172,30 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.assertClientMatterN("33");
 	
 		//TODO: Complete the test
+	}
+	
+	@Test	
+	@Screenshots(onlyOnFailures = true)
+	public void jobDetailPageVendorModule() {
+		
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("1644");
+		
+		jobDetailSteps.isServiceIconInVendorSection(VendorService.REPORTER, true);
+		jobDetailSteps.isServiceIconInVendorSection(VendorService.VIDEOGRAPHER, true);
+		jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, true);
+		jobDetailSteps.isServiceIconInVendorSection(VendorService.LOCATION, true);
+		jobDetailSteps.isServiceIconInVendorSection(VendorService.INTERPRETER, true);
+		
+		jobDetailSteps.setExpectedStartTime("10:00 AM");
+		jobDetailSteps.assertExpectedStartTime("10:00 AM");
+		
+		//TODO: Need normal identifier for the Finish time field
+		//jobDetailSteps.setExpectedFinishTime("01:00 PM");
+		//jobDetailSteps.assertExpectedFinishTime("01:00 PM");
+		
+		
+		
 	}
 	
 }

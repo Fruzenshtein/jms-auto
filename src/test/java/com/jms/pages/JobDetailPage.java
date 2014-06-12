@@ -78,6 +78,12 @@ public class JobDetailPage extends PageObject {
 	@FindBy(xpath="//button[text()='Yes']")
 	private WebElement clearAddressOkButton;
 	
+	@FindBy(xpath="//input[@class='firstExpectedStart hasTimeEntry']")
+	private WebElement expectedStartTimeField;
+	
+	@FindBy(xpath="//span[text()='Expected End']/..//input")
+	private WebElement expectedFinishTimeField;
+	
 	public void setSchedulingFirm(String name) {
 		scheduleFirmField.sendKeys(name);
 		getClock().pauseFor(2500);
@@ -264,6 +270,22 @@ public class JobDetailPage extends PageObject {
 	
 	public void clickOkButton() {
 		clearAddressOkButton.click();
+	}
+	
+	public void setExpectedStartTime(String time) {
+		expectedStartTimeField.sendKeys(time);
+	}
+	
+	public String getExpectedStartTime() {
+		return $(expectedStartTimeField).getValue();
+	}
+	
+	public void setExpectedFinishTime(String time) {
+		expectedFinishTimeField.sendKeys(time);
+	}
+	
+	public String getExpectedFinishTime() {
+		return $(expectedFinishTimeField).getValue();
 	}
 	
 }

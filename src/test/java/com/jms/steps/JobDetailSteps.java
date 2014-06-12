@@ -90,7 +90,7 @@ public class JobDetailSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void clickExpectedServicesButton() throws InterruptedException {
+	public void clickExpectedServicesButton() {
 		jobDetailPage().clickExpectedServicesButton();
 	}
 	
@@ -192,5 +192,25 @@ public class JobDetailSteps extends ScenarioSteps {
 	@Step
 	public void clickOkButton() {
 		jobDetailPage().clickOkButton();
+	}
+	
+	@Step
+	public void setExpectedStartTime(String time) {
+		jobDetailPage().setExpectedStartTime(time);
+	}
+	
+	@Step
+	public void assertExpectedStartTime(String time) {
+		assertEquals(time, jobDetailPage().getExpectedStartTime());
+	}
+	
+	@Step
+	public void setExpectedFinishTime(String time) {
+		jobDetailPage().setExpectedFinishTime(time);
+	}
+	
+	@Step
+	public void assertExpectedFinishTime(String time) {
+		assertEquals(time, jobDetailPage().getExpectedFinishTime());
 	}
 }
