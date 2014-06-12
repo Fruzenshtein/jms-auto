@@ -187,7 +187,12 @@ public class JobDetailPage extends PageObject {
 	}
 	
 	public void clickManageButton() {
+		getClock().pauseFor(2000);
 		manageButton.click();
+	}
+	
+	public void clickVendorActionLink(int index) {
+		$("(//div[@class='vendors']//div[@class='actionmenu-link'])["+index+"]").click();
 	}
 	
 	public void clickAddFirmButton() {

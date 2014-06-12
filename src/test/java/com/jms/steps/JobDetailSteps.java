@@ -110,6 +110,11 @@ public class JobDetailSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void clickVendorActionLink(int index) {
+		jobDetailPage().clickVendorActionLink(index);
+	}
+	
+	@Step
 	public void clickAddFirmButton() {
 		jobDetailPage().clickAddFirmButton();
 	}
