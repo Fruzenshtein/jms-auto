@@ -48,6 +48,10 @@ public class GenericPage extends PageObject {
 		return containsText(text);
 	}
 	
+	public void waitUntilTextDisappear(String text) {
+		waitForTextToDisappear(text);
+	}
+	
 	public void openSideBar() {
 		sideMenuPlusButton.click();
 	}

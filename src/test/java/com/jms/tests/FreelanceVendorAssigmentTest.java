@@ -2,6 +2,7 @@ package com.jms.tests;
 
 import org.junit.Test;
 
+import com.jms.pages.elements.ActionLink;
 import com.jms.requirements.VendorWorkflowStory;
 import com.jms.steps.ExpectedServicesSteps;
 import com.jms.steps.GlobalSteps;
@@ -36,6 +37,11 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		globalSteps.searchJobById(jobId);
 		jobDetailSteps.clickManageButton();
 		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickActionMenuLink(1, ActionLink.RECOMMEND_ANOTHER_VEND);
+		
+		String currentVandor = jobDetailSteps.getVendorNameInManageModule(1);
+		
+		globalSteps.waitUntilTextDisappear(currentVandor);
 		
 	}
 

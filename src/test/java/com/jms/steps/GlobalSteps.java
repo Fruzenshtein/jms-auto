@@ -42,6 +42,11 @@ public class GlobalSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void waitUntilTextDisappear(String text) {
+		genericPage().waitUntilTextDisappear(text);
+	}
+	
+	@Step
 	public void clickSideMenuItem(String linkText) throws InterruptedException {
 		if (genericPage().isSideBarDisplayed())
 			genericPage().openSideBar();

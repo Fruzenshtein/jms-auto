@@ -7,6 +7,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 import com.jms.model.Address;
 import com.jms.pages.JobDetailPage;
+import com.jms.pages.elements.ActionLink;
 import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.pages.elements.VendorService;
 
@@ -115,6 +116,11 @@ public class JobDetailSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public String getVendorNameInManageModule(int index) {
+		return jobDetailPage().getVendorNameInManageModule(index);
+	}
+	
+	@Step
 	public void clickAddFirmButton() {
 		jobDetailPage().clickAddFirmButton();
 	}
@@ -218,4 +224,10 @@ public class JobDetailSteps extends ScenarioSteps {
 	public void assertExpectedFinishTime(String time) {
 		assertEquals(time, jobDetailPage().getExpectedFinishTime());
 	}
+	
+	@Step
+	public void clickActionMenuLink(int index, ActionLink link) {
+		jobDetailPage().clickActionMenuLink(index, link.getLink());
+	}
+	
 }

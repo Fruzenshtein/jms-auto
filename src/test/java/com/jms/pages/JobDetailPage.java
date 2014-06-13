@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.jms.model.Address;
+import com.jms.pages.elements.ActionLink;
 import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.pages.elements.VendorService;
 
@@ -187,12 +188,16 @@ public class JobDetailPage extends PageObject {
 	}
 	
 	public void clickManageButton() {
-		getClock().pauseFor(2000);
+		getClock().pauseFor(2500);
 		manageButton.click();
 	}
 	
 	public void clickVendorActionLink(int index) {
 		$("(//div[@class='vendors']//div[@class='actionmenu-link'])["+index+"]").click();
+	}
+	
+	public String getVendorNameInManageModule(int index) {
+		return $("(//div[@class='vendors']//span[@class='title'])["+index+"]").getText();
 	}
 	
 	public void clickAddFirmButton() {
@@ -291,6 +296,12 @@ public class JobDetailPage extends PageObject {
 	
 	public String getExpectedFinishTime() {
 		return $(expectedFinishTimeField).getValue();
+	}
+	
+	public void clickActionMenuLink(int index, String link) {
+		$("(//div[@class='vendors']//a[text()='"+link+"'])["+index+"]")
+			.waitUntilVisible()
+			.click();
 	}
 	
 }
