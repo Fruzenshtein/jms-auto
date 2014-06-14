@@ -4,7 +4,8 @@ public enum ActionLink {
 	
 	APPROVE_RECOMENDATION("Approve Recommendation"),
 	RECOMMEND_ANOTHER_VEND("Recommend Another Vendor"),
-	JOB_INFO_TABLE("Job Information Table");
+	JOB_INFO_TABLE("Job Information Table"),
+	SELECT_ANOTHER_VENDOR("Select Another Vendor");
 	
 	private final String link;
 	

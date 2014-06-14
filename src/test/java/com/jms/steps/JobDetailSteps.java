@@ -8,6 +8,8 @@ import net.thucydides.core.steps.ScenarioSteps;
 import com.jms.model.Address;
 import com.jms.pages.JobDetailPage;
 import com.jms.pages.elements.ActionLink;
+import com.jms.pages.elements.Beacon;
+import com.jms.pages.elements.BeaconState;
 import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.pages.elements.VendorService;
 
@@ -228,6 +230,11 @@ public class JobDetailSteps extends ScenarioSteps {
 	@Step
 	public void clickActionMenuLink(int index, ActionLink link) {
 		jobDetailPage().clickActionMenuLink(index, link.getLink());
+	}
+	
+	@Step
+	public void isBeacon(Beacon beacon, BeaconState state) {
+		assertTrue(jobDetailPage().isBeacon(beacon.getBeacon(), state.getState()));
 	}
 	
 }

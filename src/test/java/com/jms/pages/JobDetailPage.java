@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.jms.model.Address;
-import com.jms.pages.elements.ActionLink;
 import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.pages.elements.VendorService;
 
@@ -162,7 +161,7 @@ public class JobDetailPage extends PageObject {
 	}
 	
 	public void clickSave() {
-		$(saveButton).waitUntilPresent().click();
+		$(saveButton).waitUntilEnabled().click();
 	}
 	
 	public String getJobDetailHeaderLabel(JobDetailHeaderLabel label) {
@@ -188,8 +187,8 @@ public class JobDetailPage extends PageObject {
 	}
 	
 	public void clickManageButton() {
-		getClock().pauseFor(2500);
-		manageButton.click();
+		getClock().pauseFor(5000);
+		$(manageButton).waitUntilEnabled().click();
 	}
 	
 	public void clickVendorActionLink(int index) {
@@ -302,6 +301,10 @@ public class JobDetailPage extends PageObject {
 		$("(//div[@class='vendors']//a[text()='"+link+"'])["+index+"]")
 			.waitUntilVisible()
 			.click();
+	}
+	
+	public boolean isBeacon(String name, String state) {
+		return $("//div[contains(@class, '"+state+"') and text()='"+name+"']").waitUntilDisabled().isDisplayed();
 	}
 	
 }
