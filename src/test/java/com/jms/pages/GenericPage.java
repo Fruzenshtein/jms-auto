@@ -28,6 +28,10 @@ public class GenericPage extends PageObject {
 	@FindBy(xpath="//div[@class='jobdetail-view scroll-view']")
 	private WebElement jobDetailWidget;
 
+	public void pause(int seconds) {
+		getClock().pauseFor(seconds * 1000);
+	}
+	
 	public void okAlert() {
 		getAlert().accept();
 	}

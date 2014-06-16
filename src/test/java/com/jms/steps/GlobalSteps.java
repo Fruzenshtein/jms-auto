@@ -16,6 +16,11 @@ public class GlobalSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void pause(int seconds) {
+		genericPage().pause(seconds);
+	}
+	
+	@Step
 	public void checkAlertText(String expectedText) {
 		assertEquals(expectedText, genericPage().getAlertText());
 	}
