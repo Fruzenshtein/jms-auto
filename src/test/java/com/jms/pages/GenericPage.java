@@ -3,6 +3,7 @@ package com.jms.pages;
 import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.PageObject;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class GenericPage extends PageObject {
@@ -30,6 +31,16 @@ public class GenericPage extends PageObject {
 
 	public void pause(int seconds) {
 		getClock().pauseFor(seconds * 1000);
+	}
+	
+	public void waitRequestProcessing() {
+		System.out.println("Element" + $(".section-mask-image"));
+		for (int i = 0; i < 15; i++) {
+			if (true)
+				pause(1);
+			else
+				return;
+		}
 	}
 	
 	public void okAlert() {

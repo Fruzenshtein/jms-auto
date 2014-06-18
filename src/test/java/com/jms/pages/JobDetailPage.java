@@ -297,14 +297,14 @@ public class JobDetailPage extends PageObject {
 		return $(expectedFinishTimeField).getValue();
 	}
 	
-	public void clickActionMenuLink(int index, String link) {
+	public void clickVendorsActionMenuLink(int index, String link) {
 		$("(//div[@class='vendors']//a[text()='"+link+"'])["+index+"]")
 			.waitUntilVisible()
 			.click();
 	}
 	
-	public boolean isBeacon(String name, String state) {
-		return $("//div[contains(@class, '"+state+"') and text()='"+name+"']").waitUntilDisabled().isDisplayed();
+	public void isBeacon(String name, String state) {
+		$("//div[contains(@class, '"+state+"') and text()='"+name+"']").shouldBeCurrentlyVisible();
 	}
 	
 }

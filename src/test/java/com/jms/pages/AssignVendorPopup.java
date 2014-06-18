@@ -10,7 +10,7 @@ public class AssignVendorPopup extends PageObject {
 	@FindBy(xpath="//span[text()='Approve']")
 	private WebElement approveButton;
 	
-	@FindBy(xpath="//span[text()='Save']")
+	@FindBy(xpath="//div[@class='save-buttons']//span[text()='Save']")
 	private WebElement saveButton;
 
 	public void clickApproveButton() {

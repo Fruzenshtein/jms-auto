@@ -228,13 +228,13 @@ public class JobDetailSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void clickActionMenuLink(int index, ActionLink link) {
-		jobDetailPage().clickActionMenuLink(index, link.getLink());
+	public void clickVendorsActionMenuLink(int index, ActionLink link) {
+		jobDetailPage().clickVendorsActionMenuLink(index, link.getLink());
 	}
 	
 	@Step
 	public void isBeacon(Beacon beacon, BeaconState state) {
-		assertTrue(jobDetailPage().isBeacon(beacon.getBeacon(), state.getState()));
+		jobDetailPage().isBeacon(beacon.getBeacon(), state.getState());
 	}
 	
 }

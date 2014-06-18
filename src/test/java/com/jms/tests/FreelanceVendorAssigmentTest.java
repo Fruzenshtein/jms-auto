@@ -57,36 +57,48 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		globalSteps.searchJobById("1710");
 		
 		//Preparing test data
+		//We expect that on test start the job has 2 reporter inside
+		//And we need to re-init them
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
 		expectedServicesSteps.clickUpdate();
 		
-		globalSteps.pause(5);
-		jobDetailSteps.clickSave();
+		globalSteps.pause(2);
+		jobDetailSteps.clickSave();		
+		globalSteps.pause(2);
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
 		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(14);
 		
-		globalSteps.pause(5);
 		jobDetailSteps.clickSave();
+		
+		globalSteps.pause(8);
 		
 		//Test starts
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.BLUE);
 		jobDetailSteps.isBeacon(Beacon.VIDEOGRAPHER_ASSIGNED, BeaconState.BLUE);
 		
 		jobDetailSteps.clickManageButton();
-		jobDetailSteps.clickActionMenuLink(1, ActionLink.SELECT_ANOTHER_VENDOR);
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.SELECT_ANOTHER_VENDOR);
 		
+		globalSteps.pause(5);
 		assignVendorSteps.clickApproveButton();
 		assignVendorSteps.clickSaveButton();
 		
-		globalSteps.checkTextPresent("Recommendation Approved (Freelancer)");
+		globalSteps.pause(20);
+		globalSteps.waitUntilTextAppear("Recommendation Approved (Freelancer)");
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GRAY);
+		
+		jobDetailSteps.clickVendorActionLink(2);
+		jobDetailSteps.clickVendorsActionMenuLink(2, ActionLink.APPROVE_RECOMENDATION);
+		jobDetailSteps.isBeacon(Beacon.VIDEOGRAPHER_ASSIGNED, BeaconState.GRAY);
 	}
 	
 	

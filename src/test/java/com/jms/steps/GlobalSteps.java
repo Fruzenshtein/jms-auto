@@ -21,6 +21,11 @@ public class GlobalSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void waitRequestProcessing() {
+		genericPage().waitRequestProcessing();
+	}
+	
+	@Step
 	public void checkAlertText(String expectedText) {
 		assertEquals(expectedText, genericPage().getAlertText());
 	}
