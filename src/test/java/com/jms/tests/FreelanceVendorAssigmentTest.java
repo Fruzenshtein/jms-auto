@@ -34,7 +34,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 	
 	@Steps
 	public AssignVendorSteps assignVendorSteps;
-/*
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void recommendedVendorReassignment() {
@@ -42,14 +42,14 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		globalSteps.searchJobById("1713");
 		jobDetailSteps.clickManageButton();
 		jobDetailSteps.clickVendorActionLink(1);
-		jobDetailSteps.clickActionMenuLink(1, ActionLink.RECOMMEND_ANOTHER_VEND);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.RECOMMEND_ANOTHER_VEND);
 		
 		String currentVandor = jobDetailSteps.getVendorNameInManageModule(1);
 		
 		globalSteps.waitUntilTextDisappear(currentVandor);
 		
 	}
-	*/
+	
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void recommendedVendorApproval() {
