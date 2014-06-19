@@ -3,7 +3,8 @@ package com.jms.pages.elements;
 public enum BeaconState {
 	
 	GRAY("gray"),
-	BLUE("blue");
+	BLUE("blue"),
+	YELLOW("yellow");
 
 	private String state;
 	

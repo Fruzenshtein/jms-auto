@@ -8,6 +8,7 @@ import com.jms.pages.elements.BeaconState;
 import com.jms.pages.elements.VendorService;
 import com.jms.requirements.VendorWorkflowStory;
 import com.jms.steps.AssignVendorSteps;
+import com.jms.steps.ContactVendorSteps;
 import com.jms.steps.ExpectedServicesSteps;
 import com.jms.steps.GlobalSteps;
 import com.jms.steps.JobDetailSteps;
@@ -34,6 +35,9 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 	
 	@Steps
 	public AssignVendorSteps assignVendorSteps;
+	
+	@Steps
+	public ContactVendorSteps contactVendorSteps;
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
@@ -101,6 +105,49 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		jobDetailSteps.isBeacon(Beacon.VIDEOGRAPHER_ASSIGNED, BeaconState.GRAY);
 	}
 	
-	
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	public void recommendationApprovedVendorContactViaCalled() {
+		
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("1700");
+		
+		//Preparing test data
+		//We expect that on test start the job has 1 approved reporter
+		//And we need to re-init them
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		expectedServicesSteps.clickUpdate();
+		
+		globalSteps.pause(2);
+		jobDetailSteps.clickSave();		
+		globalSteps.pause(2);
+		
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(10);
+		
+		jobDetailSteps.clickSave();
+		
+		globalSteps.pause(8);
+
+		jobDetailSteps.clickManageButton();
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.APPROVE_RECOMENDATION);
+		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GRAY);
+		
+		//Test starts
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.CONTACT_FOR_ASSIGNMENT);
+		contactVendorSteps.clickCalledButton();
+		contactVendorSteps.clickContactedButton();
+		
+		globalSteps.waitUntilTextAppear("Assignment Unconfirmed");
+		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.YELLOW);
+		
+	}
 
 }
