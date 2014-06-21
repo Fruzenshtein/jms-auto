@@ -107,7 +107,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void recommendationApprovedVendorContactViaCalled() {
+	public void recommendationApprovedVendorContactViaCalledAccept() {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("1700");
@@ -150,4 +150,46 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		
 	}
 
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	public void recommendationApprovedVendorContactViaCalledReject() {
+		
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("1605");
+		
+		//Preparing test data
+		//We expect that on test start the job has 1 approved reporter
+		//And we need to re-init them
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		expectedServicesSteps.clickUpdate();
+		
+		globalSteps.pause(2);
+		jobDetailSteps.clickSave();		
+		globalSteps.pause(2);
+		
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(10);
+		
+		jobDetailSteps.clickSave();
+		
+		globalSteps.pause(8);
+
+		jobDetailSteps.clickManageButton();
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.APPROVE_RECOMENDATION);
+		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GRAY);
+		
+		//Test starts
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.CONTACT_FOR_ASSIGNMENT);
+		contactVendorSteps.clickCalledButton();
+		
+		//TODO: Complete the test after clarification will made in the manual test
+		
+	}
 }
