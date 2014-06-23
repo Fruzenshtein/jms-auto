@@ -188,8 +188,11 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		jobDetailSteps.clickVendorActionLink(1);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.CONTACT_FOR_ASSIGNMENT);
 		contactVendorSteps.clickCalledButton();
+		contactVendorSteps.clickRejectedButton();
+		contactVendorSteps.clickVendorIsNotAvailableOnThisDay();
 		
-		//TODO: Complete the test after clarification will made in the manual test
+		globalSteps.waitUntilTextAppear("Recommendation (Freelancer)");
+		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.BLUE);
 		
 	}
 }

@@ -23,4 +23,13 @@ public class ContactVendorSteps extends ScenarioSteps {
 		contactVendorPopup().clickContactedButton();
 	}
 	
+	@Step
+	public void clickRejectedButton() {
+		contactVendorPopup().clickRejectedButton();
+	}
+	
+	@Step
+	public void clickVendorIsNotAvailableOnThisDay() {
+		contactVendorPopup().clickVendorIsNotAvailableOnThisDay();
+	}
 }
