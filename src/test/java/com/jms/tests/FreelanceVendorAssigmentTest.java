@@ -195,4 +195,59 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.BLUE);
 		
 	}
+	
+
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	public void contactedVendorVendorConfirmsManageModule() {
+		
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("1608");
+		
+		//Preparing test data
+		//We expect that on test start the job has 1 approved
+		//and contacted via called reporter
+		//We need to re-init them
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		expectedServicesSteps.clickUpdate();
+		
+		globalSteps.pause(2);
+		jobDetailSteps.clickSave();		
+		globalSteps.pause(2);
+		
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(10);
+		
+		jobDetailSteps.clickSave();
+		
+		globalSteps.pause(8);
+
+		jobDetailSteps.clickManageButton();
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.APPROVE_RECOMENDATION);
+		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GRAY);
+		
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.CONTACT_FOR_ASSIGNMENT);
+		contactVendorSteps.clickCalledButton();
+		contactVendorSteps.clickContactedButton();
+		
+		globalSteps.waitUntilTextAppear("Assignment Unconfirmed");
+		
+		//Test starts
+		globalSteps.pause(3);
+		
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.VENDOR_CONFIRMS);
+		
+		globalSteps.waitUntilTextAppear("Assigned & Awaiting D-Day");
+		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GREEN);
+		
+		
+	}
 }

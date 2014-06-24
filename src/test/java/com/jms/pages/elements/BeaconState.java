@@ -4,7 +4,8 @@ public enum BeaconState {
 	
 	GRAY("gray"),
 	BLUE("blue"),
-	YELLOW("yellow");
+	YELLOW("yellow"),
+	GREEN("green");
 
 	private String state;
 	

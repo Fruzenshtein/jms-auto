@@ -3,6 +3,8 @@ package com.jms.pages.elements;
 public enum ActionLink {
 	
 	CONTACT_FOR_ASSIGNMENT("Contact for Assignment"),
+	CONTACT_FOR_CONFIRMATION("Contact for Confirmation"),
+	VENDOR_CONFIRMS("Vendor Confirms"),
 	APPROVE_RECOMENDATION("Approve Recommendation"),
 	RECOMMEND_ANOTHER_VEND("Recommend Another Vendor"),
 	JOB_INFO_TABLE("Job Information Table"),
