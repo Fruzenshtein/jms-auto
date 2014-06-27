@@ -38,7 +38,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 	
 	@Steps
 	public ContactVendorSteps contactVendorSteps;
-
+/*
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void recommendedVendorReassignment() {
@@ -199,6 +199,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
+	//TC 6.1.11
 	public void contactedVendorVendorConfirmsManageModule() {
 		
 		loginSteps.login(userStorage.getUser(0));
@@ -247,7 +248,61 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		
 		globalSteps.waitUntilTextAppear("Assigned & Awaiting D-Day");
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GREEN);
+	
+	}
+	*/
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	//TC 6.1.12
+	public void contactedVendorRecontactVendor() {
 		
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("1608");
 		
+		//Preparing test data
+		//We expect that on test start the job has 1 approved
+		//and contacted via called reporter
+		//We need to re-init them
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		expectedServicesSteps.clickUpdate();
+		
+		globalSteps.pause(2);
+		jobDetailSteps.clickSave();		
+		globalSteps.pause(2);
+		
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(10);
+		
+		jobDetailSteps.clickSave();
+		
+		globalSteps.pause(8);
+
+		jobDetailSteps.clickManageButton();
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.APPROVE_RECOMENDATION);
+		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GRAY);
+		
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.CONTACT_FOR_ASSIGNMENT);
+		contactVendorSteps.clickCalledButton();
+		contactVendorSteps.clickContactedButton();
+		
+		globalSteps.waitUntilTextAppear("Assignment Unconfirmed");
+		
+		//Test starts
+		globalSteps.pause(3);
+		
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.CONTACT_AGAIN_FOR_ASSIGMENT);
+		
+		contactVendorSteps.clickCalledButton();
+		contactVendorSteps.clickContactedButton();
+		globalSteps.waitUntilTextAppear("Assignment Unconfirmed");
+		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.YELLOW);
 	}
 }

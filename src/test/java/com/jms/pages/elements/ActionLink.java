@@ -4,6 +4,7 @@ public enum ActionLink {
 	
 	CONTACT_FOR_ASSIGNMENT("Contact for Assignment"),
 	CONTACT_FOR_CONFIRMATION("Contact for Confirmation"),
+	CONTACT_AGAIN_FOR_ASSIGMENT("Contact Again for Assignment"),
 	VENDOR_CONFIRMS("Vendor Confirms"),
 	APPROVE_RECOMENDATION("Approve Recommendation"),
 	RECOMMEND_ANOTHER_VEND("Recommend Another Vendor"),
