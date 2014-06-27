@@ -38,7 +38,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 	
 	@Steps
 	public ContactVendorSteps contactVendorSteps;
-/*
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void recommendedVendorReassignment() {
@@ -250,7 +250,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GREEN);
 	
 	}
-	*/
+	
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	//TC 6.1.12
