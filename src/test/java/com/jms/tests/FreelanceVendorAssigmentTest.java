@@ -69,7 +69,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
 		expectedServicesSteps.clickUpdate();
 		
-		globalSteps.pause(4);
+		globalSteps.pause(6);
 		jobDetailSteps.clickSave();		
 		globalSteps.pause(4);
 		
@@ -120,7 +120,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
 		expectedServicesSteps.clickUpdate();
 		
-		globalSteps.pause(4);
+		globalSteps.pause(6);
 		jobDetailSteps.clickSave();		
 		globalSteps.pause(4);
 		
@@ -165,7 +165,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
 		expectedServicesSteps.clickUpdate();
 		
-		globalSteps.pause(4);
+		globalSteps.pause(6);
 		jobDetailSteps.clickSave();		
 		globalSteps.pause(4);
 		
@@ -214,7 +214,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
 		expectedServicesSteps.clickUpdate();
 		
-		globalSteps.pause(4);
+		globalSteps.pause(6);
 		jobDetailSteps.clickSave();		
 		globalSteps.pause(4);
 		
@@ -268,7 +268,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
 		expectedServicesSteps.clickUpdate();
 		
-		globalSteps.pause(4);
+		globalSteps.pause(6);
 		jobDetailSteps.clickSave();		
 		globalSteps.pause(4);
 		
