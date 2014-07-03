@@ -23,4 +23,14 @@ public class AssignVendorSteps extends ScenarioSteps {
 		assignVendorPopup().clickSaveButton();
 	}
 	
+	@Step
+	public void selectVendor(String vendorName) {
+		assignVendorPopup().selectVendor(vendorName);
+	}
+	
+	@Step
+	public void clickchangeRecommendationButton() {
+		assignVendorPopup().clickchangeRecommendationButton();
+	}
+	
 }
