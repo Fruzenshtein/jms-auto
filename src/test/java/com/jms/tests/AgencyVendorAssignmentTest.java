@@ -39,69 +39,69 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 	@Steps
 	public ContactVendorSteps contactVendorSteps;
 
-	/*
-	 * @Test
-	 * 
-	 * @Screenshots(onlyOnFailures = true) public void
-	 * RecommendedAgencyApprovalViaAssignVendorPopup () {
-	 * loginSteps.login(userStorage.getUser(0));
-	 * globalSteps.searchJobById("1611");
-	 * jobDetailSteps.clickExpectedServicesButton();
-	 * globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
-	 * expectedServicesSteps
-	 * .clickVendorServiceIconSection(VendorService.REPORTER);
-	 * expectedServicesSteps
-	 * .clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
-	 * expectedServicesSteps.clickUpdate(); globalSteps.pause(7);
-	 * jobDetailSteps.clickSave(); globalSteps.pause(17);
-	 * jobDetailSteps.clickSave(); globalSteps.pause(5);
-	 * 
-	 * jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.BLUE);
-	 * jobDetailSteps.isBeacon(Beacon.VIDEOGRAPHER_ASSIGNED, BeaconState.BLUE);
-	 * 
-	 * //Reporter jobDetailSteps.clickManageButton();
-	 * jobDetailSteps.clickVendorActionLink(1);
-	 * jobDetailSteps.clickVendorsActionMenuLink(1,
-	 * ActionLink.SELECT_ANOTHER_VENDOR);
-	 * 
-	 * globalSteps.pause(60);
-	 * assignVendorSteps.selectVendor("Stewart & Shoman");
-	 * assignVendorSteps.clickchangeRecommendationButton();
-	 * globalSteps.pause(3); assignVendorSteps.clickApproveButton();
-	 * globalSteps.pause(3); assignVendorSteps.clickSaveButton();
-	 * globalSteps.pause(15); jobDetailSteps.clickSave(); globalSteps.pause(10);
-	 * jobDetailSteps.clickSave(); globalSteps.pause(10);
-	 * 
-	 * jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GRAY);
-	 * 
-	 * //Videographer jobDetailSteps.clickVendorActionLink(2);
-	 * jobDetailSteps.clickVendorsActionMenuLink(2,
-	 * ActionLink.SELECT_ANOTHER_VENDOR);
-	 * 
-	 * globalSteps.pause(60);
-	 * assignVendorSteps.selectVendor("Capital Reporting Company");
-	 * assignVendorSteps.clickchangeRecommendationButton();
-	 * globalSteps.pause(3); assignVendorSteps.clickSaveButton();
-	 * globalSteps.pause(15); jobDetailSteps.clickSave(); globalSteps.pause(10);
-	 * jobDetailSteps.clickSave(); globalSteps.pause(15);
-	 * jobDetailSteps.clickVendorActionLink(2); globalSteps.pause(5);
-	 * jobDetailSteps.clickVendorsActionMenuLink(2,
-	 * ActionLink.APPROVE_RECOMENDATION); globalSteps.pause(5);
-	 * jobDetailSteps.clickSave(); globalSteps.pause(10);
-	 * jobDetailSteps.isBeacon(Beacon.VIDEOGRAPHER_ASSIGNED, BeaconState.GRAY);
-	 * 
-	 * //Deativate expected services
-	 * jobDetailSteps.clickExpectedServicesButton(); globalSteps.pause(5);
-	 * globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
-	 * expectedServicesSteps
-	 * .clickVendorServiceIconSection(VendorService.REPORTER);
-	 * expectedServicesSteps
-	 * .clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
-	 * expectedServicesSteps.clickUpdate(); globalSteps.pause(7);
-	 * jobDetailSteps.clickSave();
-	 * 
-	 * }
-	 */
+	
+	  @Test
+	  
+	  @Screenshots(onlyOnFailures = true) public void
+	  RecommendedAgencyApprovalViaAssignVendorPopup () {
+	  loginSteps.login(userStorage.getUser(0));
+	  globalSteps.searchJobById("1611");
+	  jobDetailSteps.clickExpectedServicesButton();
+	  globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
+	  expectedServicesSteps
+	  .clickVendorServiceIconSection(VendorService.REPORTER);
+	  expectedServicesSteps
+	  .clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
+	  expectedServicesSteps.clickUpdate(); globalSteps.pause(7);
+	  jobDetailSteps.clickSave(); globalSteps.pause(17);
+	  jobDetailSteps.clickSave(); globalSteps.pause(5);
+	  
+	  jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.BLUE);
+	  jobDetailSteps.isBeacon(Beacon.VIDEOGRAPHER_ASSIGNED, BeaconState.BLUE);
+	  
+	  //Reporter jobDetailSteps.clickManageButton();
+	  jobDetailSteps.clickVendorActionLink(1);
+	  jobDetailSteps.clickVendorsActionMenuLink(1,
+	  ActionLink.SELECT_ANOTHER_VENDOR);
+	  
+	  globalSteps.pause(60);
+	  assignVendorSteps.selectVendor("Stewart & Shoman");
+	  assignVendorSteps.clickchangeRecommendationButton();
+	  globalSteps.pause(3); assignVendorSteps.clickApproveButton();
+	  globalSteps.pause(3); assignVendorSteps.clickSaveButton();
+	  globalSteps.pause(15); jobDetailSteps.clickSave(); globalSteps.pause(10);
+	  jobDetailSteps.clickSave(); globalSteps.pause(10);
+	  
+	  jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GRAY);
+	  
+	  //Videographer jobDetailSteps.clickVendorActionLink(2);
+	  jobDetailSteps.clickVendorsActionMenuLink(2,
+	  ActionLink.SELECT_ANOTHER_VENDOR);
+	  
+	  globalSteps.pause(60);
+	  assignVendorSteps.selectVendor("Capital Reporting Company");
+	  assignVendorSteps.clickchangeRecommendationButton();
+	  globalSteps.pause(3); assignVendorSteps.clickSaveButton();
+	  globalSteps.pause(15); jobDetailSteps.clickSave(); globalSteps.pause(10);
+	  jobDetailSteps.clickSave(); globalSteps.pause(15);
+	  jobDetailSteps.clickVendorActionLink(2); globalSteps.pause(5);
+	  jobDetailSteps.clickVendorsActionMenuLink(2,
+	  ActionLink.APPROVE_RECOMENDATION); globalSteps.pause(5);
+	  jobDetailSteps.clickSave(); globalSteps.pause(10);
+	  jobDetailSteps.isBeacon(Beacon.VIDEOGRAPHER_ASSIGNED, BeaconState.GRAY);
+	  
+	  //Deativate expected services
+	  jobDetailSteps.clickExpectedServicesButton(); globalSteps.pause(5);
+	  globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
+	  expectedServicesSteps
+	  .clickVendorServiceIconSection(VendorService.REPORTER);
+	  expectedServicesSteps
+	  .clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
+	  expectedServicesSteps.clickUpdate(); globalSteps.pause(7);
+	  jobDetailSteps.clickSave();
+	  
+	  }
+	 
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
