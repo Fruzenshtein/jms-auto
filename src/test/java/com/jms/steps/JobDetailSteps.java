@@ -1,7 +1,6 @@
 package com.jms.steps;
 
 import static org.junit.Assert.*;
-
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
@@ -11,6 +10,7 @@ import com.jms.pages.elements.ActionLink;
 import com.jms.pages.elements.Beacon;
 import com.jms.pages.elements.BeaconState;
 import com.jms.pages.elements.JobDetailHeaderLabel;
+import com.jms.pages.elements.SideMenuBar;
 import com.jms.pages.elements.VendorService;
 
 public class JobDetailSteps extends ScenarioSteps {
@@ -236,5 +236,15 @@ public class JobDetailSteps extends ScenarioSteps {
 	public void isBeacon(Beacon beacon, BeaconState state) {
 		jobDetailPage().isBeacon(beacon.getBeacon(), state.getState());
 	}
+	
+	/*@Step
+	public void invokeSideMenuBar() {
+		jobDetailPage().clickSideMenuBar();
+	}
+	
+	@Step
+	public void selectSideMenuLink(SideMenuBar sideMenuLink) {
+		jobDetailPage().clickSideMenuLink(sideMenuLink.getLink());
+	}*/
 	
 }

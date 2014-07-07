@@ -4,7 +4,8 @@ public enum Beacon {
 	
 	STREAMING_ASSIGNED("Streaming Assigned"),
 	REPORTER_ASSIGNED("Reporter Assigned"),
-	VIDEOGRAPHER_ASSIGNED("Videographer Assigned");
+	VIDEOGRAPHER_ASSIGNED("Videographer Assigned"),
+	VIDEOGRAPHER_JOB_INFO("Videographer Job Info");
 	
 	private String beacon;
 	
