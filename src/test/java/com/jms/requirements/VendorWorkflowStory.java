@@ -8,5 +8,10 @@ public class VendorWorkflowStory {
 	public class FreelanceVendorAssignment {
 		
 	}
+	
+	@Feature
+	public class AgencyVendorAssignmentStory {
+		
+	}
 
 }
