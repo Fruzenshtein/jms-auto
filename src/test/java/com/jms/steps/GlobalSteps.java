@@ -1,11 +1,11 @@
 package com.jms.steps;
 
 import static org.junit.Assert.*;
-
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
 import com.jms.pages.GenericPage;
+import com.jms.pages.elements.SideMenuBar;
 
 public class GlobalSteps extends ScenarioSteps {
 
@@ -62,10 +62,10 @@ public class GlobalSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void clickSideMenuItem(String linkText) throws InterruptedException {
+	public void clickSideMenuItem(SideMenuBar sideMenuLink) throws InterruptedException {
 		if (genericPage().isSideBarDisplayed())
 			genericPage().openSideBar();
-		genericPage().clickSideBarLink(linkText);
+		genericPage().clickSideBarLink(sideMenuLink.getLink());
 	}
 	
 	@Step

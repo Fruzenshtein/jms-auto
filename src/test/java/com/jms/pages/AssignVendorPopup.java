@@ -13,11 +13,11 @@ public class AssignVendorPopup extends PageObject {
 	@FindBy(xpath = "//div[@class='save-buttons']//span[text()='Save']")
 	private WebElement saveButton;
 
+	@FindBy(xpath = "//div[@class='buttons']//span[text()='Change Recommendation']")
+	private WebElement changeRecommendationButton;
+
 	@FindBy(xpath = "//div[@class='save-buttons']//span[text()='Save']")
 	private WebElement vendorSelection;
-
-	@FindBy(xpath = "//button[@class='blue']//span[text()='Change Recommendation']")
-	private WebElement changeRecommendationButton;
 
 	public void clickApproveButton() {
 		approveButton.click();
@@ -32,10 +32,12 @@ public class AssignVendorPopup extends PageObject {
 	}
 
 	public void selectVendor(String vendorName) {
-		$("//div[@class='clr-left assign-agency-grid k-grid k-widget']//td[text()='" + vendorName + "']")
-				.waitUntilPresent()
-				.click();
+		$("//td[contains(.,'" + vendorName + "')]").waitUntilPresent().click();
 
+	}
+
+	public void clickchangeRecommendationButton() {
+		changeRecommendationButton.click();
 	}
 
 }

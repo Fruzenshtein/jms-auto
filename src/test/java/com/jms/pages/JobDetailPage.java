@@ -84,6 +84,9 @@ public class JobDetailPage extends PageObject {
 	@FindBy(xpath="//span[text()='Expected End']/..//input")
 	private WebElement expectedFinishTimeField;
 	
+	@FindBy(id="sidemenu-open-link")
+	private WebElement sideMenuBar;
+	
 	public void setSchedulingFirm(String name) {
 		scheduleFirmField.sendKeys(name);
 		getClock().pauseFor(2500);
@@ -306,5 +309,14 @@ public class JobDetailPage extends PageObject {
 	public void isBeacon(String name, String state) {
 		$("//div[contains(@class, '"+state+"') and text()='"+name+"']").shouldBeCurrentlyVisible();
 	}
+	
+	/*public void clickSideMenuBar() {
+		sideMenuBar.click();
+	}
+	
+	public void clickSideMenuLink(String link) {
+		$("//div[@id='sidemenu']//a[text()='"+ link +"']").waitUntilPresent().click();
+	}*/
+	
 	
 }

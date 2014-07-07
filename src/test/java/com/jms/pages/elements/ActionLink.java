@@ -9,7 +9,8 @@ public enum ActionLink {
 	APPROVE_RECOMENDATION("Approve Recommendation"),
 	RECOMMEND_ANOTHER_VEND("Recommend Another Vendor"),
 	JOB_INFO_TABLE("Job Information Table"),
-	SELECT_ANOTHER_VENDOR("Select Another Vendor");
+	SELECT_ANOTHER_VENDOR("Select Another Vendor"),
+	ASSIGN_WITHOUT_CONFIRM_COMPOSE_JI("Assign without Confirm (Compose JI)");
 	
 	private final String link;
 	

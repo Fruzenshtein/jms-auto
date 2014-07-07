@@ -69,9 +69,9 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
 		expectedServicesSteps.clickUpdate();
 		
-		globalSteps.pause(2);
+		globalSteps.pause(6);
 		jobDetailSteps.clickSave();		
-		globalSteps.pause(2);
+		globalSteps.pause(4);
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
@@ -120,9 +120,9 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
 		expectedServicesSteps.clickUpdate();
 		
-		globalSteps.pause(2);
+		globalSteps.pause(6);
 		jobDetailSteps.clickSave();		
-		globalSteps.pause(2);
+		globalSteps.pause(4);
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
@@ -165,9 +165,9 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
 		expectedServicesSteps.clickUpdate();
 		
-		globalSteps.pause(2);
+		globalSteps.pause(6);
 		jobDetailSteps.clickSave();		
-		globalSteps.pause(2);
+		globalSteps.pause(4);
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
@@ -214,9 +214,9 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
 		expectedServicesSteps.clickUpdate();
 		
-		globalSteps.pause(2);
+		globalSteps.pause(6);
 		jobDetailSteps.clickSave();		
-		globalSteps.pause(2);
+		globalSteps.pause(4);
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
@@ -268,9 +268,9 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
 		expectedServicesSteps.clickUpdate();
 		
-		globalSteps.pause(2);
+		globalSteps.pause(6);
 		jobDetailSteps.clickSave();		
-		globalSteps.pause(2);
+		globalSteps.pause(4);
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
