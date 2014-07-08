@@ -7,21 +7,22 @@ import org.openqa.selenium.WebElement;
 
 public class VendorQueuePage extends PageObject {
 	
-	@FindBy(xpath="(//a[@class='k-grid-filter']/span[@class='k-icon k-filter'])[7]")
+	@FindBy(xpath="(//th[@data-title='Job Number']//span)[2]")
 	private WebElement jobNumberFilterIcon;
 	
-	@FindBy(xpath="(//span[@class='k-numeric-wrap k-state-default']//input[@type='text'])[1]")
+	@FindBy(xpath="//form[@data-role='popup']//input[contains(@class, 'k-input')]")
 	private WebElement jobNumberFilter;
 	
 	@FindBy(xpath="//button[text()='Filter']")
 	private WebElement filterButton;
 	
-	public void clickJobNumberFilter() {
+	public void clickJobNumberFilterIcon() {
 		jobNumberFilterIcon.click();
 	}
 	
 	public void filterJobsByNumber(String jobNumber) {
-		$(jobNumberFilter).waitUntilPresent().sendKeys(jobNumber);;
+		jobNumberFilter.click();
+		$(jobNumberFilter).sendKeys(jobNumber);
 	}
 	
 	public void clickFilterButton() {

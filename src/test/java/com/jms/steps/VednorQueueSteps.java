@@ -14,8 +14,8 @@ public class VednorQueueSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void clickJobNumberFilter() {
-		vendorQueuePage().clickJobNumberFilter();
+	public void clickJobNumberFilterIcon() {
+		vendorQueuePage().clickJobNumberFilterIcon();
 	}
 	
 	@Step

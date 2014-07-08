@@ -48,7 +48,10 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 
 	@Steps
 	public ContactVendorSteps contactVendorSteps;
-
+	
+	@Steps
+	public VednorQueueSteps vednorQueueSteps;
+/*
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void recommendedAgencyVendorApprovalManageModule() {
@@ -99,10 +102,8 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		 * expectedServicesSteps.clickUpdate(); globalSteps.pause(4);
 		 * jobDetailSteps.clickSave(); globalSteps.pause(3);
 		 */
-	}
+	
 
-	@Steps
-	public VednorQueueSteps vednorQueueSteps;
 
 	/*
 	 * @Test
@@ -249,11 +250,13 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		 * BeaconState.GRAY);
 		 */
 		globalSteps.clickSideMenuItem(SideMenuBar.CALENDAR_VENDOR_QUEUE);
-		globalSteps.openWidgetIn(1);
-		globalSteps.pause(10);
-		vednorQueueSteps.clickJobNumberFilter();
+		globalSteps.openWidgetIn(4);
+		globalSteps.pause(5);
+		vednorQueueSteps.clickJobNumberFilterIcon();
 		vednorQueueSteps.filterJobsByNumber("1250");
+		globalSteps.pause(5);
 		vednorQueueSteps.clickFilterButton();
+		globalSteps.pause(5);
 
 		/*
 		 * jobDetailSteps.clickExpectedServicesButton();
