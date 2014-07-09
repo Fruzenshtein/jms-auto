@@ -305,4 +305,5 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		globalSteps.waitUntilTextAppear("Assignment Unconfirmed");
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.YELLOW);
 	}
+	
 }
