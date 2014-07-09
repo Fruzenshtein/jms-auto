@@ -35,6 +35,11 @@ public class ExpectedServicesSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public boolean statusOfServiceIcon(VendorService vendor) {
+		return expectedServicesPopup().statusServiceIcon(vendor);
+	}
+	
+	@Step
 	public void isAsapCheckBox(boolean is) {
 		assertTrue("ASAP check box was in inccorrect state", 
 				expectedServicesPopup().isAsapCheckBox(is));

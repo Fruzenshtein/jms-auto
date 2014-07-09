@@ -146,6 +146,11 @@ public class ExpectedServicesPopup extends PageObject {
 			vendor.getName()+" checkbox']").isPresent();
 	}
 	
+	public boolean statusServiceIcon(VendorService vendor) {
+			return $("//div[@class='service-row']/label[contains(@class, '"+vendor.getName()+"')]")
+					.getAttribute("class").contains("checked");
+	}
+	
 	public boolean isAsapCheckBox(boolean is) {
 		if (is)
 			return $("//img[class='imageCheck exibitsAsap checked']").waitUntilPresent().isPresent();
