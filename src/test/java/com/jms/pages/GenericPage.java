@@ -28,6 +28,9 @@ public class GenericPage extends PageObject {
 
 	@FindBy(xpath = "//div[@class='jobdetail-view scroll-view']")
 	private WebElement jobDetailWidget;
+	
+	@FindBy(linkText="Tab")
+	private WebElement tabLink;
 
 	public void pause(int seconds) {
 		getClock().pauseFor(seconds * 1000);
@@ -101,13 +104,14 @@ public class GenericPage extends PageObject {
 		case 3:
 			element("//div[@data-window-tab='" + zoneId + "']/a").click();
 			break;
-		case 4:
-			element("//div[@id='layout-link-popup']//a[@class='new-tab']")
-					.click();
-			break;
 		default:
 			element("//div[@data-window-tab='1']").click();
 		}
+	}
+	
+	public void openWidgetInNewTab() {
+		String url = tabLink.getAttribute("href");
+		getDriver().get(url);
 	}
 
 	public void setJobInSearchField(String jobId) {

@@ -250,13 +250,10 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		 * BeaconState.GRAY);
 		 */
 		globalSteps.clickSideMenuItem(SideMenuBar.CALENDAR_VENDOR_QUEUE);
-		globalSteps.openWidgetIn(4);
+		globalSteps.openWidgetInNewTab();
 		globalSteps.pause(5);
 		vednorQueueSteps.clickJobNumberFilterIcon();
 		vednorQueueSteps.filterJobsByNumber("1250");
-		globalSteps.pause(5);
-		vednorQueueSteps.clickFilterButton();
-		globalSteps.pause(5);
 
 		/*
 		 * jobDetailSteps.clickExpectedServicesButton();
