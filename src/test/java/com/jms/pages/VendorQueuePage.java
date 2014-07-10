@@ -21,10 +21,16 @@ public class VendorQueuePage extends PageObject {
 		jobNumberFilterIcon.click();
 	}
 	
+//	public void filterJobsByNumber(String jobNumber) {
+//		JavascriptExecutor js = (JavascriptExecutor) getDriver();
+//		getClock().pauseFor(2000);
+//		js.executeScript("document.getElementByClassName('k-formatted-value k-input').setAttribute('value', 1250)");
+//		getClock().pauseFor(1000);
+//	}
+	
 	public void filterJobsByNumber(String jobNumber) {
-		JavascriptExecutor js = (JavascriptExecutor) getDriver();
-		getClock().pauseFor(1000);
-		js.executeScript("document.getElementByClassName('k-formatted-value k-input').setAttribute('value', 1250)");
+		jobNumberFilter.click();
+		jobNumberFilter.sendKeys("1250");
 		getClock().pauseFor(1000);
 	}
 	

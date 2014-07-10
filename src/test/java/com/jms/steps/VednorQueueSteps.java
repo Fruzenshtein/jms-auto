@@ -20,6 +20,7 @@ public class VednorQueueSteps extends ScenarioSteps {
 	
 	@Step
 	public void filterJobsByNumber(String jobbNumber) {
+		
 		vendorQueuePage().filterJobsByNumber(jobbNumber);
 		vendorQueuePage().clickFilterButton();
 	}

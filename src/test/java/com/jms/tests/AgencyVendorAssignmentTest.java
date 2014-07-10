@@ -254,6 +254,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		globalSteps.pause(5);
 		vednorQueueSteps.clickJobNumberFilterIcon();
 		vednorQueueSteps.filterJobsByNumber("1250");
+		
 
 		/*
 		 * jobDetailSteps.clickExpectedServicesButton();
