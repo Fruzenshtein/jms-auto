@@ -261,6 +261,15 @@ public class JobDetailFieldsTest extends BasicTest {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("123");
 		jobDetailSteps.maximizeClientInfoSection();
-		
+		jobDetailSteps.clearSchedulingFirmField();
+		jobDetailSteps.setSchedulingFirm("Ann Van Devanter Townsend");
+		jobDetailSteps.addAdditionalContact();
+		jobDetailSteps.checkAdditionalContactConfirmCheckbox();
+		jobDetailSteps.clickQuickCRMAddLink();
+		jobDetailSteps.addFirstNameQuickCRM("Irina" + RandonNumberGenerator.getRandomNumber());
+		jobDetailSteps.addLastNameQuickCRM("M" + RandonNumberGenerator.getRandomNumber());
+		jobDetailSteps.addEmailAddressQuickCRM("test@door" + RandonNumberGenerator.getRandomNumber() +".com");
+		jobDetailSteps.clickSubmitButtonQuickCRM();
+		jobDetailSteps.clickActionMenuLinkSecondContact();
 	}
 }

@@ -282,5 +282,49 @@ public class JobDetailSteps extends ScenarioSteps {
 	public void assertClientMatterNIsDisabled() {
 		jobDetailPage().assertClientMatterNIsDisabled();
 	}
-
+	
+	@Step
+	public void clearSchedulingFirmField() {
+		jobDetailPage().clearSchedulingFirmField();
+	}
+	
+	@Step
+	public void addAdditionalContact() {
+		jobDetailPage().addAdditionalContact();
+	}
+	
+	@Step
+	public void checkAdditionalContactConfirmCheckbox() {
+		jobDetailPage().checkAdditionalContactConfirmCheckbox();
+	}
+	
+	@Step
+	public void clickQuickCRMAddLink() {
+		jobDetailPage().clickQuickCRMAddLink();
+	}
+	
+	@Step
+	public void addFirstNameQuickCRM(String firstName) {
+		jobDetailPage().addFirstNameQuickCRM(firstName);
+	}
+	
+	@Step
+	public void addLastNameQuickCRM(String lastName) {
+		jobDetailPage().addLastNameQuickCRM(lastName);
+	}
+	
+	@Step
+	public void addEmailAddressQuickCRM(String emailAddress) {
+		jobDetailPage().addEmailAddressQuickCRM(emailAddress);
+	}
+	
+	@Step
+	public void clickSubmitButtonQuickCRM() {
+		jobDetailPage().clickSubmitButtonQuickCRM();
+	}
+	
+	@Step
+	public void clickActionMenuLinkSecondContact() {
+		jobDetailPage().clickActionMenuLinkSecondContact();
+	}
 }

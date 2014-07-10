@@ -94,9 +94,33 @@ public class JobDetailPage extends PageObject {
 
 	@FindBy(xpath = "//div[@class='module-container jobdetail-caseinfo-container']//div[@class='collapsed on']")
 	private WebElement caseInfoMaximizeIcon;
-
-	private static ArrayList <String> clientMatterNumbersList = new ArrayList<String>();
 	
+	@FindBy(xpath = "//a[@class='additonalcontact']")
+	private WebElement addAdditionalContactLink;
+	
+	@FindBy(xpath = "//label[@class='checkbox']//img[@id='ic_imageCheckInput_36' and @aria-checked='false']")
+	private WebElement additionalContactConfirm;
+
+	@FindBy(xpath = "//div[@class='clr']//a[@class='quickcrmadd']")
+	private WebElement quickCRMAddLink;
+	
+	@FindBy(xpath = "//div[@class='modal-content crmadmin-quickaddcontact-view']//span[text()='First Name']/../input[@type='text']")
+	private WebElement quickCRMAddFirstName;
+	
+	@FindBy(xpath = "//div[@class='modal-content crmadmin-quickaddcontact-view']//span[text()='Last Name']/../input[@type='text']")
+	private WebElement quickCRMAddLastName;
+	
+	@FindBy(xpath = "//div[@class='modal-content crmadmin-quickaddcontact-view']//span[text()='Email Address']/../input[@type='text']")
+	private WebElement quickCRMAddEmailAddress;
+	
+	@FindBy(xpath = "//div[@class='buttons']//span[text()='Submit']")
+	private WebElement submitButtonQuickCRM;
+	
+	@FindBy(xpath = "(//div[@class='actionmenu-link'])[2]")
+	private WebElement actionMenuLinkSecondContact;
+	
+	private static ArrayList<String> clientMatterNumbersList = new ArrayList<String>();
+
 	public void setSchedulingFirm(String name) {
 		scheduleFirmField.sendKeys(name);
 		getClock().pauseFor(2500);
@@ -113,11 +137,11 @@ public class JobDetailPage extends PageObject {
 		clientMatterNumbersList.add(clientMatterNField.getText());
 		return clientMatterNumbersList;
 	}
-	
+
 	public String getClientMatterNFromTheList(int index) {
 		return clientMatterNumbersList.get(index);
 	}
-	
+
 	public void clearClientMatterNList() {
 		clientMatterNumbersList.clear();
 	}
@@ -380,12 +404,44 @@ public class JobDetailPage extends PageObject {
 	public void clearClientMatterNumber() {
 		clientMatterNField.clear();
 	}
-	
+
 	public void assertClientMatterNIsDisabled() {
 		$(clientMatterNField).shouldNotBeEnabled();
 	}
+
+	public void clearSchedulingFirmField() {
+		scheduleFirmField.clear();
+	}
 	
+	public void addAdditionalContact() {
+		addAdditionalContactLink.click();
+	}
 	
+	public void checkAdditionalContactConfirmCheckbox() {
+		$(additionalContactConfirm).isPresent();
+	}
 	
+	public void clickQuickCRMAddLink() {
+		quickCRMAddLink.click();
+	}
 	
+	public void addFirstNameQuickCRM(String firstName) {
+		quickCRMAddFirstName.sendKeys(firstName);
+	}
+	
+	public void addLastNameQuickCRM(String lastName) {
+		quickCRMAddLastName.sendKeys(lastName);
+	}
+	
+	public void addEmailAddressQuickCRM(String emailAddress) {
+		quickCRMAddEmailAddress.sendKeys(emailAddress);
+	}
+	
+	public void clickSubmitButtonQuickCRM() {
+		submitButtonQuickCRM.click();
+	}
+	
+	public void clickActionMenuLinkSecondContact() {
+		actionMenuLinkSecondContact.click();
+	}
 }
