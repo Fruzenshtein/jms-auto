@@ -1,12 +1,12 @@
 package com.jms.pages.elements;
 
-public enum SideMenuBar {
+public enum SideMenuLink {
 	CALENDAR_VENDOR_QUEUE("Calendar Vendor Queue"),
 	LOG_OUT("Log Out");
 
 	private final String sideMenuLink;
 
-	SideMenuBar(String sideMenuLink) {
+	SideMenuLink(String sideMenuLink) {
 		this.sideMenuLink = sideMenuLink;
 	}
 

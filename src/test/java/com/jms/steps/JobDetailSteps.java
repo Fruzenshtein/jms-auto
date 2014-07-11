@@ -10,7 +10,7 @@ import com.jms.pages.elements.ActionLink;
 import com.jms.pages.elements.Beacon;
 import com.jms.pages.elements.BeaconState;
 import com.jms.pages.elements.JobDetailHeaderLabel;
-import com.jms.pages.elements.SideMenuBar;
+import com.jms.pages.elements.SideMenuLink;
 import com.jms.pages.elements.VendorService;
 
 public class JobDetailSteps extends ScenarioSteps {
@@ -24,6 +24,11 @@ public class JobDetailSteps extends ScenarioSteps {
 	@Step
 	public void setSchedulingFirm(String name) {
 		jobDetailPage().setSchedulingFirm(name);
+	}
+	
+	@Step
+	public void setSchedulingFirmContact(String schedulingFirmContactName) {
+		jobDetailPage().setSchedulingFirmContact(schedulingFirmContactName);
 	}
 
 	@Step
@@ -282,5 +287,25 @@ public class JobDetailSteps extends ScenarioSteps {
 	public void assertClientMatterNIsDisabled() {
 		jobDetailPage().assertClientMatterNIsDisabled();
 	}
+	
+	@Step
+	public void checkSchedulingFirmConfirmCheckbox() {
+		jobDetailPage().checkSchedulingFirmConfirmCheckbox();
+	}
+	
+	@Step
+	public void checkSchedulingFirmContactConfirmCheckbox() {
+		jobDetailPage().checkSchedulingFirmContactConfirmCheckbox();
+	}
+	
+	@Step
+	public void addRequestedVendor(String requestedVendorName) {
+		jobDetailPage().addRequestedVendor(requestedVendorName);
+	}
 
+	@Step
+	public void addAndAssertSchedulingFirmIsAdded(String schedulingFirm) {
+		jobDetailPage().setSchedulingFirm(schedulingFirm);
+		jobDetailPage().assertSchedulingFirmIsAdded(schedulingFirm);
+	}
 }

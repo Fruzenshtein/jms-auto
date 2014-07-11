@@ -10,7 +10,7 @@ import com.jms.pages.VendorQueuePage;
 import com.jms.pages.elements.ActionLink;
 import com.jms.pages.elements.Beacon;
 import com.jms.pages.elements.BeaconState;
-import com.jms.pages.elements.SideMenuBar;
+import com.jms.pages.elements.SideMenuLink;
 
 import com.jms.pages.elements.VendorService;
 import com.jms.requirements.VendorWorkflowStory;
@@ -249,7 +249,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		 * jobDetailSteps.isBeacon(Beacon.VIDEOGRAPHER_JOB_INFO,
 		 * BeaconState.GRAY);
 		 */
-		globalSteps.clickSideMenuItem(SideMenuBar.CALENDAR_VENDOR_QUEUE);
+		globalSteps.clickSideMenuItem(SideMenuLink.CALENDAR_VENDOR_QUEUE);
 		globalSteps.openWidgetIn(4);
 		globalSteps.pause(5);
 		vednorQueueSteps.clickJobNumberFilterIcon();

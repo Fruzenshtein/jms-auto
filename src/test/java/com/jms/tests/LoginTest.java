@@ -6,7 +6,7 @@ import net.thucydides.core.annotations.Story;
 
 import org.junit.Test;
 
-import com.jms.pages.elements.SideMenuBar;
+import com.jms.pages.elements.SideMenuLink;
 import com.jms.requirements.LoginStory.UserLogin;
 import com.jms.steps.GlobalSteps;
 import com.jms.steps.LoginSteps;
@@ -24,7 +24,7 @@ public class LoginTest extends BasicTest {
 	@Screenshots(onlyOnFailures = true)
 	public void tc1_1() throws InterruptedException {
 		loginSteps.login(userStorage.getUser(0));
-		globalSteps.clickSideMenuItem(SideMenuBar.LOG_OUT);
+		globalSteps.clickSideMenuItem(SideMenuLink.LOG_OUT);
 		loginSteps.checkPageTitle();
 	}
 	

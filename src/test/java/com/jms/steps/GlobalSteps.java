@@ -5,7 +5,7 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
 import com.jms.pages.GenericPage;
-import com.jms.pages.elements.SideMenuBar;
+import com.jms.pages.elements.SideMenuLink;
 
 public class GlobalSteps extends ScenarioSteps {
 
@@ -65,7 +65,7 @@ public class GlobalSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void clickSideMenuItem(SideMenuBar sideMenuLink)
+	public void clickSideMenuItem(SideMenuLink sideMenuLink)
 			throws InterruptedException {
 		if (genericPage().isSideBarDisplayed())
 			genericPage().openSideBar();

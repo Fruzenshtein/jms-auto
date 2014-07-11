@@ -95,13 +95,32 @@ public class JobDetailPage extends PageObject {
 	@FindBy(xpath = "//div[@class='module-container jobdetail-caseinfo-container']//div[@class='collapsed on']")
 	private WebElement caseInfoMaximizeIcon;
 
-	private static ArrayList <String> clientMatterNumbersList = new ArrayList<String>();
+	@FindBy(xpath = "//input[@class='contact autocomplete-input']")
+	private WebElement schedulingFirmContact;
 	
+	@FindBy(xpath = "//label[@class='right checkbox checked']//img[@aria-checked='true']")
+	private WebElement schedulingFirmConfirmCheckbox;
+	
+	@FindBy(xpath = "//label[@class='checkbox checked']//img[@aria-checked='true']")
+	private WebElement schedulingFirmContactConfirmCheckbox;
+	
+	@FindBy(xpath = "//span[text()='Req. Vendor']/../input[@type='text']")
+	private WebElement requestedVendor;
+
+	private static ArrayList<String> clientMatterNumbersList = new ArrayList<String>();
+
 	public void setSchedulingFirm(String name) {
 		scheduleFirmField.sendKeys(name);
 		getClock().pauseFor(2500);
 		getDriver().findElement(By.xpath("//strong[text()='" + name + "']"))
 				.click();
+	}
+
+	public void setSchedulingFirmContact(String schedulingFirmContactName) {
+		schedulingFirmContact.sendKeys(schedulingFirmContactName);
+		getClock().pauseFor(2500);
+		//getDriver().findElement(By.xpath("//strong[text()='" + schedulingFirmContact + "']")).click();
+		getDriver().findElement(By.xpath("//strong[text()='" +schedulingFirmContactName + "']")).click();
 	}
 
 	public void setClientMatterN(String number) {
@@ -113,11 +132,11 @@ public class JobDetailPage extends PageObject {
 		clientMatterNumbersList.add(clientMatterNField.getText());
 		return clientMatterNumbersList;
 	}
-	
+
 	public String getClientMatterNFromTheList(int index) {
 		return clientMatterNumbersList.get(index);
 	}
-	
+
 	public void clearClientMatterNList() {
 		clientMatterNumbersList.clear();
 	}
@@ -380,12 +399,28 @@ public class JobDetailPage extends PageObject {
 	public void clearClientMatterNumber() {
 		clientMatterNField.clear();
 	}
-	
+
 	public void assertClientMatterNIsDisabled() {
 		$(clientMatterNField).shouldNotBeEnabled();
 	}
 	
+	public void checkSchedulingFirmConfirmCheckbox() {
+		$(schedulingFirmConfirmCheckbox).isPresent();
+	}
 	
+	public void checkSchedulingFirmContactConfirmCheckbox() {
+		$(schedulingFirmContactConfirmCheckbox).isPresent();
+	}
 	
+	public void addRequestedVendor(String requestedVendorName) {
+		$(requestedVendor).sendKeys(requestedVendorName);
+		getClock().pauseFor(2500);
+		getDriver().findElement(By.xpath("//strong[text()='" + requestedVendorName + "']"))
+				.click();
+	}
 	
+	public void assertSchedulingFirmIsAdded(String schedulingFirm) {
+		$("//div[@class='client-info']//div[text()='" + schedulingFirm + "']").isPresent();
+	}
+
 }
