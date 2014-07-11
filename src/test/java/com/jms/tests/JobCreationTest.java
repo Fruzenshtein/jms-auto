@@ -24,7 +24,7 @@ public class JobCreationTest extends BasicTest {
 	
 	@Steps
 	public JobDetailSteps jobDetailSteps;
-	
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc2_1() throws InterruptedException {
@@ -46,7 +46,7 @@ public class JobCreationTest extends BasicTest {
 		globalSteps.searchJobById(jobId);
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.JOB_DATE, futureDate);
 	}
-	
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc2_2() throws InterruptedException {
@@ -89,8 +89,10 @@ public class JobCreationTest extends BasicTest {
 		
 		globalSteps.clickOkMessagePopup();
 		
-		jobDetailSteps.setDate(pastDate);
+		globalSteps.pause(4);
 		jobDetailSteps.setCaseName("Daily meeting");
+		globalSteps.pause(2);
+		jobDetailSteps.setDate(pastDate);
 		jobDetailSteps.clickSave();
 		
 		globalSteps.checkMessageText("There were issues with your request");

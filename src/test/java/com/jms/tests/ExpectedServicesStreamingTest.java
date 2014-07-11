@@ -34,7 +34,7 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 	@Steps
 	public ExpectedServicesSteps expectedServicesSteps;
 	
-	private String jobId = "1251";
+	private String jobId = "1244";
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
