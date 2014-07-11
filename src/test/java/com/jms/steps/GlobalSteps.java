@@ -82,6 +82,11 @@ public class GlobalSteps extends ScenarioSteps {
 		genericPage().openWidgetIn(zoneId);
 		Thread.sleep(3000);
 	}
+	
+	@Step
+	public void openWidgetInNewTab() {
+		genericPage().openWidgetInNewTab();
+	}
 
 	@Step
 	public void searchJobById(String jobId) {

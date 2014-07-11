@@ -95,17 +95,41 @@ public class JobDetailPage extends PageObject {
 	@FindBy(xpath = "//div[@class='module-container jobdetail-caseinfo-container']//div[@class='collapsed on']")
 	private WebElement caseInfoMaximizeIcon;
 
+	@FindBy(xpath = "//a[@class='additonalcontact']")
+	private WebElement addAdditionalContactLink;
+
+	@FindBy(xpath = "//label[@class='checkbox']//img[@id='ic_imageCheckInput_36' and @aria-checked='false']")
+	private WebElement additionalContactConfirm;
+
 	@FindBy(xpath = "//input[@class='contact autocomplete-input']")
 	private WebElement schedulingFirmContact;
-	
+
 	@FindBy(xpath = "//label[@class='right checkbox checked']//img[@aria-checked='true']")
 	private WebElement schedulingFirmConfirmCheckbox;
-	
+
 	@FindBy(xpath = "//label[@class='checkbox checked']//img[@aria-checked='true']")
 	private WebElement schedulingFirmContactConfirmCheckbox;
-	
+
 	@FindBy(xpath = "//span[text()='Req. Vendor']/../input[@type='text']")
 	private WebElement requestedVendor;
+
+	@FindBy(xpath = "//div[@class='clr']//a[@class='quickcrmadd']")
+	private WebElement quickCRMAddLink;
+
+	@FindBy(xpath = "//div[@class='modal-content crmadmin-quickaddcontact-view']//span[text()='First Name']/../input[@type='text']")
+	private WebElement quickCRMAddFirstName;
+
+	@FindBy(xpath = "//div[@class='modal-content crmadmin-quickaddcontact-view']//span[text()='Last Name']/../input[@type='text']")
+	private WebElement quickCRMAddLastName;
+
+	@FindBy(xpath = "//div[@class='modal-content crmadmin-quickaddcontact-view']//span[text()='Email Address']/../input[@type='text']")
+	private WebElement quickCRMAddEmailAddress;
+
+	@FindBy(xpath = "//div[@class='buttons']//span[text()='Submit']")
+	private WebElement submitButtonQuickCRM;
+
+	@FindBy(xpath = "(//div[@class='actionmenu-link'])[2]")
+	private WebElement actionMenuLinkSecondContact;
 
 	private static ArrayList<String> clientMatterNumbersList = new ArrayList<String>();
 
@@ -119,8 +143,12 @@ public class JobDetailPage extends PageObject {
 	public void setSchedulingFirmContact(String schedulingFirmContactName) {
 		schedulingFirmContact.sendKeys(schedulingFirmContactName);
 		getClock().pauseFor(2500);
-		//getDriver().findElement(By.xpath("//strong[text()='" + schedulingFirmContact + "']")).click();
-		getDriver().findElement(By.xpath("//strong[text()='" +schedulingFirmContactName + "']")).click();
+		// getDriver().findElement(By.xpath("//strong[text()='" +
+		// schedulingFirmContact + "']")).click();
+		getDriver()
+				.findElement(
+						By.xpath("//strong[text()='"
+								+ schedulingFirmContactName + "']")).click();
 	}
 
 	public void setClientMatterN(String number) {
@@ -403,24 +431,62 @@ public class JobDetailPage extends PageObject {
 	public void assertClientMatterNIsDisabled() {
 		$(clientMatterNField).shouldNotBeEnabled();
 	}
-	
+
+	public void clearSchedulingFirmField() {
+		scheduleFirmField.clear();
+	}
+
+	public void addAdditionalContact() {
+		addAdditionalContactLink.click();
+	}
+
+	public void checkAdditionalContactConfirmCheckbox() {
+		$(additionalContactConfirm).isPresent();
+	}
+
+	public void clickQuickCRMAddLink() {
+		quickCRMAddLink.click();
+	}
+
 	public void checkSchedulingFirmConfirmCheckbox() {
 		$(schedulingFirmConfirmCheckbox).isPresent();
 	}
-	
+
 	public void checkSchedulingFirmContactConfirmCheckbox() {
 		$(schedulingFirmContactConfirmCheckbox).isPresent();
 	}
-	
+
 	public void addRequestedVendor(String requestedVendorName) {
 		$(requestedVendor).sendKeys(requestedVendorName);
 		getClock().pauseFor(2500);
-		getDriver().findElement(By.xpath("//strong[text()='" + requestedVendorName + "']"))
+		getDriver().findElement(
+				By.xpath("//strong[text()='" + requestedVendorName + "']"))
 				.click();
 	}
-	
+
 	public void assertSchedulingFirmIsAdded(String schedulingFirm) {
-		$("//div[@class='client-info']//div[text()='" + schedulingFirm + "']").isPresent();
+		$("//div[@class='client-info']//div[text()='" + schedulingFirm + "']")
+				.isPresent();
+	}
+
+	public void addFirstNameQuickCRM(String firstName) {
+		quickCRMAddFirstName.sendKeys(firstName);
+	}
+
+	public void addLastNameQuickCRM(String lastName) {
+		quickCRMAddLastName.sendKeys(lastName);
+	}
+
+	public void addEmailAddressQuickCRM(String emailAddress) {
+		quickCRMAddEmailAddress.sendKeys(emailAddress);
+	}
+
+	public void clickSubmitButtonQuickCRM() {
+		submitButtonQuickCRM.click();
+	}
+
+	public void clickActionMenuLinkSecondContact() {
+		actionMenuLinkSecondContact.click();
 	}
 
 }

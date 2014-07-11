@@ -53,7 +53,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		globalSteps.waitUntilTextDisappear(currentVandor);
 		
 	}
-	
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void recommendedVendorApproval() {
@@ -65,8 +65,12 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		//And we need to re-init them
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
+		
+		if (expectedServicesSteps.statusOfServiceIcon(VendorService.REPORTER))
+			expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		if (expectedServicesSteps.statusOfServiceIcon(VendorService.VIDEOGRAPHER))
+			expectedServicesSteps.clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
+		
 		expectedServicesSteps.clickUpdate();
 		
 		globalSteps.pause(6);
@@ -117,7 +121,8 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		//And we need to re-init them
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		if (expectedServicesSteps.statusOfServiceIcon(VendorService.REPORTER))
+			expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
 		expectedServicesSteps.clickUpdate();
 		
 		globalSteps.pause(6);
@@ -162,7 +167,8 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		//And we need to re-init them
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		if (expectedServicesSteps.statusOfServiceIcon(VendorService.REPORTER))
+			expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
 		expectedServicesSteps.clickUpdate();
 		
 		globalSteps.pause(6);
@@ -196,7 +202,6 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		
 	}
 	
-
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	//TC 6.1.11
@@ -211,7 +216,8 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		//We need to re-init them
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		if (expectedServicesSteps.statusOfServiceIcon(VendorService.REPORTER))
+			expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
 		expectedServicesSteps.clickUpdate();
 		
 		globalSteps.pause(6);
@@ -265,7 +271,8 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		//We need to re-init them
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		if (expectedServicesSteps.statusOfServiceIcon(VendorService.REPORTER))
+			expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
 		expectedServicesSteps.clickUpdate();
 		
 		globalSteps.pause(6);
@@ -305,5 +312,5 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		globalSteps.waitUntilTextAppear("Assignment Unconfirmed");
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.YELLOW);
 	}
-	
+
 }

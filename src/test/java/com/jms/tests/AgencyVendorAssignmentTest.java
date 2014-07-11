@@ -48,62 +48,54 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 
 	@Steps
 	public ContactVendorSteps contactVendorSteps;
-	
+
 	@Steps
 	public VednorQueueSteps vednorQueueSteps;
-/*
-	@Test
-	@Screenshots(onlyOnFailures = true)
-	public void recommendedAgencyVendorApprovalManageModule() {
-		loginSteps.login(userStorage.getUser(0));
-		globalSteps.searchJobById("1611");
-		jobDetailSteps.clickExpectedServicesButton();
-		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
-		expectedServicesSteps
-				.clickVendorServiceIconSection(VendorService.REPORTER);
-		expectedServicesSteps
-				.clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(5);
-		jobDetailSteps.clickSave();
-		globalSteps.pause(3);
-		jobDetailSteps.clickSave();
-		// Test starts
-		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.BLUE);
-		jobDetailSteps.isBeacon(Beacon.VIDEOGRAPHER_ASSIGNED, BeaconState.BLUE);
 
-		jobDetailSteps.clickManageButton();
-		globalSteps.pause(3);
-		jobDetailSteps.clickVendorActionLink(1);
-		jobDetailSteps.clickVendorsActionMenuLink(1,
-				ActionLink.SELECT_ANOTHER_VENDOR);
-
-		globalSteps.pause(25);
-
-		assignVendorSteps.selectVendor("Stewart & Shoman");
-		assignVendorSteps.clickChangeRecommendationButton();
-		globalSteps.pause(3);
-		assignVendorSteps.clickSaveButton();
-		globalSteps.pause(5);
-		assignVendorSteps.clickApproveButton();
-		assignVendorSteps.clickSaveButton();
-		globalSteps.pause(10);
-		globalSteps.waitUntilTextAppear("Recommendation Approved (Freelancer)");
-		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GRAY);
-
-		/*
-		 * //Deactivate Reporter and Videographer services back
-		 * jobDetailSteps.clickExpectedServicesButton();
-		 * globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
-		 * expectedServicesSteps
-		 * .clickVendorServiceIconSection(VendorService.REPORTER);
-		 * expectedServicesSteps
-		 * .clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
-		 * expectedServicesSteps.clickUpdate(); globalSteps.pause(4);
-		 * jobDetailSteps.clickSave(); globalSteps.pause(3);
-		 */
-	
-
+	/*
+	 * @Test
+	 * 
+	 * @Screenshots(onlyOnFailures = true) public void
+	 * recommendedAgencyVendorApprovalManageModule() {
+	 * loginSteps.login(userStorage.getUser(0));
+	 * globalSteps.searchJobById("1611");
+	 * jobDetailSteps.clickExpectedServicesButton();
+	 * globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
+	 * expectedServicesSteps
+	 * .clickVendorServiceIconSection(VendorService.REPORTER);
+	 * expectedServicesSteps
+	 * .clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
+	 * expectedServicesSteps.clickUpdate(); globalSteps.pause(5);
+	 * jobDetailSteps.clickSave(); globalSteps.pause(3);
+	 * jobDetailSteps.clickSave(); // Test starts
+	 * jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.BLUE);
+	 * jobDetailSteps.isBeacon(Beacon.VIDEOGRAPHER_ASSIGNED, BeaconState.BLUE);
+	 * 
+	 * jobDetailSteps.clickManageButton(); globalSteps.pause(3);
+	 * jobDetailSteps.clickVendorActionLink(1);
+	 * jobDetailSteps.clickVendorsActionMenuLink(1,
+	 * ActionLink.SELECT_ANOTHER_VENDOR);
+	 * 
+	 * globalSteps.pause(25);
+	 * 
+	 * assignVendorSteps.selectVendor("Stewart & Shoman");
+	 * assignVendorSteps.clickChangeRecommendationButton();
+	 * globalSteps.pause(3); assignVendorSteps.clickSaveButton();
+	 * globalSteps.pause(5); assignVendorSteps.clickApproveButton();
+	 * assignVendorSteps.clickSaveButton(); globalSteps.pause(10);
+	 * globalSteps.waitUntilTextAppear("Recommendation Approved (Freelancer)");
+	 * jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GRAY);
+	 * 
+	 * /* //Deactivate Reporter and Videographer services back
+	 * jobDetailSteps.clickExpectedServicesButton();
+	 * globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
+	 * expectedServicesSteps
+	 * .clickVendorServiceIconSection(VendorService.REPORTER);
+	 * expectedServicesSteps
+	 * .clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
+	 * expectedServicesSteps.clickUpdate(); globalSteps.pause(4);
+	 * jobDetailSteps.clickSave(); globalSteps.pause(3);
+	 */
 
 	/*
 	 * @Test
@@ -249,14 +241,12 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		 * jobDetailSteps.isBeacon(Beacon.VIDEOGRAPHER_JOB_INFO,
 		 * BeaconState.GRAY);
 		 */
+
 		globalSteps.clickSideMenuItem(SideMenuLink.CALENDAR_VENDOR_QUEUE);
-		globalSteps.openWidgetIn(4);
+		globalSteps.openWidgetInNewTab();
 		globalSteps.pause(5);
 		vednorQueueSteps.clickJobNumberFilterIcon();
 		vednorQueueSteps.filterJobsByNumber("1250");
-		globalSteps.pause(5);
-		vednorQueueSteps.clickFilterButton();
-		globalSteps.pause(5);
 
 		/*
 		 * jobDetailSteps.clickExpectedServicesButton();

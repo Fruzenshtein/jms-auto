@@ -25,7 +25,7 @@ public class JobDetailSteps extends ScenarioSteps {
 	public void setSchedulingFirm(String name) {
 		jobDetailPage().setSchedulingFirm(name);
 	}
-	
+
 	@Step
 	public void setSchedulingFirmContact(String schedulingFirmContactName) {
 		jobDetailPage().setSchedulingFirmContact(schedulingFirmContactName);
@@ -287,17 +287,17 @@ public class JobDetailSteps extends ScenarioSteps {
 	public void assertClientMatterNIsDisabled() {
 		jobDetailPage().assertClientMatterNIsDisabled();
 	}
-	
+
 	@Step
 	public void checkSchedulingFirmConfirmCheckbox() {
 		jobDetailPage().checkSchedulingFirmConfirmCheckbox();
 	}
-	
+
 	@Step
 	public void checkSchedulingFirmContactConfirmCheckbox() {
 		jobDetailPage().checkSchedulingFirmContactConfirmCheckbox();
 	}
-	
+
 	@Step
 	public void addRequestedVendor(String requestedVendorName) {
 		jobDetailPage().addRequestedVendor(requestedVendorName);
@@ -307,5 +307,50 @@ public class JobDetailSteps extends ScenarioSteps {
 	public void addAndAssertSchedulingFirmIsAdded(String schedulingFirm) {
 		jobDetailPage().setSchedulingFirm(schedulingFirm);
 		jobDetailPage().assertSchedulingFirmIsAdded(schedulingFirm);
+	}
+
+	public void clearSchedulingFirmField() {
+		jobDetailPage().clearSchedulingFirmField();
+	}
+
+	@Step
+	public void addAdditionalContact() {
+		jobDetailPage().addAdditionalContact();
+	}
+
+	@Step
+	public void checkAdditionalContactConfirmCheckbox() {
+		jobDetailPage().checkAdditionalContactConfirmCheckbox();
+	}
+
+	@Step
+	public void clickQuickCRMAddLink() {
+		jobDetailPage().clickQuickCRMAddLink();
+	}
+
+	@Step
+	public void addFirstNameQuickCRM(String firstName) {
+		jobDetailPage().addFirstNameQuickCRM(firstName);
+	}
+
+	@Step
+	public void addLastNameQuickCRM(String lastName) {
+		jobDetailPage().addLastNameQuickCRM(lastName);
+	}
+
+	@Step
+	public void addEmailAddressQuickCRM(String emailAddress) {
+		jobDetailPage().addEmailAddressQuickCRM(emailAddress);
+	}
+
+	@Step
+	public void clickSubmitButtonQuickCRM() {
+		jobDetailPage().clickSubmitButtonQuickCRM();
+	}
+
+	@Step
+	public void clickActionMenuLinkSecondContact() {
+		jobDetailPage().clickActionMenuLinkSecondContact();
+
 	}
 }
