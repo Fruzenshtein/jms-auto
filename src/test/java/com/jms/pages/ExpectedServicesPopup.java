@@ -79,6 +79,12 @@ public class ExpectedServicesPopup extends PageObject {
 	@FindBy(linkText="Add Language")
 	private WebElement addLanguageLink;
 	
+	@FindBy(xpath = "//span[text()='Change Recommendation']")
+	private WebElement changeRecommendationButton;
+	
+	@FindBy(xpath = "//span[text()='Save']")
+	private WebElement save;
+	
 	public void clickVendorServiceIcon(VendorService vendor) {
 		getClock().pauseFor(1000);
 		//TODO: Re-implement after unique selectors will be assigned
@@ -195,6 +201,10 @@ public class ExpectedServicesPopup extends PageObject {
 		numberOfLeptops.sendKeys(number);
 	}
 	
+	public void clickAgencyByIndex(int index) {
+		$("(//div[contains(@class, 'assign-agency-grid')]//td[@class])["+index+"]").click();
+	}
+	
 	public void clickUpdate() {
 		updateButton.click();
 	}
@@ -250,4 +260,9 @@ public class ExpectedServicesPopup extends PageObject {
 	public void clickAddLanguage() {
 		addLanguageLink.click();
 	}
+	
+	public void clickChangeRecommendationButton() {
+		changeRecommendationButton.click();
+	}
+
 }

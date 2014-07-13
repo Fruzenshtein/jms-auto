@@ -65,6 +65,11 @@ public class ExpectedServicesSteps extends ScenarioSteps {
 		assertTrue(section.getSection()+" section wasn't in expected state.", 
 				expectedServicesPopup().isExpectedServicesSection(section, enabled));
 	}
+	
+	@Step
+	public void clickAgencyByIndex(int index) {
+		expectedServicesPopup().clickAgencyByIndex(index);
+	}
 
 	@Step
 	public void clickUpdate() {
@@ -160,4 +165,10 @@ public class ExpectedServicesSteps extends ScenarioSteps {
 	public void clickAddLanguageLink() {
 		expectedServicesPopup().clickAddLanguage();
 	}
+	
+	@Step
+	public void clickChangeRecommendationButton() {
+		expectedServicesPopup().clickChangeRecommendationButton();
+	}
+	
 }
