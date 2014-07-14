@@ -305,6 +305,7 @@ public class JobDetailSteps extends ScenarioSteps {
 
 	@Step
 	public void addAndAssertSchedulingFirmIsAdded(String schedulingFirm) {
+		jobDetailPage().clearSchedulingFirmField();
 		jobDetailPage().setSchedulingFirm(schedulingFirm);
 		jobDetailPage().assertSchedulingFirmIsAdded(schedulingFirm);
 	}
@@ -318,10 +319,6 @@ public class JobDetailSteps extends ScenarioSteps {
 		jobDetailPage().addAdditionalContact();
 	}
 
-	@Step
-	public void checkAdditionalContactConfirmCheckbox() {
-		jobDetailPage().checkAdditionalContactConfirmCheckbox();
-	}
 
 	@Step
 	public void clickQuickCRMAddLink() {

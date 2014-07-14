@@ -440,10 +440,6 @@ public class JobDetailPage extends PageObject {
 		addAdditionalContactLink.click();
 	}
 
-	public void checkAdditionalContactConfirmCheckbox() {
-		$(additionalContactConfirm).isPresent();
-	}
-
 	public void clickQuickCRMAddLink() {
 		quickCRMAddLink.click();
 	}
@@ -457,6 +453,7 @@ public class JobDetailPage extends PageObject {
 	}
 
 	public void addRequestedVendor(String requestedVendorName) {
+		requestedVendor.clear();
 		$(requestedVendor).sendKeys(requestedVendorName);
 		getClock().pauseFor(2500);
 		getDriver().findElement(
