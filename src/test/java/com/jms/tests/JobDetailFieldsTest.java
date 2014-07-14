@@ -28,7 +28,7 @@ public class JobDetailFieldsTest extends BasicTest {
 
 	@Steps
 	public JobDetailSteps jobDetailSteps;
-/*
+
 	 @Test
 	 @Screenshots(onlyOnFailures = true)
 	 public void jobDetailPageCaseInfoSection() throws InterruptedException {
@@ -275,8 +275,8 @@ public class JobDetailFieldsTest extends BasicTest {
 				+ RandonUUIDGenerator.getRandomNumber() + ".com");
 		jobDetailSteps.clickSubmitButtonQuickCRM();
 		jobDetailSteps.clickActionMenuLinkSecondContact();
-	} */
-	
+	} 
+	/*
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void jobDetailPageVendorModule() {
@@ -291,5 +291,5 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.setSchedulingFirmContact("Ronny Bobb");
 		jobDetailSteps.addRequestedVendor("Celestino Calpo");
 		jobDetailSteps.clickSave();
-	}
+	} */
 }
