@@ -5,12 +5,14 @@ import org.junit.Test;
 import com.jms.model.Address;
 import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.pages.elements.VendorService;
+import com.jms.pages.elements.VendorTab;
 import com.jms.requirements.JobManagementStory.JobDetailFieldsStory;
 import com.jms.steps.GlobalSteps;
 import com.jms.steps.JobDetailSteps;
 import com.jms.steps.LoginSteps;
 import com.jms.util.DateGenerator;
 import com.jms.util.RandonUUIDGenerator;
+import com.jms.steps.ExpectedServicesSteps;
 
 import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Screenshots;
@@ -28,7 +30,10 @@ public class JobDetailFieldsTest extends BasicTest {
 
 	@Steps
 	public JobDetailSteps jobDetailSteps;
-
+	
+	@Steps
+	public ExpectedServicesSteps expectedServicesSteps; 
+	
 	 @Test
 	 @Screenshots(onlyOnFailures = true)
 	 public void jobDetailPageCaseInfoSection() throws InterruptedException {
@@ -161,34 +166,6 @@ public class JobDetailFieldsTest extends BasicTest {
 	 jobDetailSteps.assertClientMatterN("33");
 	 }
 	
-	 // TODO: Complete the test }
-	
-	 @Test
-	 @Screenshots(onlyOnFailures = true)
-	 public void jobDetailPageVendorModule() {
-	
-	 loginSteps.login(userStorage.getUser(0));
-	 globalSteps.searchJobById("1644");
-	
-	 jobDetailSteps.isServiceIconInVendorSection(VendorService.REPORTER,
-	 true);
-	 jobDetailSteps.isServiceIconInVendorSection(VendorService.VIDEOGRAPHER,
-	 true);
-	 jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING,
-	 true);
-	 jobDetailSteps.isServiceIconInVendorSection(VendorService.LOCATION,
-	 true);
-	 jobDetailSteps.isServiceIconInVendorSection(VendorService.INTERPRETER,
-	 true);
-	
-	 jobDetailSteps.setExpectedStartTime("10:00 AM");
-	 jobDetailSteps.assertExpectedStartTime("10:00 AM");
-	
-	 // TODO: Need normal identifier for the Finish time field
-	  jobDetailSteps.setExpectedFinishTime("01:00 PM");
-	  jobDetailSteps.assertExpectedFinishTime("01:00 PM");
-	
-	 }
 	
 	 @Test
 	 @Screenshots(onlyOnFailures = true)
@@ -276,20 +253,51 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.clickSubmitButtonQuickCRM();
 		jobDetailSteps.clickActionMenuLinkSecondContact();
 	} 
-	/*
+	
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void jobDetailPageVendorModule() {
 
 		loginSteps.login(userStorage.getUser(0));
-		globalSteps.searchJobById("123");
-		jobDetailSteps.maximizeClientInfoSection();
-		jobDetailSteps.checkSchedulingFirmConfirmCheckbox();
-		jobDetailSteps.checkSchedulingFirmContactConfirmCheckbox();
-		
-		jobDetailSteps.addAndAssertSchedulingFirmIsAdded("Altesse Co., Ltd.");
-		jobDetailSteps.setSchedulingFirmContact("Ronny Bobb");
-		jobDetailSteps.addRequestedVendor("Celestino Calpo");
+		globalSteps.searchJobById("2200");
+		jobDetailSteps.clickExpectedServicesButton();
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.INTERPRETER);
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.LOCATION);
+		expectedServicesSteps.selectConferenceLocation(1);
+		expectedServicesSteps.clickAddLocationLink();
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(25);
 		jobDetailSteps.clickSave();
-	} */
+		globalSteps.pause(15);
+		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.REPORTER, true);
+	    jobDetailSteps.isServiceIconInVendorSection(VendorService.REPORTER, true);
+		jobDetailSteps.isServiceIconInVendorSection(VendorService.VIDEOGRAPHER, true);
+		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.VIDEOGRAPHER, true);
+		jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, true);
+		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.STREAMING, true);
+		jobDetailSteps.isServiceIconInVendorSection(VendorService.INTERPRETER, true);
+		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.INTERPRETER, true);
+		jobDetailSteps.isServiceIconInVendorSection(VendorService.LOCATION, true);
+		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.LOCATION, true); 
+		jobDetailSteps.selectVendorTab(VendorTab.REPORTER.getTab());
+		jobDetailSteps.setExpectedStartTime("11:00 AM");
+		jobDetailSteps.assertExpectedStartTime("11:00 AM");
+		jobDetailSteps.setExpectedFinishTime("06:00 PM");
+		jobDetailSteps.assertExpectedFinishTime("06:00 PM");
+		jobDetailSteps.setVendorNotes("Reporter notes");
+		jobDetailSteps.assertVendorNotes("Reporter notes");
+		globalSteps.pause(5);
+		//Deactivate services
+		jobDetailSteps.clickExpectedServicesButton();
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.INTERPRETER);
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.LOCATION);
+		expectedServicesSteps.clickUpdate(); 
+		
+	} 
 }

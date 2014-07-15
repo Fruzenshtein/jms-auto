@@ -12,6 +12,7 @@ import com.jms.pages.elements.BeaconState;
 import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.pages.elements.SideMenuLink;
 import com.jms.pages.elements.VendorService;
+import com.jms.pages.elements.VendorTab;
 
 public class JobDetailSteps extends ScenarioSteps {
 
@@ -350,4 +351,21 @@ public class JobDetailSteps extends ScenarioSteps {
 		jobDetailPage().clickActionMenuLinkSecondContact();
 
 	}
+	
+	@Step
+	public void selectVendorTab(String tab) {
+		jobDetailPage().selectVendorTab(tab);
+
+	}
+	
+	@Step
+	public void setVendorNotes(String notes) {
+		jobDetailPage().setVendorNotes(notes);
+	}
+
+	@Step
+	public void assertVendorNotes(String expectedVendorNotes) {
+		assertEquals(expectedVendorNotes, jobDetailPage().getVendorNotes());
+	}
+	
 }

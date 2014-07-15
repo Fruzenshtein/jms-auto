@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import com.jms.model.Address;
 import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.pages.elements.VendorService;
+import com.jms.pages.elements.VendorTab;
 
 public class JobDetailPage extends PageObject {
 
@@ -83,7 +84,7 @@ public class JobDetailPage extends PageObject {
 	@FindBy(xpath = "//input[@class='firstExpectedStart hasTimeEntry']")
 	private WebElement expectedStartTimeField;
 
-	@FindBy(xpath = "//span[text()='Expected End']/..//input")
+	@FindBy(xpath = "//div[@class='module-container jobdetail-vendorinfo-container']//input[@class='hasTimeEntry']")
 	private WebElement expectedFinishTimeField;
 
 	@FindBy(id = "sidemenu-open-link")
@@ -485,5 +486,24 @@ public class JobDetailPage extends PageObject {
 	public void clickActionMenuLinkSecondContact() {
 		actionMenuLinkSecondContact.click();
 	}
+	
+	public void selectVendorTab(String tab) {
+		$("//div[@class='tabs box-tabs']//div[@data-test='" + tab +"']").click();
+	}
 
+	public void setVendorNotes(String notes) {
+		$("//textarea[@class='tabnotes']").sendKeys(notes);;
+	}
+	
+	public String getVendorNotes() {
+		return $("//textarea[@class='tabnotes']").getValue();
+	}
+	
+	public String clearExpectedStartTime() {
+		return $("//textarea[@class='tabnotes']").getValue();
+	}
+	
+	public String clearExpectedEndTime() {
+		return $("//textarea[@class='tabnotes']").getValue();
+	}
 }
