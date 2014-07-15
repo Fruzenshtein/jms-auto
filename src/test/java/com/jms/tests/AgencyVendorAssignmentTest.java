@@ -6,12 +6,6 @@ import com.jms.pages.elements.ActionLink;
 import com.jms.pages.elements.Beacon;
 import com.jms.pages.elements.BeaconState;
 
-import com.jms.pages.VendorQueuePage;
-import com.jms.pages.elements.ActionLink;
-import com.jms.pages.elements.Beacon;
-import com.jms.pages.elements.BeaconState;
-import com.jms.pages.elements.SideMenuLink;
-
 import com.jms.pages.elements.VendorService;
 import com.jms.requirements.VendorWorkflowStory;
 import com.jms.steps.AssignVendorSteps;
@@ -165,5 +159,57 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		String currentVandor = jobDetailSteps.getVendorNameInManageModule(1);
 		
 		globalSteps.waitUntilTextDisappear(currentVandor);
+	}
+	
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	//TC6.2.5
+	public void recommendationApprovedAgencyVendorContactViaCalled() {
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("2013");
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
+		
+		if (expectedServicesSteps.statusOfServiceIcon(VendorService.REPORTER))
+			expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		
+		expectedServicesSteps.clickUpdate();
+		
+		globalSteps.pause(6);
+		jobDetailSteps.clickSave();		
+		globalSteps.pause(4);
+		
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(14);
+		
+		jobDetailSteps.clickSave();
+		
+		globalSteps.pause(8);
+		
+		jobDetailSteps.clickManageButton();
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.SELECT_ANOTHER_VENDOR);
+		globalSteps.pause(10);
+		expectedServicesSteps.clickAgencyByIndex(1);
+		expectedServicesSteps.clickChangeRecommendationButton();
+		globalSteps.pause(3);
+		assignVendorSteps.clickSaveButton();
+		globalSteps.waitUntilTextAppear("Recommendation (Agency)");
+		globalSteps.pause(10);
+		
+		//Test starts
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.APPROVE_RECOMENDATION);
+		
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.CONTACT_FOR_ASSIGNMENT);
+		contactVendorSteps.clickCalledButton();
+		contactVendorSteps.clickContactedButton();
+		
+		globalSteps.waitUntilTextAppear("Assignment Unconfirmed");
+		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.YELLOW);
 	}
 }
