@@ -260,7 +260,7 @@ public class JobDetailPage extends PageObject {
 	}
 
 	public void clickExpectedServicesButton() {
-		getClock().pauseFor(3000);
+		getClock().pauseFor(2000);
 		$(expectedServicesButton).waitUntilVisible().click();
 	}
 
