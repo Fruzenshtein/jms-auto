@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.PageObject;
@@ -22,7 +23,7 @@ public class JobDetailPage extends PageObject {
 
 	@FindBy(xpath = "//span[text()='Scheduling Firm']/../input[@type='text']")
 	private WebElement scheduleFirmField;
-
+	
 	@FindBy(xpath = "//span[text()='Client Matter #']/../input[@type='text']")
 	private WebElement clientMatterNField;
 
@@ -116,12 +117,6 @@ public class JobDetailPage extends PageObject {
 	@FindBy(xpath = "//label[@class='checkbox checked']//img[@aria-checked='true']")
 	private WebElement schedulingFirmContactConfirmCheckbox;
 
-	@FindBy(xpath = "//span[text()='Req. Vendor']/../input[@type='text']")
-	private WebElement requestedVendor;
-
-	@FindBy(xpath = "//div[@class='clr']//a[@class='quickcrmadd']")
-	private WebElement quickCRMAddLink;
-
 	@FindBy(xpath = "//div[@class='modal-content crmadmin-quickaddcontact-view']//span[text()='First Name']/../input[@type='text']")
 	private WebElement quickCRMAddFirstName;
 
@@ -133,9 +128,6 @@ public class JobDetailPage extends PageObject {
 
 	@FindBy(xpath = "//div[@class='buttons']//span[text()='Submit']")
 	private WebElement submitButtonQuickCRM;
-
-	@FindBy(xpath = "(//div[@class='actionmenu-link'])[2]")
-	private WebElement actionMenuLinkSecondContact;
 
 	private static ArrayList<String> clientMatterNumbersList = new ArrayList<String>();
 
@@ -446,21 +438,29 @@ public class JobDetailPage extends PageObject {
 		addAdditionalContactLink.click();
 	}
 
-	public void clickQuickCRMAddLink() {
-		quickCRMAddLink.click();
+	public void clickQuickCRMAddLink(int index) {
+		$("(//div[@class='clr']//a[@class='quickcrmadd'])["+ index + "]").click();
 	}
 
 	public void checkSchedulingFirmConfirmCheckbox() {
 		$(schedulingFirmConfirmCheckbox).isPresent();
 	}
 
-	public void checkSchedulingFirmContactConfirmCheckbox() {
-		$(schedulingFirmContactConfirmCheckbox).isPresent();
+	public void checkFirmContactCheckbox(int index) throws NoSuchElementException{
+		//	 if ($("(//div[@data-test='jobdetail-clientinfo-container']//img[@role='checkbox' and @aria-checked='false'])[" + index + "]").isVisible()) { 
+			 $("(//div[@data-test='jobdetail-clientinfo-container']//img[@role='checkbox'])[" + index + "]").click(); 
+		//	 } else if ($("(//div[@data-test='jobdetail-clientinfo-container']//img[@role='checkbox' and @aria-checked='true'])[" + index + "]").isVisible())
+		//		 return;				
+	}
+	
+	public void clickAddRequestedVendorLink(int index) {
+		$("(//a[text()='Add Requested Vendor'])[" + index + "]").click();
 	}
 
-	public void addRequestedVendor(String requestedVendorName) {
-		requestedVendor.clear();
-		$(requestedVendor).sendKeys(requestedVendorName);
+	public void addRequestedVendor(String requestedVendorName, int index) {
+		
+		$("(//span[text()='Req. Vendor']/../input[@type='text'])[" + index + "]").clear();
+		$("(//span[text()='Req. Vendor']/../input[@type='text'])[" + index + "]").sendKeys(requestedVendorName);
 		getClock().pauseFor(2500);
 		getDriver().findElement(
 				By.xpath("//strong[text()='" + requestedVendorName + "']"))
@@ -488,129 +488,187 @@ public class JobDetailPage extends PageObject {
 		submitButtonQuickCRM.click();
 	}
 
-	public void clickActionMenuLinkSecondContact() {
-		actionMenuLinkSecondContact.click();
+	public void clickActionMenuLink(int index) {
+		$(
+				"(//div[@data-test='jobdetail-clientinfo-container']//div[@class='actionmenu-link'])["
+						+ index + "]").click();
 	}
-	
+
+	public void selectActionMenuOption(String option, int index) {
+		$(
+				"(//div[@data-test='jobdetail-clientinfo-container']//div[@class='actionmenu-content']//a[text()='"
+						+ option + "'])[" + index + "]").waitUntilVisible()
+				.click();
+	}
+
 	public void selectVendorTab(String tab, String vendor) {
-		$("//div[@data-test='" + tab + "']//div[@class='vendor-services " + vendor + " on']").click();
-	//	$("//div[@class='tabs box-tabs']//div[@data-test='" + tab +"']").click();
+		$(
+				"//div[@data-test='" + tab + "']//div[@class='vendor-services "
+						+ vendor + " on']").click();
+		// $("//div[@class='tabs box-tabs']//div[@data-test='" + tab
+		// +"']").click();
 	}
 
 	public void setVendorNotes(String notes) {
-		$("//textarea[@class='tabnotes']").sendKeys(notes);;
+		$("//textarea[@class='tabnotes']").sendKeys(notes);
+		;
 	}
-	
+
 	public void setStreamingVendorNotes(String notes) {
-		$("//textarea[@class='notesb']").sendKeys(notes);;
+		$("//textarea[@class='notesb']").sendKeys(notes);
+		;
 	}
-	
+
 	public String getVendorNotes() {
 		return $("//textarea[@class='tabnotes']").getValue();
 	}
-	
+
 	public String getStreamingVendorNotes() {
 		return $("//textarea[@class='notesb']").getValue();
 	}
-	
+
 	public void clearVendorNotes() {
 		$("//textarea[@class='tabnotes']").clear();
 	}
-	
+
 	public void clearExpectedStartEndTime() {
-		 expectedStartTimeField.clear();
-		 expectedFinishTimeField.clear();
+		expectedStartTimeField.clear();
+		expectedFinishTimeField.clear();
 	}
-	
+
 	public boolean checkVendorTBDStartTime(int index, boolean is) {
-		if (is) 
-		return $("(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@class='imageCheck checked' and @aria-checked='" + is + "'])[" + index + "]").isPresent();
-		else return $("(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@class='imageCheck' and @aria-checked='" + is + "'])[" + index + "]").isPresent();
+		if (is)
+			return $(
+					"(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@class='imageCheck checked' and @aria-checked='"
+							+ is + "'])[" + index + "]").isPresent();
+		else
+			return $(
+					"(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@class='imageCheck' and @aria-checked='"
+							+ is + "'])[" + index + "]").isPresent();
 	}
-	
+
 	public boolean checkVendorTBDEndTime(int index, boolean is) {
-		if (is) 
-		return $("(//div[@class='module tabbed jobdetail-vendorinfo-view']//label[@class='toggle-switch checked']//img[@class='imageCheck checked' and @aria-checked='" + is + "'])[" + index + "]").isPresent();
-		else return $("(//div[@class='module tabbed jobdetail-vendorinfo-view']//label[@class='toggle-switch checked']//img[@class='imageCheck checked' and @aria-checked='" + is + "'])[" + index + "]").isPresent();
+		if (is)
+			return $(
+					"(//div[@class='module tabbed jobdetail-vendorinfo-view']//label[@class='toggle-switch checked']//img[@class='imageCheck checked' and @aria-checked='"
+							+ is + "'])[" + index + "]").isPresent();
+		else
+			return $(
+					"(//div[@class='module tabbed jobdetail-vendorinfo-view']//label[@class='toggle-switch checked']//img[@class='imageCheck checked' and @aria-checked='"
+							+ is + "'])[" + index + "]").isPresent();
 	}
-	
+
 	public void markTBDVendorStartTime(int indexStart) {
-		 $("(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@class='imageCheck'])[" + indexStart + "]").waitUntilVisible().click();
-		 
+		$(
+				"(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@class='imageCheck'])["
+						+ indexStart + "]").waitUntilVisible().click();
+
 	}
-	
+
 	public void markTBDVendorEndTime(int indexEnd) {
-		 $("(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@class='imageCheck'])[" + indexEnd + "]").waitUntilVisible().click();
+		$(
+				"(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@class='imageCheck'])["
+						+ indexEnd + "]").waitUntilVisible().click();
 	}
-	
+
 	public void setStreamingSessionID(String id) {
-		 $("//span[text()='Session ID']/../input[@type='text']").sendKeys(id);
+		$("//span[text()='Session ID']/../input[@type='text']").sendKeys(id);
 	}
-	
+
 	public String getStreamingSessionID() {
-		return $("//span[text()='Session ID']/../input[@type='text']").getValue();
+		return $("//span[text()='Session ID']/../input[@type='text']")
+				.getValue();
 	}
-	
+
 	public void attachRatesSheet(int index) throws AWTException {
-		$("(//div[@class='mb-5']//div[@class='qq-upload-button'])["+ index+"]").click();
+		$(
+				"(//div[@class='mb-5']//div[@class='qq-upload-button'])["
+						+ index + "]").click();
 		getClock().pauseFor(5000);
-		/*StringSelection ss = new StringSelection("Libraries\\Documents\\RatesSheet.txt");
-		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
-		Robot robot = new Robot();
-		robot.keyPress(KeyEvent.VK_ENTER);
-		robot.keyRelease(KeyEvent.VK_ENTER);
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_V);
-		robot.keyRelease(KeyEvent.VK_V);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_ENTER);
-		robot.keyRelease(KeyEvent.VK_ENTER);
-		robot.delay(1000); */
+		/*
+		 * StringSelection ss = new
+		 * StringSelection("Libraries\\Documents\\RatesSheet.txt");
+		 * Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss,
+		 * null); Robot robot = new Robot(); robot.keyPress(KeyEvent.VK_ENTER);
+		 * robot.keyRelease(KeyEvent.VK_ENTER);
+		 * robot.keyPress(KeyEvent.VK_CONTROL); robot.keyPress(KeyEvent.VK_V);
+		 * robot.keyRelease(KeyEvent.VK_V);
+		 * robot.keyRelease(KeyEvent.VK_CONTROL);
+		 * robot.keyPress(KeyEvent.VK_ENTER);
+		 * robot.keyRelease(KeyEvent.VK_ENTER); robot.delay(1000);
+		 */
 	}
-	
+
 	public void maximizeMinimizeRatesSection() {
-		$("//div[@data-test='jobdetail-ratesinfo-container']//div[@class='collapsed on']").click();
+		$(
+				"//div[@data-test='jobdetail-ratesinfo-container']//div[@class='collapsed on']")
+				.click();
 	}
-	
+
 	public void checkAdminApprovedChckbxRates(int index) {
-		$("(//div[@data-test='jobdetail-ratesinfo-container']//img[@role='checkbox'])[" + index + "]").click();
+		$(
+				"(//div[@data-test='jobdetail-ratesinfo-container']//img[@role='checkbox'])["
+						+ index + "]").click();
 	}
-	
+
 	public boolean getAdminApprovedChckbxRates(int index, boolean is) {
 		if (is)
-			return $("(//div[@data-test='jobdetail-ratesinfo-container']//img[@role='checkbox' and @aria-checked='" + is + "'])[" + index + "]").isPresent();
-		else return $("(//div[@data-test='jobdetail-ratesinfo-container']//img[@role='checkbox' and @aria-checked='" + is + "'])[" + index + "]").isPresent();
+			return $(
+					"(//div[@data-test='jobdetail-ratesinfo-container']//img[@role='checkbox' and @aria-checked='"
+							+ is + "'])[" + index + "]").isPresent();
+		else
+			return $(
+					"(//div[@data-test='jobdetail-ratesinfo-container']//img[@role='checkbox' and @aria-checked='"
+							+ is + "'])[" + index + "]").isPresent();
 	}
-	
+
 	public void addRatesNotes(int index, String notes) {
-		$("(//label[@class='clr']//textarea[@class='ratesnotes'])[" + index + "]").sendKeys(notes);
+		$(
+				"(//label[@class='clr']//textarea[@class='ratesnotes'])["
+						+ index + "]").sendKeys(notes);
 	}
-	
+
 	public String getRatesNotes(int index) {
-		return $("(//label[@class='clr']//textarea[@class='ratesnotes'])[" + index + "]").getValue();
+		return $(
+				"(//label[@class='clr']//textarea[@class='ratesnotes'])["
+						+ index + "]").getValue();
 	}
-	
+
 	public void clearRatesNotes(int index) {
-		 $("(//label[@class='clr']//textarea[@class='ratesnotes'])[" + index + "]").clear();
+		$(
+				"(//label[@class='clr']//textarea[@class='ratesnotes'])["
+						+ index + "]").clear();
 	}
-	
+
 	public void maximizeMinimizeCommissionSection() {
-		$("//div[@class='module micro jobdetail-commission-view']//div[@class='collapsed on']").click();
+		$(
+				"//div[@class='module micro jobdetail-commission-view']//div[@class='collapsed on']")
+				.click();
 	}
-	
+
 	public void clickCommissionApplyLink() {
-		$("//div[@class='module micro jobdetail-commission-view']//a[@class='commissionapply']").click();
+		$(
+				"//div[@class='module micro jobdetail-commission-view']//a[@class='commissionapply']")
+				.click();
 	}
-	
+
 	public void clickApplyButtonCommission() {
 		$("//button[@class='blue']/span[text()='Apply']").click();
 	}
-	
+
 	public String getAppliedCommission() {
-		return $("//div[@class='module micro jobdetail-commission-view']//span[text()='123, 1. / 123, 1. (3 - 3)']").getValue();
+		return $(
+				"//div[@class='module micro jobdetail-commission-view']//span[text()='123, 1. / 123, 1. (3 - 3)']")
+				.getValue();
+	}
+
+	public void deleteAppliedCommission(int index) {
+		$(
+				"(//div[@class='module micro jobdetail-commission-view']//a[@class='icon delete'])["
+						+ index + "]").click();
 	}
 	
-	public void deleteAppliedCommission(int index) {
-		$("(//div[@class='module micro jobdetail-commission-view']//a[@class='icon delete'])[" + index + "]").click();
+	public void removeAddedFirm(int index) {
+		$("(//div[@data-test='jobclient-delete-button'])[" + index + "]").click();
 	}
 }

@@ -180,8 +180,7 @@ public class JobDetailFieldsTest extends BasicTest {
 	 loginSteps.login(userStorage.getUser(0));
 	 globalSteps.searchJobById("300");
 	 jobDetailSteps.maximizeClientInfoSection();
-	 jobDetailSteps
-	 .setClientMatterN(RandonUUIDGenerator.getRandomNumber());
+	 jobDetailSteps.setClientMatterN(RandonUUIDGenerator.getRandomUUID());
 	 jobDetailSteps.clickSave();
 	 globalSteps.pause(2);
 	 jobDetailSteps.writeClientMatterN();
@@ -210,7 +209,7 @@ public class JobDetailFieldsTest extends BasicTest {
 	 jobDetailSteps.compareClientMatterNs(0, 1, 2);
 	 jobDetailSteps.clearClientMatterNList();
 	 jobDetailSteps
-	 .setClientMatterN(RandonUUIDGenerator.getRandomNumber());
+	 .setClientMatterN(RandonUUIDGenerator.getRandomUUID());
 	 jobDetailSteps.clickSave();
 	 globalSteps.pause(3);
 	 jobDetailSteps.writeClientMatterN();
@@ -228,35 +227,57 @@ public class JobDetailFieldsTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void jobDetailPageClientInfoSection() {
+	public void jobDetailPageClientInfoSection() throws InterruptedException {
 
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("123");
 		jobDetailSteps.maximizeClientInfoSection();
-		jobDetailSteps.checkSchedulingFirmConfirmCheckbox();
-		jobDetailSteps.checkSchedulingFirmContactConfirmCheckbox();
-		
+		jobDetailSteps.checkSchedulingFirmConfirmCheckbox();	
 		jobDetailSteps.addAndAssertSchedulingFirmIsAdded("Altesse Co., Ltd.");
 		jobDetailSteps.setSchedulingFirmContact("Ronny Bobb");
-		jobDetailSteps.addRequestedVendor("Celestino Calpo");
+		jobDetailSteps.addRequestedVendor("Celestino Calpo", 1);
 		jobDetailSteps.clickSave();
 
-		globalSteps.pause(5);
-		jobDetailSteps.clearSchedulingFirmField();
-		jobDetailSteps.setSchedulingFirm("Ann Van Devanter Townsend");
+		globalSteps.pause(5); 
+		jobDetailSteps.addAndAssertSchedulingFirmIsAdded("Ann Van Devanter Townsend");
+		jobDetailSteps.setSchedulingFirmContact("Liza");
 		jobDetailSteps.addAdditionalContact();
 		
-		jobDetailSteps.clickQuickCRMAddLink();
+		jobDetailSteps.clickQuickCRMAddLink(1);
 		jobDetailSteps.addFirstNameQuickCRM("Irina"
-				+ RandonUUIDGenerator.getRandomNumber());
+				+ RandonUUIDGenerator.getRandomUUID());
 		jobDetailSteps.addLastNameQuickCRM("M"
-				+ RandonUUIDGenerator.getRandomNumber());
+				+ RandonUUIDGenerator.getRandomUUID());
 		jobDetailSteps.addEmailAddressQuickCRM("test@door"
-				+ RandonUUIDGenerator.getRandomNumber() + ".com");
+				+ RandonUUIDGenerator.getRandomUUID() + ".com");
 		jobDetailSteps.clickSubmitButtonQuickCRM();
-		jobDetailSteps.clickActionMenuLinkSecondContact();
+		jobDetailSteps.clickActionMenuLink(2);
+		globalSteps.pause(2);
+		jobDetailSteps.selectActionMenuOption("Make Primary", 2);
+		jobDetailSteps.clickActionMenuLink(2);
+		jobDetailSteps.selectActionMenuOption("Remove Contact", 2); 
+		jobDetailSteps.checkFirmContactCheckbox(2); 
+		jobDetailSteps.clickAddRequestedVendorLink(1);
+		jobDetailSteps.addRequestedVendor("Daniel Lever", 1);
+		jobDetailSteps.clickActionMenuLink(2);
+		jobDetailSteps.selectActionMenuOption("Remove Requested Vendor", 1); 
+		jobDetailSteps.clickAddFirmButton();
+		jobDetailSteps.setContributingFirm("American Capital, Ltd.");
+		jobDetailSteps.clickQuickCRMAddLink(2);
+		jobDetailSteps.addFirstNameQuickCRM("Vi"
+				+ RandonUUIDGenerator.getRandomUUID());
+		jobDetailSteps.addLastNameQuickCRM("M"
+				+ RandonUUIDGenerator.getRandomUUID());
+		jobDetailSteps.addEmailAddressQuickCRM("test@eng"
+				+ RandonUUIDGenerator.getRandomUUID() + ".com");
+		jobDetailSteps.clickSubmitButtonQuickCRM();
+		jobDetailSteps.clickAddRequestedVendorLink(2);
+		jobDetailSteps.addRequestedVendor("Robert Algeri", 2);
+		jobDetailSteps.removeAddedFirm(2);
+		jobDetailSteps.clickSave(); 
+		globalSteps.pause(10);
 	} 
-
+/*
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void jobDetailPageVendorModule() {
@@ -386,5 +407,5 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.deletetAppliedCommission(1);
 		jobDetailSteps.deletetAppliedCommission(2);
 		globalSteps.pause(15); 
-	} 
+	} */
 }

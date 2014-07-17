@@ -298,13 +298,18 @@ public class JobDetailSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void checkSchedulingFirmContactConfirmCheckbox() {
-		jobDetailPage().checkSchedulingFirmContactConfirmCheckbox();
+	public void checkFirmContactCheckbox(int index) {
+		jobDetailPage().checkFirmContactCheckbox(index);
 	}
 
 	@Step
-	public void addRequestedVendor(String requestedVendorName) {
-		jobDetailPage().addRequestedVendor(requestedVendorName);
+	public void clickAddRequestedVendorLink(int index) {
+		jobDetailPage().clickAddRequestedVendorLink(index);
+	}
+	
+	@Step
+	public void addRequestedVendor(String requestedVendorName, int index) {
+		jobDetailPage().addRequestedVendor(requestedVendorName, index);
 	}
 
 	@Step
@@ -317,6 +322,10 @@ public class JobDetailSteps extends ScenarioSteps {
 	public void clearSchedulingFirmField() {
 		jobDetailPage().clearSchedulingFirmField();
 	}
+	
+	public void removeAddedFirm(int index) {
+		jobDetailPage().removeAddedFirm(index);
+	}
 
 	@Step
 	public void addAdditionalContact() {
@@ -325,8 +334,8 @@ public class JobDetailSteps extends ScenarioSteps {
 
 
 	@Step
-	public void clickQuickCRMAddLink() {
-		jobDetailPage().clickQuickCRMAddLink();
+	public void clickQuickCRMAddLink(int index) {
+		jobDetailPage().clickQuickCRMAddLink(index);
 	}
 
 	@Step
@@ -350,9 +359,13 @@ public class JobDetailSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void clickActionMenuLinkSecondContact() {
-		jobDetailPage().clickActionMenuLinkSecondContact();
-
+	public void clickActionMenuLink(int index) {
+		jobDetailPage().clickActionMenuLink(index);
+	}
+	
+	@Step
+	public void selectActionMenuOption(String option, int index) {
+		jobDetailPage().selectActionMenuOption(option, index);
 	}
 	
 	@Step
