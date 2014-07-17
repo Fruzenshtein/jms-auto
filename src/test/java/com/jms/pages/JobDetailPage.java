@@ -1,5 +1,10 @@
 package com.jms.pages;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import net.thucydides.core.annotations.findby.FindBy;
@@ -487,23 +492,125 @@ public class JobDetailPage extends PageObject {
 		actionMenuLinkSecondContact.click();
 	}
 	
-	public void selectVendorTab(String tab) {
-		$("//div[@class='tabs box-tabs']//div[@data-test='" + tab +"']").click();
+	public void selectVendorTab(String tab, String vendor) {
+		$("//div[@data-test='" + tab + "']//div[@class='vendor-services " + vendor + " on']").click();
+	//	$("//div[@class='tabs box-tabs']//div[@data-test='" + tab +"']").click();
 	}
 
 	public void setVendorNotes(String notes) {
 		$("//textarea[@class='tabnotes']").sendKeys(notes);;
 	}
 	
+	public void setStreamingVendorNotes(String notes) {
+		$("//textarea[@class='notesb']").sendKeys(notes);;
+	}
+	
 	public String getVendorNotes() {
 		return $("//textarea[@class='tabnotes']").getValue();
 	}
 	
-	public String clearExpectedStartTime() {
-		return $("//textarea[@class='tabnotes']").getValue();
+	public String getStreamingVendorNotes() {
+		return $("//textarea[@class='notesb']").getValue();
 	}
 	
-	public String clearExpectedEndTime() {
-		return $("//textarea[@class='tabnotes']").getValue();
+	public void clearVendorNotes() {
+		$("//textarea[@class='tabnotes']").clear();
+	}
+	
+	public void clearExpectedStartEndTime() {
+		 expectedStartTimeField.clear();
+		 expectedFinishTimeField.clear();
+	}
+	
+	public boolean checkVendorTBDStartTime(int index, boolean is) {
+		if (is) 
+		return $("(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@class='imageCheck checked' and @aria-checked='" + is + "'])[" + index + "]").isPresent();
+		else return $("(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@class='imageCheck' and @aria-checked='" + is + "'])[" + index + "]").isPresent();
+	}
+	
+	public boolean checkVendorTBDEndTime(int index, boolean is) {
+		if (is) 
+		return $("(//div[@class='module tabbed jobdetail-vendorinfo-view']//label[@class='toggle-switch checked']//img[@class='imageCheck checked' and @aria-checked='" + is + "'])[" + index + "]").isPresent();
+		else return $("(//div[@class='module tabbed jobdetail-vendorinfo-view']//label[@class='toggle-switch checked']//img[@class='imageCheck checked' and @aria-checked='" + is + "'])[" + index + "]").isPresent();
+	}
+	
+	public void markTBDVendorStartTime(int indexStart) {
+		 $("(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@class='imageCheck'])[" + indexStart + "]").waitUntilVisible().click();
+		 
+	}
+	
+	public void markTBDVendorEndTime(int indexEnd) {
+		 $("(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@class='imageCheck'])[" + indexEnd + "]").waitUntilVisible().click();
+	}
+	
+	public void setStreamingSessionID(String id) {
+		 $("//span[text()='Session ID']/../input[@type='text']").sendKeys(id);
+	}
+	
+	public String getStreamingSessionID() {
+		return $("//span[text()='Session ID']/../input[@type='text']").getValue();
+	}
+	
+	public void attachRatesSheet(int index) throws AWTException {
+		$("(//div[@class='mb-5']//div[@class='qq-upload-button'])["+ index+"]").click();
+		getClock().pauseFor(5000);
+		/*StringSelection ss = new StringSelection("Libraries\\Documents\\RatesSheet.txt");
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+		Robot robot = new Robot();
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_V);
+		robot.keyRelease(KeyEvent.VK_V);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+		robot.delay(1000); */
+	}
+	
+	public void maximizeMinimizeRatesSection() {
+		$("//div[@data-test='jobdetail-ratesinfo-container']//div[@class='collapsed on']").click();
+	}
+	
+	public void checkAdminApprovedChckbxRates(int index) {
+		$("(//div[@data-test='jobdetail-ratesinfo-container']//img[@role='checkbox'])[" + index + "]").click();
+	}
+	
+	public boolean getAdminApprovedChckbxRates(int index, boolean is) {
+		if (is)
+			return $("(//div[@data-test='jobdetail-ratesinfo-container']//img[@role='checkbox' and @aria-checked='" + is + "'])[" + index + "]").isPresent();
+		else return $("(//div[@data-test='jobdetail-ratesinfo-container']//img[@role='checkbox' and @aria-checked='" + is + "'])[" + index + "]").isPresent();
+	}
+	
+	public void addRatesNotes(int index, String notes) {
+		$("(//label[@class='clr']//textarea[@class='ratesnotes'])[" + index + "]").sendKeys(notes);
+	}
+	
+	public String getRatesNotes(int index) {
+		return $("(//label[@class='clr']//textarea[@class='ratesnotes'])[" + index + "]").getValue();
+	}
+	
+	public void clearRatesNotes(int index) {
+		 $("(//label[@class='clr']//textarea[@class='ratesnotes'])[" + index + "]").clear();
+	}
+	
+	public void maximizeMinimizeCommissionSection() {
+		$("//div[@class='module micro jobdetail-commission-view']//div[@class='collapsed on']").click();
+	}
+	
+	public void clickCommissionApplyLink() {
+		$("//div[@class='module micro jobdetail-commission-view']//a[@class='commissionapply']").click();
+	}
+	
+	public void clickApplyButtonCommission() {
+		$("//button[@class='blue']/span[text()='Apply']").click();
+	}
+	
+	public String getAppliedCommission() {
+		return $("//div[@class='module micro jobdetail-commission-view']//span[text()='123, 1. / 123, 1. (3 - 3)']").getValue();
+	}
+	
+	public void deleteAppliedCommission(int index) {
+		$("(//div[@class='module micro jobdetail-commission-view']//a[@class='icon delete'])[" + index + "]").click();
 	}
 }

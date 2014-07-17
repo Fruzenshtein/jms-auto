@@ -1,6 +1,9 @@
 package com.jms.steps;
 
 import static org.junit.Assert.*;
+
+import java.awt.AWTException;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
@@ -353,8 +356,8 @@ public class JobDetailSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void selectVendorTab(String tab) {
-		jobDetailPage().selectVendorTab(tab);
+	public void selectVendorTab(String tab, String vendor) {
+		jobDetailPage().selectVendorTab(tab, vendor);
 
 	}
 	
@@ -362,10 +365,125 @@ public class JobDetailSteps extends ScenarioSteps {
 	public void setVendorNotes(String notes) {
 		jobDetailPage().setVendorNotes(notes);
 	}
+	
+	@Step
+	public void setStreamingVendorNotes(String notes) {
+		jobDetailPage().setStreamingVendorNotes(notes);
+	}
+	
+	@Step
+	public void clearVendorNotes() {
+		jobDetailPage().clearVendorNotes();
+	}
 
 	@Step
 	public void assertVendorNotes(String expectedVendorNotes) {
 		assertEquals(expectedVendorNotes, jobDetailPage().getVendorNotes());
 	}
 	
+	@Step
+	public void assertStreamingVendorNotes(String expectedStreamingVendorNotes) {
+		assertEquals(expectedStreamingVendorNotes, jobDetailPage().getStreamingVendorNotes());
+	}
+	
+	@Step
+	public void clearExpectedStartEndTime() {
+		jobDetailPage().clearExpectedStartEndTime();
+	}
+	
+	@Step
+	public void assertExpectedStartEndTimeIsNotCleared(String expectedStartTime, String expectedEndTime) {
+		assertEquals(expectedStartTime, jobDetailPage().getExpectedStartTime());
+		assertEquals(expectedEndTime, jobDetailPage().getExpectedFinishTime());
+	}
+	
+	@Step
+	public void markTBDVendorStartTime(int indexStart) {
+		jobDetailPage().markTBDVendorStartTime(indexStart);
+	}
+	
+	@Step
+	public void markTBDVendorEndTime(int indexEnd) {
+		jobDetailPage().markTBDVendorEndTime(indexEnd);
+	}
+	
+	@Step
+	public void checkVendorTBDStartTime(int index, boolean is) {
+		jobDetailPage().checkVendorTBDStartTime(index, is);
+	}
+	
+	@Step
+	public void checkVendorTBDEndTime(int index, boolean is) {
+		jobDetailPage().checkVendorTBDEndTime(index, is);
+	}
+	
+	@Step
+	public void setStreamingSessionID(String id) {
+		jobDetailPage().setStreamingSessionID(id);
+	}
+	
+	@Step
+	public void assertStreamingSessionID(String expectedID) {
+		assertEquals(expectedID, jobDetailPage().getStreamingSessionID());
+	}
+	
+	@Step
+	public void attachRatesSheet(int index) throws AWTException {
+		jobDetailPage().attachRatesSheet(index);
+	}
+	
+	@Step
+	public void maximizeMinimizeRatesSection() {
+		jobDetailPage().maximizeMinimizeRatesSection();
+	}
+	
+	@Step
+	public void checkAdminApprovedChckbxRates(int index) {
+		jobDetailPage().checkAdminApprovedChckbxRates(index);
+	}
+	
+	@Step
+	public void getAdminApprovedChckbxRates(int index, boolean is) {
+		jobDetailPage().getAdminApprovedChckbxRates(index, is);
+	}
+	
+	@Step
+	public void addRatesNotes(int index, String notes) {
+		jobDetailPage().addRatesNotes(index, notes);
+	}
+	
+	@Step
+	public void verifyAddedRatesNotes(int index, String expectedNotes) {
+		assertEquals(expectedNotes, jobDetailPage().getRatesNotes(index));
+	}
+	
+	@Step
+	public void clearRatesNotes(int index) {
+		jobDetailPage().clearRatesNotes(index);
+	}
+	
+	@Step
+	public void maximizeMinimizeCommissionSection() {
+		jobDetailPage().maximizeMinimizeCommissionSection();
+	}
+	
+	@Step
+	public void clickCommissionApplyLink() {
+		jobDetailPage().clickCommissionApplyLink();
+	}
+	
+	@Step
+	public void clickApplyButtonCommission() {
+		jobDetailPage().clickApplyButtonCommission();
+	}
+	
+	@Step
+	public void assertAppliedCommission(String expectedCommission) {
+		assertEquals(expectedCommission, jobDetailPage().getAppliedCommission());
+	}
+	
+	@Step
+	public void deletetAppliedCommission(int index) {
+		jobDetailPage().deleteAppliedCommission(index);
+	}
 }

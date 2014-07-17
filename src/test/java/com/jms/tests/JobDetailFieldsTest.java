@@ -1,9 +1,12 @@
 package com.jms.tests;
 
+import java.awt.AWTException;
+
 import org.junit.Test;
 
 import com.jms.model.Address;
 import com.jms.pages.elements.JobDetailHeaderLabel;
+import com.jms.pages.elements.StreamServices;
 import com.jms.pages.elements.VendorService;
 import com.jms.pages.elements.VendorTab;
 import com.jms.requirements.JobManagementStory.JobDetailFieldsStory;
@@ -253,14 +256,14 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.clickSubmitButtonQuickCRM();
 		jobDetailSteps.clickActionMenuLinkSecondContact();
 	} 
-	
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void jobDetailPageVendorModule() {
 
 		loginSteps.login(userStorage.getUser(0));
-		globalSteps.searchJobById("2200");
-		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.searchJobById("2201");
+			jobDetailSteps.clickExpectedServicesButton();
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
@@ -281,15 +284,55 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.isServiceIconInVendorSection(VendorService.INTERPRETER, true);
 		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.INTERPRETER, true);
 		jobDetailSteps.isServiceIconInVendorSection(VendorService.LOCATION, true);
-		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.LOCATION, true); 
-		jobDetailSteps.selectVendorTab(VendorTab.REPORTER.getTab());
+		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.LOCATION, true);
+		//Reporter tab
+		jobDetailSteps.selectVendorTab(VendorTab.REPORTER.getTab(), VendorTab.REPORTER.getVendor());
 		jobDetailSteps.setExpectedStartTime("11:00 AM");
 		jobDetailSteps.assertExpectedStartTime("11:00 AM");
 		jobDetailSteps.setExpectedFinishTime("06:00 PM");
 		jobDetailSteps.assertExpectedFinishTime("06:00 PM");
-		jobDetailSteps.setVendorNotes("Reporter notes");
-		jobDetailSteps.assertVendorNotes("Reporter notes");
-		globalSteps.pause(5);
+		jobDetailSteps.setVendorNotes("REPORTER notes");
+		jobDetailSteps.assertVendorNotes("REPORTER notes");
+		jobDetailSteps.clearExpectedStartEndTime();
+		jobDetailSteps.assertExpectedStartEndTimeIsNotCleared("", "");
+		jobDetailSteps.markTBDVendorEndTime(2);
+		jobDetailSteps.markTBDVendorStartTime(1);
+		globalSteps.pause(2);
+		//jobDetailSteps.checkVendorTBDEndTime(2, true);
+		jobDetailSteps.checkVendorTBDStartTime(1, true);
+		jobDetailSteps.clearVendorNotes();
+		jobDetailSteps.assertVendorNotes("");  
+		//Videographer tab
+		jobDetailSteps.selectVendorTab(VendorTab.VIDEOGRAPHER.getTab(), VendorTab.VIDEOGRAPHER.getVendor());
+		jobDetailSteps.setExpectedStartTime("11:00 AM");
+		jobDetailSteps.assertExpectedStartTime("11:00 AM");
+		jobDetailSteps.setExpectedFinishTime("06:00 PM");
+		jobDetailSteps.assertExpectedFinishTime("06:00 PM");
+		jobDetailSteps.markTBDVendorEndTime(2);
+		jobDetailSteps.markTBDVendorStartTime(1);
+		jobDetailSteps.setVendorNotes("VIDEOGRAPHER notes");
+		jobDetailSteps.assertVendorNotes("VIDEOGRAPHER notes"); 
+		jobDetailSteps.selectVendorTab(VendorTab.STREAMING_SERVICES.getTab(), VendorTab.STREAMING_SERVICES.getVendor());
+		jobDetailSteps.setExpectedStartTime("09:00 AM");
+		jobDetailSteps.assertExpectedStartTime("09:00 AM");
+		jobDetailSteps.setExpectedFinishTime("05:00 PM");
+		jobDetailSteps.assertExpectedFinishTime("05:00 PM");
+		jobDetailSteps.markTBDVendorEndTime(2);
+		jobDetailSteps.markTBDVendorStartTime(1);
+		jobDetailSteps.setStreamingVendorNotes("STREAMING_SERVICES notes");
+		jobDetailSteps.assertStreamingVendorNotes("STREAMING_SERVICES notes");
+		jobDetailSteps.setStreamingSessionID("33");
+		jobDetailSteps.assertStreamingSessionID("33");
+		jobDetailSteps.markTBDVendorEndTime(2);
+		jobDetailSteps.markTBDVendorStartTime(1); 
+		jobDetailSteps.clickExpectedServicesButton();
+		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.INTERNET_REALTIME, 2);
+		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.HARDLINE_CONFIRMED, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.HARDLINE_CONFIRMED, 2);
+		expectedServicesSteps.clickUpdate();
+		jobDetailSteps.clickSave();
+		globalSteps.pause(10); 
 		//Deactivate services
 		jobDetailSteps.clickExpectedServicesButton();
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
@@ -299,5 +342,49 @@ public class JobDetailFieldsTest extends BasicTest {
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.LOCATION);
 		expectedServicesSteps.clickUpdate(); 
 		
+	} 
+	
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	public void jobDetailPageRatesCommissionFiles() throws AWTException {
+
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("1290");
+	    //Rates
+		jobDetailSteps.maximizeMinimizeRatesSection();
+		//jobDetailSteps.attachRatesSheet(1);
+		//Scheduling firm
+		jobDetailSteps.checkAdminApprovedChckbxRates(1);
+		jobDetailSteps.getAdminApprovedChckbxRates(1, true);
+		jobDetailSteps.clearRatesNotes(1);
+		jobDetailSteps.addRatesNotes(1, "Rates notes 1");
+		jobDetailSteps.verifyAddedRatesNotes(1, "Rates notes 1");
+		//Contributing firm
+		jobDetailSteps.checkAdminApprovedChckbxRates(2);
+		jobDetailSteps.getAdminApprovedChckbxRates(2, true);
+		jobDetailSteps.clearRatesNotes(2);
+		jobDetailSteps.addRatesNotes(2, "Rates notes 2");
+		jobDetailSteps.verifyAddedRatesNotes(2, "Rates notes 2");
+		jobDetailSteps.clickSave();
+		globalSteps.pause(5);
+		jobDetailSteps.checkAdminApprovedChckbxRates(1);
+		jobDetailSteps.getAdminApprovedChckbxRates(1, false);
+		jobDetailSteps.checkAdminApprovedChckbxRates(2);
+		jobDetailSteps.getAdminApprovedChckbxRates(2, false);
+		jobDetailSteps.clearRatesNotes(1);
+		jobDetailSteps.verifyAddedRatesNotes(1, "");
+		jobDetailSteps.clickSave();
+		globalSteps.pause(5);
+		jobDetailSteps.maximizeMinimizeRatesSection();    
+		
+		//Commission
+		jobDetailSteps.maximizeMinimizeCommissionSection();
+		jobDetailSteps.clickCommissionApplyLink();
+		jobDetailSteps.clickApplyButtonCommission();
+		//TODO Add sales person + notes
+		//jobDetailSteps.assertAppliedCommission("123, 1. / 123, 1. (3 - 3)");
+		jobDetailSteps.deletetAppliedCommission(1);
+		jobDetailSteps.deletetAppliedCommission(2);
+		globalSteps.pause(15); 
 	} 
 }
