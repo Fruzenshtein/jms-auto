@@ -277,7 +277,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.clickSave(); 
 		globalSteps.pause(10);
 	} 
-/*
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void jobDetailPageVendorModule() {
@@ -407,5 +407,5 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.deletetAppliedCommission(1);
 		jobDetailSteps.deletetAppliedCommission(2);
 		globalSteps.pause(15); 
-	} */
+	} 
 }
