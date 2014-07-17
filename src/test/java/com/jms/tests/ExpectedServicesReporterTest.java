@@ -38,7 +38,7 @@ public class ExpectedServicesReporterTest extends BasicTest {
 	
 	private String jobId = "1251";
 	String futureDate = DateGenerator.getInstance().particularDate(2016, Calendar.MAY, 12);
-	
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc4_1_1() throws InterruptedException {
@@ -162,6 +162,7 @@ public class ExpectedServicesReporterTest extends BasicTest {
 		
 	}	
 
+	
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc_4_1_4() throws InterruptedException {
@@ -170,8 +171,6 @@ public class ExpectedServicesReporterTest extends BasicTest {
 		globalSteps.searchJobById(jobId);
 		
 		Calendar cal = new GregorianCalendar(2016, Calendar.MAY, 12);
-		
-		globalSteps.searchJobById(jobId);
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		
@@ -184,7 +183,7 @@ public class ExpectedServicesReporterTest extends BasicTest {
 		expectedServicesSteps.selectDelivery("Immediate ("+futureDate+")");
 		expectedServicesSteps.clickUpdate();
 		
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "Immediate Delivery");
+		globalSteps.waitUntilTextAppear("Immediate Delivery");
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		expectedServicesSteps.selectDelivery("Daily ("+DateGenerator
@@ -192,7 +191,7 @@ public class ExpectedServicesReporterTest extends BasicTest {
 				.modifyParticularDate(cal, 0, 0, 1)+")");
 		expectedServicesSteps.clickUpdate();
 		
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "Daily Delivery");
+		globalSteps.waitUntilTextAppear("Daily Delivery");
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		expectedServicesSteps.selectDelivery("2-Day ("+DateGenerator
@@ -200,7 +199,7 @@ public class ExpectedServicesReporterTest extends BasicTest {
 				.modifyParticularDate(cal, 0, 0, 3)+")");
 		expectedServicesSteps.clickUpdate();
 
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "2-Day Delivery");
+		globalSteps.waitUntilTextAppear("2-Day Delivery");
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		expectedServicesSteps.selectDelivery("3-Day ("+DateGenerator
@@ -208,7 +207,7 @@ public class ExpectedServicesReporterTest extends BasicTest {
 				.modifyParticularDate(cal, 0, 0, 1)+")");
 		expectedServicesSteps.clickUpdate();
 		
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "3-Day Delivery");
+		globalSteps.waitUntilTextAppear("3-Day Delivery");
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		expectedServicesSteps.selectDelivery("4-Day ("+DateGenerator
@@ -216,7 +215,7 @@ public class ExpectedServicesReporterTest extends BasicTest {
 				.modifyParticularDate(cal, 0, 0, 1)+")");
 		expectedServicesSteps.clickUpdate();
 		
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "4-Day Delivery");
+		globalSteps.waitUntilTextAppear("4-Day Delivery");
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		expectedServicesSteps.selectDelivery("5-Day ("+DateGenerator
@@ -224,7 +223,7 @@ public class ExpectedServicesReporterTest extends BasicTest {
 				.modifyParticularDate(cal, 0, 0, 1)+")");
 		expectedServicesSteps.clickUpdate();
 		
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "5-Day Delivery");
+		globalSteps.waitUntilTextAppear("5-Day Delivery");
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		expectedServicesSteps.selectDelivery("6-Day ("+DateGenerator
@@ -232,7 +231,7 @@ public class ExpectedServicesReporterTest extends BasicTest {
 				.modifyParticularDate(cal, 0, 0, 1)+")");
 		expectedServicesSteps.clickUpdate();
 		
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "6-Day Delivery");
+		globalSteps.waitUntilTextAppear("6-Day Delivery");
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		expectedServicesSteps.selectDelivery("7-Day ("+DateGenerator
@@ -240,7 +239,7 @@ public class ExpectedServicesReporterTest extends BasicTest {
 				.modifyParticularDate(cal, 0, 0, 3)+")");
 		expectedServicesSteps.clickUpdate();
 		
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "7-Day Delivery");
+		globalSteps.waitUntilTextAppear("7-Day Delivery");
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		expectedServicesSteps.selectDelivery("Regular (7-Day) ("+DateGenerator
@@ -248,7 +247,7 @@ public class ExpectedServicesReporterTest extends BasicTest {
 				.modifyParticularDate(cal, 0, 0, 0)+")");
 		expectedServicesSteps.clickUpdate();
 		
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "Regular (7-Day) Delivery");
+		globalSteps.waitUntilTextAppear("Regular (7-Day) Delivery");
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		expectedServicesSteps.selectDelivery("Regular (9-Day) ("+DateGenerator
@@ -256,7 +255,7 @@ public class ExpectedServicesReporterTest extends BasicTest {
 				.modifyParticularDate(cal, 0, 0, 2)+")");
 		expectedServicesSteps.clickUpdate();
 		
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "Regular (9-Day) Delivery");
+		globalSteps.waitUntilTextAppear("Regular (9-Day) Delivery");
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		expectedServicesSteps.selectDelivery("Regular (10-Day) ("+DateGenerator
@@ -264,8 +263,7 @@ public class ExpectedServicesReporterTest extends BasicTest {
 				.modifyParticularDate(cal, 0, 0, 1)+")");
 		expectedServicesSteps.clickUpdate();
 		
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "Regular (10-Day) Delivery");
-		
+		globalSteps.waitUntilTextAppear("Regular (10-Day) Delivery");
 	}
 	
 	@Test
