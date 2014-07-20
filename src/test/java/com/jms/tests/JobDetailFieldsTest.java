@@ -36,7 +36,7 @@ public class JobDetailFieldsTest extends BasicTest {
 	
 	@Steps
 	public ExpectedServicesSteps expectedServicesSteps; 
-	
+	/*
 	 @Test
 	 @Screenshots(onlyOnFailures = true)
 	 public void jobDetailPageCaseInfoSection() throws InterruptedException {
@@ -407,5 +407,19 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.deletetAppliedCommission(1);
 		jobDetailSteps.deletetAppliedCommission(2);
 		globalSteps.pause(15); 
-	} 
+	} */
+	
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	public void jobDetailPageEquipmentModule() {
+
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("2220");
+	    //Rates
+		//jobDetailSteps.minimizeMaximizeEquipmentSection();
+		jobDetailSteps.retrieveReporterEquipmentSection("Debbie Zirbz", 1);
+		//jobDetailSteps.retrieveVideographerEquipmentSection("Stanley Weinberg");
+		globalSteps.pause(15); 
+		//jobDetailSteps.attachRatesSheet(1);
+	}
 }

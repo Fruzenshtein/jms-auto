@@ -128,6 +128,27 @@ public class JobDetailPage extends PageObject {
 
 	@FindBy(xpath = "//div[@class='buttons']//span[text()='Submit']")
 	private WebElement submitButtonQuickCRM;
+	
+	@FindBy(xpath = "//td/input[@data-test='reportlaptops-equipment-txt']")
+	private WebElement reporterCompanyRowTD;
+	
+	@FindBy(xpath = "//td/input[@data-test='videographerlaptops-equipment-txt']")
+	private WebElement videographerCompanyRowTD;
+	
+	@FindBy(xpath = "//td/input[@data-test='resources-equipment-txt']")
+	private WebElement additionalResourceCompanyRowTD;
+	
+	@FindBy(xpath = "//td/input[@data-test='additionaltotalneeded-equipment-txt']")
+	private WebElement quantityAdditionalRowTD;
+	
+	@FindBy(xpath = "//td/input[@data-test='additionalreporter-equipment-txt']")
+	private WebElement reporterAdditionalRowTD;
+	
+	@FindBy(xpath = "//td/input[@data-test='additionalvideographer-equipment-txt']")
+	private WebElement videographerAdditionalRowTD;
+	
+	@FindBy(xpath = "//td/input[@data-test='additionalresoruces-equipment-txt']")
+	private WebElement additionalAdditionalRowTD;
 
 	private static ArrayList<String> clientMatterNumbersList = new ArrayList<String>();
 
@@ -671,4 +692,18 @@ public class JobDetailPage extends PageObject {
 	public void removeAddedFirm(int index) {
 		$("(//div[@data-test='jobclient-delete-button'])[" + index + "]").click();
 	}
+	
+	public String retrieveReporterEquipmentSection(int index) {
+		return $("(//table[@class='jobdetail-equipment']//div[@class='vendor-name left'])[" + index + "]").waitUntilVisible().getValue();
+	////div[@data-test='report-equipment-icon']
+	}
+	
+	public String retrieveVideographerEquipmentSection() {
+		return $("//div[@data-test='videographer-equipment-icon']/../div[@class='vendor-name left']").waitUntilVisible().getValue();
+	}
+	
+	public void minimizeMaximizeEquipmentSection() {
+		$("//div[@data-test='jobdetail-equipmentinfo-container']//div[@class='collapsed on']").click();
+	}
+	
 }

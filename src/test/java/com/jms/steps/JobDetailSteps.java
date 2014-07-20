@@ -499,4 +499,19 @@ public class JobDetailSteps extends ScenarioSteps {
 	public void deletetAppliedCommission(int index) {
 		jobDetailPage().deleteAppliedCommission(index);
 	}
+	
+	@Step
+	public void retrieveReporterEquipmentSection(String expectedReporter, int index) {
+		assertEquals(expectedReporter, jobDetailPage().retrieveReporterEquipmentSection(index));
+	}
+	
+	@Step
+	public void retrieveVideographerEquipmentSection(String expectedVideographer) {
+		assertEquals(expectedVideographer, jobDetailPage().retrieveVideographerEquipmentSection());
+	}
+	
+	@Step
+	public void minimizeMaximizeEquipmentSection() {
+		jobDetailPage().minimizeMaximizeEquipmentSection();
+	}
 }
