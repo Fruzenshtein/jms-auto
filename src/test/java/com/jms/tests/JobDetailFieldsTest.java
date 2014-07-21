@@ -36,7 +36,7 @@ public class JobDetailFieldsTest extends BasicTest {
 	
 	@Steps
 	public ExpectedServicesSteps expectedServicesSteps; 
-	/*
+	
 	 @Test
 	 @Screenshots(onlyOnFailures = true)
 	 public void jobDetailPageCaseInfoSection() throws InterruptedException {
@@ -224,7 +224,7 @@ public class JobDetailFieldsTest extends BasicTest {
 	 jobDetailSteps.compareClientMatterNs(0, 1, 2);
 	 jobDetailSteps.clearClientMatterNList();
 	 }
-*/
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void jobDetailPageClientInfoSection() throws InterruptedException {
@@ -232,7 +232,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("123");
 		jobDetailSteps.maximizeClientInfoSection();
-	/*	jobDetailSteps.checkSchedulingFirmConfirmCheckbox();	
+		jobDetailSteps.checkSchedulingFirmConfirmCheckbox();	
 		jobDetailSteps.addAndAssertSchedulingFirmIsAdded("Altesse Co., Ltd.");
 		jobDetailSteps.setSchedulingFirmContact("Ronny Bobb");
 		jobDetailSteps.addRequestedVendor("Celestino Calpo", 1);
@@ -255,9 +255,9 @@ public class JobDetailFieldsTest extends BasicTest {
 		globalSteps.pause(2);
 		jobDetailSteps.selectActionMenuOption("Make Primary", 2);
 		jobDetailSteps.clickActionMenuLink(2);
-		jobDetailSteps.selectActionMenuOption("Remove Contact", 2); */
+		jobDetailSteps.selectActionMenuOption("Remove Contact", 2); 
 		jobDetailSteps.checkFirmContactCheckbox(2); 
-		globalSteps.pause(10);/*
+		globalSteps.pause(10);
 		jobDetailSteps.clickAddRequestedVendorLink(1); 
 		jobDetailSteps.addRequestedVendor("Daniel Lever", 1);
 		jobDetailSteps.clickActionMenuLink(2);
@@ -278,7 +278,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.clickSave(); 
 		globalSteps.pause(10);
 	} 
-
+/*
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void jobDetailPageVendorModule() {
@@ -407,6 +407,22 @@ public class JobDetailFieldsTest extends BasicTest {
 		//jobDetailSteps.assertAppliedCommission("123, 1. / 123, 1. (3 - 3)");
 		jobDetailSteps.deletetAppliedCommission(1);
 		jobDetailSteps.deletetAppliedCommission(2);
-		globalSteps.pause(15); */
+		globalSteps.pause(15); 
+
 	} 
+	
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	public void jobDetailPageEquipmentModule() {
+
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("2220");
+	    //Rates
+		//jobDetailSteps.minimizeMaximizeEquipmentSection();
+		jobDetailSteps.retrieveReporterEquipmentSection("Debbie Zirbz", 1);
+		//jobDetailSteps.retrieveVideographerEquipmentSection("Stanley Weinberg");
+		globalSteps.pause(15); 
+		//jobDetailSteps.attachRatesSheet(1);
+	}
+	*/
 }
