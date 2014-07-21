@@ -26,7 +26,7 @@ public class GlobalSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void checkAlertText(String expectedText) {
+	public void checkAlertText(String expectedText) throws InterruptedException {
 		assertEquals(expectedText, genericPage().getAlertText());
 	}
 

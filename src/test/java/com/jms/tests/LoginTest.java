@@ -30,7 +30,7 @@ public class LoginTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc1_2() {
+	public void tc1_2() throws InterruptedException {
 		loginSteps.login(userStorage.getUser(1));
 		loginSteps.checkLoginErrorMsg();
 		loginSteps.checkPasswordErrorMsg();

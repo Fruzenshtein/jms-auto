@@ -413,13 +413,15 @@ public class JobDetailFieldsTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void jobDetailPageEquipmentModule() {
+	public void jobDetailPageEquipmentModule() throws AWTException {
 
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("2220");
+		jobDetailSteps.maximizeMinimizeRatesSection();
+		jobDetailSteps.attachRatesSheet(1);
 	    //Rates
 		//jobDetailSteps.minimizeMaximizeEquipmentSection();
-		jobDetailSteps.retrieveReporterEquipmentSection("Debbie Zirbz", 1);
+		//jobDetailSteps.retrieveReporterEquipmentSection("Debbie Zirbz", 1);
 		//jobDetailSteps.retrieveVideographerEquipmentSection("Stanley Weinberg");
 		globalSteps.pause(15); 
 		//jobDetailSteps.attachRatesSheet(1);

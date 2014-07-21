@@ -254,7 +254,7 @@ public class ExpectedServicesPopup extends PageObject {
 	}
 	
 	public void addEmailConfServSection(String email) {
-		numberOfCameos.sendKeys(email);
+		$("//span[text()='Email to:']//..//input").sendKeys(email);
 	}
 	
 	public void clickAddLanguage() {
