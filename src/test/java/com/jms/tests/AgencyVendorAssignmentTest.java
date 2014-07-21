@@ -64,7 +64,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		
 		globalSteps.pause(6);
 		jobDetailSteps.clickSave();		
-		globalSteps.pause(4);
+		globalSteps.pause(6);
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
@@ -128,7 +128,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		
 		globalSteps.pause(6);
 		jobDetailSteps.clickSave();		
-		globalSteps.pause(4);
+		globalSteps.pause(6);
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
@@ -177,7 +177,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		
 		globalSteps.pause(6);
 		jobDetailSteps.clickSave();		
-		globalSteps.pause(4);
+		globalSteps.pause(6);
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
