@@ -34,7 +34,7 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 	@Steps
 	public ExpectedServicesSteps expectedServicesSteps;
 	
-	private String jobId = "1244";
+	private String jobId = "330";
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
@@ -102,7 +102,7 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		expectedServicesSteps.isServiceIconActivated(VendorService.REPORTER, false);
 		
 	}
-	
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc4_3_3() throws InterruptedException {
@@ -179,16 +179,10 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
 		expectedServicesSteps.clickUpdate();
 		
+		globalSteps.pause(15);
 		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.STREAMING, false);
 		jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, false);
 		
-	}
-
-	@Test
-	@Pending
-	@Screenshots(onlyOnFailures = true)
-	public void tc4_3_5() throws InterruptedException {
-	
 	}
 
 }
