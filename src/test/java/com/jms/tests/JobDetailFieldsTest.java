@@ -36,7 +36,7 @@ public class JobDetailFieldsTest extends BasicTest {
 	
 	@Steps
 	public ExpectedServicesSteps expectedServicesSteps; 
-	/*
+	
 	 @Test
 	 @Screenshots(onlyOnFailures = true)
 	 public void jobDetailPageCaseInfoSection() throws InterruptedException {
@@ -277,7 +277,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.clickSave(); 
 		globalSteps.pause(10);
 	} 
-
+/*
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void jobDetailPageVendorModule() {
@@ -372,7 +372,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("1290");
 	    //Rates
-		jobDetailSteps.maximizeMinimizeRatesSection();
+		jobDetailSteps.maximizeRatesSection();
 		//jobDetailSteps.attachRatesSheet(1);
 		//Scheduling firm
 		jobDetailSteps.checkAdminApprovedChckbxRates(1);
@@ -388,26 +388,49 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.verifyAddedRatesNotes(2, "Rates notes 2");
 		jobDetailSteps.clickSave();
 		globalSteps.pause(5);
-		jobDetailSteps.checkAdminApprovedChckbxRates(1);
-		jobDetailSteps.getAdminApprovedChckbxRates(1, false);
 		jobDetailSteps.checkAdminApprovedChckbxRates(2);
 		jobDetailSteps.getAdminApprovedChckbxRates(2, false);
+		jobDetailSteps.checkAdminApprovedChckbxRates(1);
+		jobDetailSteps.getAdminApprovedChckbxRates(1, false);
 		jobDetailSteps.clearRatesNotes(1);
 		jobDetailSteps.verifyAddedRatesNotes(1, "");
 		jobDetailSteps.clickSave();
 		globalSteps.pause(5);
-		jobDetailSteps.maximizeMinimizeRatesSection();    
+		jobDetailSteps.minimizeRatesSection();    
 		
 		//Commission
-		jobDetailSteps.maximizeMinimizeCommissionSection();
+		jobDetailSteps.maximizeCommissionSection();
 		jobDetailSteps.clickCommissionApplyLink();
 		jobDetailSteps.clickApplyButtonCommission();
-		//TODO Add sales person + notes
+		//TODO Add sales person
 		//jobDetailSteps.assertAppliedCommission("123, 1. / 123, 1. (3 - 3)");
-		jobDetailSteps.deletetAppliedCommission(1);
-		jobDetailSteps.deletetAppliedCommission(2);
-		globalSteps.pause(15); 
-	} */
+		jobDetailSteps.changeCommissionPercentage(1, "33");
+		jobDetailSteps.changeCommissionPercentage(2, "55");
+		jobDetailSteps.assertCommissionPercentage(1, "33");
+		jobDetailSteps.assertCommissionPercentage(2, "55");
+		jobDetailSteps.deleteAppliedCommission(1);
+		jobDetailSteps.deleteAppliedCommission(1);
+		jobDetailSteps.addNotesCommissionSection("Commission notes");
+		jobDetailSteps.clickSave();
+		globalSteps.pause(6);
+		jobDetailSteps.assertNotesCommissionSection("Commission notes");
+		jobDetailSteps.addNotesCommissionSection("");
+		jobDetailSteps.clickSave();
+		globalSteps.pause(6);
+		jobDetailSteps.assertNotesCommissionSection("");
+		jobDetailSteps.minimizeCommissionSection();   
+		//Files
+		jobDetailSteps.maximizeFilesSection();
+		jobDetailSteps.addAnotherFileFilesSection(3);
+		jobDetailSteps.addFilesNotes("Files notes");
+		jobDetailSteps.clickSave();
+		jobDetailSteps.assertFilesNotes("Files notes");
+		jobDetailSteps.addFilesNotes("Files notes");
+		jobDetailSteps.clickSave();
+		jobDetailSteps.assertFilesNotes("Files notes");
+		jobDetailSteps.deleteAnotherFileFilesSection(2);
+		globalSteps.pause(7); 
+	} 
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
@@ -421,5 +444,5 @@ public class JobDetailFieldsTest extends BasicTest {
 		//jobDetailSteps.retrieveVideographerEquipmentSection("Stanley Weinberg");
 		globalSteps.pause(15); 
 		//jobDetailSteps.attachRatesSheet(1);
-	}
+	}  */
 }

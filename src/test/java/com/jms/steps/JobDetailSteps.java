@@ -446,8 +446,13 @@ public class JobDetailSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void maximizeMinimizeRatesSection() {
-		jobDetailPage().maximizeMinimizeRatesSection();
+	public void maximizeRatesSection() {
+		jobDetailPage().maximizeRatesSection();
+	}
+	
+	@Step
+	public void minimizeRatesSection() {
+		jobDetailPage().minimizeRatesSection();
 	}
 	
 	@Step
@@ -476,8 +481,13 @@ public class JobDetailSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void maximizeMinimizeCommissionSection() {
-		jobDetailPage().maximizeMinimizeCommissionSection();
+	public void maximizeCommissionSection() {
+		jobDetailPage().maximizeCommissionSection();
+	}
+	
+	@Step
+	public void minimizeCommissionSection() {
+		jobDetailPage().minimizeCommissionSection();
 	}
 	
 	@Step
@@ -496,7 +506,7 @@ public class JobDetailSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void deletetAppliedCommission(int index) {
+	public void deleteAppliedCommission(int index) {
 		jobDetailPage().deleteAppliedCommission(index);
 	}
 	
@@ -513,5 +523,55 @@ public class JobDetailSteps extends ScenarioSteps {
 	@Step
 	public void minimizeMaximizeEquipmentSection() {
 		jobDetailPage().minimizeMaximizeEquipmentSection();
+	}
+	
+	@Step
+	public void addNotesCommissionSection(String commissionNotes) {
+		jobDetailPage().addNotesCommissionSection(commissionNotes);
+	}
+	
+	@Step
+	public void assertNotesCommissionSection(String expectedCommissionNotes) {
+		assertEquals(expectedCommissionNotes, jobDetailPage().getNotesCommissionSection());
+	}
+	
+	@Step
+	public void changeCommissionPercentage(int index, String percentage) {
+		jobDetailPage().changeCommissionPercentage(index, percentage);
+	}
+	
+	@Step
+	public void assertCommissionPercentage(int index, String expectedCommissionPercentage) {
+		assertEquals(expectedCommissionPercentage, jobDetailPage().getCommissionPercentage(index));
+	}
+	
+	@Step
+	public void maximizeFilesSection() {
+		jobDetailPage().maximizeFilesSection();
+	}
+	
+	@Step
+	public void minimizeFilesSection() {
+		jobDetailPage().minimizeFilesSection();
+	}
+	
+	@Step
+	public void addAnotherFileFilesSection(int index) throws AWTException {
+		jobDetailPage().addAnotherFileFilesSection(index);
+	}
+	
+	@Step
+	public void deleteAnotherFileFilesSection(int index) {
+		jobDetailPage().deleteAnotherFileFilesSection(index);
+	}
+	
+	@Step
+	public void addFilesNotes(String filesNotes) {
+		jobDetailPage().addFilesNotes(filesNotes);
+	}
+	
+	@Step
+	public void assertFilesNotes(String expectedFilesNotes) {
+		assertEquals(expectedFilesNotes, jobDetailPage().getFilesNOtes());
 	}
 }
