@@ -469,9 +469,14 @@ public class JobDetailPage extends PageObject {
 
 	public void checkFirmContactCheckbox(int index) throws NoSuchElementException{
 		//	 if ($("(//div[@data-test='jobdetail-clientinfo-container']//img[@role='checkbox' and @aria-checked='false'])[" + index + "]").isVisible()) { 
-			 $("(//div[@data-test='jobdetail-clientinfo-container']//img[@role='checkbox'])[" + index + "]").click(); 
+		//	 $("(//div[@data-test='jobdetail-clientinfo-container']//img[@role='checkbox'])[" + index + "]").click(); 
 		//	 } else if ($("(//div[@data-test='jobdetail-clientinfo-container']//img[@role='checkbox' and @aria-checked='true'])[" + index + "]").isVisible())
-		//		 return;				
+		//		 return;
+			 
+			 if ( !(getDriver().findElement(By.xpath("(//div[@data-test='jobdetail-clientinfo-container']//img[@role='checkbox'])[" + index + "]")).isSelected()))
+			 {
+				 getDriver().findElement(By.xpath("(//div[@data-test='jobdetail-clientinfo-container']//img[@role='checkbox'])[" + index + "]")).click();
+			 }
 	}
 	
 	public void clickAddRequestedVendorLink(int index) {

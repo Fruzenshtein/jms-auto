@@ -227,7 +227,8 @@ public class JobDetailFieldsTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void jobDetailPageClientInfoSection() throws InterruptedException {
+	public void jobDetailPageClientInfoSection() throws InterruptedException 
+	{
 
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("123");
@@ -257,7 +258,8 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.clickActionMenuLink(2);
 		jobDetailSteps.selectActionMenuOption("Remove Contact", 2); 
 		jobDetailSteps.checkFirmContactCheckbox(2); 
-		jobDetailSteps.clickAddRequestedVendorLink(1);
+		globalSteps.pause(10);
+		jobDetailSteps.clickAddRequestedVendorLink(1); 
 		jobDetailSteps.addRequestedVendor("Daniel Lever", 1);
 		jobDetailSteps.clickActionMenuLink(2);
 		jobDetailSteps.selectActionMenuOption("Remove Requested Vendor", 1); 
@@ -284,7 +286,7 @@ public class JobDetailFieldsTest extends BasicTest {
 
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("2201");
-			jobDetailSteps.clickExpectedServicesButton();
+		jobDetailSteps.clickExpectedServicesButton();
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
@@ -404,6 +406,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.clickApplyButtonCommission();
 		//TODO Add sales person
 		//jobDetailSteps.assertAppliedCommission("123, 1. / 123, 1. (3 - 3)");
+<<<<<<< HEAD
 		jobDetailSteps.changeCommissionPercentage(1, "33");
 		jobDetailSteps.changeCommissionPercentage(2, "55");
 		jobDetailSteps.assertCommissionPercentage(1, "33");
@@ -430,19 +433,29 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.assertFilesNotes("Files notes");
 		jobDetailSteps.deleteAnotherFileFilesSection(2);
 		globalSteps.pause(7); 
+=======
+		jobDetailSteps.deletetAppliedCommission(1);
+		jobDetailSteps.deletetAppliedCommission(2);
+		globalSteps.pause(15); 
+
+>>>>>>> ab8f93a469cfc5f3eb5463bce8fab97cfc61abde
 	} 
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void jobDetailPageEquipmentModule() {
+	public void jobDetailPageEquipmentModule() throws AWTException {
 
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("2220");
+		jobDetailSteps.maximizeMinimizeRatesSection();
+		jobDetailSteps.attachRatesSheet(1);
 	    //Rates
 		//jobDetailSteps.minimizeMaximizeEquipmentSection();
-		jobDetailSteps.retrieveReporterEquipmentSection("Debbie Zirbz", 1);
+		//jobDetailSteps.retrieveReporterEquipmentSection("Debbie Zirbz", 1);
 		//jobDetailSteps.retrieveVideographerEquipmentSection("Stanley Weinberg");
 		globalSteps.pause(15); 
 		//jobDetailSteps.attachRatesSheet(1);
+<<<<<<< HEAD
 	}  */
+
 }
