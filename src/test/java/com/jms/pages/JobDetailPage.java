@@ -565,8 +565,7 @@ public class JobDetailPage extends PageObject {
 	public boolean checkVendorTBDStartTime(int index, boolean is) {
 		if (is)
 			return $(
-					"(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@class='imageCheck checked' and @aria-checked='"
-							+ is + "'])[" + index + "]").isPresent();
+					"(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@aria-checked='"	+ is + "'])[" + index + "]").isPresent();
 		else
 			return $(
 					"(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@class='imageCheck' and @aria-checked='"
@@ -594,6 +593,12 @@ public class JobDetailPage extends PageObject {
 	public void markTBDVendorEndTime(int indexEnd) {
 		$(
 				"(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@class='imageCheck'])["
+						+ indexEnd + "]").waitUntilVisible().click();
+	}
+	
+	public void unmarkTBDVendorEndTime(int indexEnd) {
+		$(
+				"(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@class='imageCheck checked'])["
 						+ indexEnd + "]").waitUntilVisible().click();
 	}
 
@@ -791,5 +796,97 @@ public class JobDetailPage extends PageObject {
 	public String getFilesNOtes() {
 		return $("//textarea[@class='filesnotes']").getValue();
 		
+	}
+	
+	public void checkInternetHardlineConfirmed() {
+		$("//div[@class='left mt-10 mr-5']//img[@aria-controls='imageCheckInput_308' and @aria-checked='true']").waitUntilPresent().isPresent();
+		
+	}
+	
+	public void checkVideoStreamHardlineConfirmed() {
+		$("//div[@class='module tabbed jobdetail-vendorinfo-view']//div[@class='left mt-10']//img[@aria-controls='imageCheckInput_309' and @aria-checked='true']").waitUntilPresent().isPresent();
+	}
+	
+	public void selectVBrickOption(int index) {
+		$("//select[@class='vbricklist']").selectByIndex(index);
+	}
+	//Location section
+	public void addLocationNotes(String notes) {
+		$("//div[@class='fieldset tab-JobVideoConferences']//textarea[@class='notesa']").sendKeys(notes);
+	}
+	
+	public String getLocationNotes() {
+		return $("//div[@class='fieldset tab-JobVideoConferences']//textarea[@class='notesa']").getValue();
+	}
+	
+	public void setTimeLocationSection(int index, String time) {
+		$("(//div[@class='fieldset tab-JobVideoConferences']//input[@class='hasTimeEntry'])[" + index + "]").sendKeys(time);
+	}
+	
+	public String getTimeLocationSection(int index) {
+		return $("(//div[@class='fieldset tab-JobVideoConferences']//input[@class='hasTimeEntry'])[" + index + "]").getValue();
+	}
+	
+	public void setConfirmationContact(String name) {
+		$("//span[text()='Confirmation Contact Name']/../input[@type='text']").sendKeys(name);
+	}
+	
+	public String getConfirmationContact() {
+		return $("//span[text()='Confirmation Contact Name']/../input[@type='text']").getValue();
+	}
+	
+	public void checkVideoConferenceSectionIsNotActive() {
+		$("//div[@class='fieldset tab-JobVideoConferences']//div[@class='loadmask']").isCurrentlyVisible();
+	}
+	
+	public void checkVideoConferenceNeededCheckbox() {
+		$("//div[@class='fieldset tab-JobVideoConferences']//img[@class='imageCheck videoconfneeded']").click();
+	}
+	
+	public void checkTSGProvidingBridgeCheckbox() {
+		$("//div[@class='fieldset tab-JobVideoConferences']//img[@class='imageCheck tsgprovidedbridge']").click();
+	}
+	
+	public void checkInitiatesConferenceCheckbox() {
+		$("//div[@class='fieldset tab-JobVideoConferences']//img[@class='imageCheck altlocation']").click();
+	}
+	
+	public void setIP(String ip) {
+		$("//input[@class='ip']").sendKeys(ip);
+	}
+	
+	public String getIP() {
+		return $("//input[@class='ip']").getValue();
+	}
+	
+	public void setITContact(String itContact) {
+		$("//input[@class='itcontact']").sendKeys(itContact);
+	}
+	
+	public String getITContact() {
+		return $("//input[@class='itcontact']").getValue();
+	}
+	
+	public void setISDN(String isdn) {
+		$("//input[@class='isdn']").sendKeys(isdn);
+	}
+	
+	public String getISDN() {
+		return $("//input[@class='isdn']").getValue();
+	}
+	
+	public void setPhone(String phone) {
+		$("//input[@class='phone']").sendKeys(phone);
+	}
+	
+	public String getPhone() {
+		return $("//input[@class='phone']").getValue();
+	}
+	
+	//Interpreter tab
+	
+	public void assertLanguageAndWitnessApplied() {
+		$("//span[text()='English']").isDisplayed();
+		$("//span[text()='All']").isDisplayed();
 	}
 }

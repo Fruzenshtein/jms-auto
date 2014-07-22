@@ -36,7 +36,7 @@ public class JobDetailFieldsTest extends BasicTest {
 	
 	@Steps
 	public ExpectedServicesSteps expectedServicesSteps; 
-	
+
 	 @Test
 	 @Screenshots(onlyOnFailures = true)
 	 public void jobDetailPageCaseInfoSection() throws InterruptedException {
@@ -133,43 +133,6 @@ public class JobDetailFieldsTest extends BasicTest {
 	 }
 	
 
-	
-	 @Test
-	 @Screenshots(onlyOnFailures = true)
-	 public void jobDetailPageClientMatter() throws InterruptedException {
-	
-	 String futureDate = DateGenerator.getInstance().modifiedDate(0, 0, 1);
-	
-	 loginSteps.login(userStorage.getUser(0));
-	 globalSteps.clickCreateJobIcon();
-	 globalSteps.openWidgetIn(1);
-	
-	 String jobId1 = jobDetailSteps.getJobId();
-	
-	 jobDetailSteps.setSchedulingFirm("Banner");
-	 jobDetailSteps.setDate(futureDate);
-	 jobDetailSteps.setCaseName("Daily meeting");
-	 jobDetailSteps.setClientMatterN("33");
-	
-	 jobDetailSteps.clickSave();
-	
-	 globalSteps.clickCreateJobIcon();
-	 globalSteps.openWidgetIn(1);
-	
-	 String jobId2 = jobDetailSteps.getJobId();
-	
-	 jobDetailSteps.setSchedulingFirm("Banner");
-	 jobDetailSteps.setDate(futureDate);
-	 jobDetailSteps.setCaseName("Daily meeting");
-	
-	 jobDetailSteps.clickSave();
-	
-	 globalSteps.searchJobById(jobId2);
-	
-	 jobDetailSteps.assertClientMatterN("33");
-	 }
-	
-	
 	 @Test
 	 @Screenshots(onlyOnFailures = true)
 	 public void jobDetailPageClientMatterNumber() throws InterruptedException
@@ -279,25 +242,13 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.clickSave(); 
 		globalSteps.pause(10);
 	} 
-/*
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void jobDetailPageVendorModule() {
 
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("2201");
-		jobDetailSteps.clickExpectedServicesButton();
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.INTERPRETER);
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.LOCATION);
-		expectedServicesSteps.selectConferenceLocation(1);
-		expectedServicesSteps.clickAddLocationLink();
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(25);
-		jobDetailSteps.clickSave();
-		globalSteps.pause(15);
 		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.REPORTER, true);
 	    jobDetailSteps.isServiceIconInVendorSection(VendorService.REPORTER, true);
 		jobDetailSteps.isServiceIconInVendorSection(VendorService.VIDEOGRAPHER, true);
@@ -308,6 +259,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.INTERPRETER, true);
 		jobDetailSteps.isServiceIconInVendorSection(VendorService.LOCATION, true);
 		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.LOCATION, true);
+		
 		//Reporter tab
 		jobDetailSteps.selectVendorTab(VendorTab.REPORTER.getTab(), VendorTab.REPORTER.getVendor());
 		jobDetailSteps.setExpectedStartTime("11:00 AM");
@@ -318,13 +270,13 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.assertVendorNotes("REPORTER notes");
 		jobDetailSteps.clearExpectedStartEndTime();
 		jobDetailSteps.assertExpectedStartEndTimeIsNotCleared("", "");
-		jobDetailSteps.markTBDVendorEndTime(2);
+		jobDetailSteps.markTBDVendorEndTime(1);
 		jobDetailSteps.markTBDVendorStartTime(1);
 		globalSteps.pause(2);
-		//jobDetailSteps.checkVendorTBDEndTime(2, true);
-		jobDetailSteps.checkVendorTBDStartTime(1, true);
 		jobDetailSteps.clearVendorNotes();
-		jobDetailSteps.assertVendorNotes("");  
+		jobDetailSteps.assertVendorNotes(""); 
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "Internet Real-Time, Regular (8-Day) Delivery");
+		
 		//Videographer tab
 		jobDetailSteps.selectVendorTab(VendorTab.VIDEOGRAPHER.getTab(), VendorTab.VIDEOGRAPHER.getVendor());
 		jobDetailSteps.setExpectedStartTime("11:00 AM");
@@ -333,8 +285,11 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.assertExpectedFinishTime("06:00 PM");
 		jobDetailSteps.markTBDVendorEndTime(2);
 		jobDetailSteps.markTBDVendorStartTime(1);
+		globalSteps.pause(2);
 		jobDetailSteps.setVendorNotes("VIDEOGRAPHER notes");
 		jobDetailSteps.assertVendorNotes("VIDEOGRAPHER notes"); 
+		
+		//Streaming services tab
 		jobDetailSteps.selectVendorTab(VendorTab.STREAMING_SERVICES.getTab(), VendorTab.STREAMING_SERVICES.getVendor());
 		jobDetailSteps.setExpectedStartTime("09:00 AM");
 		jobDetailSteps.assertExpectedStartTime("09:00 AM");
@@ -342,31 +297,56 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.assertExpectedFinishTime("05:00 PM");
 		jobDetailSteps.markTBDVendorEndTime(2);
 		jobDetailSteps.markTBDVendorStartTime(1);
+		globalSteps.pause(2);
 		jobDetailSteps.setStreamingVendorNotes("STREAMING_SERVICES notes");
 		jobDetailSteps.assertStreamingVendorNotes("STREAMING_SERVICES notes");
 		jobDetailSteps.setStreamingSessionID("33");
 		jobDetailSteps.assertStreamingSessionID("33");
+		jobDetailSteps.selectVBrickOption(1);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.STREAMING, "Internet Real-Time");
+	 
+		//Location tab
+		jobDetailSteps.selectVendorTab(VendorTab.LOCATION.getTab(), VendorTab.LOCATION.getVendor());
+		jobDetailSteps.setTimeLocationSection(1, "10:00 AM");
+		jobDetailSteps.assertTimeLocationSection(1, "10:00 AM");
+		jobDetailSteps.setTimeLocationSection(2, "07:00 PM");
+		jobDetailSteps.assertTimeLocationSection(2, "07:00 PM");
 		jobDetailSteps.markTBDVendorEndTime(2);
-		jobDetailSteps.markTBDVendorStartTime(1); 
-		jobDetailSteps.clickExpectedServicesButton();
-		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.INTERNET_REALTIME, 2);
-		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.HARDLINE_CONFIRMED, 1);
-		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 1);
-		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.HARDLINE_CONFIRMED, 2);
-		expectedServicesSteps.clickUpdate();
-		jobDetailSteps.clickSave();
-		globalSteps.pause(10); 
-		//Deactivate services
-		jobDetailSteps.clickExpectedServicesButton();
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.INTERPRETER);
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.LOCATION);
-		expectedServicesSteps.clickUpdate(); 
+		jobDetailSteps.markTBDVendorStartTime(1);
+		jobDetailSteps.addLocationNotes("LOCATION notes");
+		jobDetailSteps.assertLocationNotes("LOCATION notes");
+		jobDetailSteps.setConfirmationContact("Rob");
+		jobDetailSteps.assertConfirmationContact("Rob");   
+		jobDetailSteps.checkVideoConferenceSectionIsNotActive();
+		jobDetailSteps.checkVideoConferenceNeededCheckbox();
+		jobDetailSteps.checkTSGProvidingBridgeCheckbox();
+		jobDetailSteps.checkInitiatesConferenceCheckbox();
+		jobDetailSteps.setIP("IP");
+		jobDetailSteps.assertIP("IP");
+		jobDetailSteps.setITContact("Vi");
+		jobDetailSteps.assertITContact("Vi");
+		jobDetailSteps.setISDN("ISDN");
+		jobDetailSteps.assertISDN("ISDN");
+		jobDetailSteps.setPhone("333 22 11");
+		jobDetailSteps.assertPhone("333 22 11");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US), Video Conference");
 		
+		//Interpreter tab
+		jobDetailSteps.selectVendorTab(VendorTab.INTERPRETER.getTab(), VendorTab.INTERPRETER.getVendor());
+		jobDetailSteps.setExpectedStartTime("10:30 AM");
+		jobDetailSteps.assertExpectedStartTime("10:30 AM");
+		jobDetailSteps.setExpectedFinishTime("05:30 PM");
+		jobDetailSteps.assertExpectedFinishTime("05:30 PM");
+		jobDetailSteps.markTBDVendorEndTime(2);
+		jobDetailSteps.markTBDVendorStartTime(1);
+		jobDetailSteps.setVendorNotes("INTERPRETER notes");
+		jobDetailSteps.assertVendorNotes("INTERPRETER notes");
+		jobDetailSteps.assertLanguageAndWitnessApplied();
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "English");
+		globalSteps.pause(11); 
+				
 	} 
-	
+	/*
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void jobDetailPageRatesCommissionFiles() throws AWTException {
@@ -406,7 +386,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.clickApplyButtonCommission();
 		//TODO Add sales person
 		//jobDetailSteps.assertAppliedCommission("123, 1. / 123, 1. (3 - 3)");
-<<<<<<< HEAD
+
 		jobDetailSteps.changeCommissionPercentage(1, "33");
 		jobDetailSteps.changeCommissionPercentage(2, "55");
 		jobDetailSteps.assertCommissionPercentage(1, "33");
@@ -433,12 +413,11 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.assertFilesNotes("Files notes");
 		jobDetailSteps.deleteAnotherFileFilesSection(2);
 		globalSteps.pause(7); 
-=======
+
 		jobDetailSteps.deletetAppliedCommission(1);
 		jobDetailSteps.deletetAppliedCommission(2);
 		globalSteps.pause(15); 
 
->>>>>>> ab8f93a469cfc5f3eb5463bce8fab97cfc61abde
 	} 
 	
 	@Test
@@ -455,7 +434,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		//jobDetailSteps.retrieveVideographerEquipmentSection("Stanley Weinberg");
 		globalSteps.pause(15); 
 		//jobDetailSteps.attachRatesSheet(1);
-<<<<<<< HEAD
+
 	}  */
 
 }
