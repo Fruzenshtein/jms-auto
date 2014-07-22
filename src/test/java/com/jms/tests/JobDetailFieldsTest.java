@@ -48,9 +48,9 @@ public class JobDetailFieldsTest extends BasicTest {
 	 globalSteps.openWidgetIn(1);
 	
 	 jobDetailSteps.setDate(futureDate);
-	 jobDetailSteps.setCaseName("Sony presentation"); // TODO: Mark Case name
-	 // as TBD
-	  jobDetailSteps.selectCaseType("Meeting");
+	 jobDetailSteps.setCaseName("Sony presentation"); 
+	 
+	 jobDetailSteps.selectCaseType("Meeting");
 	 jobDetailSteps.assertJobDetailHeaderLabel(
 	 JobDetailHeaderLabel.JOB_TYPE, "Meeting");
 	
@@ -70,7 +70,7 @@ public class JobDetailFieldsTest extends BasicTest {
 	 jobDetailSteps.setSchedulingFirm("Sony Electronics Inc.");
 	
 	 }
-	
+
 	 @Test
 	 @Screenshots(onlyOnFailures = true)
 	 public void jobDetailPageWitnessInfoSection() throws InterruptedException

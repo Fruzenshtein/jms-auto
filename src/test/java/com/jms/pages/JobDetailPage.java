@@ -342,7 +342,7 @@ public class JobDetailPage extends PageObject {
 	 * Method for activated 'TSG Provided'
 	 */
 	public void selectCaseInfoPhoneNumber(int index) {
-		$(caseInfoPhoneNumber).selectByIndex(index);
+		$("//select[@class='phonenumberprovided']").selectByIndex(index);
 	}
 
 	public void setCaseInfoPassCode(String code) {
