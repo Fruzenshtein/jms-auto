@@ -42,7 +42,7 @@ public class LoginTest extends BasicTest {
 		loginSteps.checkLoginErrorMsg();
 		
 		loginSteps.login(userStorage.getUser(4));
-		globalSteps.checkAlertText("Invalid login information");
+		globalSteps.waitUntilTextAppear("LOGIN");
 	}
 
 }

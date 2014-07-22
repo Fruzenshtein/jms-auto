@@ -83,7 +83,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		globalSteps.pause(10);
 		expectedServicesSteps.clickAgencyByIndex(1);
 		expectedServicesSteps.clickChangeRecommendationButton();
-		globalSteps.pause(3);
+		globalSteps.pause(5);
 		assignVendorSteps.clickSaveButton();
 		globalSteps.waitUntilTextAppear("Recommendation (Agency)");
 		
@@ -146,7 +146,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		globalSteps.pause(10);
 		expectedServicesSteps.clickAgencyByIndex(1);
 		expectedServicesSteps.clickChangeRecommendationButton();
-		globalSteps.pause(3);
+		globalSteps.pause(5);
 		assignVendorSteps.clickSaveButton();
 		globalSteps.waitUntilTextAppear("Recommendation (Agency)");
 		globalSteps.pause(10);
@@ -195,7 +195,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		globalSteps.pause(14);
 		expectedServicesSteps.clickAgencyByIndex(1);
 		expectedServicesSteps.clickChangeRecommendationButton();
-		globalSteps.pause(3);
+		globalSteps.pause(5);
 		assignVendorSteps.clickSaveButton();
 		globalSteps.waitUntilTextAppear("Recommendation (Agency)");
 		globalSteps.pause(10);
