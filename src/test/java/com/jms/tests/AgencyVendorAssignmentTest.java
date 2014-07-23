@@ -46,6 +46,9 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 	@Steps
 	public VednorQueueSteps vednorQueueSteps;
 	
+	//Alternative test data: 2013, 2007
+	private String jobId = "2006";
+	
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	//TC6.2.1
@@ -117,7 +120,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 	//TC6.2.2
 	public void recommendedAgencyVendorReassignment() {
 		loginSteps.login(userStorage.getUser(0));
-		globalSteps.searchJobById("2013");
+		globalSteps.searchJobById(jobId);
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
 		
@@ -166,7 +169,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 	//TC6.2.5
 	public void recommendationApprovedAgencyVendorContactViaCalled() {
 		loginSteps.login(userStorage.getUser(0));
-		globalSteps.searchJobById("2013");
+		globalSteps.searchJobById(jobId);
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
 		
@@ -211,5 +214,61 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		
 		globalSteps.waitUntilTextAppear("Assignment Unconfirmed");
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.YELLOW);
+	}
+	
+	
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	//TC6.2.7
+	public void aecommendationApprovedAgencyVendorContactViaCalledVendorAccepts() {
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById(jobId);
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
+		
+		if (expectedServicesSteps.statusOfServiceIcon(VendorService.REPORTER))
+			expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		
+		expectedServicesSteps.clickUpdate();
+		
+		globalSteps.pause(6);
+		jobDetailSteps.clickSave();		
+		globalSteps.pause(6);
+		
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(14);
+		
+		jobDetailSteps.clickSave();
+		
+		globalSteps.pause(8);
+		
+		jobDetailSteps.clickManageButton();
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.SELECT_ANOTHER_VENDOR);
+		globalSteps.pause(14);
+		expectedServicesSteps.clickAgencyByIndex(1);
+		expectedServicesSteps.clickChangeRecommendationButton();
+		globalSteps.pause(5);
+		assignVendorSteps.clickSaveButton();
+		globalSteps.waitUntilTextAppear("Recommendation (Agency)");
+		globalSteps.pause(10);
+	
+		//Test starts
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.APPROVE_RECOMENDATION);
+		
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.CONTACT_FOR_ASSIGNMENT);
+		contactVendorSteps.clickCalledButton();
+		contactVendorSteps.clickAcceptedButton();
+		
+		globalSteps.pause(60);
+		globalSteps.waitUntilTextAppear("Job Info - Prep Draft");
+		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GREEN);
+		
+	
 	}
 }
