@@ -64,7 +64,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		
 		globalSteps.pause(6);
 		jobDetailSteps.clickSave();		
-		globalSteps.pause(4);
+		globalSteps.pause(6);
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
@@ -83,7 +83,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		globalSteps.pause(10);
 		expectedServicesSteps.clickAgencyByIndex(1);
 		expectedServicesSteps.clickChangeRecommendationButton();
-		globalSteps.pause(3);
+		globalSteps.pause(5);
 		assignVendorSteps.clickSaveButton();
 		globalSteps.waitUntilTextAppear("Recommendation (Agency)");
 		
@@ -128,7 +128,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		
 		globalSteps.pause(6);
 		jobDetailSteps.clickSave();		
-		globalSteps.pause(4);
+		globalSteps.pause(6);
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
@@ -146,7 +146,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		globalSteps.pause(10);
 		expectedServicesSteps.clickAgencyByIndex(1);
 		expectedServicesSteps.clickChangeRecommendationButton();
-		globalSteps.pause(3);
+		globalSteps.pause(5);
 		assignVendorSteps.clickSaveButton();
 		globalSteps.waitUntilTextAppear("Recommendation (Agency)");
 		globalSteps.pause(10);
@@ -177,7 +177,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		
 		globalSteps.pause(6);
 		jobDetailSteps.clickSave();		
-		globalSteps.pause(4);
+		globalSteps.pause(6);
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
@@ -192,10 +192,10 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		jobDetailSteps.clickManageButton();
 		jobDetailSteps.clickVendorActionLink(1);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.SELECT_ANOTHER_VENDOR);
-		globalSteps.pause(10);
+		globalSteps.pause(14);
 		expectedServicesSteps.clickAgencyByIndex(1);
 		expectedServicesSteps.clickChangeRecommendationButton();
-		globalSteps.pause(3);
+		globalSteps.pause(5);
 		assignVendorSteps.clickSaveButton();
 		globalSteps.waitUntilTextAppear("Recommendation (Agency)");
 		globalSteps.pause(10);

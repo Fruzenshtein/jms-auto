@@ -421,6 +421,11 @@ public class JobDetailSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void unmarkTBDVendorEndTime(int indexEnd) {
+		jobDetailPage().unmarkTBDVendorEndTime(indexEnd);
+	}
+	
+	@Step
 	public void checkVendorTBDStartTime(int index, boolean is) {
 		jobDetailPage().checkVendorTBDStartTime(index, is);
 	}
@@ -534,4 +539,168 @@ public class JobDetailSteps extends ScenarioSteps {
 	public void minimizeMaximizeEquipmentSection() {
 		jobDetailPage().minimizeMaximizeEquipmentSection();
 	}
+	
+	@Step
+	public void addNotesCommissionSection(String commissionNotes) {
+		jobDetailPage().addNotesCommissionSection(commissionNotes);
+	}
+	
+	@Step
+	public void assertNotesCommissionSection(String expectedCommissionNotes) {
+		assertEquals(expectedCommissionNotes, jobDetailPage().getNotesCommissionSection());
+	}
+	
+	@Step
+	public void changeCommissionPercentage(int index, String percentage) {
+		jobDetailPage().changeCommissionPercentage(index, percentage);
+	}
+	
+	@Step
+	public void assertCommissionPercentage(int index, String expectedCommissionPercentage) {
+		assertEquals(expectedCommissionPercentage, jobDetailPage().getCommissionPercentage(index));
+	}
+	
+	@Step
+	public void maximizeFilesSection() {
+		jobDetailPage().maximizeFilesSection();
+	}
+	
+	@Step
+	public void minimizeFilesSection() {
+		jobDetailPage().minimizeFilesSection();
+	}
+	
+	@Step
+	public void addAnotherFileFilesSection(int index) throws AWTException {
+		jobDetailPage().addAnotherFileFilesSection(index);
+	}
+	
+	@Step
+	public void deleteAnotherFileFilesSection(int index) {
+		jobDetailPage().deleteAnotherFileFilesSection(index);
+	}
+	
+	@Step
+	public void addFilesNotes(String filesNotes) {
+		jobDetailPage().addFilesNotes(filesNotes);
+	}
+	
+	@Step
+	public void assertFilesNotes(String expectedFilesNotes) {
+		assertEquals(expectedFilesNotes, jobDetailPage().getFilesNOtes());
+	}
+	//Location section
+	@Step
+	public void checkInternetHardlineConfirmed() {
+		jobDetailPage().checkInternetHardlineConfirmed();
+	}
+	
+	@Step
+	public void checkVideoStreamHardlineConfirmed() {
+		jobDetailPage().checkVideoStreamHardlineConfirmed();
+	}
+	
+	@Step
+	public void selectVBrickOption(int index) {
+		jobDetailPage().selectVBrickOption(index);
+	}
+	
+	@Step
+	public void addLocationNotes(String notes) {
+		jobDetailPage().addLocationNotes(notes);
+	}
+	
+	@Step
+	public void assertLocationNotes(String expectedNotes) {
+		assertEquals(expectedNotes, jobDetailPage().getLocationNotes());
+	}
+	
+	@Step
+	public void setTimeLocationSection(int index, String time) {
+		jobDetailPage().setTimeLocationSection(index, time);
+	}
+	
+	@Step
+	public void assertTimeLocationSection(int index, String expectedTime) {
+		assertEquals(expectedTime, jobDetailPage().getTimeLocationSection(index));
+	}
+	
+	@Step
+	public void setConfirmationContact(String name) {
+		jobDetailPage().setConfirmationContact(name);
+	}
+	
+	@Step
+	public void assertConfirmationContact(String expectedName) {
+		assertEquals(expectedName, jobDetailPage().getConfirmationContact());
+	}
+	
+	@Step
+	public void checkVideoConferenceSectionIsNotActive() {
+		jobDetailPage().checkVideoConferenceSectionIsNotActive();
+	}
+	
+	@Step
+	public void checkVideoConferenceNeededCheckbox() {
+		jobDetailPage().checkVideoConferenceNeededCheckbox();
+	}
+	
+	
+	@Step
+	public void checkTSGProvidingBridgeCheckbox() {
+		jobDetailPage().checkTSGProvidingBridgeCheckbox();
+	}
+	
+	@Step
+	public void checkInitiatesConferenceCheckbox() {
+		jobDetailPage().checkInitiatesConferenceCheckbox();
+	}
+	
+	@Step
+	public void setIP(String ip) {
+		jobDetailPage().setIP(ip);
+	}
+	
+	@Step
+	public void assertIP(String ip) {
+		assertEquals(ip, jobDetailPage().getIP());
+	}
+	
+	@Step
+	public void setITContact(String ITContact) {
+		jobDetailPage().setITContact(ITContact);
+	}
+	
+	@Step
+	public void assertITContact(String ITContact) {
+		assertEquals(ITContact, jobDetailPage().getITContact());
+	}
+	
+	@Step
+	public void setISDN(String isdn) {
+		jobDetailPage().setISDN(isdn);
+	}
+	
+	@Step
+	public void assertISDN(String isdn) {
+		assertEquals(isdn, jobDetailPage().getISDN());
+	}
+	
+	@Step
+	public void setPhone(String phone) {
+		jobDetailPage().setPhone(phone);
+	}
+	
+	@Step
+	public void assertPhone(String phone) {
+		assertEquals(phone, jobDetailPage().getPhone());
+	}
+	
+	//Interpreter tab
+	
+	@Step
+	public void assertLanguageAndWitnessApplied() {
+		jobDetailPage().assertLanguageAndWitnessApplied();
+	}
+		
 }

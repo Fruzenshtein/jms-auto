@@ -38,6 +38,9 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 	
 	@Steps
 	public ContactVendorSteps contactVendorSteps;
+	
+	//Another jobs which can be used: 1608, 1591
+	private String jobId = "1590";
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
@@ -75,7 +78,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		
 		globalSteps.pause(6);
 		jobDetailSteps.clickSave();		
-		globalSteps.pause(4);
+		globalSteps.pause(6);
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
@@ -114,7 +117,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 	public void recommendationApprovedVendorContactViaCalledAccept() {
 		
 		loginSteps.login(userStorage.getUser(0));
-		globalSteps.searchJobById("1700");
+		globalSteps.searchJobById(jobId);
 		
 		//Preparing test data
 		//We expect that on test start the job has 1 approved reporter
@@ -127,7 +130,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		
 		globalSteps.pause(6);
 		jobDetailSteps.clickSave();		
-		globalSteps.pause(4);
+		globalSteps.pause(6);
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
@@ -160,7 +163,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 	public void recommendationApprovedVendorContactViaCalledReject() {
 		
 		loginSteps.login(userStorage.getUser(0));
-		globalSteps.searchJobById("1605");
+		globalSteps.searchJobById(jobId);
 		
 		//Preparing test data
 		//We expect that on test start the job has 1 approved reporter
@@ -173,7 +176,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		
 		globalSteps.pause(6);
 		jobDetailSteps.clickSave();		
-		globalSteps.pause(4);
+		globalSteps.pause(6);
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
@@ -208,7 +211,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 	public void contactedVendorVendorConfirmsManageModule() {
 		
 		loginSteps.login(userStorage.getUser(0));
-		globalSteps.searchJobById("1608");
+		globalSteps.searchJobById(jobId);
 		
 		//Preparing test data
 		//We expect that on test start the job has 1 approved
@@ -222,7 +225,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		
 		globalSteps.pause(6);
 		jobDetailSteps.clickSave();		
-		globalSteps.pause(4);
+		globalSteps.pause(6);
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
@@ -263,7 +266,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 	public void contactedVendorRecontactVendor() {
 		
 		loginSteps.login(userStorage.getUser(0));
-		globalSteps.searchJobById("1608");
+		globalSteps.searchJobById(jobId);
 		
 		//Preparing test data
 		//We expect that on test start the job has 1 approved
@@ -277,7 +280,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		
 		globalSteps.pause(6);
 		jobDetailSteps.clickSave();		
-		globalSteps.pause(4);
+		globalSteps.pause(6);
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");

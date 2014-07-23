@@ -34,7 +34,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 	
 	private String jobId = "1251";
 	private String jobIdWithVultipleLoc = "1473";
-	
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc4_4_1() throws InterruptedException {
@@ -60,7 +60,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		jobDetailSteps.isServiceIconInVendorSection(VendorService.LOCATION, true);
 		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.LOCATION, true);
 	}
-	
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc4_4_2() throws InterruptedException {
@@ -108,7 +108,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		
 		//TODO: Complete the test
 	}
-	
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc4_4_3() throws InterruptedException {

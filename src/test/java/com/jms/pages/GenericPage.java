@@ -3,7 +3,9 @@ package com.jms.pages;
 import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.PageObject;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebElement;
 
 public class GenericPage extends PageObject {
@@ -50,8 +52,26 @@ public class GenericPage extends PageObject {
 		getAlert().accept();
 	}
 
-	public String getAlertText() {
+	public String getAlertText() throws InterruptedException {
+		waitForAlert();
 		return getAlert().getText();
+	}
+	
+	public void waitForAlert() throws InterruptedException {
+	   int i=0;
+	   while(i++<5)
+	   {
+	        try
+	        {
+	            Alert alert = getDriver().switchTo().alert();
+	            break;
+	        }
+	        catch(NoAlertPresentException e)
+	        {
+	          getClock().wait(15000);
+	          continue;
+	        }
+	   }
 	}
 
 	public String getMessageText() {

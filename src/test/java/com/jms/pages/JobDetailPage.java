@@ -342,7 +342,7 @@ public class JobDetailPage extends PageObject {
 	 * Method for activated 'TSG Provided'
 	 */
 	public void selectCaseInfoPhoneNumber(int index) {
-		$(caseInfoPhoneNumber).selectByIndex(index);
+		$("//select[@class='phonenumberprovided']").selectByIndex(index);
 	}
 
 	public void setCaseInfoPassCode(String code) {
@@ -565,8 +565,7 @@ public class JobDetailPage extends PageObject {
 	public boolean checkVendorTBDStartTime(int index, boolean is) {
 		if (is)
 			return $(
-					"(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@class='imageCheck checked' and @aria-checked='"
-							+ is + "'])[" + index + "]").isPresent();
+					"(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@aria-checked='"	+ is + "'])[" + index + "]").isPresent();
 		else
 			return $(
 					"(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@class='imageCheck' and @aria-checked='"
@@ -594,6 +593,12 @@ public class JobDetailPage extends PageObject {
 	public void markTBDVendorEndTime(int indexEnd) {
 		$(
 				"(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@class='imageCheck'])["
+						+ indexEnd + "]").waitUntilVisible().click();
+	}
+	
+	public void unmarkTBDVendorEndTime(int indexEnd) {
+		$(
+				"(//div[@class='module tabbed jobdetail-vendorinfo-view']//img[@class='imageCheck checked'])["
 						+ indexEnd + "]").waitUntilVisible().click();
 	}
 
@@ -624,7 +629,7 @@ public class JobDetailPage extends PageObject {
 		  robot.keyPress(KeyEvent.VK_ENTER);
 		  robot.keyRelease(KeyEvent.VK_ENTER); 
 		  robot.delay(1000);
-		 
+
 	}
 
 	public void maximizeRatesSection() {
@@ -733,4 +738,165 @@ public class JobDetailPage extends PageObject {
 		$("//div[@data-test='jobdetail-equipmentinfo-container']//div[@class='collapsed on']").click();
 	}
 	
+	public void addSalesPersonCommissionSection() {
+		$("//div[@data-test='jobcommission-addsalesperson-button']").click();
+	}
+	
+//	public void selectASalesPersonCommissionSection() {
+//		$("//div[@data-test='jobcommission-addsalesperson-button']").selectByIndex(3);
+//	}
+	
+	public void addNotesCommissionSection(String commissionNotes) {
+		$("//textarea[@data-test='jobcommission-notes-text']").clear();
+		$("//textarea[@data-test='jobcommission-notes-text']").sendKeys(commissionNotes);
+	}
+	
+	public String getNotesCommissionSection() {
+		return $("//textarea[@data-test='jobcommission-notes-text']").getValue();
+	}
+	
+	public void changeCommissionPercentage(int index, String percentage) {
+		$("(//div[@data-test='jobdetail-commission-container']//input[@type='text'])[" + index + "]").clear();
+		$("(//div[@data-test='jobdetail-commission-container']//input[@type='text'])[" + index + "]").sendKeys(percentage);
+	}
+	
+	public String getCommissionPercentage(int index) {
+		return $("(//div[@data-test='jobdetail-commission-container']//input[@type='text'])[" + index + "]").getTextValue();
+	}
+	
+	public void maximizeFilesSection() {
+		$(
+				"//div[@data-test='jobdetail-fileinfo-container']//div[@class='collapsed on']")
+				.click();
+	}
+	
+	public void minimizeFilesSection() {
+		$(
+				"//div[@data-test='jobdetail-fileinfo-container']//div[@class='collapsed off']")
+				.click();
+	}
+	
+	public void addAnotherFileFilesSection(int index) throws AWTException {
+
+		$("(//input[@type='file'])[" + index + "]").click();
+		  getClock().pauseFor(5000);
+		
+		  StringSelection ss = new
+		  StringSelection("Libraries\\Documents\\RatesSheet.txt");
+		  Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null); 
+		  Robot robot = new Robot(); 
+		  robot.keyPress(KeyEvent.VK_ENTER);
+		  robot.keyRelease(KeyEvent.VK_ENTER);
+		  robot.keyPress(KeyEvent.VK_CONTROL); robot.keyPress(KeyEvent.VK_V);
+		  robot.keyRelease(KeyEvent.VK_V);
+		  robot.keyRelease(KeyEvent.VK_CONTROL);
+		  robot.keyPress(KeyEvent.VK_ENTER);
+		  robot.keyRelease(KeyEvent.VK_ENTER); robot.delay(1000);
+	}
+	
+	public void deleteAnotherFileFilesSection(int index) {
+		$("//a[@class='icon delete']").click();
+	}
+	
+	public void addFilesNotes(String filesNotes) {
+		$("//textarea[@class='filesnotes']").clear();
+		$("//textarea[@class='filesnotes']").sendKeys(filesNotes);
+	}
+	
+	public String getFilesNOtes() {
+		return $("//textarea[@class='filesnotes']").getValue();
+		
+	}
+	
+	public void checkInternetHardlineConfirmed() {
+		$("//div[@class='left mt-10 mr-5']//img[@aria-controls='imageCheckInput_308' and @aria-checked='true']").waitUntilPresent().isPresent();
+		
+	}
+	
+	public void checkVideoStreamHardlineConfirmed() {
+		$("//div[@class='module tabbed jobdetail-vendorinfo-view']//div[@class='left mt-10']//img[@aria-controls='imageCheckInput_309' and @aria-checked='true']").waitUntilPresent().isPresent();
+	}
+	
+	public void selectVBrickOption(int index) {
+		$("//select[@class='vbricklist']").selectByIndex(index);
+	}
+	//Location section
+	public void addLocationNotes(String notes) {
+		$("//div[@class='fieldset tab-JobVideoConferences']//textarea[@class='notesa']").sendKeys(notes);
+	}
+	
+	public String getLocationNotes() {
+		return $("//div[@class='fieldset tab-JobVideoConferences']//textarea[@class='notesa']").getValue();
+	}
+	
+	public void setTimeLocationSection(int index, String time) {
+		$("(//div[@class='fieldset tab-JobVideoConferences']//input[@class='hasTimeEntry'])[" + index + "]").sendKeys(time);
+	}
+	
+	public String getTimeLocationSection(int index) {
+		return $("(//div[@class='fieldset tab-JobVideoConferences']//input[@class='hasTimeEntry'])[" + index + "]").getValue();
+	}
+	
+	public void setConfirmationContact(String name) {
+		$("//span[text()='Confirmation Contact Name']/../input[@type='text']").sendKeys(name);
+	}
+	
+	public String getConfirmationContact() {
+		return $("//span[text()='Confirmation Contact Name']/../input[@type='text']").getValue();
+	}
+	
+	public void checkVideoConferenceSectionIsNotActive() {
+		$("//div[@class='fieldset tab-JobVideoConferences']//div[@class='loadmask']").isCurrentlyVisible();
+	}
+	
+	public void checkVideoConferenceNeededCheckbox() {
+		$("//div[@class='fieldset tab-JobVideoConferences']//img[@class='imageCheck videoconfneeded']").click();
+	}
+	
+	public void checkTSGProvidingBridgeCheckbox() {
+		$("//div[@class='fieldset tab-JobVideoConferences']//img[@class='imageCheck tsgprovidedbridge']").click();
+	}
+	
+	public void checkInitiatesConferenceCheckbox() {
+		$("//div[@class='fieldset tab-JobVideoConferences']//img[@class='imageCheck altlocation']").click();
+	}
+	
+	public void setIP(String ip) {
+		$("//input[@class='ip']").sendKeys(ip);
+	}
+	
+	public String getIP() {
+		return $("//input[@class='ip']").getValue();
+	}
+	
+	public void setITContact(String itContact) {
+		$("//input[@class='itcontact']").sendKeys(itContact);
+	}
+	
+	public String getITContact() {
+		return $("//input[@class='itcontact']").getValue();
+	}
+	
+	public void setISDN(String isdn) {
+		$("//input[@class='isdn']").sendKeys(isdn);
+	}
+	
+	public String getISDN() {
+		return $("//input[@class='isdn']").getValue();
+	}
+	
+	public void setPhone(String phone) {
+		$("//input[@class='phone']").sendKeys(phone);
+	}
+	
+	public String getPhone() {
+		return $("//input[@class='phone']").getValue();
+	}
+	
+	//Interpreter tab
+	
+	public void assertLanguageAndWitnessApplied() {
+		$("//span[text()='English']").isDisplayed();
+		$("//span[text()='All']").isDisplayed();
+	}
 }
