@@ -149,6 +149,24 @@ public class JobDetailPage extends PageObject {
 	
 	@FindBy(xpath = "//td/input[@data-test='additionalresoruces-equipment-txt']")
 	private WebElement additionalAdditionalRowTD;
+	
+	@FindBy(xpath = "//td/input[@data-test='vbrickreporter-equipment-txt']")
+	private WebElement reporterVBrickRow;
+	
+	@FindBy(xpath = "//td/input[@data-test='vbrickvideographer-equipment-txt']")
+	private WebElement videographerVBrickRow;
+	
+	@FindBy(xpath = "//td/input[@data-test='vbrickadditional-equipment-txt']")
+	private WebElement additionalResourceVBrickRow;
+	
+	@FindBy(xpath = "//td/input[@data-test='streamingreporter-equipment-txt']")
+	private WebElement reporterStreamingRow;
+	
+	@FindBy(xpath = "//td/input[@data-test='streamingvideographer-equipment-txt']")
+	private WebElement videographerStreamingRow;
+	
+	@FindBy(xpath = "//td/input[@data-test='streamingadditional-equipment-txt']")
+	private WebElement additionalStreamingRow;
 
 	private static ArrayList<String> clientMatterNumbersList = new ArrayList<String>();
 
@@ -726,12 +744,12 @@ public class JobDetailPage extends PageObject {
 	}
 	
 	public String retrieveReporterEquipmentSection(int index) {
-		return $("(//table[@class='jobdetail-equipment']//div[@class='vendor-name left'])[" + index + "]").waitUntilVisible().getValue();
+		return $("(//div[@class='vendor-name left'])[" + index + "]").waitUntilVisible().getTextValue();
 	////div[@data-test='report-equipment-icon']
 	}
 	
-	public String retrieveVideographerEquipmentSection() {
-		return $("//div[@data-test='videographer-equipment-icon']/../div[@class='vendor-name left']").waitUntilVisible().getValue();
+	public String retrieveVideographerEquipmentSection(int index) {
+		return $("(//div[@class='vendor-name left'])[" + index + "]").waitUntilVisible().getTextValue();
 	}
 	
 	public void minimizeMaximizeEquipmentSection() {
@@ -898,5 +916,143 @@ public class JobDetailPage extends PageObject {
 	public void assertLanguageAndWitnessApplied() {
 		$("//span[text()='English']").isDisplayed();
 		$("//span[text()='All']").isDisplayed();
+	}
+	
+	//Equipment module
+	//Firm row
+	public void setReporterEquipmentFirmRow(String number) {
+		$(reporterCompanyRowTD).clear();
+		$(reporterCompanyRowTD).sendKeys(number);
+	}
+	
+	public String getReporterEquipmentFirmRow() {
+		return $(reporterCompanyRowTD).getValue();
+	}
+	
+	public void setVideographerEquipmentFirmRow(String number) {
+		$(videographerCompanyRowTD).clear();
+		$(videographerCompanyRowTD).sendKeys(number);
+	}
+	
+	public String getVideographerEquipmentFirmRow() {
+		return $(videographerCompanyRowTD).getValue();
+	}
+	
+	public void setAdditionalResourceEquipmentFirmRow(String number) {
+		$(additionalResourceCompanyRowTD).clear();
+		$(additionalResourceCompanyRowTD).sendKeys(number);
+	}
+	
+	public String getAdditionalResourceEquipmentFirmRow() {
+		return $(additionalResourceCompanyRowTD).getValue();
+	}
+	//Additional row
+	public void setQuantityEquipmentAdditionalow(String number) {
+		$(quantityAdditionalRowTD).clear();
+		$(quantityAdditionalRowTD).sendKeys(number);
+	}
+	
+	public String getQuantityEquipmentAdditionalRow() {
+		return $(quantityAdditionalRowTD).getValue();
+	}
+	
+	public void setReporterEquipmentAdditionalow(String number) {
+		$(reporterAdditionalRowTD).clear();
+		$(reporterAdditionalRowTD).sendKeys(number);
+	}
+	
+	public String getReporterEquipmentAdditionalRow() {
+		return $(reporterAdditionalRowTD).getValue();
+	}
+	
+	public void setVideographerEquipmentAdditionalRow(String number) {
+		$(videographerAdditionalRowTD).clear();
+		$(videographerAdditionalRowTD).sendKeys(number);
+	}
+	
+	public String getVideographerEquipmentAdditionalRow() {
+		return $(videographerAdditionalRowTD).getValue();
+	}
+	
+	public void setAdditionalResourceAdditionalRow(String number) {
+		$(additionalAdditionalRowTD).clear();
+		$(additionalAdditionalRowTD).sendKeys(number);
+	}
+	
+	public String getAdditionalResourceAdditionalRow() {
+		return $(additionalAdditionalRowTD).getValue();
+	}
+	
+	//VBrick row
+	public void setReporterVBrickRow(String number) {
+		$(reporterVBrickRow).clear();
+		$(reporterVBrickRow).sendKeys(number);
+	}
+	
+	public String getReporterVBrickRow() {
+		return $(reporterVBrickRow).getValue();
+	}
+	
+	public void setVideographerVBrickRow(String number) {
+		$(videographerVBrickRow).clear();
+		$(videographerVBrickRow).sendKeys(number);
+	}
+	
+	public String getVideographerVBrickRow() {
+		return $(videographerVBrickRow).getValue();
+	}
+	
+	public void setAdditionalResourceVBrickRow(String number) {
+		$(additionalResourceVBrickRow).clear();
+		$(additionalResourceVBrickRow).sendKeys(number);
+	}
+	
+	public String getAdditionalResourceVBrickRow() {
+		return $(additionalResourceVBrickRow).getValue();
+	}
+	
+	//Streaming row
+	public void setReporterStreamingRow(String number) {
+		$(reporterStreamingRow).clear();
+		$(reporterStreamingRow).sendKeys(number);
+	}
+	
+	public String getReporterStreamingRow() {
+		return $(reporterStreamingRow).getValue();
+	}
+	
+	public void setVideographerStreamingRow(String number) {
+		$(videographerStreamingRow).clear();
+		$(videographerStreamingRow).sendKeys(number);
+	}
+	
+	public String getVideographerStreamingRow() {
+		return $(videographerStreamingRow).getValue();
+	}
+	
+	public void setAdditionalResourceStreamingRow(String number) {
+		$(additionalStreamingRow).clear();
+		$(additionalStreamingRow).sendKeys(number);
+	}
+	
+	public String getAdditionalResourceStreamingRow() {
+		return $(additionalStreamingRow).getValue();
+	}
+	
+	//Total row
+	public String getQuantityTotalRow() {
+		return $("//span[@data-test='total-equipment-txt']").getTextValue();
+	}
+	
+	public String getReporterTotalRow() {
+		return $("//span[@data-test='totalreporter-equipment-txt']").getTextValue();
+	}
+	
+	public String getVideographerTotalRow() {
+		return $("//span[@data-test='totalvideographer-equipment-txt']").getTextValue();
+	}
+	
+	public String getAdditionalTotalRow() {
+		return $("//span[@data-test='totaladditional-equipment-txt']").getTextValue();
 	}
 }

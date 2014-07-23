@@ -531,8 +531,8 @@ public class JobDetailSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void retrieveVideographerEquipmentSection(String expectedVideographer) {
-		assertEquals(expectedVideographer, jobDetailPage().retrieveVideographerEquipmentSection());
+	public void retrieveVideographerEquipmentSection(String expectedVideographer, int index) {
+		assertEquals(expectedVideographer, jobDetailPage().retrieveVideographerEquipmentSection(index));
 	}
 	
 	@Step
@@ -702,5 +702,161 @@ public class JobDetailSteps extends ScenarioSteps {
 	public void assertLanguageAndWitnessApplied() {
 		jobDetailPage().assertLanguageAndWitnessApplied();
 	}
-		
+	
+	//Equipment tab
+	//Firm row
+	@Step
+	public void setReporterEquipmentFirmRow(String number) {
+		jobDetailPage().setReporterEquipmentFirmRow(number);
+	}
+	
+	@Step
+	public void assertReporterEquipmentFirmRow(String expectedNumber) {
+		assertEquals(expectedNumber, jobDetailPage().getReporterEquipmentFirmRow());
+	}
+	
+	@Step
+	public void setVideographerEquipmentFirmRow(String number) {
+		jobDetailPage().setVideographerEquipmentFirmRow(number);
+	}
+	
+	@Step
+	public void assertVideographerEquipmentFirmRow(String expectedNumber) {
+		assertEquals(expectedNumber, jobDetailPage().getVideographerEquipmentFirmRow());
+	}
+	
+	@Step
+	public void setAdditionalResourceEquipmentFirmRow(String number) {
+		jobDetailPage().setAdditionalResourceEquipmentFirmRow(number);;
+	}
+	
+	@Step
+	public void assertAdditionalResourceEquipmentFirmRow(String expectedNumber) {
+		assertEquals(expectedNumber, jobDetailPage().getAdditionalResourceEquipmentFirmRow());
+	}
+	
+	//Additional row
+	@Step
+	public void setQuantityEquipmentAdditionalow(String number) {
+		jobDetailPage().setQuantityEquipmentAdditionalow(number);
+	}
+	
+	@Step
+	public void assertQuantityEquipmentFirmRow(String expectedNumber) {
+		assertEquals(expectedNumber, jobDetailPage().getQuantityEquipmentAdditionalRow());
+	}
+	
+	@Step
+	public void setReporterEquipmentAdditionalow(String number) {
+		jobDetailPage().setReporterEquipmentAdditionalow(number);;
+	}
+	
+	@Step
+	public void assertReporterEquipmentAdditionalow(String expectedNumber) {
+		assertEquals(expectedNumber, jobDetailPage().getReporterEquipmentAdditionalRow());
+	}
+	
+	@Step
+	public void setVideographerEquipmentAdditionalRow(String number) {
+		jobDetailPage().setVideographerEquipmentAdditionalRow(number);;
+	}
+	
+	@Step
+	public void assertVideographerEquipmentAdditionalRow(String expectedNumber) {
+		assertEquals(expectedNumber, jobDetailPage().getVideographerEquipmentAdditionalRow());
+	}
+	
+	@Step
+	public void setAdditionalResourceAdditionalRow(String number) {
+		jobDetailPage().setAdditionalResourceAdditionalRow(number);;
+	}
+	
+	@Step
+	public void assertAdditionalResourceAdditionalRow(String expectedNumber) {
+		assertEquals(expectedNumber, jobDetailPage().getAdditionalResourceAdditionalRow());
+	}
+	
+	//VBrick row
+	@Step
+	public void setReporterVBrickRow(String number) {
+		jobDetailPage().setReporterVBrickRow(number);
+	}
+	
+	@Step
+	public void assertReporterVBrickRow(String expectedNumber) {
+		assertEquals(expectedNumber, jobDetailPage().getReporterVBrickRow());
+	}
+	
+	@Step
+	public void setVideographerVBrickRow(String number) {
+		jobDetailPage().setVideographerVBrickRow(number);
+	}
+	
+	@Step
+	public void assertVideographerVBrickRow(String expectedNumber) {
+		assertEquals(expectedNumber, jobDetailPage().getVideographerVBrickRow());
+	}
+	
+	@Step
+	public void setAdditionalResourceVBrickRow(String number) {
+		jobDetailPage().setAdditionalResourceVBrickRow(number);
+	}
+	
+	@Step
+	public void assertAdditionalResourceVBrickRow(String expectedNumber) {
+		assertEquals(expectedNumber, jobDetailPage().getAdditionalResourceVBrickRow());
+	}
+	
+	//Streaming row
+	@Step
+	public void setReporterStreamingRow(String number) {
+		jobDetailPage().setReporterStreamingRow(number);
+	}
+	
+	@Step
+	public void assertReporterStreamingRow(String expectedNumber) {
+		assertEquals(expectedNumber, jobDetailPage().getReporterStreamingRow());
+	}
+	
+	@Step
+	public void setVideographerStreamingRow(String number) {
+		jobDetailPage().setVideographerStreamingRow(number);
+	}
+	
+	@Step
+	public void assertVideographerStreamingRow(String expectedNumber) {
+		assertEquals(expectedNumber, jobDetailPage().getVideographerStreamingRow());
+	}
+	
+	@Step
+	public void setAdditionalResourceStreamingRow(String number) {
+		jobDetailPage().setAdditionalResourceStreamingRow(number);
+	}
+	
+	@Step
+	public void assertAdditionalResourceStreamingRow(String expectedNumber) {
+		assertEquals(expectedNumber, jobDetailPage().getAdditionalResourceStreamingRow());
+	}
+	
+	//Total row
+	
+	@Step
+	public void assertQuantityTotalRow(String expectedNumber) {
+		assertEquals(expectedNumber, jobDetailPage().getQuantityTotalRow());
+	}
+	
+	@Step
+	public void assertReporterTotalRow(String expectedNumber) {
+		assertEquals(expectedNumber, jobDetailPage().getReporterTotalRow());
+	}
+	
+	@Step
+	public void assertVideographerTotalRow(String expectedNumber) {
+		assertEquals(expectedNumber, jobDetailPage().getVideographerTotalRow());
+	}
+	
+	@Step
+	public void assertAdditionalTotalRow(String expectedNumber) {
+		assertEquals(expectedNumber, jobDetailPage().getAdditionalTotalRow());
+	}
 }

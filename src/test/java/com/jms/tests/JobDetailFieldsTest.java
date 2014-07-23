@@ -36,7 +36,7 @@ public class JobDetailFieldsTest extends BasicTest {
 	
 	@Steps
 	public ExpectedServicesSteps expectedServicesSteps; 
-
+/*
 	 @Test
 	 @Screenshots(onlyOnFailures = true)
 	 public void jobDetailPageCaseInfoSection() throws InterruptedException {
@@ -436,26 +436,53 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.deletetAppliedCommission(2);
 		globalSteps.pause(15); 
 
-	} 
-/*
+	}  */
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void jobDetailPageEquipmentModule() throws AWTException {
 
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("2220");
-		jobDetailSteps.maximizeMinimizeRatesSection();
-		jobDetailSteps.attachRatesSheet(1);
-	    //Rates
-		//jobDetailSteps.minimizeMaximizeEquipmentSection();
-		//jobDetailSteps.retrieveReporterEquipmentSection("Debbie Zirbz", 1);
-		//jobDetailSteps.retrieveVideographerEquipmentSection("Stanley Weinberg");
-		  globalSteps.pause(15); 
-		//jobDetailSteps.attachRatesSheet(1);   
-	}
-		//jobDetailSteps.attachRatesSheet(1);
-
-	}  */
-
+	//	jobDetailSteps.minimizeMaximizeEquipmentSection();
+		globalSteps.pause(3); 
+		jobDetailSteps.retrieveReporterEquipmentSection("Debbie Zirbz", 1);
+		jobDetailSteps.retrieveVideographerEquipmentSection("Stanley Weinberg", 2);
+		//Firm row
+		jobDetailSteps.setReporterEquipmentFirmRow("2");
+		jobDetailSteps.assertReporterEquipmentFirmRow("2");
+		jobDetailSteps.setVideographerEquipmentFirmRow("4");
+		jobDetailSteps.assertVideographerEquipmentFirmRow("4");
+		jobDetailSteps.setAdditionalResourceEquipmentFirmRow("5");
+		jobDetailSteps.assertAdditionalResourceEquipmentFirmRow("5");
+		//Additional row
+		jobDetailSteps.setQuantityEquipmentAdditionalow("2");
+		jobDetailSteps.assertQuantityEquipmentFirmRow("2");
+		jobDetailSteps.setReporterEquipmentAdditionalow("3");
+		jobDetailSteps.assertReporterEquipmentAdditionalow("3");
+		jobDetailSteps.setVideographerEquipmentAdditionalRow("4");
+		jobDetailSteps.assertVideographerEquipmentAdditionalRow("4");
+		jobDetailSteps.setAdditionalResourceAdditionalRow("5");
+		jobDetailSteps.assertAdditionalResourceAdditionalRow("5");
+		//VBrick row
+		jobDetailSteps.setReporterVBrickRow("2");
+		jobDetailSteps.assertReporterVBrickRow("2");
+		jobDetailSteps.setVideographerVBrickRow("3");
+		jobDetailSteps.assertVideographerVBrickRow("3");
+		jobDetailSteps.setAdditionalResourceVBrickRow("4");
+		jobDetailSteps.assertAdditionalResourceVBrickRow("4");
+		//Streaming row
+		jobDetailSteps.setReporterStreamingRow("2");
+		jobDetailSteps.assertReporterStreamingRow("2");
+		jobDetailSteps.setVideographerStreamingRow("3");
+		jobDetailSteps.assertVideographerStreamingRow("3");
+		jobDetailSteps.setAdditionalResourceStreamingRow("4");
+		jobDetailSteps.assertAdditionalResourceStreamingRow("4");
+		//Total row
+		jobDetailSteps.assertQuantityTotalRow("7");
+		jobDetailSteps.assertReporterTotalRow("5");
+		jobDetailSteps.assertVideographerTotalRow("8");
+		jobDetailSteps.assertAdditionalTotalRow("10");  
+	}  
 
 }
