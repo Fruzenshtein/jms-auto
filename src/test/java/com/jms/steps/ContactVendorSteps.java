@@ -19,6 +19,11 @@ public class ContactVendorSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void clickAcceptedButton() {
+		contactVendorPopup().clickAcceptedButton();
+	}
+	
+	@Step
 	public void clickContactedButton() {
 		contactVendorPopup().clickContactedButton();
 	}

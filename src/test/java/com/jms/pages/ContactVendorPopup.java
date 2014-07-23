@@ -13,6 +13,9 @@ public class ContactVendorPopup extends PageObject {
 	@FindBy(xpath="//span[text()='Contacted']")
 	private WebElement contactedButton;
 	
+	@FindBy(xpath="//span[text()='Accepted']")
+	private WebElement acceptedButton;
+	
 	@FindBy(xpath="//span[text()='Rejected']")
 	private WebElement rejectedButton;
 	
@@ -21,6 +24,10 @@ public class ContactVendorPopup extends PageObject {
 	
 	public void clickCalledButton() {
 		calledButton.click();
+	}
+	
+	public void clickAcceptedButton() {
+		acceptedButton.click();
 	}
 	
 	public void clickContactedButton() {
