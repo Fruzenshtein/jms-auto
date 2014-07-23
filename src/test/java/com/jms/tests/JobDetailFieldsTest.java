@@ -36,7 +36,7 @@ public class JobDetailFieldsTest extends BasicTest {
 	
 	@Steps
 	public ExpectedServicesSteps expectedServicesSteps; 
-	
+/*	
 	 @Test
 	 @Screenshots(onlyOnFailures = true)
 	 public void jobDetailPageCaseInfoSection() throws InterruptedException {
@@ -365,7 +365,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		expectedServicesSteps.clickUpdate(); 
 		
 	} 
-	
+	*/
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void jobDetailPageRatesCommissionFiles() throws AWTException {
@@ -373,14 +373,14 @@ public class JobDetailFieldsTest extends BasicTest {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("1290");
 	    //Rates
-		jobDetailSteps.maximizeMinimizeRatesSection();
-		//jobDetailSteps.attachRatesSheet(1);
+		/*	jobDetailSteps.maximizeRatesSection();
+	//	jobDetailSteps.attachRatesSheet(1);
 		//Scheduling firm
 		jobDetailSteps.checkAdminApprovedChckbxRates(1);
 		jobDetailSteps.getAdminApprovedChckbxRates(1, true);
 		jobDetailSteps.clearRatesNotes(1);
 		jobDetailSteps.addRatesNotes(1, "Rates notes 1");
-		jobDetailSteps.verifyAddedRatesNotes(1, "Rates notes 1");
+		jobDetailSteps.verifyAddedRatesNotes(1, "Rates notes 1"); 
 		//Contributing firm
 		jobDetailSteps.checkAdminApprovedChckbxRates(2);
 		jobDetailSteps.getAdminApprovedChckbxRates(2, true);
@@ -396,21 +396,26 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.clearRatesNotes(1);
 		jobDetailSteps.verifyAddedRatesNotes(1, "");
 		jobDetailSteps.clickSave();
-		globalSteps.pause(5);
-		jobDetailSteps.maximizeMinimizeRatesSection();    
-		
+		globalSteps.pause(5); 
+		jobDetailSteps.checkAdminApprovedChckbxRates(1);
+		jobDetailSteps.checkAdminApprovedChckbxRates(2);
+		jobDetailSteps.minimizeRatesSection();
+		*/
 		//Commission
-		jobDetailSteps.maximizeMinimizeCommissionSection();
+		jobDetailSteps.maximizeCommissionSection();
 		jobDetailSteps.clickCommissionApplyLink();
 		jobDetailSteps.clickApplyButtonCommission();
 		//TODO Add sales person + notes
 		//jobDetailSteps.assertAppliedCommission("123, 1. / 123, 1. (3 - 3)");
-		jobDetailSteps.deletetAppliedCommission(1);
-		jobDetailSteps.deletetAppliedCommission(2);
+		jobDetailSteps.deleteAppliedCommission(1);
+		globalSteps.pause(1);
+		jobDetailSteps.deleteAppliedCommission(1);  
+		jobDetailSteps.addCommissionNotes("Commission notes");
+		jobDetailSteps.assertCommissionNotes("Commission notes");
 		globalSteps.pause(15); 
 
 	} 
-	
+/*
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void jobDetailPageEquipmentModule() {
@@ -422,7 +427,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.retrieveReporterEquipmentSection("Debbie Zirbz", 1);
 		//jobDetailSteps.retrieveVideographerEquipmentSection("Stanley Weinberg");
 		globalSteps.pause(15); 
-		//jobDetailSteps.attachRatesSheet(1);
-	}
-	*/
+		//jobDetailSteps.attachRatesSheet(1);   
+	}*/
+	
 }

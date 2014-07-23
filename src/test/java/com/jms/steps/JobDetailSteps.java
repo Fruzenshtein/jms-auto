@@ -446,8 +446,13 @@ public class JobDetailSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void maximizeMinimizeRatesSection() {
-		jobDetailPage().maximizeMinimizeRatesSection();
+	public void maximizeRatesSection() {
+		jobDetailPage().maximizeRatesSection();
+	}
+	
+	@Step
+	public void minimizeRatesSection() {
+		jobDetailPage().minimizeRatesSection();
 	}
 	
 	@Step
@@ -476,8 +481,13 @@ public class JobDetailSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void maximizeMinimizeCommissionSection() {
-		jobDetailPage().maximizeMinimizeCommissionSection();
+	public void maximizeCommissionSection() {
+		jobDetailPage().maximizeCommissionSection();
+	}
+	
+	@Step
+	public void minimizeCommissionSection() {
+		jobDetailPage().minimizeCommissionSection();
 	}
 	
 	@Step
@@ -496,8 +506,18 @@ public class JobDetailSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void deletetAppliedCommission(int index) {
+	public void deleteAppliedCommission(int index) {
 		jobDetailPage().deleteAppliedCommission(index);
+	}
+	
+	@Step
+	public void addCommissionNotes(String commissionNotes) {
+		jobDetailPage().addCommissionNotes(commissionNotes);
+	}
+	
+	@Step
+	public void assertCommissionNotes(String expectedCommissionNotes) {
+		assertEquals(expectedCommissionNotes, jobDetailPage().getCommissionNotes());
 	}
 	
 	@Step

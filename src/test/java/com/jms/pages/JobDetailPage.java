@@ -608,26 +608,34 @@ public class JobDetailPage extends PageObject {
 
 	public void attachRatesSheet(int index) throws AWTException {
 		$(
-				"(//div[@class='mb-5']//div[@class='qq-upload-button'])["
-						+ index + "]").click();
+				"(//input[@type='file'])[" + index + "]").click();
 		getClock().pauseFor(5000);
-		/*
-		 * StringSelection ss = new
-		 * StringSelection("Libraries\\Documents\\RatesSheet.txt");
-		 * Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss,
-		 * null); Robot robot = new Robot(); robot.keyPress(KeyEvent.VK_ENTER);
-		 * robot.keyRelease(KeyEvent.VK_ENTER);
-		 * robot.keyPress(KeyEvent.VK_CONTROL); robot.keyPress(KeyEvent.VK_V);
-		 * robot.keyRelease(KeyEvent.VK_V);
-		 * robot.keyRelease(KeyEvent.VK_CONTROL);
-		 * robot.keyPress(KeyEvent.VK_ENTER);
-		 * robot.keyRelease(KeyEvent.VK_ENTER); robot.delay(1000);
-		 */
+		
+		  StringSelection ss = new
+		  StringSelection("C:\\Users\\Install\\Documents\\RatesSheet.txt");
+		  Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null); 
+		  Robot robot = new Robot(); 
+		  robot.keyPress(KeyEvent.VK_ENTER);
+		  robot.keyRelease(KeyEvent.VK_ENTER);
+		  robot.keyPress(KeyEvent.VK_CONTROL); 
+		  robot.keyPress(KeyEvent.VK_V);
+		  robot.keyRelease(KeyEvent.VK_V);
+		  robot.keyRelease(KeyEvent.VK_CONTROL);
+		  robot.keyPress(KeyEvent.VK_ENTER);
+		  robot.keyRelease(KeyEvent.VK_ENTER); 
+		  robot.delay(1000);
+		 
 	}
 
-	public void maximizeMinimizeRatesSection() {
+	public void maximizeRatesSection() {
 		$(
 				"//div[@data-test='jobdetail-ratesinfo-container']//div[@class='collapsed on']")
+				.click();
+	}
+	
+	public void minimizeRatesSection() {
+		$(
+				"//div[@data-test='jobdetail-ratesinfo-container']//div[@class='collapsed off']")
 				.click();
 	}
 
@@ -666,9 +674,15 @@ public class JobDetailPage extends PageObject {
 						+ index + "]").clear();
 	}
 
-	public void maximizeMinimizeCommissionSection() {
+	public void maximizeCommissionSection() {
 		$(
 				"//div[@class='module micro jobdetail-commission-view']//div[@class='collapsed on']")
+				.click();
+	}
+	
+	public void minimizeCommissionSection() {
+		$(
+				"//div[@class='module micro jobdetail-commission-view']//div[@class='collapsed off']")
 				.click();
 	}
 
@@ -690,8 +704,16 @@ public class JobDetailPage extends PageObject {
 
 	public void deleteAppliedCommission(int index) {
 		$(
-				"(//div[@class='module micro jobdetail-commission-view']//a[@class='icon delete'])["
+				"(//a[@class='icon delete'])["
 						+ index + "]").click();
+	}
+	
+	public void addCommissionNotes(String commissionNotes) {
+		$("//textarea[@data-test='jobcommission-notes-text']").sendKeys(commissionNotes);
+	}
+	
+	public String getCommissionNotes() {
+		return $("//textarea[@data-test='jobcommission-notes-text']").getTextValue();
 	}
 	
 	public void removeAddedFirm(int index) {
