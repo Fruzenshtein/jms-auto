@@ -62,11 +62,12 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
 		expectedServicesSteps.clickUpdate();
 		
+		globalSteps.pause(8);
 		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.VIDEOGRAPHER, true);
 		jobDetailSteps.isServiceIconInVendorSection(VendorService.VIDEOGRAPHER, true);
 		
 	}
-	
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc4_2_2() throws InterruptedException {
@@ -84,6 +85,8 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 		
 		expectedServicesSteps.setVideographerInstructions("Videographer insctructions");
 		expectedServicesSteps.clickUpdate();
+		
+		globalSteps.pause(8);
 		
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "MPEG");
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "MPEG/Sync");
@@ -157,6 +160,8 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 		expectedServicesSteps.clickReportingServiceCheckBox(VideographerService.MPEG, 1);
 		expectedServicesSteps.clickUpdate();
 		
+		globalSteps.pause(8);
+		
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "MPEG");
 		
 		jobDetailSteps.isServiceIconInVendorSection(VendorService.VIDEOGRAPHER, true);
@@ -169,6 +174,8 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 		
 		expectedServicesSteps.clickUpdate();
 		
+		globalSteps.pause(8);
+		
 		jobDetailSteps.isServiceIconInVendorSection(VendorService.VIDEOGRAPHER, false);
 		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.VIDEOGRAPHER, false);
 		
@@ -176,17 +183,11 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
 		expectedServicesSteps.clickUpdate();
 		
+		globalSteps.pause(8);
+		
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "MPEG");
 		
 		jobDetailSteps.isServiceIconInVendorSection(VendorService.VIDEOGRAPHER, true);
 		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.VIDEOGRAPHER, true);
 	}
-	
-	@Test
-	@Pending
-	@Screenshots(onlyOnFailures = true)
-	public void tc4_2_5() throws InterruptedException {
-		
-	}
-	
 }
