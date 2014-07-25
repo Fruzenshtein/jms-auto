@@ -47,7 +47,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 	public VednorQueueSteps vednorQueueSteps;
 	
 	//Alternative test data: 2013, 2007
-	private String jobId = "2006";
+	private String jobId = "2013";
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
@@ -222,7 +222,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 	//TC6.2.7
 	public void aecommendationApprovedAgencyVendorContactViaCalledVendorAccepts() {
 		loginSteps.login(userStorage.getUser(0));
-		globalSteps.searchJobById(jobId);
+		globalSteps.searchJobById("2007");
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
 		
