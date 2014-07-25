@@ -272,4 +272,8 @@ public class ExpectedServicesPopup extends PageObject {
 	public void checkExhibitASAP() {
 		$("//img[@class='imageCheck exibitsAsap']").click();
 	}
+	
+	public void clickOnVendorSection(int index) {
+		$("(//div[@class='loadmask'])[" + index +"]").click();
+	}
 }

@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import com.jms.pages.elements.ExpectedServiceSection;
 import com.jms.pages.elements.JobDetailHeaderLabel;
+import com.jms.pages.elements.ReportingService;
 import com.jms.pages.elements.StreamServices;
 import com.jms.pages.elements.VendorService;
 import com.jms.pages.elements.VideographerService;
@@ -38,7 +39,7 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 	
 	private String jobId = "1251";
 	String futureDate = DateGenerator.getInstance().particularDate(2016, Calendar.MAY, 12);
-	
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc4_2_1() throws InterruptedException {
@@ -189,5 +190,41 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 		
 		jobDetailSteps.isServiceIconInVendorSection(VendorService.VIDEOGRAPHER, true);
 		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.VIDEOGRAPHER, true);
+	}
+	
+	
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	public void MultipleFirmsWitnesses() {
+		
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("1854");
+		jobDetailSteps.clickExpectedServicesButton();
+		//Scheduling firm tab
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
+		expectedServicesSteps.clickReportingServiceCheckBox(VideographerService.MPEG, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(VideographerService.VIDEO_STREAM, 1);
+		//Contributing firm tab
+		expectedServicesSteps.goToFirmTab(2);
+		expectedServicesSteps.clickOnVendorSection(2);
+		expectedServicesSteps.clickReportingServiceCheckBox(VideographerService.DVD, 1);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(15);
+		jobDetailSteps.clickExpectedServicesButton();
+		expectedServicesSteps.goToFirmTab(2);
+		expectedServicesSteps.clickReportingServiceCheckBox(VideographerService.MPEG, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(VideographerService.MPEG_SYNC, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(VideographerService.VHS, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(VideographerService.VIDEO_STREAM, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(VideographerService.UPLOAD_TO_REPO, 2);
+		expectedServicesSteps.setVideographerInstructions("Videographer insctructions");
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(10);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "Video Streaming");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "MPEG");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "DVD");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "MPEG/Sync");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "VHS");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "Upload to Repository");
 	}
 }

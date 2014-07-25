@@ -181,4 +181,8 @@ public class ExpectedServicesSteps extends ScenarioSteps {
 		expectedServicesPopup().checkExhibitASAP();
 	}
 	
+	@Step
+	public void clickOnVendorSection(int index) {
+		expectedServicesPopup().clickOnVendorSection(index);
+	}
 }

@@ -362,7 +362,9 @@ public class ExpectedServicesReporterTest extends BasicTest {
 		expectedServicesSteps.selectDelivery("Immediate ("+testFutureDate+")");
 		expectedServicesSteps.clickVendorTBDIconSection(VendorService.REPORTER);
 		expectedServicesSteps.clickUpdate();
-		//TODO rewrite the script using a new job + check on the job detail widget
+		globalSteps.pause(7);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "Internet Real-Time, Real-Time, Rough Draft, Immediate Delivery");
 		
 	}
+	
 }
