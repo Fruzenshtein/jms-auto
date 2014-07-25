@@ -96,10 +96,8 @@ public class JobDetailSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void assertJobDetailHeaderLabel(JobDetailHeaderLabel label,
-			String expectedValue) {
-		assertTrue(jobDetailPage().getJobDetailHeaderLabel(label).contains(
-				expectedValue));
+	public void assertJobDetailHeaderLabel(JobDetailHeaderLabel label, String expectedValue) {
+		assertTrue(jobDetailPage().getJobDetailHeaderLabel(label).contains(expectedValue));
 	}
 
 	@Step

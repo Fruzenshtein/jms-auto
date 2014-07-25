@@ -285,9 +285,7 @@ public class JobDetailPage extends PageObject {
 	}
 
 	public String getJobDetailHeaderLabel(JobDetailHeaderLabel label) {
-		return $(
-				"//div[text()='" + label.getLabel()
-						+ "']/../div[@class='showinfo-text']").getText();
+		return $("//div[text()='" + label.getLabel() + "']/../div[@class='showinfo-text']").getText();
 	}
 
 	public void clickExpectedServicesButton() {

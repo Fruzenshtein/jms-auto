@@ -171,4 +171,14 @@ public class ExpectedServicesSteps extends ScenarioSteps {
 		expectedServicesPopup().clickChangeRecommendationButton();
 	}
 	
+	@Step
+	public void goToFirmTab(int index) {
+		expectedServicesPopup().goToFirmTab(index);
+	}
+	
+	@Step
+	public void checkExhibitASAP() {
+		expectedServicesPopup().checkExhibitASAP();
+	}
+	
 }

@@ -264,5 +264,12 @@ public class ExpectedServicesPopup extends PageObject {
 	public void clickChangeRecommendationButton() {
 		changeRecommendationButton.click();
 	}
+	
+	public void goToFirmTab(int index) {
+		$("(//div[@data-test='client-expectedservices-tab'])[" + index + "]").click();
+	}
 
+	public void checkExhibitASAP() {
+		$("//img[@class='imageCheck exibitsAsap']").click();
+	}
 }

@@ -329,4 +329,40 @@ public class ExpectedServicesReporterTest extends BasicTest {
 		
 	}
 	
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	public void MultipleFirmsWitnesses() {
+		String testFutureDate = DateGenerator.getInstance().particularDate(2016, Calendar.OCTOBER, 28);
+		
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("1937");
+		jobDetailSteps.clickExpectedServicesButton();
+		//Scheduling firm tab
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.INTERNET_REALTIME, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.REALTIME, 1);
+		expectedServicesSteps.setNumberOfLeptops("2");
+		//Contributing firm tab
+		expectedServicesSteps.goToFirmTab(2);
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.REALTIME, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.ROUGH_DRAFT, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.INTERNET_REALTIME, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.UPLOAD_TO_REPOSITORY, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.EXHIBIT_HARD_COPY, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.EXHIBIT_SCANED_LINKED, 1);
+		expectedServicesSteps.setReporterInstructions("Reporter instructions");
+		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.EXHIBITS, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.CHAT_ROOM_NEEDED, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.TRANSCRIPTS, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.TABBED, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.OCR, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.TIFF, 1);
+		expectedServicesSteps.setNumberOfLeptops("3");
+		expectedServicesSteps.selectDelivery("Immediate ("+testFutureDate+")");
+		expectedServicesSteps.clickVendorTBDIconSection(VendorService.REPORTER);
+		expectedServicesSteps.clickUpdate();
+		//TODO rewrite the script using a new job + check on the job detail widget
+		
+	}
 }
