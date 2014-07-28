@@ -185,4 +185,99 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		
 	}
 
+	
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	public void deactivation() {
+		
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("671");
+		jobDetailSteps.clickExpectedServicesButton();
+		
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(5);
+		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.STREAMING, true);
+		jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, true);
+		//Deactivate services
+		jobDetailSteps.clickExpectedServicesButton();
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(5);
+		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.STREAMING, false);
+		jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, false);
+		//Activate services by clicking on the section
+		jobDetailSteps.clickExpectedServicesButton();
+		expectedServicesSteps.clickOnVendorSection(3);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(5);
+		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.STREAMING, true);
+		jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, true);
+		//Deactivate services
+		jobDetailSteps.clickExpectedServicesButton();
+		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.INTERNET_REALTIME, 2);
+		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 2);
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(25);
+		
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "Internet Real-Time, Regular (8-Day) Delivery");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "Video Streaming");
+		
+	}
+	
+	
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	public void deactivation() {
+		
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("2614");
+		jobDetailSteps.clickExpectedServicesButton();
+		
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
+		expectedServicesSteps.goToFirmTab(2);
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(5);
+		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.STREAMING, true);
+		jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, true);
+		
+		jobDetailSteps.clickExpectedServicesButton();
+		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.INTERNET_REALTIME, 2);
+		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.CHAT_ROOM_NEEDED, 2);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(15);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.STREAMING, "Internet Real-Time");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.STREAMING, "Chat");
+	//	jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "Internet Real-Time, Regular (8-Day) Delivery");
+		//Contributing firm
+		jobDetailSteps.clickExpectedServicesButton();
+		expectedServicesSteps.goToFirmTab(2);
+		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 2);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(15);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.STREAMING, "Video Stream");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "Video Streaming");
+		//Deactivate streaming for scheduling firm
+		jobDetailSteps.clickExpectedServicesButton();
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(7);
+		//Activate streaming for scheduling firm
+		jobDetailSteps.clickExpectedServicesButton();
+		expectedServicesSteps.clickOnVendorSection(3);
+		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 2);
+		//Contributing firm
+		expectedServicesSteps.goToFirmTab(2);
+		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.INTERNET_REALTIME, 2);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(7);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "Internet Real-Time, Regular (8-Day) Delivery");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "Video Streaming");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.STREAMING, "Internet Real-Time");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.STREAMING, "Chat");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.STREAMING, "Video Stream");
+	}
+	
 }

@@ -346,7 +346,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		globalSteps.pause(11); 
 				
 	} 
-/*
+*/
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void jobDetailPageRatesCommissionFiles() throws AWTException {
@@ -357,9 +357,6 @@ public class JobDetailFieldsTest extends BasicTest {
 
 		jobDetailSteps.maximizeRatesSection();
 	//	jobDetailSteps.attachRatesSheet(1);
-
-		jobDetailSteps.maximizeRatesSection();
-		//jobDetailSteps.attachRatesSheet(1);
 
 		//Scheduling firm
 		jobDetailSteps.checkAdminApprovedChckbxRates(1);
@@ -375,10 +372,10 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.verifyAddedRatesNotes(2, "Rates notes 2");
 		jobDetailSteps.clickSave();
 		globalSteps.pause(5);
-		jobDetailSteps.checkAdminApprovedChckbxRates(2);
-		jobDetailSteps.getAdminApprovedChckbxRates(2, false);
 		jobDetailSteps.checkAdminApprovedChckbxRates(1);
 		jobDetailSteps.getAdminApprovedChckbxRates(1, false);
+		jobDetailSteps.checkAdminApprovedChckbxRates(2);
+		jobDetailSteps.getAdminApprovedChckbxRates(2, false);
 		jobDetailSteps.clearRatesNotes(1);
 		jobDetailSteps.verifyAddedRatesNotes(1, "");
 		jobDetailSteps.clickSave();
@@ -387,10 +384,6 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.checkAdminApprovedChckbxRates(1);
 		jobDetailSteps.checkAdminApprovedChckbxRates(2);
 		jobDetailSteps.minimizeRatesSection();
-		
-
-		globalSteps.pause(5);
-		jobDetailSteps.minimizeRatesSection();    
 
 		//Commission
 		jobDetailSteps.maximizeCommissionSection();
@@ -403,6 +396,8 @@ public class JobDetailFieldsTest extends BasicTest {
 		globalSteps.pause(1);
 		jobDetailSteps.deleteAppliedCommission(1);  
 		jobDetailSteps.addCommissionNotes("Commission notes");
+		jobDetailSteps.clickSave();
+		globalSteps.pause(6);
 		jobDetailSteps.assertCommissionNotes("Commission notes");
 
 		jobDetailSteps.changeCommissionPercentage(1, "33");
@@ -426,18 +421,15 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.addFilesNotes("Files notes");
 		jobDetailSteps.clickSave();
 		jobDetailSteps.assertFilesNotes("Files notes");
-		jobDetailSteps.addFilesNotes("Files notes");
-		jobDetailSteps.clickSave();
-		jobDetailSteps.assertFilesNotes("Files notes");
 		jobDetailSteps.deleteAnotherFileFilesSection(2);
 		globalSteps.pause(7); 
 
-		jobDetailSteps.deletetAppliedCommission(1);
-		jobDetailSteps.deletetAppliedCommission(2);
+		jobDetailSteps.deleteAppliedCommission(1);
+		jobDetailSteps.deleteAppliedCommission(1);
 		globalSteps.pause(15); 
 
-	}  */
-
+	}  
+/*
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void jobDetailPageEquipmentModule() throws AWTException {
@@ -484,5 +476,5 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.assertVideographerTotalRow("8");
 		jobDetailSteps.assertAdditionalTotalRow("10");  
 	}  
-
+*/
 }
