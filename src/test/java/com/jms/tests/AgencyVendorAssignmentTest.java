@@ -46,7 +46,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 	@Steps
 	public VednorQueueSteps vednorQueueSteps;
 	
-	//Alternative test data: 2013, 2007
+	//Alternative test data: 2013, 2007, 2024
 	private String jobId = "2013";
 	
 	@Test
@@ -268,7 +268,63 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		globalSteps.pause(60);
 		globalSteps.waitUntilTextAppear("Job Info - Prep Draft");
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GREEN);
+	
+	}
+	
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	//TC6.2.8
+	public void TC_6_2_8() {
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("2007");
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
 		
+		if (expectedServicesSteps.statusOfServiceIcon(VendorService.REPORTER))
+			expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		
+		expectedServicesSteps.clickUpdate();
+		
+		globalSteps.pause(6);
+		jobDetailSteps.clickSave();		
+		globalSteps.pause(6);
+		
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(14);
+		
+		jobDetailSteps.clickSave();
+		
+		globalSteps.pause(8);
+		
+		jobDetailSteps.clickManageButton();
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.SELECT_ANOTHER_VENDOR);
+		globalSteps.pause(18);
+		expectedServicesSteps.clickAgencyByIndex(1);
+		expectedServicesSteps.clickChangeRecommendationButton();
+		globalSteps.pause(5);
+		assignVendorSteps.clickSaveButton();
+		globalSteps.waitUntilTextAppear("Recommendation (Agency)");
+		globalSteps.pause(10);
+	
+		//Test starts
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.APPROVE_RECOMENDATION);
+		
+//		String name = jobDetailSteps.getVendorNameInManageModule(1);
+		
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.CONTACT_FOR_ASSIGNMENT);
+		contactVendorSteps.clickCalledButton();
+		contactVendorSteps.clickRejectedButton();
+		
+		globalSteps.pause(10);
+//		globalSteps.waitUntilTextDisappear(name);
+		globalSteps.waitUntilTextAppear("Recommendation (Freelancer)");
+		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.BLUE);
 	
 	}
 }
