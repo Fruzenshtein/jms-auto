@@ -230,6 +230,7 @@ public class ExpectedServicesPopup extends PageObject {
 	}
 	
 	public void setIP(String ip) {
+		ipField.clear();
 		ipField.sendKeys(ip);
 	}
 	
@@ -253,7 +254,8 @@ public class ExpectedServicesPopup extends PageObject {
 		numberOfCameos.sendKeys(number);
 	}
 	
-	public void addEmailConfServSection(String email) {
+	public void addEmailConfServSection(String email, int index) {
+		$("(//span[text()='Email to:']//..//input)[" + index +"]").clear();
 		$("//span[text()='Email to:']//..//input").sendKeys(email);
 	}
 	
@@ -275,5 +277,9 @@ public class ExpectedServicesPopup extends PageObject {
 	
 	public void clickOnVendorSection(int index) {
 		$("(//div[@class='loadmask'])[" + index +"]").click();
+	}
+	
+	public void removeLocation(int index) {
+		$("(//a[text()='Remove Location'])[" + index + "]").click();
 	}
 }

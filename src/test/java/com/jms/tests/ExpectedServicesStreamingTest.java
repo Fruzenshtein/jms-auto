@@ -229,7 +229,7 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void deactivation() {
+	public void multipleFirmsWitnesses() {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("2614");

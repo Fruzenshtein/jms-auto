@@ -34,7 +34,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 	
 	private String jobId = "1251";
 	private String jobIdWithVultipleLoc = "1473";
-
+	
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc4_4_1() throws InterruptedException {
@@ -89,7 +89,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		expectedServicesSteps.setNumberOfCameos("3");
 		
 		expectedServicesSteps.clickAddEmailLink();
-		expectedServicesSteps.addEmailConfServSection("test@door3.com");
+		expectedServicesSteps.addEmailConfServSection("test@door3.com", 1);
 
 		expectedServicesSteps.clickUpdate();
 		
@@ -137,13 +137,63 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.LOCATION, false);
 		
 	}
-	/*
+	
+	
 	@Test
-	@Pending
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_4_4() throws InterruptedException {
+	public void multipleFirmsWitnesses() {
+		
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("674");
+		jobDetailSteps.clickExpectedServicesButton();
+		//Scheduling firm
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.LOCATION);
+		expectedServicesSteps.selectConferenceLocation(1);
+		expectedServicesSteps.clickAddLocationLink();
+		//Contributing firm
+		expectedServicesSteps.goToFirmTab(2);
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.LOCATION);
+		expectedServicesSteps.selectConferenceLocation(1);
+		expectedServicesSteps.clickAddLocationLink();
+		expectedServicesSteps.clickVendorTBDIconSection(VendorService.LOCATION);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(1);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US");
+		
+		jobDetailSteps.clickExpectedServicesButton();
+		expectedServicesSteps.removeLocation(1);
+		expectedServicesSteps.goToFirmTab(2);
+		expectedServicesSteps.selectConferenceLocation(1);
+		expectedServicesSteps.clickAddLocationLink();
+		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.VIDEO_CONF_NEEDED, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.INITIATES_CONF, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.TSG_PROVIDING, 1);
+		expectedServicesSteps.setIP("207.110.57.178");
+		expectedServicesSteps.setISDN("415988488501");
+		expectedServicesSteps.setItContact("Robert Huberts");
+		expectedServicesSteps.setPhoneConfServices("380447362211");
+	//	expectedServicesSteps.setNotes("Test notes");
+		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.CAMEO, 1);
+		expectedServicesSteps.setNumberOfCameos("3");
+		expectedServicesSteps.clickAddEmailLink();
+		expectedServicesSteps.addEmailConfServSection("test@door3.com", 1);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(3);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US)");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
+		jobDetailSteps.clickExpectedServicesButton();
+		expectedServicesSteps.goToFirmTab(2);
+		expectedServicesSteps.setIP("207.222.11.200");
+		expectedServicesSteps.clickAddEmailLink();
+		expectedServicesSteps.addEmailConfServSection("test2@door3.com", 2);
+		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.INITIATES_CONF, 1);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(3);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US)");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
 		
 	}
+
 	
 	@Test
 	@Pending
@@ -165,5 +215,5 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 	public void tc4_4_7() throws InterruptedException {
 		
 	}
-*/
+
 }

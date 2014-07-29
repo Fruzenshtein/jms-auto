@@ -157,8 +157,8 @@ public class ExpectedServicesSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void addEmailConfServSection(String email) {
-		expectedServicesPopup().addEmailConfServSection(email);
+	public void addEmailConfServSection(String email, int index) {
+		expectedServicesPopup().addEmailConfServSection(email, index);
 	}
 	
 	@Step
@@ -184,5 +184,10 @@ public class ExpectedServicesSteps extends ScenarioSteps {
 	@Step
 	public void clickOnVendorSection(int index) {
 		expectedServicesPopup().clickOnVendorSection(index);
+	}
+	
+	@Step
+	public void removeLocation(int index) {
+		expectedServicesPopup().removeLocation(index);
 	}
 }
