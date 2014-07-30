@@ -323,7 +323,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		
 		globalSteps.pause(10);
 //		globalSteps.waitUntilTextDisappear(name);
-		globalSteps.waitUntilTextAppear("Recommendation (Freelancer)");
+//		globalSteps.waitUntilTextAppear("Recommendation (Freelancer)");
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.BLUE);
 	
 	}
