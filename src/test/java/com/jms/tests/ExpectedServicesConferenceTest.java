@@ -198,22 +198,8 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 	@Test
 	@Pending
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_4_5() throws InterruptedException {
+	public void multipleLocations() throws InterruptedException {
 		
-	}
-	
-	@Test
-	@Pending
-	@Screenshots(onlyOnFailures = true)
-	public void tc4_4_6() throws InterruptedException {
-		
-	}
-	
-	@Test
-	@Pending
-	@Screenshots(onlyOnFailures = true)
-	public void tc4_4_7() throws InterruptedException {
-		
-	}
+ }
 
 }

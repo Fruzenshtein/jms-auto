@@ -36,7 +36,7 @@ public class JobDetailFieldsTest extends BasicTest {
 	
 	@Steps
 	public ExpectedServicesSteps expectedServicesSteps; 
-/*
+
 	 @Test
 	 @Screenshots(onlyOnFailures = true)
 	 public void jobDetailPageCaseInfoSection() throws InterruptedException {
@@ -346,7 +346,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		globalSteps.pause(11); 
 				
 	} 
-*/
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void jobDetailPageRatesCommissionFiles() throws AWTException {
