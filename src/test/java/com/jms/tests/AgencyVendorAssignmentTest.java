@@ -48,7 +48,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 	
 	//Alternative test data: 2013, 2007, 2024
 	private String jobId = "2013";
-	
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	//TC6.2.1
@@ -155,11 +155,11 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		globalSteps.pause(10);
 		
 		//Test starts
+		String currentVandor = jobDetailSteps.getVendorNameInManageModule(1);
+		
 		jobDetailSteps.clickVendorActionLink(1);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.RECOMMEND_ANOTHER_VEND);
 		globalSteps.pause(5);
-		
-		String currentVandor = jobDetailSteps.getVendorNameInManageModule(1);
 		
 		globalSteps.waitUntilTextDisappear(currentVandor);
 	}
@@ -327,4 +327,5 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.BLUE);
 	
 	}
+	
 }
