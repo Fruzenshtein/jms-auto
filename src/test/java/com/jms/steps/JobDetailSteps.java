@@ -864,8 +864,32 @@ public class JobDetailSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void setLocationAddress(String company, int companyIndex, String address, 
-			String city, String zip, String state, int countryIndex) {
-		jobDetailPage().setLocationAddress(company, companyIndex, address, city, zip, state, countryIndex);
+	public void setCompanyLocation(String company, int companyIndex) {
+		jobDetailPage().setCompanyLocation(company, companyIndex);
+	}
+	
+	@Step
+	public void setAddress(String address) {
+		jobDetailPage().setAddress(address);
+	}
+	
+	@Step
+	public void setCity(String city) {
+		jobDetailPage().setCity(city);
+	}
+	
+	@Step
+	public void setZip(String zip) {
+		jobDetailPage().setZip(zip);
+	}
+	
+	@Step
+	public void setState(String state) {
+		jobDetailPage().setState(state);
+	}
+	
+	@Step
+	public void setCountry(int countryIndex) {
+		jobDetailPage().setCountry(countryIndex);
 	}
 }
