@@ -86,7 +86,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		
 		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.CAMEO, 1);
 		
-		expectedServicesSteps.setNumberOfCameos("3");
+		expectedServicesSteps.setNumberOfCameos("3", 1);
 		
 		expectedServicesSteps.clickAddEmailLink();
 		expectedServicesSteps.addEmailConfServSection("test@door3.com", 1);
@@ -174,7 +174,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		expectedServicesSteps.setPhoneConfServices("380447362211");
 	//	expectedServicesSteps.setNotes("Test notes");
 		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.CAMEO, 1);
-		expectedServicesSteps.setNumberOfCameos("3");
+		expectedServicesSteps.setNumberOfCameos("3",1);
 		expectedServicesSteps.clickAddEmailLink();
 		expectedServicesSteps.addEmailConfServSection("test@door3.com", 1);
 		expectedServicesSteps.clickUpdate();
@@ -196,10 +196,48 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 
 	
 	@Test
-	@Pending
 	@Screenshots(onlyOnFailures = true)
-	public void multipleLocations() throws InterruptedException {
-		
+	public void multipleLocations() {
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("669");
+		jobDetailSteps.clickExpectedServicesButton();
+		//1st location
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.LOCATION);
+		expectedServicesSteps.selectConferenceLocation(1);
+		expectedServicesSteps.clickAddLocationLink();
+		//2nd location
+		expectedServicesSteps.selectConferenceLocation(2);
+		expectedServicesSteps.clickAddLocationLink();
+		expectedServicesSteps.clickVendorTBDIconSection(VendorService.LOCATION);
+		//3rd location
+		expectedServicesSteps.selectConferenceLocation(3);
+		expectedServicesSteps.clickAddLocationLink();
+		expectedServicesSteps.clickUpdate();
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US), "
+				+ "Ball Janik LLP (One Main Place, 101 SW Main Street, Portland, OR, US), "
+				+ "Aegis Media North America (150 E. 42nd Street, New York, NY, US)");
+		//Provide data
+		//1st location
+		jobDetailSteps.clickExpectedServicesButton();
+		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.VIDEO_CONF_NEEDED, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.INITIATES_CONF, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.TSG_PROVIDING, 1);
+		expectedServicesSteps.setIP("207.110.57.178");
+		expectedServicesSteps.setISDN("415988488501");
+		expectedServicesSteps.setItContact("Robert Huberts");
+		expectedServicesSteps.setPhoneConfServices("380447362211");
+	//	expectedServicesSteps.setNotes("Test notes");
+		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.CAMEO, 1);
+		expectedServicesSteps.setNumberOfCameos("3", 1);
+		expectedServicesSteps.clickAddEmailLink();
+		expectedServicesSteps.addEmailConfServSection("test@door3.com", 1);
+		//2nd location
+		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.VIDEO_CONF_NEEDED, 2);
+		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.INITIATES_CONF, 2);
+		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.CAMEO, 2);
+		expectedServicesSteps.setNumberOfCameos("3", 2);
+		expectedServicesSteps.setItContact("Irina M");
+		globalSteps.pause(15);
  }
 
 }
