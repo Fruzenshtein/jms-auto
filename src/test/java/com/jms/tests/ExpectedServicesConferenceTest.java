@@ -7,6 +7,7 @@ import net.thucydides.core.annotations.Screenshots;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Story;
 
+import com.jms.model.Address;
 import com.jms.pages.elements.ExpectedServiceSection;
 import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.pages.elements.LocationService;
@@ -16,6 +17,7 @@ import com.jms.steps.ExpectedServicesSteps;
 import com.jms.steps.GlobalSteps;
 import com.jms.steps.JobDetailSteps;
 import com.jms.steps.LoginSteps;
+import com.jms.util.DateGenerator;
 
 @Story(ExpectedServicesConferenceStory.class)
 public class ExpectedServicesConferenceTest extends BasicTest {
@@ -197,6 +199,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
+	@Pending
 	public void multipleLocations() {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("669");
@@ -219,6 +222,28 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		//Provide data
 		//1st location
 		jobDetailSteps.clickExpectedServicesButton();
+	}
+	
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	public void invalidLocation() throws InterruptedException {
+
+		loginSteps.login(userStorage.getUser(0));
+		String futureDate = DateGenerator.getInstance().modifiedDate(0, 0, 1);
+
+		globalSteps.clickCreateJobIcon();
+		globalSteps.openWidgetIn(1);
+	
+		jobDetailSteps.setSchedulingFirm("ABC, Inc.");
+		jobDetailSteps.setDate(futureDate);
+		jobDetailSteps.setCaseName("IrinaAutoTest");
+		jobDetailSteps.setLocationAddress("Company1", 3, "Lilu 5", "Lviv", "02111", "Lviv", 2);
+		jobDetailSteps.clickSave();
+		globalSteps.pause(7);
+		jobDetailSteps.clickExpectedServicesButton();
+		expectedServicesSteps.selectConferenceLocation(1);
+		expectedServicesSteps.clickAddLocationLink();
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.LOCATION);
 		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.VIDEO_CONF_NEEDED, 1);
 		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.INITIATES_CONF, 1);
 		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.TSG_PROVIDING, 1);
@@ -237,6 +262,40 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.CAMEO, 2);
 		expectedServicesSteps.setNumberOfCameos("3", 2);
 		expectedServicesSteps.setItContact("Irina M");
+		expectedServicesSteps.setNumberOfCameos("3", 1);
+		expectedServicesSteps.clickAddEmailLink();
+		expectedServicesSteps.addEmailConfServSection("test@door3.com", 1);
+		expectedServicesSteps.clickUpdate();
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "IrinaCo (Revutskogo 3, Kiev, Kiev, UA)");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
+		jobDetailSteps.maximizeLocationSection();
+		jobDetailSteps.clickClearAddressFields(1);
+		jobDetailSteps.clickOkButton();
+		//Set another location
+		
+		jobDetailSteps.setLocationAddress("Some company", 2, "Vivi 5", "Kiev", "02111", "Kiev", 3);
+		jobDetailSteps.clickSave();
+		globalSteps.pause(7);
+		jobDetailSteps.clickExpectedServicesButton();
+		expectedServicesSteps.removeLocation(1);
+		expectedServicesSteps.selectConferenceLocation(1);
+		expectedServicesSteps.clickAddLocationLink();
+		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.VIDEO_CONF_NEEDED, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.INITIATES_CONF, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.TSG_PROVIDING, 1);
+		expectedServicesSteps.setIP("207.000.00.000");
+		expectedServicesSteps.setISDN("45123409");
+    	expectedServicesSteps.setItContact("Vi");
+		expectedServicesSteps.setPhoneConfServices("3335566");
+		//expectedServicesSteps.setNotes("Test notes");
+		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.CAMEO, 1);
+		expectedServicesSteps.setNumberOfCameos("8", 1);
+		expectedServicesSteps.clickAddEmailLink();
+		expectedServicesSteps.addEmailConfServSection("test2@door3.com", 1);
+		expectedServicesSteps.clickUpdate();
+	//	jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Some company (Vivi 5, Kiev, Kiev, UA)");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
+
 		globalSteps.pause(15);
  }
 

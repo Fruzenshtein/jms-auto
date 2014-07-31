@@ -857,4 +857,15 @@ public class JobDetailSteps extends ScenarioSteps {
 	public void assertAdditionalTotalRow(String expectedNumber) {
 		assertEquals(expectedNumber, jobDetailPage().getAdditionalTotalRow());
 	}
+	
+	@Step
+	public void maximizeLocationSection() {
+		jobDetailPage().maximizeLocationSection();
+	}
+	
+	@Step
+	public void setLocationAddress(String company, int companyIndex, String address, 
+			String city, String zip, String state, int countryIndex) {
+		jobDetailPage().setLocationAddress(company, companyIndex, address, city, zip, state, countryIndex);
+	}
 }
