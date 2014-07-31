@@ -1053,4 +1053,20 @@ public class JobDetailPage extends PageObject {
 	public String getAdditionalTotalRow() {
 		return $("//span[@data-test='totaladditional-equipment-txt']").getTextValue();
 	}
+	
+	public void maximizeLocationSection() {
+		$("//span[text()='Location Info']/../div[@class='collapsed on']").click();
+	}
+	
+	public void setLocationAddress(String company, int companyIndex, String address, 
+			String city, String zip, String state, int countryIndex) {
+
+				$("(//span[text()='Company']/../input)[" + companyIndex + "]").sendKeys(company);
+				$("(//span[text()='Address']/../input)").sendKeys(address);
+				$("(//span[text()='City']/../input)").sendKeys(city);
+				$("(//span[text()='Zip']/../input)").sendKeys(zip);
+				$("(//span[text()='Country']/../select)").selectByIndex(countryIndex);
+				$("(//span[text()='State']/../input)").sendKeys(state);
+		
+	}
 }
