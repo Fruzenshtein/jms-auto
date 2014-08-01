@@ -39,8 +39,8 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 	@Steps
 	public ContactVendorSteps contactVendorSteps;
 	
-	//Another jobs which can be used: 1608, 1591
-	private String jobId = "1590";
+	//Another jobs which can be used: 1608, 1591, 1590, 1592
+	private String jobId = "1592";
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
@@ -48,10 +48,11 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("1713");
 		jobDetailSteps.clickManageButton();
-		jobDetailSteps.clickVendorActionLink(1);
-		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.RECOMMEND_ANOTHER_VEND);
 		
 		String currentVandor = jobDetailSteps.getVendorNameInManageModule(1);
+		
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.RECOMMEND_ANOTHER_VEND);
 		
 		globalSteps.waitUntilTextDisappear(currentVandor);
 		
@@ -111,10 +112,10 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		jobDetailSteps.clickVendorsActionMenuLink(2, ActionLink.APPROVE_RECOMENDATION);
 		jobDetailSteps.isBeacon(Beacon.VIDEOGRAPHER_ASSIGNED, BeaconState.GRAY);
 	}
-	
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void recommendationApprovedVendorContactViaCalledAccept() {
+	public void TC_6_1_8() {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);

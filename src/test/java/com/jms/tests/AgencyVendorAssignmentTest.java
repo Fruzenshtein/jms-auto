@@ -90,7 +90,9 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		assignVendorSteps.clickSaveButton();
 		globalSteps.waitUntilTextAppear("Recommendation (Agency)");
 		
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorActionLink(2);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(2, ActionLink.SELECT_ANOTHER_VENDOR);
 		globalSteps.pause(10);
 		expectedServicesSteps.clickAgencyByIndex(1);
@@ -114,7 +116,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		globalSteps.pause(20);
 		jobDetailSteps.isBeacon(Beacon.VIDEOGRAPHER_ASSIGNED, BeaconState.GRAY);	
 	}
-
+/*
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	//TC6.2.2
@@ -273,7 +275,6 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	//TC6.2.8
 	public void TC_6_2_8() {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("2007");
@@ -327,5 +328,5 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.BLUE);
 	
 	}
-	
+	*/
 }
