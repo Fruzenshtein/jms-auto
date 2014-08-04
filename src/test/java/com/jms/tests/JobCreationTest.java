@@ -44,6 +44,7 @@ public class JobCreationTest extends BasicTest {
 		jobDetailSteps.clickSave();
 		
 		globalSteps.searchJobById(jobId);
+		globalSteps.pause(5);
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.JOB_DATE, futureDate);
 	}
 

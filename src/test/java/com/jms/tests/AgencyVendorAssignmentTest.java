@@ -116,7 +116,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		globalSteps.pause(20);
 		jobDetailSteps.isBeacon(Beacon.VIDEOGRAPHER_ASSIGNED, BeaconState.GRAY);	
 	}
-/*
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	//TC6.2.2
@@ -328,5 +328,5 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.BLUE);
 	
 	}
-	*/
+	
 }
