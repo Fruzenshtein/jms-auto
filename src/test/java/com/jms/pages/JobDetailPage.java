@@ -1058,15 +1058,27 @@ public class JobDetailPage extends PageObject {
 		$("//span[text()='Location Info']/../div[@class='collapsed on']").click();
 	}
 	
-	public void setLocationAddress(String company, int companyIndex, String address, 
-			String city, String zip, String state, int countryIndex) {
-
-				$("(//span[text()='Company']/../input)[" + companyIndex + "]").sendKeys(company);
-				$("(//span[text()='Address']/../input)").sendKeys(address);
-				$("(//span[text()='City']/../input)").sendKeys(city);
-				$("(//span[text()='Zip']/../input)").sendKeys(zip);
-				$("(//span[text()='Country']/../select)").selectByIndex(countryIndex);
-				$("(//span[text()='State']/../input)").sendKeys(state);
-		
+	public void setCompanyLocation(String company, int companyIndex) {
+		$("(//span[text()='Company']/../input)[" + companyIndex + "]").sendKeys(company);
+	}
+	
+	public void setAddress(String address) {
+		$("(//span[text()='Address']/../input)").sendKeys(address);
+	}
+	
+	public void setCity(String city) {
+		$("(//span[text()='City']/../input)").sendKeys(city);
+	}
+	
+	public void setZip(String zip) {
+		$("(//span[text()='Zip']/../input)").sendKeys(zip);
+	}
+	
+	public void setState(String state) {
+		$("(//span[text()='State']/../input)").sendKeys(state);
+	}
+	
+	public void setCountry(int countryIndex) {
+		$("(//span[text()='Country']/../select)").selectByIndex(countryIndex);
 	}
 }

@@ -152,8 +152,8 @@ public class ExpectedServicesSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void setNumberOfCameos(String number) {
-		expectedServicesPopup().setNumberOfCameos(number);
+	public void setNumberOfCameos(String number, int index) {
+		expectedServicesPopup().setNumberOfCameos(number, index);
 	}
 	
 	@Step

@@ -88,7 +88,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		
 		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.CAMEO, 1);
 		
-		expectedServicesSteps.setNumberOfCameos("3");
+		expectedServicesSteps.setNumberOfCameos("3", 1);
 		
 		expectedServicesSteps.clickAddEmailLink();
 		expectedServicesSteps.addEmailConfServSection("test@door3.com", 1);
@@ -176,7 +176,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		expectedServicesSteps.setPhoneConfServices("380447362211");
 	//	expectedServicesSteps.setNotes("Test notes");
 		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.CAMEO, 1);
-		expectedServicesSteps.setNumberOfCameos("3");
+		expectedServicesSteps.setNumberOfCameos("3",1);
 		expectedServicesSteps.clickAddEmailLink();
 		expectedServicesSteps.addEmailConfServSection("test@door3.com", 1);
 		expectedServicesSteps.clickUpdate();
@@ -199,6 +199,33 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
+	@Pending
+	public void multipleLocations() {
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("669");
+		jobDetailSteps.clickExpectedServicesButton();
+		//1st location
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.LOCATION);
+		expectedServicesSteps.selectConferenceLocation(1);
+		expectedServicesSteps.clickAddLocationLink();
+		//2nd location
+		expectedServicesSteps.selectConferenceLocation(2);
+		expectedServicesSteps.clickAddLocationLink();
+		expectedServicesSteps.clickVendorTBDIconSection(VendorService.LOCATION);
+		//3rd location
+		expectedServicesSteps.selectConferenceLocation(3);
+		expectedServicesSteps.clickAddLocationLink();
+		expectedServicesSteps.clickUpdate();
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US), "
+				+ "Ball Janik LLP (One Main Place, 101 SW Main Street, Portland, OR, US), "
+				+ "Aegis Media North America (150 E. 42nd Street, New York, NY, US)");
+		//Provide data
+		//1st location
+		jobDetailSteps.clickExpectedServicesButton();
+	}
+	
+	@Test
+	@Screenshots(onlyOnFailures = true)
 	public void invalidLocation() throws InterruptedException {
 
 		loginSteps.login(userStorage.getUser(0));
@@ -210,7 +237,12 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		jobDetailSteps.setSchedulingFirm("ABC, Inc.");
 		jobDetailSteps.setDate(futureDate);
 		jobDetailSteps.setCaseName("IrinaAutoTest");
-		jobDetailSteps.setLocationAddress("Company1", 3, "Lilu 5", "Lviv", "02111", "Lviv", 2);
+		jobDetailSteps.setCompanyLocation("MyCompany1", 2);
+		jobDetailSteps.setAddress("Address");
+		jobDetailSteps.setCity("City");
+		jobDetailSteps.setZip("00099");
+		jobDetailSteps.setCountry(2);
+		jobDetailSteps.setState("State");
 		jobDetailSteps.clickSave();
 		globalSteps.pause(7);
 		jobDetailSteps.clickExpectedServicesButton();
@@ -226,18 +258,23 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		expectedServicesSteps.setPhoneConfServices("380447362211");
 	//	expectedServicesSteps.setNotes("Test notes");
 		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.CAMEO, 1);
-		expectedServicesSteps.setNumberOfCameos("3");
+		expectedServicesSteps.setNumberOfCameos("3", 1);
 		expectedServicesSteps.clickAddEmailLink();
 		expectedServicesSteps.addEmailConfServSection("test@door3.com", 1);
 		expectedServicesSteps.clickUpdate();
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "IrinaCo (Revutskogo 3, Kiev, Kiev, UA)");
+		globalSteps.pause(7);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "MyCompany1 (Address, City, State, AF)");
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
-		jobDetailSteps.maximizeLocationSection();
 		jobDetailSteps.clickClearAddressFields(1);
 		jobDetailSteps.clickOkButton();
-		//Set another location
 		
-		jobDetailSteps.setLocationAddress("Some company", 2, "Vivi 5", "Kiev", "02111", "Kiev", 3);
+		//Set another location
+		jobDetailSteps.setCompanyLocation("MyCompany2", 2);
+		jobDetailSteps.setAddress("Address2");
+		jobDetailSteps.setCity("City2");
+		jobDetailSteps.setZip("00022");
+		jobDetailSteps.setCountry(3);
+		jobDetailSteps.setState("State2");
 		jobDetailSteps.clickSave();
 		globalSteps.pause(7);
 		jobDetailSteps.clickExpectedServicesButton();
@@ -253,14 +290,16 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		expectedServicesSteps.setPhoneConfServices("3335566");
 		//expectedServicesSteps.setNotes("Test notes");
 		expectedServicesSteps.clickReportingServiceCheckBox(LocationService.CAMEO, 1);
-		expectedServicesSteps.setNumberOfCameos("8");
+		expectedServicesSteps.setNumberOfCameos("8", 1);
 		expectedServicesSteps.clickAddEmailLink();
 		expectedServicesSteps.addEmailConfServSection("test2@door3.com", 1);
 		expectedServicesSteps.clickUpdate();
-	//	jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Some company (Vivi 5, Kiev, Kiev, UA)");
+		globalSteps.pause(7);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "MyCompany2 (Address2, City2, State2, AX)");
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
 		 
 	//	globalSteps.pause(15);
+
  }
 
 }

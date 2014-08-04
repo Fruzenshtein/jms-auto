@@ -70,9 +70,6 @@ public class ExpectedServicesPopup extends PageObject {
 	@FindBy(xpath="//span[text()='Notes']/../textarea")
 	private WebElement notesTextarea;
 	
-	@FindBy(xpath="//span[text()='Number of Cameos']/../input")
-	private WebElement numberOfCameos;
-	
 	@FindBy(xpath="//span[text()='Email to:']/../input")
 	private WebElement confServEmail;
 	
@@ -250,8 +247,8 @@ public class ExpectedServicesPopup extends PageObject {
 		notesTextarea.sendKeys(notes);
 	}
 	
-	public void setNumberOfCameos(String number) {
-		numberOfCameos.sendKeys(number);
+	public void setNumberOfCameos(String number, int index) {
+		$("(//span[text()='Number of Cameos']/../input)[" + index +"]").sendKeys(number);
 	}
 	
 	public void addEmailConfServSection(String email, int index) {
