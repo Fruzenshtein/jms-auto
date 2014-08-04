@@ -147,7 +147,9 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("674");
+		globalSteps.pause(3);
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		//Scheduling firm
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.LOCATION);
 		expectedServicesSteps.selectConferenceLocation(1);
@@ -159,10 +161,11 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		expectedServicesSteps.clickAddLocationLink();
 		expectedServicesSteps.clickVendorTBDIconSection(VendorService.LOCATION);
 		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(1);
+		globalSteps.pause(3);
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US");
 		
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.removeLocation(1);
 		expectedServicesSteps.goToFirmTab(2);
 		expectedServicesSteps.selectConferenceLocation(1);
@@ -184,6 +187,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US)");
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.goToFirmTab(2);
 		expectedServicesSteps.setIP("207.222.11.200");
 		expectedServicesSteps.clickAddEmailLink();
@@ -204,6 +208,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("669");
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		//1st location
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.LOCATION);
 		expectedServicesSteps.selectConferenceLocation(1);
@@ -216,6 +221,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		expectedServicesSteps.selectConferenceLocation(3);
 		expectedServicesSteps.clickAddLocationLink();
 		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(5);
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US), "
 				+ "Ball Janik LLP (One Main Place, 101 SW Main Street, Portland, OR, US), "
 				+ "Aegis Media North America (150 E. 42nd Street, New York, NY, US)");
@@ -246,6 +252,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		jobDetailSteps.clickSave();
 		globalSteps.pause(7);
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.selectConferenceLocation(1);
 		expectedServicesSteps.clickAddLocationLink();
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.LOCATION);
@@ -278,6 +285,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		jobDetailSteps.clickSave();
 		globalSteps.pause(7);
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.removeLocation(1);
 		expectedServicesSteps.selectConferenceLocation(1);
 		expectedServicesSteps.clickAddLocationLink();
@@ -297,58 +305,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		globalSteps.pause(7);
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "MyCompany2 (Address2, City2, State2, AX)");
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
-		 
-	//	globalSteps.pause(15);
 
  }
 	
-
-	@Test
-	@Screenshots(onlyOnFailures = true)
-	public void interpreterServicesMultipleLanguagesWitnesses() {
-
-		loginSteps.login(userStorage.getUser(0));
-		globalSteps.searchJobById("128");
-		jobDetailSteps.clickExpectedServicesButton();
-		
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.INTERPRETER);
-		expectedServicesSteps.clickVendorTBDIconSection(VendorService.INTERPRETER);
-		expectedServicesSteps.clickAddLanguageLink();
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(3);
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "English");
-		jobDetailSteps.isServiceIconInVendorSection(VendorService.INTERPRETER, true);
-		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.INTERPRETER, true);
-		
-		//Add French and German languages
-		jobDetailSteps.clickExpectedServicesButton();
-		expectedServicesSteps.clickAddLanguageLink();
-		expectedServicesSteps.selectLanguage(3, 2);
-		expectedServicesSteps.selectAppliedWitness(4, 1);
-		expectedServicesSteps.clickAddLanguageLink();
-		expectedServicesSteps.selectLanguage(5, 3);
-		expectedServicesSteps.selectAppliedWitness(6, 2);
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(3);
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "English");
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "French");
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "German");
-		//Delete French
-		jobDetailSteps.clickExpectedServicesButton();
-		expectedServicesSteps.deleteLanguage(2);
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(3);
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "English");
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "German");
-		//Change from German to Spanish
-		jobDetailSteps.clickExpectedServicesButton();
-		expectedServicesSteps.selectLanguage(3, 6);
-		expectedServicesSteps.selectAppliedWitness(4, 1);
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(3);
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "English");
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "Spanish");
-		
-	}
-
 }

@@ -92,5 +92,58 @@ public class ExpectedServicesInterpreterTest extends BasicTest {
 		
 		
 	}
+	
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	public void interpreterServicesMultipleLanguagesWitnesses() {
+
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("128");
+		globalSteps.pause(5);
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.INTERPRETER);
+		expectedServicesSteps.clickVendorTBDIconSection(VendorService.INTERPRETER);
+		expectedServicesSteps.clickAddLanguageLink();
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(5);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "English");
+		jobDetailSteps.isServiceIconInVendorSection(VendorService.INTERPRETER, true);
+		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.INTERPRETER, true);
+		
+		//Add French and German languages
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
+		expectedServicesSteps.clickAddLanguageLink();
+		expectedServicesSteps.selectLanguage(3, 2);
+		expectedServicesSteps.selectAppliedWitness(4, 1);
+		expectedServicesSteps.clickAddLanguageLink();
+		expectedServicesSteps.selectLanguage(5, 3);
+		expectedServicesSteps.selectAppliedWitness(6, 2);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(5);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "English");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "French");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "German");
+		//Delete French
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
+		expectedServicesSteps.deleteLanguage(2);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(5);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "English");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "German");
+		//Change from German to Spanish
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
+		expectedServicesSteps.selectLanguage(3, 6);
+		expectedServicesSteps.selectAppliedWitness(4, 1);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(5);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "English");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "Spanish");
+		
+	}
+
 
 }
