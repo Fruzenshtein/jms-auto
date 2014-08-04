@@ -234,7 +234,7 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("2614");
 		jobDetailSteps.clickExpectedServicesButton();
-		
+		globalSteps.pause(3);
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
 		expectedServicesSteps.goToFirmTab(2);
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
@@ -244,6 +244,7 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, true);
 		
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.INTERNET_REALTIME, 2);
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.CHAT_ROOM_NEEDED, 2);
 		expectedServicesSteps.clickUpdate();
@@ -253,6 +254,7 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 	//	jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "Internet Real-Time, Regular (8-Day) Delivery");
 		//Contributing firm
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.goToFirmTab(2);
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 2);
 		expectedServicesSteps.clickUpdate();
@@ -261,11 +263,13 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "Video Streaming");
 		//Deactivate streaming for scheduling firm
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
 		expectedServicesSteps.clickUpdate();
 		globalSteps.pause(7);
 		//Activate streaming for scheduling firm
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.clickOnVendorSection(3);
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 2);
 		//Contributing firm

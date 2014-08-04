@@ -195,11 +195,12 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void MultipleFirmsWitnesses() {
+	public void multipleFirmsWitnesses() {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("1854");
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		//Scheduling firm tab
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
 		expectedServicesSteps.clickReportingServiceCheckBox(VideographerService.MPEG, 1);
@@ -211,6 +212,7 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 		expectedServicesSteps.clickUpdate();
 		globalSteps.pause(15);
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.goToFirmTab(2);
 		expectedServicesSteps.clickReportingServiceCheckBox(VideographerService.MPEG, 1);
 		expectedServicesSteps.clickReportingServiceCheckBox(VideographerService.MPEG_SYNC, 1);

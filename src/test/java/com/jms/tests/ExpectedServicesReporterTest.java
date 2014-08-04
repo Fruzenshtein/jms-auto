@@ -331,12 +331,14 @@ public class ExpectedServicesReporterTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void MultipleFirmsWitnesses() {
+	public void multipleFirmsWitnesses() {
 		String testFutureDate = DateGenerator.getInstance().particularDate(2016, Calendar.OCTOBER, 28);
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("1937");
+		globalSteps.pause(3);
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		//Scheduling firm tab
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
 		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.INTERNET_REALTIME, 1);
