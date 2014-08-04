@@ -260,7 +260,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 	//	jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Some company (Vivi 5, Kiev, Kiev, UA)");
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
 		 
-		globalSteps.pause(15);
+	//	globalSteps.pause(15);
  }
 
 }
