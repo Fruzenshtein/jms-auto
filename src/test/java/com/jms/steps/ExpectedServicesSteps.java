@@ -190,4 +190,19 @@ public class ExpectedServicesSteps extends ScenarioSteps {
 	public void removeLocation(int index) {
 		expectedServicesPopup().removeLocation(index);
 	}
+	
+	@Step
+	public void selectLanguage(int index, int languageIndex) {
+		expectedServicesPopup().selectLanguage(index, languageIndex);
+	}
+	
+	@Step
+	public void selectAppliedWitness(int index, int witnessIndex) {
+		expectedServicesPopup().selectAppliedWitness(index, witnessIndex);
+	}
+	
+	@Step
+	public void deleteLanguage(int index) {
+		expectedServicesPopup().deleteLanguage(index);
+	}
 }

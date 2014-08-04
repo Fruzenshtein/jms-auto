@@ -260,6 +260,14 @@ public class ExpectedServicesPopup extends PageObject {
 		addLanguageLink.click();
 	}
 	
+	public void selectLanguage(int index, int languageIndex) {
+		$("(//div[@data-test='interpreterservices-expectedservices-module']//select)[" + index + "]").selectByIndex(languageIndex);
+	}
+	
+	public void selectAppliedWitness(int index, int witnessIndex) {
+		$("(//div[@data-test='interpreterservices-expectedservices-module']//select)[" + index + "]").selectByIndex(witnessIndex);
+	}
+	
 	public void clickChangeRecommendationButton() {
 		changeRecommendationButton.click();
 	}
@@ -278,5 +286,9 @@ public class ExpectedServicesPopup extends PageObject {
 	
 	public void removeLocation(int index) {
 		$("(//a[text()='Remove Location'])[" + index + "]").click();
+	}
+	
+	public void deleteLanguage(int index) {
+		$("(//div[@data-test='interpreterservices-expectedservices-module']//a[@class='icon delete'])[" + index +"]").click();
 	}
 }
