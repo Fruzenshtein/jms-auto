@@ -22,7 +22,7 @@ import net.thucydides.core.annotations.Screenshots;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Story;
 
-@Story(VendorWorkflowStory.AgencyVendorAssignmentStory.class)
+@Story(VendorWorkflowStory.VendorWorkflowTestSeriesAgencyVendorAssignment.class)
 public class AgencyVendorAssignmentTest extends BasicTest {
 
 	@Steps

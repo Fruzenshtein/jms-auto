@@ -12,14 +12,14 @@ import com.jms.pages.elements.ExpectedServiceSection;
 import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.pages.elements.LocationService;
 import com.jms.pages.elements.VendorService;
-import com.jms.requirements.ExpectedServicesStory.ExpectedServicesConferenceStory;
+import com.jms.requirements.ExpectedServicesStory.ExpectedServicesTestSeries;
 import com.jms.steps.ExpectedServicesSteps;
 import com.jms.steps.GlobalSteps;
 import com.jms.steps.JobDetailSteps;
 import com.jms.steps.LoginSteps;
 import com.jms.util.DateGenerator;
 
-@Story(ExpectedServicesConferenceStory.class)
+@Story(ExpectedServicesTestSeries.class)
 public class ExpectedServicesConferenceTest extends BasicTest {
 	
 	@Steps

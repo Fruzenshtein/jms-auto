@@ -9,7 +9,7 @@ import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.pages.elements.StreamServices;
 import com.jms.pages.elements.VendorService;
 import com.jms.pages.elements.VendorTab;
-import com.jms.requirements.JobManagementStory.JobDetailFieldsStory;
+import com.jms.requirements.JobManagementStory.JobDetailFieldsTestSeries;
 import com.jms.steps.GlobalSteps;
 import com.jms.steps.JobDetailSteps;
 import com.jms.steps.LoginSteps;
@@ -22,7 +22,7 @@ import net.thucydides.core.annotations.Screenshots;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Story;
 
-@Story(JobDetailFieldsStory.class)
+@Story(JobDetailFieldsTestSeries.class)
 public class JobDetailFieldsTest extends BasicTest {
 
 	@Steps

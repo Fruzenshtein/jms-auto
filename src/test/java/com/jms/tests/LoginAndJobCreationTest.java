@@ -7,18 +7,19 @@ import net.thucydides.core.annotations.Story;
 import org.junit.Test;
 
 import com.jms.pages.elements.JobDetailHeaderLabel;
-import com.jms.requirements.JobManagementStory.JobCreation;
+import com.jms.pages.elements.SideMenuLink;
+import com.jms.requirements.LoginAndJobCreationStory.UserLoginJobCreation;
 import com.jms.steps.GlobalSteps;
 import com.jms.steps.JobDetailSteps;
 import com.jms.steps.LoginSteps;
 import com.jms.util.DateGenerator;
 
-@Story(JobCreation.class)
-public class JobCreationTest extends BasicTest {
-	
+@Story(UserLoginJobCreation.class)
+public class LoginAndJobCreationTest extends BasicTest {
+
 	@Steps
 	public LoginSteps loginSteps;
-	
+
 	@Steps
 	public GlobalSteps globalSteps;
 	
@@ -27,7 +28,7 @@ public class JobCreationTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc_2_1() throws InterruptedException {
+	public void tc_1_1() throws InterruptedException {
 		
 		String futureDate = DateGenerator.getInstance().modifiedDate(0, 0, 1);
 		
@@ -46,16 +47,33 @@ public class JobCreationTest extends BasicTest {
 		globalSteps.searchJobById(jobId);
 		globalSteps.pause(5);
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.JOB_DATE, futureDate);
+		globalSteps.clickSideMenuItem(SideMenuLink.LOG_OUT);
+		loginSteps.checkPageTitle();
 	}
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc_2_2() throws InterruptedException {
+	public void tc_1_2() throws InterruptedException {
+		loginSteps.login(userStorage.getUser(1));
+		loginSteps.checkLoginErrorMsg();
+		loginSteps.checkPasswordErrorMsg();
+
+		loginSteps.login(userStorage.getUser(2));
+		loginSteps.checkPasswordErrorMsg();
+
+		loginSteps.login(userStorage.getUser(3));
+		loginSteps.checkLoginErrorMsg();
+
+		loginSteps.login(userStorage.getUser(4));
+		globalSteps.waitUntilTextAppear("LOGIN");
+		
+		globalSteps.pause(7);
 		
 		String futureDate = DateGenerator.getInstance().modifiedDate(0, 0, 1);
 		String pastDate = DateGenerator.getInstance().modifiedDate(-1, 0, 1);
 		
 		loginSteps.login(userStorage.getUser(0));
+		globalSteps.pause(3);
 		globalSteps.clickCreateJobIcon();
 		globalSteps.openWidgetIn(1);
 		

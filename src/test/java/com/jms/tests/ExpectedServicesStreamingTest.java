@@ -13,13 +13,13 @@ import com.jms.pages.elements.ReportingService;
 import com.jms.pages.elements.StreamServices;
 import com.jms.pages.elements.VendorService;
 import com.jms.pages.elements.VideographerService;
-import com.jms.requirements.ExpectedServicesStory.ExpectedServicesStreamingStory;
+import com.jms.requirements.ExpectedServicesStory.ExpectedServicesTestSeries;
 import com.jms.steps.ExpectedServicesSteps;
 import com.jms.steps.GlobalSteps;
 import com.jms.steps.JobDetailSteps;
 import com.jms.steps.LoginSteps;
 
-@Story(ExpectedServicesStreamingStory.class)
+@Story(ExpectedServicesTestSeries.class)
 public class ExpectedServicesStreamingTest extends BasicTest {
 	
 	@Steps

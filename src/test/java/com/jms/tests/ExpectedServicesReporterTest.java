@@ -14,14 +14,14 @@ import com.jms.pages.elements.ExpectedServiceSection;
 import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.pages.elements.ReportingService;
 import com.jms.pages.elements.VendorService;
-import com.jms.requirements.ExpectedServicesStory.ExpectedServicesReporterStory;
+import com.jms.requirements.ExpectedServicesStory.ExpectedServicesTestSeries;
 import com.jms.steps.ExpectedServicesSteps;
 import com.jms.steps.GlobalSteps;
 import com.jms.steps.JobDetailSteps;
 import com.jms.steps.LoginSteps;
 import com.jms.util.DateGenerator;
 
-@Story(ExpectedServicesReporterStory.class)
+@Story(ExpectedServicesTestSeries.class)
 public class ExpectedServicesReporterTest extends BasicTest {
 	
 	@Steps

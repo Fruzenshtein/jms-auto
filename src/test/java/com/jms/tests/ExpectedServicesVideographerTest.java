@@ -10,7 +10,7 @@ import com.jms.pages.elements.ReportingService;
 import com.jms.pages.elements.StreamServices;
 import com.jms.pages.elements.VendorService;
 import com.jms.pages.elements.VideographerService;
-import com.jms.requirements.ExpectedServicesStory.ExpectedServicesVideographerStory;
+import com.jms.requirements.ExpectedServicesStory.ExpectedServicesTestSeries;
 import com.jms.steps.ExpectedServicesSteps;
 import com.jms.steps.GlobalSteps;
 import com.jms.steps.JobDetailSteps;
@@ -22,7 +22,7 @@ import net.thucydides.core.annotations.Screenshots;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Story;
 
-@Story(ExpectedServicesVideographerStory.class)
+@Story(ExpectedServicesTestSeries.class)
 public class ExpectedServicesVideographerTest extends BasicTest {
 	
 	@Steps

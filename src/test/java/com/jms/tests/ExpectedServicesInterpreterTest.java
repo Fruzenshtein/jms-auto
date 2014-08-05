@@ -5,7 +5,7 @@ import org.junit.Test;
 import com.jms.pages.elements.ExpectedServiceSection;
 import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.pages.elements.VendorService;
-import com.jms.requirements.ExpectedServicesStory.ExpectedServicesInterpreterStory;
+import com.jms.requirements.ExpectedServicesStory.ExpectedServicesTestSeries;
 import com.jms.steps.ExpectedServicesSteps;
 import com.jms.steps.GlobalSteps;
 import com.jms.steps.JobDetailSteps;
@@ -15,7 +15,7 @@ import net.thucydides.core.annotations.Screenshots;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Story;
 
-@Story(ExpectedServicesInterpreterStory.class)
+@Story(ExpectedServicesTestSeries.class)
 public class ExpectedServicesInterpreterTest extends BasicTest {
 
 	@Steps
