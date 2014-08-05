@@ -38,7 +38,7 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_3_1() throws InterruptedException {
+	public void tc_4_3_1() throws InterruptedException {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -63,7 +63,7 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_3_2() throws InterruptedException {
+	public void tc_4_3_2() throws InterruptedException {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -105,7 +105,7 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_3_3() throws InterruptedException {
+	public void tc_4_3_3() throws InterruptedException {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -141,54 +141,10 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		expectedServicesSteps.isServiceIconActivated(VendorService.VIDEOGRAPHER, false);
 		
 	}
-
-	@Test
-	@Screenshots(onlyOnFailures = true)
-	public void tc4_3_4() throws InterruptedException {
-		
-		loginSteps.login(userStorage.getUser(0));
-		globalSteps.searchJobById(jobId);
-		jobDetailSteps.clickExpectedServicesButton();
-		
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
-		expectedServicesSteps.clickUpdate();
-		
-		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.STREAMING, true);
-		jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, true);
-		
-		jobDetailSteps.clickExpectedServicesButton();
-		
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
-		expectedServicesSteps.clickUpdate();
-		
-		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.STREAMING, false);
-		jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, false);
-		
-		jobDetailSteps.clickExpectedServicesButton();
-		
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
-		expectedServicesSteps.clickUpdate();
-	
-		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.STREAMING, true);
-		jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, true);
-		
-		jobDetailSteps.clickExpectedServicesButton();
-		
-		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.INTERNET_REALTIME, 2);
-		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 2);
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
-		expectedServicesSteps.clickUpdate();
-		
-		globalSteps.pause(15);
-		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.STREAMING, false);
-		jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, false);
-		
-	}
-
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void deactivation() {
+	public void tc_4_3_4() {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("671");
@@ -229,7 +185,7 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void multipleFirmsWitnesses() {
+	public void tc_4_3_5() {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("2614");

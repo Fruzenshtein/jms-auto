@@ -27,7 +27,7 @@ public class JobCreationTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc2_1() throws InterruptedException {
+	public void tc_2_1() throws InterruptedException {
 		
 		String futureDate = DateGenerator.getInstance().modifiedDate(0, 0, 1);
 		
@@ -50,7 +50,7 @@ public class JobCreationTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc2_2() throws InterruptedException {
+	public void tc_2_2() throws InterruptedException {
 		
 		String futureDate = DateGenerator.getInstance().modifiedDate(0, 0, 1);
 		String pastDate = DateGenerator.getInstance().modifiedDate(-1, 0, 1);

@@ -34,7 +34,7 @@ public class ExpectedServicesInterpreterTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_5_1() throws InterruptedException {
+	public void tc_4_5_1() throws InterruptedException {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -64,7 +64,7 @@ public class ExpectedServicesInterpreterTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_5_2() throws InterruptedException {
+	public void tc_4_5_2() throws InterruptedException {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -95,7 +95,7 @@ public class ExpectedServicesInterpreterTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void interpreterServicesMultipleLanguagesWitnesses() {
+	public void tc_4_5_3() {
 
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("128");

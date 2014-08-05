@@ -39,7 +39,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_4_1() throws InterruptedException {
+	public void tc_4_4_1() throws InterruptedException {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -65,7 +65,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_4_2() throws InterruptedException {
+	public void tc_4_4_2() throws InterruptedException {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -113,7 +113,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_4_3() throws InterruptedException {
+	public void tc_4_4_3() throws InterruptedException {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -143,7 +143,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void multipleFirmsWitnesses() {
+	public void tc_4_4_4() {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("674");
@@ -204,7 +204,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	@Pending
-	public void multipleLocations() {
+	public void tc_4_4_5() {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("669");
 		jobDetailSteps.clickExpectedServicesButton();
@@ -232,7 +232,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void invalidLocation() throws InterruptedException {
+	public void tc_4_4_7() throws InterruptedException {
 
 		loginSteps.login(userStorage.getUser(0));
 		String futureDate = DateGenerator.getInstance().modifiedDate(0, 0, 1);

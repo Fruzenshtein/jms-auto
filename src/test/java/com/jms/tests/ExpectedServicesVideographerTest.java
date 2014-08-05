@@ -42,7 +42,7 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_2_1() throws InterruptedException {
+	public void tc_4_2_1() throws InterruptedException {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -71,7 +71,7 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_2_2() throws InterruptedException {
+	public void tc_4_2_2() throws InterruptedException {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -114,7 +114,7 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_2_3() throws InterruptedException {
+	public void tc_4_2_3() throws InterruptedException {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -152,7 +152,7 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_2_4() throws InterruptedException {
+	public void tc_4_2_4() throws InterruptedException {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
 		jobDetailSteps.clickExpectedServicesButton();
@@ -195,7 +195,7 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void multipleFirmsWitnesses() {
+	public void tc_4_3_5() {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("1854");

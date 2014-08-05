@@ -41,7 +41,7 @@ public class ExpectedServicesReporterTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_1_1() throws InterruptedException {
+	public void tc_4_1_1() throws InterruptedException {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -305,33 +305,8 @@ public class ExpectedServicesReporterTest extends BasicTest {
 	}
 	
 	@Test
-	@Pending
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_1_6() throws InterruptedException {
-		loginSteps.login(userStorage.getUser(0));
-		globalSteps.clickCreateJobIcon();
-		globalSteps.openWidgetIn(1);
-		
-		jobId = jobDetailSteps.getJobId();
-		
-		jobDetailSteps.setSchedulingFirm("ABC, Inc.");
-		jobDetailSteps.setWitnessName(1, "Witness1");
-		jobDetailSteps.setDate(futureDate);
-		jobDetailSteps.setCaseName("Daily meeting");
-		jobDetailSteps.setLocation("Cascone");
-		
-		jobDetailSteps.clickAddFirmButton();
-		jobDetailSteps.setContributingFirm("ABC Studios");
-		jobDetailSteps.clickAddWitnessButton();
-		jobDetailSteps.setWitnessName(2, "Witness2");
-		
-		jobDetailSteps.clickSave();
-		
-	}
-	
-	@Test
-	@Screenshots(onlyOnFailures = true)
-	public void multipleFirmsWitnesses() {
+	public void tc_4_1_6() {
 		String testFutureDate = DateGenerator.getInstance().particularDate(2016, Calendar.OCTOBER, 28);
 		
 		loginSteps.login(userStorage.getUser(0));

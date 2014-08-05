@@ -44,7 +44,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void recommendedVendorReassignment() {
+	public void tc_6_1_1() {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("1713");
 		jobDetailSteps.clickManageButton();
@@ -60,7 +60,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void recommendedVendorApproval() {
+	public void tc_6_1_2() {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("1710");
 		
@@ -115,7 +115,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void TC_6_1_8() {
+	public void tc_6_1_8() {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -161,7 +161,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void recommendationApprovedVendorContactViaCalledReject() {
+	public void tc_6_1_9() {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -208,8 +208,8 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	//TC 6.1.11
-	public void contactedVendorVendorConfirmsManageModule() {
+	
+	public void tc_6_1_11() {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -263,8 +263,8 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	//TC 6.1.12
-	public void contactedVendorRecontactVendor() {
+	
+	public void tc_6_1_12() {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
