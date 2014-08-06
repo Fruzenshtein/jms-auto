@@ -4,7 +4,7 @@ import net.thucydides.core.annotations.Feature;
 
 public class LoginAndJobCreationStory {
 	@Feature
-	public class UserLoginJobCreation {
+	public class UserLoginJobCreationTestSeries {
 		
 	}
 }

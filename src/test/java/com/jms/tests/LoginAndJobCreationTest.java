@@ -8,13 +8,13 @@ import org.junit.Test;
 
 import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.pages.elements.SideMenuLink;
-import com.jms.requirements.LoginAndJobCreationStory.UserLoginJobCreation;
+import com.jms.requirements.LoginAndJobCreationStory.UserLoginJobCreationTestSeries;
 import com.jms.steps.GlobalSteps;
 import com.jms.steps.JobDetailSteps;
 import com.jms.steps.LoginSteps;
 import com.jms.util.DateGenerator;
 
-@Story(UserLoginJobCreation.class)
+@Story(UserLoginJobCreationTestSeries.class)
 public class LoginAndJobCreationTest extends BasicTest {
 
 	@Steps

@@ -6,7 +6,7 @@ import com.jms.pages.elements.ActionLink;
 import com.jms.pages.elements.Beacon;
 import com.jms.pages.elements.BeaconState;
 import com.jms.pages.elements.VendorService;
-import com.jms.requirements.VendorWorkflowStory;
+import com.jms.requirements.VendorWorkflowStory.VendorWorkflowTestSeriesFreelanceVendorAssignment;
 import com.jms.steps.AssignVendorSteps;
 import com.jms.steps.ContactVendorSteps;
 import com.jms.steps.ExpectedServicesSteps;
@@ -18,7 +18,7 @@ import net.thucydides.core.annotations.Screenshots;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Story;
 
-@Story(VendorWorkflowStory.class)
+@Story(VendorWorkflowTestSeriesFreelanceVendorAssignment.class)
 public class FreelanceVendorAssigmentTest extends BasicTest {
 	
 	@Steps
