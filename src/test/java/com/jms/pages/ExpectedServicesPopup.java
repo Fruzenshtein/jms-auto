@@ -169,6 +169,10 @@ public class ExpectedServicesPopup extends PageObject {
 		$(deliveryDropDown).selectByVisibleText(delivery);
 	}
 	
+	public void selectDelivery2(int index) {
+		$(deliveryDropDown).selectByIndex(index);
+	}
+	
 	public void clickReportingServiceCheckBox(ExpectedServiceOption service, int order) {
 			$("(//span[text()='"+service.getService()+"'])["+order+"]").click();
 	}

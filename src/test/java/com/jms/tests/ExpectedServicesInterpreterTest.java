@@ -145,5 +145,26 @@ public class ExpectedServicesInterpreterTest extends BasicTest {
 		
 	}
 
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	public void tc_4_5_5() {
 
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("34");
+		globalSteps.pause(5);
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.INTERPRETER);
+		expectedServicesSteps.clickAddLanguageLink();
+		expectedServicesSteps.selectLanguage(1, 0);
+		expectedServicesSteps.selectAppliedWitness(2, 0);
+		expectedServicesSteps.clickAddLanguageLink();
+		expectedServicesSteps.selectLanguage(3, 4);
+		expectedServicesSteps.selectAppliedWitness(4, 1);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(5);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "English");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "Russian");
+		
+	}
 }

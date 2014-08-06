@@ -161,7 +161,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		
 		jobDetailSteps.clickVendorActionLink(1);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.RECOMMEND_ANOTHER_VEND);
-		globalSteps.pause(5);
+		globalSteps.pause(10);
 		
 		globalSteps.waitUntilTextDisappear(currentVandor);
 	}
@@ -303,7 +303,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		jobDetailSteps.clickManageButton();
 		jobDetailSteps.clickVendorActionLink(1);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.SELECT_ANOTHER_VENDOR);
-		globalSteps.pause(18);
+		globalSteps.pause(20);
 		expectedServicesSteps.clickAgencyByIndex(1);
 		expectedServicesSteps.clickChangeRecommendationButton();
 		globalSteps.pause(5);

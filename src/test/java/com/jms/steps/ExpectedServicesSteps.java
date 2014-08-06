@@ -61,6 +61,11 @@ public class ExpectedServicesSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void selectDelivery2(int index) {
+		expectedServicesPopup().selectDelivery2(index);
+	}
+	
+	@Step
 	public void isExpectedServicesSection(ExpectedServiceSection section, boolean enabled) {
 		assertTrue(section.getSection()+" section wasn't in expected state.", 
 				expectedServicesPopup().isExpectedServicesSection(section, enabled));

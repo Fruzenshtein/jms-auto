@@ -145,11 +145,13 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 
 		jobDetailSteps.clickManageButton();
 		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.APPROVE_RECOMENDATION);
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GRAY);
 		
 		//Test starts
 		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.CONTACT_FOR_ASSIGNMENT);
 		contactVendorSteps.clickCalledButton();
 		contactVendorSteps.clickContactedButton();
@@ -191,11 +193,13 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 
 		jobDetailSteps.clickManageButton();
 		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.APPROVE_RECOMENDATION);
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GRAY);
 		
 		//Test starts
 		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.CONTACT_FOR_ASSIGNMENT);
 		contactVendorSteps.clickCalledButton();
 		contactVendorSteps.clickRejectedButton();
@@ -240,10 +244,12 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 
 		jobDetailSteps.clickManageButton();
 		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.APPROVE_RECOMENDATION);
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GRAY);
 		
 		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.CONTACT_FOR_ASSIGNMENT);
 		contactVendorSteps.clickCalledButton();
 		contactVendorSteps.clickContactedButton();
@@ -254,6 +260,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		globalSteps.pause(3);
 		
 		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.VENDOR_CONFIRMS);
 		
 		globalSteps.waitUntilTextAppear("Assigned & Awaiting D-Day");
@@ -295,10 +302,12 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 
 		jobDetailSteps.clickManageButton();
 		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.APPROVE_RECOMENDATION);
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GRAY);
 		
 		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.CONTACT_FOR_ASSIGNMENT);
 		contactVendorSteps.clickCalledButton();
 		contactVendorSteps.clickContactedButton();
@@ -309,6 +318,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		globalSteps.pause(3);
 		
 		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.CONTACT_AGAIN_FOR_ASSIGMENT);
 		
 		contactVendorSteps.clickCalledButton();

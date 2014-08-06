@@ -115,7 +115,7 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc_4_2_3() throws InterruptedException {
-		
+		//Fails because of bug!
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
 		jobDetailSteps.clickExpectedServicesButton();
@@ -131,7 +131,7 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 		
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "Video Streaming");
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.STREAMING, "Video Stream");
-		
+	
 		jobDetailSteps.isServiceIconInVendorSection(VendorService.VIDEOGRAPHER, true);
 		jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, true);
 		

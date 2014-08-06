@@ -169,100 +169,113 @@ public class ExpectedServicesReporterTest extends BasicTest {
 	
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
-		
+		globalSteps.pause(3);
 		Calendar cal = new GregorianCalendar(2016, Calendar.MAY, 12);
 		
 		jobDetailSteps.clickExpectedServicesButton();
-		
+		globalSteps.pause(3);
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
 		expectedServicesSteps.clickUpdate();
-		
+		globalSteps.pause(8);
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "Regular (8-Day) Delivery");
 		
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.selectDelivery("Immediate ("+futureDate+")");
 		expectedServicesSteps.clickUpdate();
-		
+		globalSteps.pause(8);
 		globalSteps.waitUntilTextAppear("Immediate Delivery");
 		
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.selectDelivery("Daily ("+DateGenerator
 				.getInstance()
 				.modifyParticularDate(cal, 0, 0, 1)+")");
 		expectedServicesSteps.clickUpdate();
-		
+		globalSteps.pause(7);
 		globalSteps.waitUntilTextAppear("Daily Delivery");
 		
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.selectDelivery("2-Day ("+DateGenerator
 				.getInstance()
 				.modifyParticularDate(cal, 0, 0, 3)+")");
 		expectedServicesSteps.clickUpdate();
-
+		globalSteps.pause(7);
 		globalSteps.waitUntilTextAppear("2-Day Delivery");
 		
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.selectDelivery("3-Day ("+DateGenerator
 				.getInstance()
 				.modifyParticularDate(cal, 0, 0, 1)+")");
 		expectedServicesSteps.clickUpdate();
-		
+		globalSteps.pause(7);
 		globalSteps.waitUntilTextAppear("3-Day Delivery");
 		
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.selectDelivery("4-Day ("+DateGenerator
 				.getInstance()
 				.modifyParticularDate(cal, 0, 0, 1)+")");
 		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(7);
 		
 		globalSteps.waitUntilTextAppear("4-Day Delivery");
 		
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.selectDelivery("5-Day ("+DateGenerator
 				.getInstance()
 				.modifyParticularDate(cal, 0, 0, 1)+")");
 		expectedServicesSteps.clickUpdate();
-		
+		globalSteps.pause(5);
 		globalSteps.waitUntilTextAppear("5-Day Delivery");
 		
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.selectDelivery("6-Day ("+DateGenerator
 				.getInstance()
 				.modifyParticularDate(cal, 0, 0, 1)+")");
 		expectedServicesSteps.clickUpdate();
-		
+		globalSteps.pause(5);
 		globalSteps.waitUntilTextAppear("6-Day Delivery");
 		
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.selectDelivery("7-Day ("+DateGenerator
 				.getInstance()
 				.modifyParticularDate(cal, 0, 0, 3)+")");
 		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(5);
 		
 		globalSteps.waitUntilTextAppear("7-Day Delivery");
 		
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.selectDelivery("Regular (7-Day) ("+DateGenerator
 				.getInstance()
 				.modifyParticularDate(cal, 0, 0, 0)+")");
 		expectedServicesSteps.clickUpdate();
-		
+		globalSteps.pause(5);
 		globalSteps.waitUntilTextAppear("Regular (7-Day) Delivery");
 		
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.selectDelivery("Regular (9-Day) ("+DateGenerator
 				.getInstance()
 				.modifyParticularDate(cal, 0, 0, 2)+")");
 		expectedServicesSteps.clickUpdate();
-		
+		globalSteps.pause(5);
 		globalSteps.waitUntilTextAppear("Regular (9-Day) Delivery");
 		
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.selectDelivery("Regular (10-Day) ("+DateGenerator
 				.getInstance()
 				.modifyParticularDate(cal, 0, 0, 1)+")");
 		expectedServicesSteps.clickUpdate();
-		
+		globalSteps.pause(5);
 		globalSteps.waitUntilTextAppear("Regular (10-Day) Delivery");
 	}
 	
@@ -336,7 +349,7 @@ public class ExpectedServicesReporterTest extends BasicTest {
 		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.OCR, 1);
 		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.TIFF, 1);
 		expectedServicesSteps.setNumberOfLeptops("3");
-		expectedServicesSteps.selectDelivery("Immediate ("+testFutureDate+")");
+		expectedServicesSteps.selectDelivery2(1);
 		expectedServicesSteps.clickVendorTBDIconSection(VendorService.REPORTER);
 		expectedServicesSteps.clickUpdate();
 		globalSteps.pause(7);

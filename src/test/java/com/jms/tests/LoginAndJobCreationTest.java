@@ -54,23 +54,8 @@ public class LoginAndJobCreationTest extends BasicTest {
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc_1_2() throws InterruptedException {
-		loginSteps.login(userStorage.getUser(1));
-		loginSteps.checkLoginErrorMsg();
-		loginSteps.checkPasswordErrorMsg();
-
-		loginSteps.login(userStorage.getUser(2));
-		loginSteps.checkPasswordErrorMsg();
-
-		loginSteps.login(userStorage.getUser(3));
-		loginSteps.checkLoginErrorMsg();
-
-		loginSteps.login(userStorage.getUser(4));
-		globalSteps.waitUntilTextAppear("LOGIN");
-		
-		globalSteps.pause(7);
-		
+				
 		String futureDate = DateGenerator.getInstance().modifiedDate(0, 0, 1);
-		String pastDate = DateGenerator.getInstance().modifiedDate(-1, 0, 1);
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.pause(3);
@@ -111,13 +96,23 @@ public class LoginAndJobCreationTest extends BasicTest {
 		globalSteps.pause(4);
 		jobDetailSteps.setCaseName("Daily meeting");
 		globalSteps.pause(2);
-		jobDetailSteps.setDate(pastDate);
-		jobDetailSteps.clickSave();
+
+		globalSteps.clickSideMenuItem(SideMenuLink.LOG_OUT);
+		//Unsuccessful login
+		loginSteps.login(userStorage.getUser(1));
+		loginSteps.checkLoginErrorMsg();
+		loginSteps.checkPasswordErrorMsg();
+
+		loginSteps.login(userStorage.getUser(2));
+		loginSteps.checkPasswordErrorMsg();
+
+		loginSteps.login(userStorage.getUser(3));
+		loginSteps.checkLoginErrorMsg();
+
+		loginSteps.login(userStorage.getUser(4));
+		globalSteps.waitUntilTextAppear("LOGIN");
 		
-		globalSteps.checkMessageText("There were issues with your request");
-		globalSteps.checkMessageText("ERRORS:");
-		globalSteps.checkMessageText("The job date cannot be before today's date");
-		
+		globalSteps.pause(7);
 	}
 
 }

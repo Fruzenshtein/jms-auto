@@ -215,16 +215,19 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.addEmailAddressQuickCRM("test@door"
 				+ RandonUUIDGenerator.getRandomUUID() + ".com");
 		jobDetailSteps.clickSubmitButtonQuickCRM();
+		globalSteps.pause(5);
 		jobDetailSteps.clickActionMenuLink(2);
-		globalSteps.pause(2);
+		globalSteps.pause(3);
 		jobDetailSteps.selectActionMenuOption("Make Primary", 2);
 		jobDetailSteps.clickActionMenuLink(2);
+		globalSteps.pause(3);
 		jobDetailSteps.selectActionMenuOption("Remove Contact", 2); 
 		jobDetailSteps.checkFirmContactCheckbox(2); 
 		globalSteps.pause(10);
 		jobDetailSteps.clickAddRequestedVendorLink(1); 
 		jobDetailSteps.addRequestedVendor("Daniel Lever", 1);
 		jobDetailSteps.clickActionMenuLink(2);
+		globalSteps.pause(3);
 		jobDetailSteps.selectActionMenuOption("Remove Requested Vendor", 1); 
 		jobDetailSteps.clickAddFirmButton();
 		jobDetailSteps.setContributingFirm("American Capital, Ltd.");
@@ -236,6 +239,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.addEmailAddressQuickCRM("test@eng"
 				+ RandonUUIDGenerator.getRandomUUID() + ".com");
 		jobDetailSteps.clickSubmitButtonQuickCRM();
+		globalSteps.pause(5);
 		jobDetailSteps.clickAddRequestedVendorLink(2);
 		jobDetailSteps.addRequestedVendor("Robert Algeri", 2);
 		jobDetailSteps.removeAddedFirm(2);
@@ -433,7 +437,7 @@ public class JobDetailFieldsTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void jobDetailPageEquipmentModule() throws AWTException {
+	public void tc_5_7_1() throws AWTException {
 
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("2220");
