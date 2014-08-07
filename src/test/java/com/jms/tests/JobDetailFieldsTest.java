@@ -9,7 +9,7 @@ import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.pages.elements.StreamServices;
 import com.jms.pages.elements.VendorService;
 import com.jms.pages.elements.VendorTab;
-import com.jms.requirements.JobManagementStory.JobDetailFieldsStory;
+import com.jms.requirements.JobManagementStory.JobDetailFieldsTestSeries;
 import com.jms.steps.GlobalSteps;
 import com.jms.steps.JobDetailSteps;
 import com.jms.steps.LoginSteps;
@@ -22,7 +22,7 @@ import net.thucydides.core.annotations.Screenshots;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Story;
 
-@Story(JobDetailFieldsStory.class)
+@Story(JobDetailFieldsTestSeries.class)
 public class JobDetailFieldsTest extends BasicTest {
 
 	@Steps
@@ -39,7 +39,7 @@ public class JobDetailFieldsTest extends BasicTest {
 
 	 @Test
 	 @Screenshots(onlyOnFailures = true)
-	 public void jobDetailPageCaseInfoSection() throws InterruptedException {
+	 public void tc_5_1_1() throws InterruptedException {
 	
 	 String futureDate = DateGenerator.getInstance().modifiedDate(0, 0, 1);
 	
@@ -73,7 +73,7 @@ public class JobDetailFieldsTest extends BasicTest {
 
 	 @Test
 	 @Screenshots(onlyOnFailures = true)
-	 public void jobDetailPageWitnessInfoSection() throws InterruptedException
+	 public void tc_5_2_1() throws InterruptedException
 	 {
 	
 	 loginSteps.login(userStorage.getUser(0));
@@ -99,8 +99,7 @@ public class JobDetailFieldsTest extends BasicTest {
 	
 	 @Test
 	 @Screenshots(onlyOnFailures = true)
-	 public void jobDetailPageLocationInfoSection() throws
-	 InterruptedException {
+	 public void tc_5_3_1() throws InterruptedException {
 	
 	 Address address1 = new Address();
 	 address1.setCompany("Century City Bar Association")
@@ -135,7 +134,7 @@ public class JobDetailFieldsTest extends BasicTest {
 
 	 @Test
 	 @Screenshots(onlyOnFailures = true)
-	 public void jobDetailPageClientMatterNumber() throws InterruptedException
+	 public void tc_5_4_2() throws InterruptedException
 	 {
 	
 	 String futureDate = DateGenerator.getInstance().modifiedDate(0, 0, 1);
@@ -145,11 +144,12 @@ public class JobDetailFieldsTest extends BasicTest {
 	 jobDetailSteps.maximizeClientInfoSection();
 	 jobDetailSteps.setClientMatterN(RandonUUIDGenerator.getRandomUUID());
 	 jobDetailSteps.clickSave();
-	 globalSteps.pause(2);
+	 globalSteps.pause(3);
 	 jobDetailSteps.writeClientMatterN();
 	 globalSteps.pause(1);
 	
 	 globalSteps.searchJobById("301");
+	 globalSteps.pause(3);
 	 jobDetailSteps.maximizeClientInfoSection();
 	 jobDetailSteps.maximizeCaseInfoSection();
 	 globalSteps.pause(2);
@@ -190,7 +190,7 @@ public class JobDetailFieldsTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void jobDetailPageClientInfoSection() throws InterruptedException 
+	public void tc_5_4_1() throws InterruptedException 
 	{
 
 		loginSteps.login(userStorage.getUser(0));
@@ -215,16 +215,19 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.addEmailAddressQuickCRM("test@door"
 				+ RandonUUIDGenerator.getRandomUUID() + ".com");
 		jobDetailSteps.clickSubmitButtonQuickCRM();
+		globalSteps.pause(5);
 		jobDetailSteps.clickActionMenuLink(2);
-		globalSteps.pause(2);
+		globalSteps.pause(3);
 		jobDetailSteps.selectActionMenuOption("Make Primary", 2);
 		jobDetailSteps.clickActionMenuLink(2);
+		globalSteps.pause(3);
 		jobDetailSteps.selectActionMenuOption("Remove Contact", 2); 
 		jobDetailSteps.checkFirmContactCheckbox(2); 
 		globalSteps.pause(10);
 		jobDetailSteps.clickAddRequestedVendorLink(1); 
 		jobDetailSteps.addRequestedVendor("Daniel Lever", 1);
 		jobDetailSteps.clickActionMenuLink(2);
+		globalSteps.pause(3);
 		jobDetailSteps.selectActionMenuOption("Remove Requested Vendor", 1); 
 		jobDetailSteps.clickAddFirmButton();
 		jobDetailSteps.setContributingFirm("American Capital, Ltd.");
@@ -236,6 +239,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.addEmailAddressQuickCRM("test@eng"
 				+ RandonUUIDGenerator.getRandomUUID() + ".com");
 		jobDetailSteps.clickSubmitButtonQuickCRM();
+		globalSteps.pause(5);
 		jobDetailSteps.clickAddRequestedVendorLink(2);
 		jobDetailSteps.addRequestedVendor("Robert Algeri", 2);
 		jobDetailSteps.removeAddedFirm(2);
@@ -245,7 +249,7 @@ public class JobDetailFieldsTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void jobDetailPageVendorModule() {
+	public void tc_5_5_1() {
 
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("2201");
@@ -348,8 +352,9 @@ public class JobDetailFieldsTest extends BasicTest {
 	} 
 
 	@Test
+	@Pending
 	@Screenshots(onlyOnFailures = true)
-	public void jobDetailPageRatesCommissionFiles() throws AWTException {
+	public void tc_5_6_1() throws AWTException {
 
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("1290");
@@ -429,10 +434,10 @@ public class JobDetailFieldsTest extends BasicTest {
 		globalSteps.pause(15); 
 
 	}  
-/*
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void jobDetailPageEquipmentModule() throws AWTException {
+	public void tc_5_7_1() throws AWTException {
 
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("2220");
@@ -476,5 +481,5 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.assertVideographerTotalRow("8");
 		jobDetailSteps.assertAdditionalTotalRow("10");  
 	}  
-*/
+
 }

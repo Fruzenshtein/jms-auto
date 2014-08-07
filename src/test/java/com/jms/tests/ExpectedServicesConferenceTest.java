@@ -12,14 +12,14 @@ import com.jms.pages.elements.ExpectedServiceSection;
 import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.pages.elements.LocationService;
 import com.jms.pages.elements.VendorService;
-import com.jms.requirements.ExpectedServicesStory.ExpectedServicesConferenceStory;
+import com.jms.requirements.ExpectedServicesStory.ExpectedServicesTestSeries;
 import com.jms.steps.ExpectedServicesSteps;
 import com.jms.steps.GlobalSteps;
 import com.jms.steps.JobDetailSteps;
 import com.jms.steps.LoginSteps;
 import com.jms.util.DateGenerator;
 
-@Story(ExpectedServicesConferenceStory.class)
+@Story(ExpectedServicesTestSeries.class)
 public class ExpectedServicesConferenceTest extends BasicTest {
 
 	@Steps
@@ -39,8 +39,8 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_4_1() throws InterruptedException {
 
+	public void tc_4_4_1() throws InterruptedException {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
 		jobDetailSteps.clickExpectedServicesButton();
@@ -75,8 +75,9 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_4_2() throws InterruptedException {
 
+	public void tc_4_4_2() throws InterruptedException {
+		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
 		jobDetailSteps.clickExpectedServicesButton();
@@ -132,8 +133,9 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_4_3() throws InterruptedException {
 
+	public void tc_4_4_3() throws InterruptedException {
+		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
 		jobDetailSteps.clickExpectedServicesButton();
@@ -166,14 +168,20 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void multipleFirmsWitnesses() {
-
+	
+	public void tc_4_4_4() {
+		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("674");
+		globalSteps.pause(3);
 		jobDetailSteps.clickExpectedServicesButton();
+
 		// Scheduling firm
 		expectedServicesSteps
 				.clickVendorServiceIconSection(VendorService.LOCATION);
+		globalSteps.pause(3);
+		//Scheduling firm
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.LOCATION);
 		expectedServicesSteps.selectConferenceLocation(1);
 		expectedServicesSteps.clickAddLocationLink();
 		// Contributing firm
@@ -190,7 +198,10 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 						JobDetailHeaderLabel.CONF_SERVICES,
 						"Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US");
 
+		globalSteps.pause(3);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US");
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.removeLocation(1);
 		expectedServicesSteps.goToFirmTab(2);
 		expectedServicesSteps.selectConferenceLocation(1);
@@ -220,6 +231,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		jobDetailSteps.assertJobDetailHeaderLabel(
 				JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.goToFirmTab(2);
 		expectedServicesSteps.setIP(1, "207.222.11.200");
 		expectedServicesSteps.clickAddEmailLink(1);
@@ -239,13 +251,16 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void multipleLocations() {
+
+	@Pending
+	public void tc_4_4_5() {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("669");
 		jobDetailSteps.clickExpectedServicesButton();
-		// 1st location
-		expectedServicesSteps
-				.clickVendorServiceIconSection(VendorService.LOCATION);
+		globalSteps.pause(3);
+		//1st location
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.LOCATION);
+
 		expectedServicesSteps.selectConferenceLocation(1);
 		expectedServicesSteps.clickAddLocationLink();
 		// 2nd location
@@ -257,6 +272,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		expectedServicesSteps.clickAddLocationLink();
 		expectedServicesSteps.clickUpdate();
 		globalSteps.pause(5);
+
 		jobDetailSteps
 				.assertJobDetailHeaderLabel(
 						JobDetailHeaderLabel.CONF_SERVICES,
@@ -265,6 +281,13 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 								+ "Aegis Media North America (150 E. 42nd Street, New York, NY, US)");
 		// Provide data
 		// 1st location
+
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US), "
+				+ "Ball Janik LLP (One Main Place, 101 SW Main Street, Portland, OR, US), "
+				+ "Aegis Media North America (150 E. 42nd Street, New York, NY, US)");
+		//Provide data
+		//1st location
+
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.pause(3);
 		expectedServicesSteps.clickReportingServiceCheckBox(
@@ -332,7 +355,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void invalidLocation() throws InterruptedException {
+	public void tc_4_4_7() throws InterruptedException {
 
 		loginSteps.login(userStorage.getUser(0));
 		String futureDate = DateGenerator.getInstance().modifiedDate(0, 0, 1);
@@ -352,6 +375,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		jobDetailSteps.clickSave();
 		globalSteps.pause(7);
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.selectConferenceLocation(1);
 		expectedServicesSteps.clickAddLocationLink();
 		expectedServicesSteps
@@ -392,6 +416,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		jobDetailSteps.clickSave();
 		globalSteps.pause(7);
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.removeLocation(1);
 		expectedServicesSteps.selectConferenceLocation(1);
 		expectedServicesSteps.clickAddLocationLink();
@@ -418,6 +443,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 				"MyCompany2 (Address2, City2, State2, AX)");
 		jobDetailSteps.assertJobDetailHeaderLabel(
 				JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
+
 
 	}
 
@@ -510,6 +536,8 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 								+ "Bullivant Houser Bailey PC (888 S.W. Fifth Avenue Suite 300, Portland, OR, US)");
 		jobDetailSteps.assertJobDetailHeaderLabel(
 				JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
-	}
+	
+ }
+	
 
 }

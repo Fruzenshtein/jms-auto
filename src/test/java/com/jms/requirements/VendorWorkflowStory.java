@@ -5,12 +5,12 @@ import net.thucydides.core.annotations.Feature;
 public class VendorWorkflowStory {
 	
 	@Feature
-	public class FreelanceVendorAssignment {
+	public class VendorWorkflowTestSeriesAgencyVendorAssignment {
 		
 	}
 	
 	@Feature
-	public class AgencyVendorAssignmentStory {
+	public class VendorWorkflowTestSeriesFreelanceVendorAssignment {
 		
 	}
 

@@ -22,7 +22,7 @@ import net.thucydides.core.annotations.Screenshots;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Story;
 
-@Story(VendorWorkflowStory.AgencyVendorAssignmentStory.class)
+@Story(VendorWorkflowStory.VendorWorkflowTestSeriesAgencyVendorAssignment.class)
 public class AgencyVendorAssignmentTest extends BasicTest {
 
 	@Steps
@@ -51,8 +51,8 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	//TC6.2.1
-	public void recommendedAgencyVendorApproval() {
+
+	public void tc_6_2_1() {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("2012");
 		jobDetailSteps.clickExpectedServicesButton();
@@ -90,7 +90,9 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		assignVendorSteps.clickSaveButton();
 		globalSteps.waitUntilTextAppear("Recommendation (Agency)");
 		
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorActionLink(2);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(2, ActionLink.SELECT_ANOTHER_VENDOR);
 		globalSteps.pause(10);
 		expectedServicesSteps.clickAgencyByIndex(1);
@@ -117,8 +119,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	//TC6.2.2
-	public void recommendedAgencyVendorReassignment() {
+	public void tc_6_2_2() {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
 		jobDetailSteps.clickExpectedServicesButton();
@@ -155,19 +156,19 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		globalSteps.pause(10);
 		
 		//Test starts
-		String currentVandor = jobDetailSteps.getVendorNameInManageModule(1);
+		//String currentVandor = jobDetailSteps.getVendorNameInManageModule(1);
 		
 		jobDetailSteps.clickVendorActionLink(1);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.RECOMMEND_ANOTHER_VEND);
-		globalSteps.pause(5);
+		globalSteps.pause(10);
 		
-		globalSteps.waitUntilTextDisappear(currentVandor);
+		globalSteps.waitUntilTextAppear("Recommendation (Freelancer)");
 	}
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	//TC6.2.5
-	public void recommendationApprovedAgencyVendorContactViaCalled() {
+
+	public void tc_6_2_5() {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
 		jobDetailSteps.clickExpectedServicesButton();
@@ -219,8 +220,8 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	//TC6.2.7
-	public void aecommendationApprovedAgencyVendorContactViaCalledVendorAccepts() {
+	
+	public void tc_6_2_7() {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("2007");
 		jobDetailSteps.clickExpectedServicesButton();
@@ -273,8 +274,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	//TC6.2.8
-	public void TC_6_2_8() {
+	public void tc_6_2_8() {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("2007");
 		jobDetailSteps.clickExpectedServicesButton();
@@ -302,7 +302,7 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		jobDetailSteps.clickManageButton();
 		jobDetailSteps.clickVendorActionLink(1);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.SELECT_ANOTHER_VENDOR);
-		globalSteps.pause(18);
+		globalSteps.pause(20);
 		expectedServicesSteps.clickAgencyByIndex(1);
 		expectedServicesSteps.clickChangeRecommendationButton();
 		globalSteps.pause(5);

@@ -5,7 +5,7 @@ import org.junit.Test;
 import com.jms.pages.elements.ExpectedServiceSection;
 import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.pages.elements.VendorService;
-import com.jms.requirements.ExpectedServicesStory.ExpectedServicesInterpreterStory;
+import com.jms.requirements.ExpectedServicesStory.ExpectedServicesTestSeries;
 import com.jms.steps.ExpectedServicesSteps;
 import com.jms.steps.GlobalSteps;
 import com.jms.steps.JobDetailSteps;
@@ -15,7 +15,7 @@ import net.thucydides.core.annotations.Screenshots;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Story;
 
-@Story(ExpectedServicesInterpreterStory.class)
+@Story(ExpectedServicesTestSeries.class)
 public class ExpectedServicesInterpreterTest extends BasicTest {
 
 	@Steps
@@ -34,7 +34,7 @@ public class ExpectedServicesInterpreterTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_5_1() throws InterruptedException {
+	public void tc_4_5_1() throws InterruptedException {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -64,7 +64,7 @@ public class ExpectedServicesInterpreterTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_5_2() throws InterruptedException {
+	public void tc_4_5_2() throws InterruptedException {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -92,5 +92,79 @@ public class ExpectedServicesInterpreterTest extends BasicTest {
 		
 		
 	}
+	
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	public void tc_4_5_3() {
 
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("128");
+		globalSteps.pause(5);
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.INTERPRETER);
+		expectedServicesSteps.clickVendorTBDIconSection(VendorService.INTERPRETER);
+		expectedServicesSteps.clickAddLanguageLink();
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(5);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "English");
+		jobDetailSteps.isServiceIconInVendorSection(VendorService.INTERPRETER, true);
+		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.INTERPRETER, true);
+		
+		//Add French and German languages
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
+		expectedServicesSteps.clickAddLanguageLink();
+		expectedServicesSteps.selectLanguage(3, 2);
+		expectedServicesSteps.selectAppliedWitness(4, 1);
+		expectedServicesSteps.clickAddLanguageLink();
+		expectedServicesSteps.selectLanguage(5, 3);
+		expectedServicesSteps.selectAppliedWitness(6, 2);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(5);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "English");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "French");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "German");
+		//Delete French
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
+		expectedServicesSteps.deleteLanguage(2);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(5);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "English");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "German");
+		//Change from German to Spanish
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
+		expectedServicesSteps.selectLanguage(3, 6);
+		expectedServicesSteps.selectAppliedWitness(4, 1);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(5);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "English");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "Spanish");
+		
+	}
+
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	public void tc_4_5_5() {
+
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("34");
+		globalSteps.pause(5);
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.INTERPRETER);
+		expectedServicesSteps.clickAddLanguageLink();
+		expectedServicesSteps.selectLanguage(1, 0);
+		expectedServicesSteps.selectAppliedWitness(2, 0);
+		expectedServicesSteps.clickAddLanguageLink();
+		expectedServicesSteps.selectLanguage(3, 4);
+		expectedServicesSteps.selectAppliedWitness(4, 1);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(5);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "English");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "Russian");
+		
+	}
 }

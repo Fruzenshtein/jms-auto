@@ -10,7 +10,7 @@ import com.jms.pages.elements.ReportingService;
 import com.jms.pages.elements.StreamServices;
 import com.jms.pages.elements.VendorService;
 import com.jms.pages.elements.VideographerService;
-import com.jms.requirements.ExpectedServicesStory.ExpectedServicesVideographerStory;
+import com.jms.requirements.ExpectedServicesStory.ExpectedServicesTestSeries;
 import com.jms.steps.ExpectedServicesSteps;
 import com.jms.steps.GlobalSteps;
 import com.jms.steps.JobDetailSteps;
@@ -22,7 +22,7 @@ import net.thucydides.core.annotations.Screenshots;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Story;
 
-@Story(ExpectedServicesVideographerStory.class)
+@Story(ExpectedServicesTestSeries.class)
 public class ExpectedServicesVideographerTest extends BasicTest {
 	
 	@Steps
@@ -42,7 +42,7 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_2_1() throws InterruptedException {
+	public void tc_4_2_1() throws InterruptedException {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -71,7 +71,7 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_2_2() throws InterruptedException {
+	public void tc_4_2_2() throws InterruptedException {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -114,8 +114,8 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_2_3() throws InterruptedException {
-		
+	public void tc_4_2_3() throws InterruptedException {
+		//Fails because of bug!
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
 		jobDetailSteps.clickExpectedServicesButton();
@@ -131,7 +131,7 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 		
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "Video Streaming");
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.STREAMING, "Video Stream");
-		
+	
 		jobDetailSteps.isServiceIconInVendorSection(VendorService.VIDEOGRAPHER, true);
 		jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, true);
 		
@@ -152,7 +152,7 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc4_2_4() throws InterruptedException {
+	public void tc_4_2_4() throws InterruptedException {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
 		jobDetailSteps.clickExpectedServicesButton();
@@ -195,11 +195,12 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void MultipleFirmsWitnesses() {
+	public void tc_4_2_5() {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("1854");
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		//Scheduling firm tab
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.VIDEOGRAPHER);
 		expectedServicesSteps.clickReportingServiceCheckBox(VideographerService.MPEG, 1);
@@ -211,6 +212,7 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 		expectedServicesSteps.clickUpdate();
 		globalSteps.pause(15);
 		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.goToFirmTab(2);
 		expectedServicesSteps.clickReportingServiceCheckBox(VideographerService.MPEG, 1);
 		expectedServicesSteps.clickReportingServiceCheckBox(VideographerService.MPEG_SYNC, 1);

@@ -1,12 +1,13 @@
 package com.jms.tests;
 
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.jms.pages.elements.ActionLink;
 import com.jms.pages.elements.Beacon;
 import com.jms.pages.elements.BeaconState;
 import com.jms.pages.elements.VendorService;
-import com.jms.requirements.VendorWorkflowStory;
+import com.jms.requirements.VendorWorkflowStory.VendorWorkflowTestSeriesFreelanceVendorAssignment;
 import com.jms.steps.AssignVendorSteps;
 import com.jms.steps.ContactVendorSteps;
 import com.jms.steps.ExpectedServicesSteps;
@@ -18,7 +19,7 @@ import net.thucydides.core.annotations.Screenshots;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Story;
 
-@Story(VendorWorkflowStory.class)
+@Story(VendorWorkflowTestSeriesFreelanceVendorAssignment.class)
 public class FreelanceVendorAssigmentTest extends BasicTest {
 	
 	@Steps
@@ -39,27 +40,32 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 	@Steps
 	public ContactVendorSteps contactVendorSteps;
 	
-	//Another jobs which can be used: 1608, 1591
-	private String jobId = "1590";
+	//Another jobs which can be used: 1608, 1591, 1590, 1592
+	private String jobId = "1592";
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void recommendedVendorReassignment() {
+	public void tc_6_1_1() {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("1713");
 		jobDetailSteps.clickManageButton();
+		
+		String oldVandor = jobDetailSteps.getVendorNameInManageModule(1);
+		
 		jobDetailSteps.clickVendorActionLink(1);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.RECOMMEND_ANOTHER_VEND);
+		globalSteps.pause(5);
 		
-		String currentVandor = jobDetailSteps.getVendorNameInManageModule(1);
+		String newVandor = jobDetailSteps.getVendorNameInManageModule(1);
 		
-		globalSteps.waitUntilTextDisappear(currentVandor);
+		globalSteps.pause(2);
+		assertFalse("Vendor name wasn't changed", oldVandor.equals(newVandor));
 		
 	}
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void recommendedVendorApproval() {
+	public void tc_6_1_2() {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("1710");
 		
@@ -111,10 +117,10 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		jobDetailSteps.clickVendorsActionMenuLink(2, ActionLink.APPROVE_RECOMENDATION);
 		jobDetailSteps.isBeacon(Beacon.VIDEOGRAPHER_ASSIGNED, BeaconState.GRAY);
 	}
-	
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void recommendationApprovedVendorContactViaCalledAccept() {
+	public void tc_6_1_8() {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -144,11 +150,13 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 
 		jobDetailSteps.clickManageButton();
 		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.APPROVE_RECOMENDATION);
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GRAY);
 		
 		//Test starts
 		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.CONTACT_FOR_ASSIGNMENT);
 		contactVendorSteps.clickCalledButton();
 		contactVendorSteps.clickContactedButton();
@@ -160,7 +168,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void recommendationApprovedVendorContactViaCalledReject() {
+	public void tc_6_1_9() {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -190,11 +198,13 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 
 		jobDetailSteps.clickManageButton();
 		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.APPROVE_RECOMENDATION);
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GRAY);
 		
 		//Test starts
 		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.CONTACT_FOR_ASSIGNMENT);
 		contactVendorSteps.clickCalledButton();
 		contactVendorSteps.clickRejectedButton();
@@ -207,8 +217,8 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	//TC 6.1.11
-	public void contactedVendorVendorConfirmsManageModule() {
+	
+	public void tc_6_1_11() {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -239,10 +249,12 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 
 		jobDetailSteps.clickManageButton();
 		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.APPROVE_RECOMENDATION);
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GRAY);
 		
 		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.CONTACT_FOR_ASSIGNMENT);
 		contactVendorSteps.clickCalledButton();
 		contactVendorSteps.clickContactedButton();
@@ -253,6 +265,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		globalSteps.pause(3);
 		
 		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.VENDOR_CONFIRMS);
 		
 		globalSteps.waitUntilTextAppear("Assigned & Awaiting D-Day");
@@ -262,8 +275,8 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	//TC 6.1.12
-	public void contactedVendorRecontactVendor() {
+	
+	public void tc_6_1_12() {
 		
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -294,10 +307,12 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 
 		jobDetailSteps.clickManageButton();
 		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.APPROVE_RECOMENDATION);
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GRAY);
 		
 		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.CONTACT_FOR_ASSIGNMENT);
 		contactVendorSteps.clickCalledButton();
 		contactVendorSteps.clickContactedButton();
@@ -308,6 +323,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		globalSteps.pause(3);
 		
 		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.CONTACT_AGAIN_FOR_ASSIGMENT);
 		
 		contactVendorSteps.clickCalledButton();

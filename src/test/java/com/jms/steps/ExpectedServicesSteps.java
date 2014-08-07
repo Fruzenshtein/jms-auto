@@ -61,6 +61,11 @@ public class ExpectedServicesSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void selectDelivery2(int index) {
+		expectedServicesPopup().selectDelivery2(index);
+	}
+	
+	@Step
 	public void isExpectedServicesSection(ExpectedServiceSection section, boolean enabled) {
 		assertTrue(section.getSection()+" section wasn't in expected state.", 
 				expectedServicesPopup().isExpectedServicesSection(section, enabled));
@@ -192,7 +197,22 @@ public class ExpectedServicesSteps extends ScenarioSteps {
 	}
 	
 	@Step
+
 	public void chooseRoomTSGLocation(int indexChkbx, int indexSelect) {
 		expectedServicesPopup().chooseRoomTSGLocation(indexChkbx, indexSelect);
+	}
+	public void selectLanguage(int index, int languageIndex) {
+		expectedServicesPopup().selectLanguage(index, languageIndex);
+	}
+	
+	@Step
+	public void selectAppliedWitness(int index, int witnessIndex) {
+		expectedServicesPopup().selectAppliedWitness(index, witnessIndex);
+	}
+	
+	@Step
+	public void deleteLanguage(int index) {
+		expectedServicesPopup().deleteLanguage(index);
+
 	}
 }

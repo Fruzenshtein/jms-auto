@@ -145,6 +145,10 @@ public class ExpectedServicesPopup extends PageObject {
 		$(deliveryDropDown).selectByVisibleText(delivery);
 	}
 	
+	public void selectDelivery2(int index) {
+		$(deliveryDropDown).selectByIndex(index);
+	}
+	
 	public void clickReportingServiceCheckBox(ExpectedServiceOption service, int order) {
 			$("(//span[text()='"+service.getService()+"'])["+order+"]").click();
 	}
@@ -240,6 +244,14 @@ public class ExpectedServicesPopup extends PageObject {
 		addLanguageLink.click();
 	}
 	
+	public void selectLanguage(int index, int languageIndex) {
+		$("(//div[@data-test='interpreterservices-expectedservices-module']//select)[" + index + "]").selectByIndex(languageIndex);
+	}
+	
+	public void selectAppliedWitness(int index, int witnessIndex) {
+		$("(//div[@data-test='interpreterservices-expectedservices-module']//select)[" + index + "]").selectByIndex(witnessIndex);
+	}
+	
 	public void clickChangeRecommendationButton() {
 		changeRecommendationButton.click();
 	}
@@ -260,7 +272,12 @@ public class ExpectedServicesPopup extends PageObject {
 		$("(//a[text()='Remove Location'])[" + index + "]").click();
 	}
 	
+
 	public void chooseRoomTSGLocation(int indexChkbx, int indexSelect) {
 		$("((//div[@data-test='conferenceservices-expectedservices-module']//select)[2])[" + indexChkbx +"]").selectByIndex(indexSelect);
+	}
+	public void deleteLanguage(int index) {
+		$("(//div[@data-test='interpreterservices-expectedservices-module']//a[@class='icon delete'])[" + index +"]").click();
+
 	}
 }
