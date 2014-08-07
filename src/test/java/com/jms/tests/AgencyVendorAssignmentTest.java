@@ -119,7 +119,6 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	
 	public void tc_6_2_2() {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -157,13 +156,13 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		globalSteps.pause(10);
 		
 		//Test starts
-		String currentVandor = jobDetailSteps.getVendorNameInManageModule(1);
+		//String currentVandor = jobDetailSteps.getVendorNameInManageModule(1);
 		
 		jobDetailSteps.clickVendorActionLink(1);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.RECOMMEND_ANOTHER_VEND);
 		globalSteps.pause(10);
 		
-		globalSteps.waitUntilTextDisappear(currentVandor);
+		globalSteps.waitUntilTextAppear("Recommendation (Freelancer)");
 	}
 	
 	@Test
