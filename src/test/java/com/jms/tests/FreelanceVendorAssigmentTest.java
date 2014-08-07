@@ -1,5 +1,6 @@
 package com.jms.tests;
 
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.jms.pages.elements.ActionLink;
@@ -49,12 +50,16 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		globalSteps.searchJobById("1713");
 		jobDetailSteps.clickManageButton();
 		
-		String currentVandor = jobDetailSteps.getVendorNameInManageModule(1);
+		String oldVandor = jobDetailSteps.getVendorNameInManageModule(1);
 		
 		jobDetailSteps.clickVendorActionLink(1);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.RECOMMEND_ANOTHER_VEND);
+		globalSteps.pause(5);
 		
-		globalSteps.waitUntilTextDisappear(currentVandor);
+		String newVandor = jobDetailSteps.getVendorNameInManageModule(1);
+		
+		globalSteps.pause(2);
+		assertFalse("Vendor name wasn't changed", oldVandor.equals(newVandor));
 		
 	}
 
