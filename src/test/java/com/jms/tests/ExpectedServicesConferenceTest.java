@@ -449,7 +449,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void multipleFirmsLocations() {
+	public void tc_4_4_6() {
 
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("432");
