@@ -40,12 +40,6 @@ public class ExpectedServicesPopup extends PageObject {
 	@FindBy(className="exsvcneedlaptop")
 	private WebElement numberOfLeptops;
 	
-	@FindBy(linkText="Add Email")
-	private WebElement addEmail;
-	
-	@FindBy(className="streamingaddemail")
-	private WebElement addEmailField;
-	
 	@FindBy(className="streamingemailtoservices")
 	private WebElement addEmailVideoStream;
 	
@@ -54,24 +48,6 @@ public class ExpectedServicesPopup extends PageObject {
 	
 	@FindBy(linkText="Add Location")
 	private WebElement addLocationLink;
-	
-	@FindBy(xpath="//span[text()='IP']/../input")
-	private WebElement ipField;
-	
-	@FindBy(xpath="//span[text()='ISDN']/../input")
-	private WebElement isdnField;
-	
-	@FindBy(xpath="//span[text()='IT Contact']/../input")
-	private WebElement itContactField;
-	
-	@FindBy(xpath="(//span[text()='Phone']/../input)[2]")
-	private WebElement phoneFieldConfServices;
-	
-	@FindBy(xpath="//span[text()='Notes']/../textarea")
-	private WebElement notesTextarea;
-	
-	@FindBy(xpath="//span[text()='Email to:']/../input")
-	private WebElement confServEmail;
 	
 	@FindBy(linkText="Add Language")
 	private WebElement addLanguageLink;
@@ -206,12 +182,12 @@ public class ExpectedServicesPopup extends PageObject {
 		updateButton.click();
 	}
 	
-	public void clickAddEmailLink() {
-		addEmail.click();
+	public void clickAddEmailLink(int index) {
+		$("(//a[@data-test='conferencecammeoaddemail-expectedservices-link']/../a[text()='Add Email'])[" + index+ "]").click();
 	}
 	
-	public void addEmail(String email) {
-		addEmailField.sendKeys(email);
+	public void addEmail(int index, String email) {
+		$("(//span[text()='Email to:']/../input)[" + index + "]").sendKeys(email);
 	}
 	
 	public void addEmailInVeideoStream(String email) {
@@ -226,25 +202,29 @@ public class ExpectedServicesPopup extends PageObject {
 		addLocationLink.click();
 	}
 	
-	public void setIP(String ip) {
-		ipField.clear();
-		ipField.sendKeys(ip);
+	public void setIP(int index, String ip) {
+		$("(//span[text()='IP']/../input)[" + index + "]").clear();
+		$("(//span[text()='IP']/../input)[" + index + "]").sendKeys(ip);
 	}
 	
-	public void setISDN(String isdn) {
-		isdnField.sendKeys(isdn);
+	public void setISDN(int index, String isdn) {
+		$("(//span[text()='ISDN']/../input)[" + index + "]").clear();
+		$("(//span[text()='ISDN']/../input)[" + index + "]").sendKeys(isdn);
 	}
 	
-	public void setItContact(String itContact) {
-		itContactField.sendKeys(itContact);
+	public void setItContact(int index, String itContact) {
+		$("(//span[text()='IT Contact']/../input)[" + index + "]").clear();
+		$("(//span[text()='IT Contact']/../input)[" + index + "]").sendKeys(itContact);
 	}
 	
-	public void setPhoneConfServices(String phone) {
-		phoneFieldConfServices.sendKeys(phone);
+	public void setPhoneConfServices(int index, String phone) {
+		$("(//span[text()='Phone']/../input[@data-test='conferencephone-expectedservices-text'])[" + index + "]").clear();
+		$("(//span[text()='Phone']/../input[@data-test='conferencephone-expectedservices-text'])[" + index + "]").sendKeys(phone);
 	}
 	
-	public void setNotes(String notes) {
-		notesTextarea.sendKeys(notes);
+	public void setNotes(int index, String notes) {
+		$("(//span[text()='Notes']/../textarea[@data-test='conferencenotes-expectedservices-text'])[" + index +"]").clear();
+		$("(//span[text()='Notes']/../textarea[@data-test='conferencenotes-expectedservices-text'])[" + index +"]").sendKeys(notes);
 	}
 	
 	public void setNumberOfCameos(String number, int index) {
@@ -252,8 +232,8 @@ public class ExpectedServicesPopup extends PageObject {
 	}
 	
 	public void addEmailConfServSection(String email, int index) {
-		$("(//span[text()='Email to:']//..//input)[" + index +"]").clear();
-		$("//span[text()='Email to:']//..//input").sendKeys(email);
+		$("(//span[text()='Email to:']//..//input[@data-test='conferencecammeoemail-expectedservices-text'])[" + index +"]").clear();
+		$("(//span[text()='Email to:']//..//input[@data-test='conferencecammeoemail-expectedservices-text'])[" + index +"]").sendKeys(email);
 	}
 	
 	public void clickAddLanguage() {
@@ -278,5 +258,9 @@ public class ExpectedServicesPopup extends PageObject {
 	
 	public void removeLocation(int index) {
 		$("(//a[text()='Remove Location'])[" + index + "]").click();
+	}
+	
+	public void chooseRoomTSGLocation(int indexChkbx, int indexSelect) {
+		$("((//div[@data-test='conferenceservices-expectedservices-module']//select)[2])[" + indexChkbx +"]").selectByIndex(indexSelect);
 	}
 }

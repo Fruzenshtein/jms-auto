@@ -102,13 +102,13 @@ public class ExpectedServicesSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void clickAddEmailLink() {
-		expectedServicesPopup().clickAddEmailLink();
+	public void clickAddEmailLink(int index) {
+		expectedServicesPopup().clickAddEmailLink(index);
 	}
 	
 	@Step
-	public void addEmail(String email) {
-		expectedServicesPopup().addEmail(email);
+	public void addEmail(int index, String email) {
+		expectedServicesPopup().addEmail(index,email);
 	}
 	
 	@Step
@@ -127,28 +127,28 @@ public class ExpectedServicesSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void setIP(String ip) {
-		expectedServicesPopup().setIP(ip);
+	public void setIP(int index, String ip) {
+		expectedServicesPopup().setIP(index, ip);
 	}
 	
 	@Step
-	public void setISDN(String isdn) {
-		expectedServicesPopup().setISDN(isdn);
+	public void setISDN(int index, String isdn) {
+		expectedServicesPopup().setISDN(index, isdn);
 	}
 	
 	@Step
-	public void setItContact(String itContact) {
-		expectedServicesPopup().setItContact(itContact);
+	public void setItContact(int index, String itContact) {
+		expectedServicesPopup().setItContact(index, itContact);
 	}
 	
 	@Step
-	public void setPhoneConfServices(String phone) {
-		expectedServicesPopup().setPhoneConfServices(phone);
+	public void setPhoneConfServices(int index, String phone) {
+		expectedServicesPopup().setPhoneConfServices(index, phone);
 	}
 	
 	@Step
-	public void setNotes(String notes) {
-		expectedServicesPopup().setNotes(notes);
+	public void setNotes(int index, String notes) {
+		expectedServicesPopup().setNotes(index, notes);
 	}
 	
 	@Step
@@ -189,5 +189,10 @@ public class ExpectedServicesSteps extends ScenarioSteps {
 	@Step
 	public void removeLocation(int index) {
 		expectedServicesPopup().removeLocation(index);
+	}
+	
+	@Step
+	public void chooseRoomTSGLocation(int indexChkbx, int indexSelect) {
+		expectedServicesPopup().chooseRoomTSGLocation(indexChkbx, indexSelect);
 	}
 }
