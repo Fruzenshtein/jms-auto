@@ -144,6 +144,47 @@ public class ExpectedServicesInterpreterTest extends BasicTest {
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "Spanish");
 		
 	}
+	
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	public void tc_4_5_4() {
+
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("75");
+		globalSteps.pause(5);
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.INTERPRETER);
+		expectedServicesSteps.clickAddLanguageLink();
+		expectedServicesSteps.selectLanguage(1, 0);
+		expectedServicesSteps.selectAppliedWitness(2, 0);
+		//Contributing firm tab
+		expectedServicesSteps.goToFirmTab(2);
+		expectedServicesSteps.clickAddLanguageLink();
+		expectedServicesSteps.selectLanguage(1, 2);
+		expectedServicesSteps.selectAppliedWitness(2, 0);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(5);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "English");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "French");
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
+		expectedServicesSteps.clickAddLanguageLink();
+		expectedServicesSteps.selectLanguage(3, 6);
+		expectedServicesSteps.selectAppliedWitness(4, 1);
+		//Contributing firm tab
+		expectedServicesSteps.goToFirmTab(2);
+		expectedServicesSteps.clickAddLanguageLink();
+		expectedServicesSteps.selectLanguage(3, 0);
+		expectedServicesSteps.selectAppliedWitness(4, 1);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(5);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "English");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "French");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "Spanish");
+		//TODO: check languages applied to each witness
+		globalSteps.pause(5);
+	}
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
@@ -167,4 +208,6 @@ public class ExpectedServicesInterpreterTest extends BasicTest {
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "Russian");
 		
 	}
+	
+	
 }

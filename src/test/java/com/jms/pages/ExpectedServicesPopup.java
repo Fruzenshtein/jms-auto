@@ -295,4 +295,5 @@ public class ExpectedServicesPopup extends PageObject {
 	public void deleteLanguage(int index) {
 		$("(//div[@data-test='interpreterservices-expectedservices-module']//a[@class='icon delete'])[" + index +"]").click();
 	}
+
 }
