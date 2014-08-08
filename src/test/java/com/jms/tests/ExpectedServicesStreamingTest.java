@@ -77,8 +77,8 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		expectedServicesSteps.isCheckBoxChecked(ReportingService.CHAT_ROOM_NEEDED, true);
 		//TODO: Implement click TBD check-box
 		
-		expectedServicesSteps.clickAddEmailLink();
-		expectedServicesSteps.addEmail("test@door3.com");
+		expectedServicesSteps.clickAddEmailLink(1);
+		expectedServicesSteps.addEmail(1, "test@door3.com");
 		
 		expectedServicesSteps.clickUpdate();
 		
@@ -115,7 +115,7 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 1);
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.HARDLINE_CONFIRMED, 2);
 		
-		expectedServicesSteps.clickAddEmailLink();
+		expectedServicesSteps.clickAddEmailLink(1);
 		expectedServicesSteps.addEmailInVeideoStream("test@door3.com");
 		
 		expectedServicesSteps.clickUpdate();

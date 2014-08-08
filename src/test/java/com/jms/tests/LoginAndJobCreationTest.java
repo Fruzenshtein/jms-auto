@@ -112,7 +112,6 @@ public class LoginAndJobCreationTest extends BasicTest {
 		loginSteps.login(userStorage.getUser(4));
 		globalSteps.waitUntilTextAppear("LOGIN");
 		
-		globalSteps.pause(7);
 	}
 
 }
