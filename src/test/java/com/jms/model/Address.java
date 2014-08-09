@@ -7,8 +7,7 @@ public class Address {
 	private String city;
 	private String state;
 	private String zip;
-	private String contact;
-	private String phone;
+	private String country;
 	
 	public Address() {
 		this.company = "";
@@ -16,8 +15,7 @@ public class Address {
 		this.city = "";
 		this.state = "";
 		this.zip = "";
-		this.contact = "";
-		this.phone = "";
+		this.country = "";
 	}
 
 	@Override
@@ -34,8 +32,7 @@ public class Address {
 				city.equals(a.city) &&
 				state.equals(a.state) &&
 				zip.equals(a.zip) &&
-				contact.equals(a.contact) &&
-				phone.equals(a.phone)
+				country.equals(a.country)
 		);
 	
 	}
@@ -85,24 +82,13 @@ public class Address {
 		return this;
 	}
 
-	public String getContact() {
-		return contact;
+	public String getCountry() {
+		return country;
 	}
 
-	public Address setContact(String contact) {
-		this.contact = contact;
-		return this;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public Address setPhone(String phone) {
-		this.phone = phone;
+	public Address setCountry(String country) {
+		this.country = country;
 		return this;
 	}
 	
-	
-
 }

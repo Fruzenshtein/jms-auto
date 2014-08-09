@@ -40,12 +40,6 @@ public class ExpectedServicesPopup extends PageObject {
 	@FindBy(className="exsvcneedlaptop")
 	private WebElement numberOfLeptops;
 	
-	@FindBy(linkText="Add Email")
-	private WebElement addEmail;
-	
-	@FindBy(className="streamingaddemail")
-	private WebElement addEmailField;
-	
 	@FindBy(className="streamingemailtoservices")
 	private WebElement addEmailVideoStream;
 	
@@ -55,29 +49,14 @@ public class ExpectedServicesPopup extends PageObject {
 	@FindBy(linkText="Add Location")
 	private WebElement addLocationLink;
 	
-	@FindBy(xpath="//span[text()='IP']/../input")
-	private WebElement ipField;
-	
-	@FindBy(xpath="//span[text()='ISDN']/../input")
-	private WebElement isdnField;
-	
-	@FindBy(xpath="//span[text()='IT Contact']/../input")
-	private WebElement itContactField;
-	
-	@FindBy(xpath="(//span[text()='Phone']/../input)[2]")
-	private WebElement phoneFieldConfServices;
-	
-	@FindBy(xpath="//span[text()='Notes']/../textarea")
-	private WebElement notesTextarea;
-	
-	@FindBy(xpath="//span[text()='Number of Cameos']/../input")
-	private WebElement numberOfCameos;
-	
-	@FindBy(xpath="//span[text()='Email to:']/../input")
-	private WebElement confServEmail;
-	
 	@FindBy(linkText="Add Language")
 	private WebElement addLanguageLink;
+	
+	@FindBy(xpath = "//span[text()='Change Recommendation']")
+	private WebElement changeRecommendationButton;
+	
+	@FindBy(xpath = "//span[text()='Save']")
+	private WebElement save;
 	
 	public void clickVendorServiceIcon(VendorService vendor) {
 		getClock().pauseFor(1000);
@@ -146,6 +125,11 @@ public class ExpectedServicesPopup extends PageObject {
 			vendor.getName()+" checkbox']").isPresent();
 	}
 	
+	public boolean statusServiceIcon(VendorService vendor) {
+			return $("//div[@class='service-row']/label[contains(@class, '"+vendor.getName()+"')]")
+					.getAttribute("class").contains("checked");
+	}
+	
 	public boolean isAsapCheckBox(boolean is) {
 		if (is)
 			return $("//img[class='imageCheck exibitsAsap checked']").waitUntilPresent().isPresent();
@@ -159,6 +143,10 @@ public class ExpectedServicesPopup extends PageObject {
 	
 	public void selectDelivery(String delivery) {
 		$(deliveryDropDown).selectByVisibleText(delivery);
+	}
+	
+	public void selectDelivery2(int index) {
+		$(deliveryDropDown).selectByIndex(index);
 	}
 	
 	public void clickReportingServiceCheckBox(ExpectedServiceOption service, int order) {
@@ -190,16 +178,20 @@ public class ExpectedServicesPopup extends PageObject {
 		numberOfLeptops.sendKeys(number);
 	}
 	
+	public void clickAgencyByIndex(int index) {
+		$("(//div[contains(@class, 'assign-agency-grid')]//td[@class])["+index+"]").click();
+	}
+	
 	public void clickUpdate() {
 		updateButton.click();
 	}
 	
-	public void clickAddEmailLink() {
-		addEmail.click();
+	public void clickAddEmailLink(int index) {
+		$("(//a[@data-test='conferencecammeoaddemail-expectedservices-link']/../a[text()='Add Email'])[" + index+ "]").click();
 	}
 	
-	public void addEmail(String email) {
-		addEmailField.sendKeys(email);
+	public void addEmail(int index, String email) {
+		$("(//span[text()='Email to:']/../input)[" + index + "]").sendKeys(email);
 	}
 	
 	public void addEmailInVeideoStream(String email) {
@@ -214,35 +206,78 @@ public class ExpectedServicesPopup extends PageObject {
 		addLocationLink.click();
 	}
 	
-	public void setIP(String ip) {
-		ipField.sendKeys(ip);
+	public void setIP(int index, String ip) {
+		$("(//span[text()='IP']/../input)[" + index + "]").clear();
+		$("(//span[text()='IP']/../input)[" + index + "]").sendKeys(ip);
 	}
 	
-	public void setISDN(String isdn) {
-		isdnField.sendKeys(isdn);
+	public void setISDN(int index, String isdn) {
+		$("(//span[text()='ISDN']/../input)[" + index + "]").clear();
+		$("(//span[text()='ISDN']/../input)[" + index + "]").sendKeys(isdn);
 	}
 	
-	public void setItContact(String itContact) {
-		itContactField.sendKeys(itContact);
+	public void setItContact(int index, String itContact) {
+		$("(//span[text()='IT Contact']/../input)[" + index + "]").clear();
+		$("(//span[text()='IT Contact']/../input)[" + index + "]").sendKeys(itContact);
 	}
 	
-	public void setPhoneConfServices(String phone) {
-		phoneFieldConfServices.sendKeys(phone);
+	public void setPhoneConfServices(int index, String phone) {
+		$("(//span[text()='Phone']/../input[@data-test='conferencephone-expectedservices-text'])[" + index + "]").clear();
+		$("(//span[text()='Phone']/../input[@data-test='conferencephone-expectedservices-text'])[" + index + "]").sendKeys(phone);
 	}
 	
-	public void setNotes(String notes) {
-		notesTextarea.sendKeys(notes);
+	public void setNotes(int index, String notes) {
+		$("(//span[text()='Notes']/../textarea[@data-test='conferencenotes-expectedservices-text'])[" + index +"]").clear();
+		$("(//span[text()='Notes']/../textarea[@data-test='conferencenotes-expectedservices-text'])[" + index +"]").sendKeys(notes);
 	}
 	
-	public void setNumberOfCameos(String number) {
-		numberOfCameos.sendKeys(number);
+	public void setNumberOfCameos(String number, int index) {
+		$("(//span[text()='Number of Cameos']/../input)[" + index +"]").sendKeys(number);
 	}
 	
-	public void addEmailConfServSection(String email) {
-		numberOfCameos.sendKeys(email);
+	public void addEmailConfServSection(String email, int index) {
+		$("(//span[text()='Email to:']//..//input[@data-test='conferencecammeoemail-expectedservices-text'])[" + index +"]").clear();
+		$("(//span[text()='Email to:']//..//input[@data-test='conferencecammeoemail-expectedservices-text'])[" + index +"]").sendKeys(email);
 	}
 	
 	public void clickAddLanguage() {
 		addLanguageLink.click();
+	}
+	
+	public void selectLanguage(int index, int languageIndex) {
+		$("(//div[@data-test='interpreterservices-expectedservices-module']//select)[" + index + "]").selectByIndex(languageIndex);
+	}
+	
+	public void selectAppliedWitness(int index, int witnessIndex) {
+		$("(//div[@data-test='interpreterservices-expectedservices-module']//select)[" + index + "]").selectByIndex(witnessIndex);
+	}
+	
+	public void clickChangeRecommendationButton() {
+		changeRecommendationButton.click();
+	}
+	
+	public void goToFirmTab(int index) {
+		$("(//div[@data-test='client-expectedservices-tab'])[" + index + "]").click();
+	}
+
+	public void checkExhibitASAP() {
+		$("//img[@class='imageCheck exibitsAsap']").click();
+	}
+	
+	public void clickOnVendorSection(int index) {
+		$("(//div[@class='loadmask'])[" + index +"]").click();
+	}
+	
+	public void removeLocation(int index) {
+		$("(//a[text()='Remove Location'])[" + index + "]").click();
+	}
+	
+
+	public void chooseRoomTSGLocation(int indexChkbx, int indexSelect) {
+		$("((//div[@data-test='conferenceservices-expectedservices-module']//select)[2])[" + indexChkbx +"]").selectByIndex(indexSelect);
+	}
+	public void deleteLanguage(int index) {
+		$("(//div[@data-test='interpreterservices-expectedservices-module']//a[@class='icon delete'])[" + index +"]").click();
+
 	}
 }
