@@ -6,14 +6,18 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.PageObject;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 
+import com.jms.resources.*;
 import com.jms.model.Address;
 import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.pages.elements.VendorService;
@@ -628,8 +632,7 @@ public class JobDetailPage extends PageObject {
 	}
 
 	public void attachRatesSheet(int index) throws AWTException {
-		$(
-				"(//input[@type='file'])[" + index + "]").click();
+	$("(//input[@type='file'])[" + index + "]").click();
 		getClock().pauseFor(5000);
 		
 		  StringSelection ss = new
@@ -644,7 +647,7 @@ public class JobDetailPage extends PageObject {
 		  robot.keyRelease(KeyEvent.VK_CONTROL);
 		  robot.keyPress(KeyEvent.VK_ENTER);
 		  robot.keyRelease(KeyEvent.VK_ENTER); 
-		  robot.delay(1000);
+		  robot.delay(1000);    
 
 	}
 

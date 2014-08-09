@@ -16,6 +16,7 @@ import com.jms.steps.LoginSteps;
 import com.jms.util.DateGenerator;
 import com.jms.util.RandonUUIDGenerator;
 import com.jms.steps.ExpectedServicesSteps;
+import com.jms.resources.*;
 
 import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Screenshots;
@@ -352,7 +353,6 @@ public class JobDetailFieldsTest extends BasicTest {
 	} 
 
 	@Test
-	@Pending
 	@Screenshots(onlyOnFailures = true)
 	public void tc_5_6_1() throws AWTException {
 
@@ -361,11 +361,11 @@ public class JobDetailFieldsTest extends BasicTest {
 	    //Rates
 
 		jobDetailSteps.maximizeRatesSection();
-	//	jobDetailSteps.attachRatesSheet(1);
-
+		jobDetailSteps.attachRatesSheet(1);
+		globalSteps.pause(20);
 		//Scheduling firm
 		jobDetailSteps.checkAdminApprovedChckbxRates(1);
-		jobDetailSteps.getAdminApprovedChckbxRates(1, true);
+	//	jobDetailSteps.getAdminApprovedChckbxRates(1, true);
 		jobDetailSteps.clearRatesNotes(1);
 		jobDetailSteps.addRatesNotes(1, "Rates notes 1");
 		jobDetailSteps.verifyAddedRatesNotes(1, "Rates notes 1"); 
@@ -457,8 +457,8 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.assertQuantityEquipmentFirmRow("2");
 		jobDetailSteps.setReporterEquipmentAdditionalow("3");
 		jobDetailSteps.assertReporterEquipmentAdditionalow("3");
-		jobDetailSteps.setVideographerEquipmentAdditionalRow("4");
-		jobDetailSteps.assertVideographerEquipmentAdditionalRow("4");
+		jobDetailSteps.setVideographerEquipmentAdditionalRow("4")
+						.assertVideographerEquipmentAdditionalRow("4");
 		jobDetailSteps.setAdditionalResourceAdditionalRow("5");
 		jobDetailSteps.assertAdditionalResourceAdditionalRow("5");
 		//VBrick row
