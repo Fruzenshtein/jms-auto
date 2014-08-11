@@ -824,7 +824,7 @@ public class JobDetailPage extends PageObject {
 		  robot.keyRelease(KeyEvent.VK_ENTER); robot.delay(1000);  */
 		
 		WebElement addAnotherFile = getDriver().findElement(By.xpath("(//input[@type='file'])[" + index + "]"));
-		addAnotherFile.sendKeys("AnotherFile.txt");
+		addAnotherFile.sendKeys("C:\\Users\\automation\\Desktop\\jms-auto\\src\\test\\resources\\AnotherFile.txt");
 	}
 	
 	public void deleteAnotherFileFilesSection(int index) {

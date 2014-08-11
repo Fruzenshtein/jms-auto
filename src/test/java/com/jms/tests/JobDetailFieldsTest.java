@@ -16,7 +16,6 @@ import com.jms.steps.LoginSteps;
 import com.jms.util.DateGenerator;
 import com.jms.util.RandonUUIDGenerator;
 import com.jms.steps.ExpectedServicesSteps;
-import com.jms.resources.*;
 
 import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Screenshots;
