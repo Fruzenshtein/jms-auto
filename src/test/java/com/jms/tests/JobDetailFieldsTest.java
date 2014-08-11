@@ -461,11 +461,6 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.assertFilesNotes("Files notes");
 	//	jobDetailSteps.deleteAnotherFileFilesSection(2);
 		globalSteps.pause(7);
-
-		jobDetailSteps.deleteAppliedCommission(1);
-		jobDetailSteps.deleteAppliedCommission(1);   
-		globalSteps.pause(15);  
-
 	}
 
 	@Test

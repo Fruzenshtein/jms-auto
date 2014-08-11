@@ -632,7 +632,7 @@ public class JobDetailPage extends PageObject {
 	}
 
 	public void attachRatesSheet(int index) throws AWTException {
-	$("(//input[@type='file'])[" + index + "]").click();
+/*	$("(//input[@type='file'])[" + index + "]").click();
 		getClock().pauseFor(5000);
 		
 		  StringSelection ss = new
@@ -647,7 +647,10 @@ public class JobDetailPage extends PageObject {
 		  robot.keyRelease(KeyEvent.VK_CONTROL);
 		  robot.keyPress(KeyEvent.VK_ENTER);
 		  robot.keyRelease(KeyEvent.VK_ENTER); 
-		  robot.delay(1000);    
+		  robot.delay(1000);     */
+		
+		WebElement attachRatesSheet = getDriver().findElement(By.xpath("(//input[@type='file'])[" + index + "]"));
+		attachRatesSheet.sendKeys("RatesSheet.txt");
 
 	}
 
