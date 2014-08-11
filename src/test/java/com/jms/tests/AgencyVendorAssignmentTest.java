@@ -328,4 +328,24 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 	
 	}
 	
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	public void tc_6_2_12() {
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("52");
+		globalSteps.pause(3);
+		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.YELLOW);
+		jobDetailSteps.clickManageButton();
+		globalSteps.pause(3);
+		globalSteps.waitUntilTextAppear("Assignment Unconfirmed");
+		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(4);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.CONTACT_FOR_ASSIGNMENT);
+		globalSteps.pause(5);
+		contactVendorSteps.clickCalledButton();
+		globalSteps.pause(3); 
+		contactVendorSteps.clickContactedButton();
+		globalSteps.pause(3);
+		globalSteps.waitUntilTextAppear("Assignment Unconfirmed");
+	}
 }

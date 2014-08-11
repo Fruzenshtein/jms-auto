@@ -331,6 +331,8 @@ public class JobDetailFieldsTest extends BasicTest {
 	@Screenshots(onlyOnFailures = true)
 	public void tc_5_5_1_3() {
 		// Interpreter tab
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("2201");
 		jobDetailSteps.selectVendorTab(VendorTab.INTERPRETER.getTab(),
 				VendorTab.INTERPRETER.getVendor());
 		jobDetailSteps.setExpectedStartTime("10:30 AM");
