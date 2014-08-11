@@ -775,8 +775,9 @@ public class JobDetailSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void setVideographerEquipmentAdditionalRow(String number) {
-		jobDetailPage().setVideographerEquipmentAdditionalRow(number);;
+	public JobDetailSteps setVideographerEquipmentAdditionalRow(String number) {
+		jobDetailPage().setVideographerEquipmentAdditionalRow(number);
+		return this;
 	}
 	
 	@Step
