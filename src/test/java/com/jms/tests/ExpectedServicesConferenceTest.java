@@ -39,7 +39,6 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-
 	public void tc_4_4_1() throws InterruptedException {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -75,9 +74,8 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-
 	public void tc_4_4_2() throws InterruptedException {
-		
+
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
 		jobDetailSteps.clickExpectedServicesButton();
@@ -133,9 +131,8 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-
 	public void tc_4_4_3() throws InterruptedException {
-		
+
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
 		jobDetailSteps.clickExpectedServicesButton();
@@ -168,9 +165,8 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	
 	public void tc_4_4_4() {
-		
+
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("674");
 		globalSteps.pause(3);
@@ -180,8 +176,9 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		expectedServicesSteps
 				.clickVendorServiceIconSection(VendorService.LOCATION);
 		globalSteps.pause(3);
-		//Scheduling firm
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.LOCATION);
+		// Scheduling firm
+		expectedServicesSteps
+				.clickVendorServiceIconSection(VendorService.LOCATION);
 		expectedServicesSteps.selectConferenceLocation(1);
 		expectedServicesSteps.clickAddLocationLink();
 		// Contributing firm
@@ -199,7 +196,10 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 						"Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US");
 
 		globalSteps.pause(3);
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US");
+		jobDetailSteps
+				.assertJobDetailHeaderLabel(
+						JobDetailHeaderLabel.CONF_SERVICES,
+						"Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US");
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.pause(3);
 		expectedServicesSteps.removeLocation(1);
@@ -251,15 +251,14 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-
-	@Pending
 	public void tc_4_4_5() {
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("669");
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.pause(3);
-		//1st location
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.LOCATION);
+		// 1st location
+		expectedServicesSteps
+				.clickVendorServiceIconSection(VendorService.LOCATION);
 
 		expectedServicesSteps.selectConferenceLocation(1);
 		expectedServicesSteps.clickAddLocationLink();
@@ -279,14 +278,9 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 						"Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US), "
 								+ "Ball Janik LLP (One Main Place, 101 SW Main Street, Portland, OR, US), "
 								+ "Aegis Media North America (150 E. 42nd Street, New York, NY, US)");
+
 		// Provide data
 		// 1st location
-
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES, "Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US), "
-				+ "Ball Janik LLP (One Main Place, 101 SW Main Street, Portland, OR, US), "
-				+ "Aegis Media North America (150 E. 42nd Street, New York, NY, US)");
-		//Provide data
-		//1st location
 
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.pause(3);
@@ -351,6 +345,72 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		jobDetailSteps.assertJobDetailHeaderLabel(
 				JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
 		globalSteps.pause(10);
+	}
+
+	@Test
+	@Pending
+	@Screenshots(onlyOnFailures = true)
+	public void tc_4_4_6() {
+
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("432");
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
+		// Scheduling firm
+		// 1st location
+
+		expectedServicesSteps
+				.clickVendorServiceIconSection(VendorService.LOCATION);
+		expectedServicesSteps.selectConferenceLocation(1);
+		expectedServicesSteps.clickAddLocationLink();
+		// 2nd location
+		expectedServicesSteps.selectConferenceLocation(2);
+		expectedServicesSteps.clickAddLocationLink();
+		expectedServicesSteps.clickVendorTBDIconSection(VendorService.LOCATION);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(5);
+		// Provide data
+		// 1st location
+
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
+		expectedServicesSteps.clickReportingServiceCheckBox(
+				LocationService.VIDEO_CONF_NEEDED, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(
+				LocationService.INITIATES_CONF, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(
+				LocationService.TSG_PROVIDING, 1);
+		expectedServicesSteps.setIP(1, "333.119.33.111");
+		expectedServicesSteps.setISDN(1, "415988488501");
+		expectedServicesSteps.setItContact(1, "Robert H");
+		expectedServicesSteps.setPhoneConfServices(1, "380447362211");
+		expectedServicesSteps.setNotes(1, "Test notes");
+		expectedServicesSteps.clickReportingServiceCheckBox(
+				LocationService.CAMEO, 1);
+		expectedServicesSteps.setNumberOfCameos("3", 1);
+		expectedServicesSteps.clickAddEmailLink(1);
+		expectedServicesSteps.addEmailConfServSection("test@door3.com", 1);
+		// 2nd location
+		expectedServicesSteps.clickReportingServiceCheckBox(
+				LocationService.VIDEO_CONF_NEEDED, 2);
+		expectedServicesSteps.clickReportingServiceCheckBox(
+				LocationService.INITIATES_CONF, 2);
+		expectedServicesSteps.clickReportingServiceCheckBox(
+				LocationService.CAMEO, 2);
+		expectedServicesSteps.setNumberOfCameos("3", 2);
+		expectedServicesSteps.setItContact(1, "Robert H");
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(5);
+
+		jobDetailSteps
+				.assertJobDetailHeaderLabel(
+						JobDetailHeaderLabel.CONF_SERVICES,
+						"Bob's Super Company (123 Test Road, New York, NY, US), "
+								+ "Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US), "
+								+ "Bullivant Houser Bailey PC (888 S.W. Fifth Avenue Suite 300, Portland, OR, US)");
+		// jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.CONF_SERVICES,
+		// "Video Conference, Cameo");
+		globalSteps.pause(3);
 	}
 
 	@Test
@@ -444,100 +504,6 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		jobDetailSteps.assertJobDetailHeaderLabel(
 				JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
 
-
 	}
-
-	@Test
-	@Screenshots(onlyOnFailures = true)
-	public void tc_4_4_6() {
-
-		loginSteps.login(userStorage.getUser(0));
-		globalSteps.searchJobById("432");
-		jobDetailSteps.clickExpectedServicesButton();
-		// Scheduling firm
-		// 1st location
-		expectedServicesSteps
-				.clickVendorServiceIconSection(VendorService.LOCATION);
-		expectedServicesSteps.selectConferenceLocation(1);
-		expectedServicesSteps.chooseRoomTSGLocation(1, 1);
-		expectedServicesSteps.clickAddLocationLink();
-		// 2nd location
-		expectedServicesSteps.selectConferenceLocation(2);
-		expectedServicesSteps.clickAddLocationLink();
-		expectedServicesSteps.clickVendorTBDIconSection(VendorService.LOCATION);
-		// Contributing firm
-		expectedServicesSteps.goToFirmTab(2);
-		expectedServicesSteps
-				.clickVendorServiceIconSection(VendorService.LOCATION);
-		expectedServicesSteps.selectConferenceLocation(3);
-		expectedServicesSteps.clickAddLocationLink();
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(3);
-		jobDetailSteps.assertJobDetailHeaderLabel(
-						JobDetailHeaderLabel.CONF_SERVICES,
-						"Bob's Super Company (123 Test Road, New York, NY, US), "
-								+ "Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US), "
-								+ "Bullivant Houser Bailey PC (888 S.W. Fifth Avenue Suite 300, Portland, OR, US)");
-		
-		jobDetailSteps.clickExpectedServicesButton();
-		expectedServicesSteps.clickReportingServiceCheckBox(
-				LocationService.VIDEO_CONF_NEEDED, 1);
-		expectedServicesSteps.clickReportingServiceCheckBox(
-				LocationService.INITIATES_CONF, 1);
-		expectedServicesSteps.clickReportingServiceCheckBox(
-				LocationService.TSG_PROVIDING, 1);
-		expectedServicesSteps.setIP(1, "207.110.57.178");
-		expectedServicesSteps.setISDN(1, "415988488501");
-		expectedServicesSteps.setItContact(1, "Robert Huberts");
-		expectedServicesSteps.setPhoneConfServices(1, "380447362211");
-		expectedServicesSteps.setNotes(1, "Test notes");
-		expectedServicesSteps.clickReportingServiceCheckBox(
-				LocationService.CAMEO, 1);
-		expectedServicesSteps.setNumberOfCameos("3", 1);
-		expectedServicesSteps.clickAddEmailLink(1);
-		expectedServicesSteps.addEmailConfServSection("test@door3.com", 1);
-		// 2nd location
-		expectedServicesSteps.clickVendorTBDIconSection(VendorService.LOCATION);
-		expectedServicesSteps.clickReportingServiceCheckBox(
-				LocationService.VIDEO_CONF_NEEDED, 2);
-		expectedServicesSteps.clickReportingServiceCheckBox(
-				LocationService.INITIATES_CONF, 2);
-		expectedServicesSteps.setItContact(2, "Robert Huberts");
-		expectedServicesSteps.clickReportingServiceCheckBox(
-				LocationService.CAMEO, 2);
-		expectedServicesSteps.setNumberOfCameos("1", 2);
-		expectedServicesSteps.clickReportingServiceCheckBox(
-				LocationService.VIDEO_CONF_NEEDED, 2);
-		// Contributing firm
-		expectedServicesSteps.goToFirmTab(2);
-		expectedServicesSteps.clickReportingServiceCheckBox(
-				LocationService.VIDEO_CONF_NEEDED, 1);
-		expectedServicesSteps.clickReportingServiceCheckBox(
-				LocationService.INITIATES_CONF, 1);
-		expectedServicesSteps.clickReportingServiceCheckBox(
-				LocationService.TSG_PROVIDING, 1);
-		expectedServicesSteps.setIP(1, "207.110.57.178");
-		expectedServicesSteps.setISDN(1, "415988488501");
-		expectedServicesSteps.setItContact(1, "Robert Huberts");
-		expectedServicesSteps.setPhoneConfServices(1, "380447362211");
-		expectedServicesSteps.setNotes(1, "Test notes");
-		expectedServicesSteps.clickReportingServiceCheckBox(
-				LocationService.CAMEO, 1);
-		expectedServicesSteps.setNumberOfCameos("3", 1);
-		expectedServicesSteps.clickAddEmailLink(1);
-		expectedServicesSteps.addEmailConfServSection("test@door3.com", 1);
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(3);
-		jobDetailSteps
-				.assertJobDetailHeaderLabel(
-						JobDetailHeaderLabel.CONF_SERVICES,
-						"Bob's Super Company (123 Test Road, New York, NY, US), "
-								+ "Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US), "
-								+ "Bullivant Houser Bailey PC (888 S.W. Fifth Avenue Suite 300, Portland, OR, US)");
-		jobDetailSteps.assertJobDetailHeaderLabel(
-				JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
-	
- }
-	
 
 }

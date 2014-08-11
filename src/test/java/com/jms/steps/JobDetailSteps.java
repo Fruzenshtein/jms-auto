@@ -499,6 +499,21 @@ public class JobDetailSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void addSalesPerson() {
+		jobDetailPage().addSalesPersonCommissionSection();
+	}
+	
+	@Step
+	public void selectSalesPerson(int index) {
+		jobDetailPage().selectASalesPersonCommissionSection(index);
+	}
+	
+	@Step
+	public void applySalesPerson() {
+		jobDetailPage().applySalesPersonCommissionSection();
+	}
+	
+	@Step
 	public void clickApplyButtonCommission() {
 		jobDetailPage().clickApplyButtonCommission();
 	}
@@ -538,6 +553,11 @@ public class JobDetailSteps extends ScenarioSteps {
 		jobDetailPage().minimizeMaximizeEquipmentSection();
 	}
 	
+	
+	@Step
+	public void clearNotesCommissionSection() {
+		jobDetailPage().clearNotesCommissionSection();
+	}
 	@Step
 	public void addNotesCommissionSection(String commissionNotes) {
 		jobDetailPage().addNotesCommissionSection(commissionNotes);

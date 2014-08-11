@@ -734,7 +734,7 @@ public class JobDetailPage extends PageObject {
 	}
 	
 	public String getCommissionNotes() {
-		return $("//textarea[@data-test='jobcommission-notes-text']").getTextValue();
+		return $("//textarea[@data-test='jobcommission-notes-text']").getText();
 	}
 	
 	public void removeAddedFirm(int index) {
@@ -755,20 +755,28 @@ public class JobDetailPage extends PageObject {
 	}
 	
 	public void addSalesPersonCommissionSection() {
-		$("//div[@data-test='jobcommission-addsalesperson-button']").click();
+		$("//a[@data-test='jobcommission-addsalesperson-button']").click();
 	}
 	
-//	public void selectASalesPersonCommissionSection() {
-//		$("//div[@data-test='jobcommission-addsalesperson-button']").selectByIndex(3);
-//	}
+	public void selectASalesPersonCommissionSection(int index) {
+		$("//select[@data-test='jobcommission-addsalesperson-drplist']").selectByIndex(index);
+	}
+	
+	public void applySalesPersonCommissionSection() {
+		$("//a[text()='Add']").click();
+	}
+	
+	public void clearNotesCommissionSection() {
+		$("//span[text()='Notes']/../textarea[@data-test='jobcommission-notes-text']").clear();
+	}
 	
 	public void addNotesCommissionSection(String commissionNotes) {
-		$("//textarea[@data-test='jobcommission-notes-text']").clear();
+		$("//span[text()='Notes']/../textarea[@data-test='jobcommission-notes-text']").clear();
 		$("//textarea[@data-test='jobcommission-notes-text']").sendKeys(commissionNotes);
 	}
 	
 	public String getNotesCommissionSection() {
-		return $("//textarea[@data-test='jobcommission-notes-text']").getValue();
+		return $("//textarea[@data-test='jobcommission-notes-text']").getText();
 	}
 	
 	public void changeCommissionPercentage(int index, String percentage) {
@@ -794,7 +802,7 @@ public class JobDetailPage extends PageObject {
 	
 	public void addAnotherFileFilesSection(int index) throws AWTException {
 
-		$("(//input[@type='file'])[" + index + "]").click();
+	/*	$("(//input[@type='file'])[" + index + "]").click();
 		  getClock().pauseFor(5000);
 		
 		  StringSelection ss = new
@@ -807,7 +815,10 @@ public class JobDetailPage extends PageObject {
 		  robot.keyRelease(KeyEvent.VK_V);
 		  robot.keyRelease(KeyEvent.VK_CONTROL);
 		  robot.keyPress(KeyEvent.VK_ENTER);
-		  robot.keyRelease(KeyEvent.VK_ENTER); robot.delay(1000);
+		  robot.keyRelease(KeyEvent.VK_ENTER); robot.delay(1000);  */
+		
+		WebElement addAnotherFile = getDriver().findElement(By.xpath("(//input[@type='file'])[" + index + "]"));
+		addAnotherFile.sendKeys("AnotherFile.txt");
 	}
 	
 	public void deleteAnotherFileFilesSection(int index) {
