@@ -17,7 +17,6 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 
-import com.jms.resources.*;
 import com.jms.model.Address;
 import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.pages.elements.VendorService;
