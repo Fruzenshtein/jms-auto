@@ -17,7 +17,6 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 
-import com.jms.resources.*;
 import com.jms.model.Address;
 import com.jms.pages.elements.JobDetailHeaderLabel;
 import com.jms.pages.elements.VendorService;
@@ -632,11 +631,11 @@ public class JobDetailPage extends PageObject {
 	}
 
 	public void attachRatesSheet(int index) throws AWTException {
-/*	$("(//input[@type='file'])[" + index + "]").click();
+	$("(//input[@type='file'])[" + index + "]").click();
 		getClock().pauseFor(5000);
 		
 		  StringSelection ss = new
-		  StringSelection("C:\\Users\\Install\\Documents\\RatesSheet.txt");
+		  StringSelection("C:\\Users\\automation\\Desktop\\jms-auto\\src\\test\\resources\\RatesSheet.txt");
 		  Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null); 
 		  Robot robot = new Robot(); 
 		  robot.keyPress(KeyEvent.VK_ENTER);
@@ -648,9 +647,10 @@ public class JobDetailPage extends PageObject {
 		  robot.keyPress(KeyEvent.VK_ENTER);
 		  robot.keyRelease(KeyEvent.VK_ENTER); 
 		  robot.delay(1000);    
-	*/	  
-		  WebElement attachRatesSheet = getDriver().findElement(By.xpath("(//input[@type='file'])[" + index + "]"));
-		  attachRatesSheet.sendKeys("RatesSheet.txt");
+		  
+	/* 	WebElement attachRatesSheet = getDriver().findElement(By.xpath("(//input[@type='file'])[" + index + "]"));
+		attachRatesSheet.sendKeys("RatesSheet.txt");		*/
+
 	}
 
 	public void maximizeRatesSection() {
@@ -731,7 +731,7 @@ public class JobDetailPage extends PageObject {
 	public void deleteAppliedCommission(int index) {
 		$(
 				"(//a[@class='icon delete'])["
-						+ index + "]").click();
+						+ index + "]").waitUntilVisible().click();
 	}
 	
 	public void addCommissionNotes(String commissionNotes) {
@@ -739,7 +739,7 @@ public class JobDetailPage extends PageObject {
 	}
 	
 	public String getCommissionNotes() {
-		return $("//textarea[@data-test='jobcommission-notes-text']").getTextValue();
+		return $("//textarea[@data-test='jobcommission-notes-text']").getText();
 	}
 	
 	public void removeAddedFirm(int index) {
@@ -760,20 +760,28 @@ public class JobDetailPage extends PageObject {
 	}
 	
 	public void addSalesPersonCommissionSection() {
-		$("//div[@data-test='jobcommission-addsalesperson-button']").click();
+		$("//a[@data-test='jobcommission-addsalesperson-button']").click();
 	}
 	
-//	public void selectASalesPersonCommissionSection() {
-//		$("//div[@data-test='jobcommission-addsalesperson-button']").selectByIndex(3);
-//	}
+	public void selectASalesPersonCommissionSection(int index) {
+		$("//select[@data-test='jobcommission-addsalesperson-drplist']").selectByIndex(index);
+	}
+	
+	public void applySalesPersonCommissionSection() {
+		$("//a[text()='Add']").click();
+	}
+	
+	public void clearNotesCommissionSection() {
+		$("//span[text()='Notes']/../textarea[@data-test='jobcommission-notes-text']").clear();
+	}
 	
 	public void addNotesCommissionSection(String commissionNotes) {
-		$("//textarea[@data-test='jobcommission-notes-text']").clear();
+		$("//span[text()='Notes']/../textarea[@data-test='jobcommission-notes-text']").clear();
 		$("//textarea[@data-test='jobcommission-notes-text']").sendKeys(commissionNotes);
 	}
 	
 	public String getNotesCommissionSection() {
-		return $("//textarea[@data-test='jobcommission-notes-text']").getValue();
+		return $("//textarea[@data-test='jobcommission-notes-text']").getText();
 	}
 	
 	public void changeCommissionPercentage(int index, String percentage) {
@@ -803,7 +811,7 @@ public class JobDetailPage extends PageObject {
 		  getClock().pauseFor(5000);
 		
 		  StringSelection ss = new
-		  StringSelection("Libraries\\Documents\\RatesSheet.txt");
+		  StringSelection("C:\\Users\\automation\\Desktop\\jms-auto\\src\\test\\resources\\AnotherFile.txt");
 		  Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null); 
 		  Robot robot = new Robot(); 
 		  robot.keyPress(KeyEvent.VK_ENTER);
@@ -812,7 +820,10 @@ public class JobDetailPage extends PageObject {
 		  robot.keyRelease(KeyEvent.VK_V);
 		  robot.keyRelease(KeyEvent.VK_CONTROL);
 		  robot.keyPress(KeyEvent.VK_ENTER);
-		  robot.keyRelease(KeyEvent.VK_ENTER); robot.delay(1000);
+		  robot.keyRelease(KeyEvent.VK_ENTER); robot.delay(1000);  
+		
+	/*	WebElement addAnotherFile = getDriver().findElement(By.xpath("(//input[@type='file'])[" + index + "]"));
+		addAnotherFile.sendKeys("C:\\Users\\automation\\Desktop\\jms-auto\\src\\test\\resources\\AnotherFile.txt");   */
 	}
 	
 	public void deleteAnotherFileFilesSection(int index) {
