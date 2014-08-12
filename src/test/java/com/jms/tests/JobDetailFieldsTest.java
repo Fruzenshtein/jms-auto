@@ -165,7 +165,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.clickSave();
 		globalSteps.pause(5);
 		jobDetailSteps.writeClientMatterN();
-
+		globalSteps.pause(3);
 		jobDetailSteps.compareClientMatterNs(0, 1, 2);
 		jobDetailSteps.clearClientMatterNList();
 		jobDetailSteps.setClientMatterN(RandonUUIDGenerator.getRandomUUID());
