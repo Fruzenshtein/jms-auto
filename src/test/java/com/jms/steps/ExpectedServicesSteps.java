@@ -2,6 +2,8 @@ package com.jms.steps;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import com.jms.pages.ExpectedServicesPopup;
 import com.jms.pages.elements.ExpectedServiceOption;
 import com.jms.pages.elements.ExpectedServiceSection;
@@ -58,6 +60,10 @@ public class ExpectedServicesSteps extends ScenarioSteps {
 	@Step
 	public void selectDelivery(String delivery) {
 		expectedServicesPopup().selectDelivery(delivery);
+	}
+	
+	public List<String> getDeliveryOptions() {
+		return expectedServicesPopup().getDeliveryOptions();
 	}
 	
 	@Step

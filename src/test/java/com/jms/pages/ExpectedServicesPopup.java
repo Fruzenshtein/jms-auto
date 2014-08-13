@@ -1,5 +1,7 @@
 package com.jms.pages;
 
+import java.util.List;
+
 import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.PageObject;
 
@@ -143,6 +145,10 @@ public class ExpectedServicesPopup extends PageObject {
 	
 	public void selectDelivery(String delivery) {
 		$(deliveryDropDown).selectByVisibleText(delivery);
+	}
+	
+	public List<String> getDeliveryOptions() {
+		return $(deliveryDropDown).getSelectOptions();
 	}
 	
 	public void selectDelivery2(int index) {
