@@ -104,6 +104,8 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 		expectedServicesSteps.clickReportingServiceCheckBox(VideographerService.MPEG, 1);
 		expectedServicesSteps.clickUpdate();
 		
+		globalSteps.pause(5);
+		
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "MPEG/Sync");
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "VHS");
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "Upload to Repository");
