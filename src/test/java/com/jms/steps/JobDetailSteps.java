@@ -913,4 +913,9 @@ public class JobDetailSteps extends ScenarioSteps {
 	public void setCountry(int countryIndex) {
 		jobDetailPage().setCountry(countryIndex);
 	}
+	
+	@Step
+	public void provideInfoForAssignmentConfirmedVendor(String contact, String notes) {
+		jobDetailPage().provideInfoForAssignmentConfirmedVendor(contact, notes);
+	}
 }

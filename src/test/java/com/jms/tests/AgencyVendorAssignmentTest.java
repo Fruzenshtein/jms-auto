@@ -5,7 +5,6 @@ import org.junit.Test;
 import com.jms.pages.elements.ActionLink;
 import com.jms.pages.elements.Beacon;
 import com.jms.pages.elements.BeaconState;
-
 import com.jms.pages.elements.VendorService;
 import com.jms.requirements.VendorWorkflowStory;
 import com.jms.steps.AssignVendorSteps;
@@ -13,11 +12,10 @@ import com.jms.steps.ContactVendorSteps;
 import com.jms.steps.ExpectedServicesSteps;
 import com.jms.steps.GlobalSteps;
 import com.jms.steps.JobDetailSteps;
-
 import com.jms.steps.VednorQueueSteps;
-
 import com.jms.steps.LoginSteps;
 
+import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Screenshots;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Story;
@@ -374,21 +372,31 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		jobDetailSteps.clickVendorActionLink(1);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.SELECT_ANOTHER_VENDOR);
 		globalSteps.pause(20);
-		expectedServicesSteps.clickAgencyByIndex(1);
+		expectedServicesSteps.clickAgencyByIndex(3);
 		expectedServicesSteps.clickChangeRecommendationButton();
 		globalSteps.pause(5);
 		assignVendorSteps.clickSaveButton();
 		globalSteps.waitUntilTextAppear("Recommendation (Agency)");
 		globalSteps.pause(10);
-		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GRAY);
-		jobDetailSteps.clickManageButton();
+		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(4);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.APPROVE_RECOMENDATION);
+		globalSteps.pause(5);
+		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(4);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.CONTACT_FOR_ASSIGNMENT);
+		contactVendorSteps.clickCalledButton();
+		globalSteps.pause(3); 
+		contactVendorSteps.clickContactedButton();
 		globalSteps.pause(3);
 		globalSteps.waitUntilTextAppear("Assignment Unconfirmed");
+		//Test starts
 		jobDetailSteps.clickVendorActionLink(1);
 		globalSteps.pause(4);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.AGENCY_CONFIRMS);
 		globalSteps.pause(5);
-		
+		jobDetailSteps.provideInfoForAssignmentConfirmedVendor("Rob", "Confirmation notes");
+		globalSteps.pause(3);
 		globalSteps.waitUntilTextAppear("Assignment Unconfirmed");
 		jobDetailSteps.isBeacon(Beacon.REPORTER_JOB_INFO, BeaconState.GRAY);
 	}

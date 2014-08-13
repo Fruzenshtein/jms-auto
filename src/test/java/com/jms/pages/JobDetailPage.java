@@ -1097,4 +1097,11 @@ public class JobDetailPage extends PageObject {
 	public void setCountry(int countryIndex) {
 		$("(//span[text()='Country']/../select)").selectByIndex(countryIndex);
 	}
+	
+	public void provideInfoForAssignmentConfirmedVendor(String contact, String notes) {
+		$("//span[text()='Contact:']/../input[@type='text']").sendKeys(contact);
+		$("//div[@class='modal-content confirmationdetails-view']//textarea").sendKeys(notes);
+		$("//button//span[text()='Submit']").click();
+	}
+	
 }
