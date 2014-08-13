@@ -348,4 +348,48 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		globalSteps.pause(3);
 		globalSteps.waitUntilTextAppear("Assignment Unconfirmed");
 	}
+	
+	@Test
+	@Screenshots(onlyOnFailures = true)
+	public void tc_6_2_13() {
+		loginSteps.login(userStorage.getUser(0));
+		globalSteps.searchJobById("33");
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
+		
+		if (expectedServicesSteps.statusOfServiceIcon(VendorService.REPORTER))
+			expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(6);
+		jobDetailSteps.clickSave();		
+		globalSteps.pause(6);
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
+		expectedServicesSteps.clickUpdate();
+		globalSteps.pause(14);
+		jobDetailSteps.clickSave();
+		globalSteps.pause(8);
+		jobDetailSteps.clickManageButton();
+		jobDetailSteps.clickVendorActionLink(1);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.SELECT_ANOTHER_VENDOR);
+		globalSteps.pause(20);
+		expectedServicesSteps.clickAgencyByIndex(1);
+		expectedServicesSteps.clickChangeRecommendationButton();
+		globalSteps.pause(5);
+		assignVendorSteps.clickSaveButton();
+		globalSteps.waitUntilTextAppear("Recommendation (Agency)");
+		globalSteps.pause(10);
+		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GRAY);
+		jobDetailSteps.clickManageButton();
+		globalSteps.pause(3);
+		globalSteps.waitUntilTextAppear("Assignment Unconfirmed");
+		jobDetailSteps.clickVendorActionLink(1);
+		globalSteps.pause(4);
+		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.AGENCY_CONFIRMS);
+		globalSteps.pause(5);
+		
+		globalSteps.waitUntilTextAppear("Assignment Unconfirmed");
+		jobDetailSteps.isBeacon(Beacon.REPORTER_JOB_INFO, BeaconState.GRAY);
+	}
 }

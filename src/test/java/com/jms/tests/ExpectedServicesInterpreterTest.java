@@ -11,6 +11,7 @@ import com.jms.steps.GlobalSteps;
 import com.jms.steps.JobDetailSteps;
 import com.jms.steps.LoginSteps;
 
+import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Screenshots;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Story;
@@ -145,6 +146,7 @@ public class ExpectedServicesInterpreterTest extends BasicTest {
 		
 	}
 	
+	@Pending
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc_4_5_4() {
