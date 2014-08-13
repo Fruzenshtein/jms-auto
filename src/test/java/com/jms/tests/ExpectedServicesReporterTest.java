@@ -2,12 +2,13 @@ package com.jms.tests;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
-import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Screenshots;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Story;
 
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.jms.pages.elements.ExpectedServiceSection;
@@ -166,6 +167,15 @@ public class ExpectedServicesReporterTest extends BasicTest {
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc_4_1_4() throws InterruptedException {
+		
+		String[] dates = {
+				"Regular (8-Day) (05/24/2016)", "Immediate (05/12/2016)",
+				"Daily (05/13/2016)", "2-Day (05/16/2016)",
+				"3-Day (05/17/2016)", "4-Day (05/18/2016)",
+				"5-Day (05/19/2016)", "6-Day (05/20/2016)",
+				"7-Day (05/23/2016)", "Regular (7-Day) (05/23/2016)",
+				"Regular (9-Day) (05/25/2016)", "Regular (10-Day) (05/26/2016)"
+		};
 	
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById(jobId);
@@ -181,102 +191,12 @@ public class ExpectedServicesReporterTest extends BasicTest {
 		
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.pause(3);
-		expectedServicesSteps.selectDelivery("Immediate ("+futureDate+")");
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(8);
-		globalSteps.waitUntilTextAppear("Immediate Delivery");
 		
-		jobDetailSteps.clickExpectedServicesButton();
-		globalSteps.pause(3);
-		expectedServicesSteps.selectDelivery("Daily ("+DateGenerator
-				.getInstance()
-				.modifyParticularDate(cal, 0, 0, 1)+")");
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(7);
-		globalSteps.waitUntilTextAppear("Daily Delivery");
+		List<String> realDates = expectedServicesSteps.getDeliveryOptions();
 		
-		jobDetailSteps.clickExpectedServicesButton();
-		globalSteps.pause(3);
-		expectedServicesSteps.selectDelivery("2-Day ("+DateGenerator
-				.getInstance()
-				.modifyParticularDate(cal, 0, 0, 3)+")");
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(7);
-		globalSteps.waitUntilTextAppear("2-Day Delivery");
-		
-		jobDetailSteps.clickExpectedServicesButton();
-		globalSteps.pause(3);
-		expectedServicesSteps.selectDelivery("3-Day ("+DateGenerator
-				.getInstance()
-				.modifyParticularDate(cal, 0, 0, 1)+")");
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(7);
-		globalSteps.waitUntilTextAppear("3-Day Delivery");
-		
-		jobDetailSteps.clickExpectedServicesButton();
-		globalSteps.pause(3);
-		expectedServicesSteps.selectDelivery("4-Day ("+DateGenerator
-				.getInstance()
-				.modifyParticularDate(cal, 0, 0, 1)+")");
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(7);
-		
-		globalSteps.waitUntilTextAppear("4-Day Delivery");
-		
-		jobDetailSteps.clickExpectedServicesButton();
-		globalSteps.pause(3);
-		expectedServicesSteps.selectDelivery("5-Day ("+DateGenerator
-				.getInstance()
-				.modifyParticularDate(cal, 0, 0, 1)+")");
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(5);
-		globalSteps.waitUntilTextAppear("5-Day Delivery");
-		
-		jobDetailSteps.clickExpectedServicesButton();
-		globalSteps.pause(3);
-		expectedServicesSteps.selectDelivery("6-Day ("+DateGenerator
-				.getInstance()
-				.modifyParticularDate(cal, 0, 0, 1)+")");
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(5);
-		globalSteps.waitUntilTextAppear("6-Day Delivery");
-		
-		jobDetailSteps.clickExpectedServicesButton();
-		globalSteps.pause(3);
-		expectedServicesSteps.selectDelivery("7-Day ("+DateGenerator
-				.getInstance()
-				.modifyParticularDate(cal, 0, 0, 3)+")");
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(5);
-		
-		globalSteps.waitUntilTextAppear("7-Day Delivery");
-		
-		jobDetailSteps.clickExpectedServicesButton();
-		globalSteps.pause(3);
-		expectedServicesSteps.selectDelivery("Regular (7-Day) ("+DateGenerator
-				.getInstance()
-				.modifyParticularDate(cal, 0, 0, 0)+")");
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(5);
-		globalSteps.waitUntilTextAppear("Regular (7-Day) Delivery");
-		
-		jobDetailSteps.clickExpectedServicesButton();
-		globalSteps.pause(3);
-		expectedServicesSteps.selectDelivery("Regular (9-Day) ("+DateGenerator
-				.getInstance()
-				.modifyParticularDate(cal, 0, 0, 2)+")");
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(5);
-		globalSteps.waitUntilTextAppear("Regular (9-Day) Delivery");
-		
-		jobDetailSteps.clickExpectedServicesButton();
-		globalSteps.pause(3);
-		expectedServicesSteps.selectDelivery("Regular (10-Day) ("+DateGenerator
-				.getInstance()
-				.modifyParticularDate(cal, 0, 0, 1)+")");
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(5);
-		globalSteps.waitUntilTextAppear("Regular (10-Day) Delivery");
+		for (String date : dates) {
+			assertTrue("The Delivery list doesn't contain: "+date, realDates.contains(date));
+		}
 	}
 	
 	@Test
