@@ -123,6 +123,8 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 				LocationService.VIDEO_CONF_NEEDED, 1);
 		expectedServicesSteps.clickUpdate();
 
+		globalSteps.pause(5);
+		
 		jobDetailSteps.assertJobDetailHeaderLabel(
 				JobDetailHeaderLabel.CONF_SERVICES, "Cameo");
 

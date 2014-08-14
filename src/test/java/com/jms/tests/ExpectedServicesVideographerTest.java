@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import com.jms.pages.elements.ExpectedServiceSection;
 import com.jms.pages.elements.JobDetailHeaderLabel;
-import com.jms.pages.elements.ReportingService;
 import com.jms.pages.elements.StreamServices;
 import com.jms.pages.elements.VendorService;
 import com.jms.pages.elements.VideographerService;
@@ -17,7 +16,6 @@ import com.jms.steps.JobDetailSteps;
 import com.jms.steps.LoginSteps;
 import com.jms.util.DateGenerator;
 
-import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Screenshots;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Story;
