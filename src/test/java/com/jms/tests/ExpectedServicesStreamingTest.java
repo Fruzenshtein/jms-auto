@@ -226,6 +226,7 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.pause(3);
 		expectedServicesSteps.clickOnVendorSection(3);
+		globalSteps.pause(3);
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 2);
 		//Contributing firm
 		expectedServicesSteps.goToFirmTab(2);

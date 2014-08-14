@@ -182,6 +182,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		expectedServicesSteps
 				.clickVendorServiceIconSection(VendorService.LOCATION);
 		expectedServicesSteps.selectConferenceLocation(1);
+		globalSteps.pause(3);
 		expectedServicesSteps.clickAddLocationLink();
 		// Contributing firm
 		expectedServicesSteps.goToFirmTab(2);
