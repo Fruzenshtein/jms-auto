@@ -268,16 +268,23 @@ public class JobDetailSteps extends ScenarioSteps {
 
 	@Step
 	public void compareClientMatterNs(int index1, int index2, int index3) {
-		/*
-		 * assertEquals(jobDetailPage().getClientMatterNFromTheList(index1),
-		 * jobDetailPage().getClientMatterNFromTheList(index2));
-		 * assertEquals(jobDetailPage().getClientMatterNFromTheList(index1),
-		 * jobDetailPage().getClientMatterNFromTheList(index3));
-		 */
-		assert (jobDetailPage().getClientMatterNFromTheList(index1)
+		
+		  if (!jobDetailPage().getClientMatterNFromTheList(index1).
+				  equals(jobDetailPage().getClientMatterNFromTheList(index2)))
+				  {
+			  System.out.println("ClientMatter# job#300) != ClientMatter# job# 301");
+		  }
+		  waitFor(3);
+		  if (!jobDetailPage().getClientMatterNFromTheList(index2).
+				  equals(jobDetailPage().getClientMatterNFromTheList(index3)))
+				  {
+			  System.out.println("ClientMatter# job#301 != ClientMatter# new job");
+		  }
+		 
+	/*	assert (jobDetailPage().getClientMatterNFromTheList(index1)
 				.equals(jobDetailPage().getClientMatterNFromTheList(index2)
 						.equals(jobDetailPage().getClientMatterNFromTheList(
-								index3))));
+								index3))));   */
 	}
 
 	@Step

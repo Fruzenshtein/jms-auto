@@ -388,8 +388,8 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		contactVendorSteps.clickCalledButton();
 		globalSteps.pause(3); 
 		contactVendorSteps.clickContactedButton();
-		globalSteps.pause(3);
-		globalSteps.waitUntilTextAppear("Assignment Unconfirmed");
+		globalSteps.pause(4);
+
 		//Test starts
 		jobDetailSteps.clickVendorActionLink(1);
 		globalSteps.pause(4);
@@ -397,7 +397,6 @@ public class AgencyVendorAssignmentTest extends BasicTest {
 		globalSteps.pause(5);
 		jobDetailSteps.provideInfoForAssignmentConfirmedVendor("Rob", "Confirmation notes");
 		globalSteps.pause(3);
-		globalSteps.waitUntilTextAppear("Assignment Unconfirmed");
 		jobDetailSteps.isBeacon(Beacon.REPORTER_JOB_INFO, BeaconState.GRAY);
 	}
 }
