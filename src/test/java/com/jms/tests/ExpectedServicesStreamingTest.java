@@ -196,11 +196,11 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
 		expectedServicesSteps.clickUpdate();
 		globalSteps.pause(5);
-		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.STREAMING, true);
-		jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, true);
+	//	jobDetailSteps.isServiceIconInWitnessInfo(VendorService.STREAMING, true);
+	//	jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, true);
 		
 		jobDetailSteps.clickExpectedServicesButton();
-		globalSteps.pause(3);
+		globalSteps.pause(5);
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.INTERNET_REALTIME, 2);
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.CHAT_ROOM_NEEDED, 2);
 		expectedServicesSteps.clickUpdate();
@@ -226,7 +226,7 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		//Activate streaming for scheduling firm
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.pause(3);
-		expectedServicesSteps.clickOnVendorSection(3);
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 2);
 		//Contributing firm
 		expectedServicesSteps.goToFirmTab(2);
