@@ -125,7 +125,7 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 		
 		expectedServicesSteps.isExpectedServicesSection(ExpectedServiceSection.STREAMING, true);
 		expectedServicesSteps.isCheckBoxChecked(StreamServices.VIDEO_STREAM, true);
-		expectedServicesSteps.isServiceIconActivated(VendorService.STREAMING, true);
+		//expectedServicesSteps.isServiceIconActivated(VendorService.STREAMING, true);
 		
 		expectedServicesSteps.clickUpdate();
 		

@@ -169,7 +169,7 @@ public class ExpectedServicesReporterTest extends BasicTest {
 	public void tc_4_1_4() throws InterruptedException {
 		
 		String[] dates = {
-				"Regular (8-Day) (05/24/2016)", "Immediate (05/12/2016)",
+				"Immediate (05/12/2016)",
 				"Daily (05/13/2016)", "2-Day (05/16/2016)",
 				"3-Day (05/17/2016)", "4-Day (05/18/2016)",
 				"5-Day (05/19/2016)", "6-Day (05/20/2016)",
