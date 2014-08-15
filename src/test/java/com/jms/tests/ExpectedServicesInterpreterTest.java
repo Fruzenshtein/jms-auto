@@ -145,7 +145,7 @@ public class ExpectedServicesInterpreterTest extends BasicTest {
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "Spanish");
 		
 	}
-	
+	/*
 	@Pending
 	@Test
 	@Screenshots(onlyOnFailures = true)
@@ -187,7 +187,7 @@ public class ExpectedServicesInterpreterTest extends BasicTest {
 		//TODO: check languages applied to each witness
 		globalSteps.pause(5);
 	}
-
+*/
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc_4_5_5() {

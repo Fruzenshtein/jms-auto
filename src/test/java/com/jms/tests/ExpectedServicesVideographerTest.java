@@ -130,13 +130,13 @@ public class ExpectedServicesVideographerTest extends BasicTest {
 		expectedServicesSteps.clickUpdate();
 		
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "Video Streaming");
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.STREAMING, "Video Stream");
+		//jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.STREAMING, "Video Stream");
 	
 		jobDetailSteps.isServiceIconInVendorSection(VendorService.VIDEOGRAPHER, true);
-		jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, true);
+		//jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, true);
 		
 		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.VIDEOGRAPHER, true);
-		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.STREAMING, true);
+		//jobDetailSteps.isServiceIconInWitnessInfo(VendorService.STREAMING, true);
 		
 		//TODO: Check Manage module
 		

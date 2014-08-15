@@ -349,7 +349,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 				JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
 		globalSteps.pause(10);
 	}
-
+/*
 	@Test
 	@Pending
 	@Screenshots(onlyOnFailures = true)
@@ -415,7 +415,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		// "Video Conference, Cameo");
 		globalSteps.pause(3);
 	}
-
+*/
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc_4_4_7() throws InterruptedException {

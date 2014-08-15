@@ -196,6 +196,10 @@ public class ExpectedServicesPopup extends PageObject {
 		$("(//a[@data-test='conferencecammeoaddemail-expectedservices-link']/../a[text()='Add Email'])[" + index+ "]").click();
 	}
 	
+	public void clickAddEmailLinkInStreamingSection(int index) {
+		$("(//div[@data-test='streamingservices-expectedservices-module']//a[text()='Add Email'])["+index+"]").click();
+	}
+	
 	public void addEmail(int index, String email) {
 		$("(//span[text()='Email to:']/../input)[" + index + "]").sendKeys(email);
 	}
