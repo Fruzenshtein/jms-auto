@@ -113,7 +113,7 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		jobDetailSteps.clickExpectedServicesButton();
 		
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
-		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 2);
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.HARDLINE_CONFIRMED, 2);
 		
 		expectedServicesSteps.clickAddEmailLinkInStreamingSection(2);
