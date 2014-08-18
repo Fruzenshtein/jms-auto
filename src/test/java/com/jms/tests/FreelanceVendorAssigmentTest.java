@@ -41,7 +41,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 	public ContactVendorSteps contactVendorSteps;
 	
 	//Another jobs which can be used: 1608, 1591, 1590, 1592
-	private String jobId = "1592";
+	private String jobId = "1608";
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
@@ -217,7 +217,6 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 	
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	
 	public void tc_6_1_11() {
 		
 		loginSteps.login(userStorage.getUser(0));
@@ -267,6 +266,9 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		jobDetailSteps.clickVendorActionLink(1);
 		globalSteps.pause(5);
 		jobDetailSteps.clickVendorsActionMenuLink(1, ActionLink.VENDOR_CONFIRMS);
+		
+		contactVendorSteps.setContactInformation("Some info");
+		contactVendorSteps.clickSubmitButton();
 		
 		globalSteps.waitUntilTextAppear("Assigned & Awaiting D-Day");
 		jobDetailSteps.isBeacon(Beacon.REPORTER_ASSIGNED, BeaconState.GREEN);

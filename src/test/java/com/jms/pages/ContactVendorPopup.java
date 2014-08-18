@@ -19,8 +19,14 @@ public class ContactVendorPopup extends PageObject {
 	@FindBy(xpath="//span[text()='Rejected']")
 	private WebElement rejectedButton;
 	
+	@FindBy(xpath="//span[text()='Submit']")
+	private WebElement submitButton;
+	
 	@FindBy(xpath="//span[text()='Vendor is not available on this day']")
 	private WebElement vendorIsNotAvailableOnThisDay;
+	
+	@FindBy(xpath="//div[@class='fancybox-skin']//textarea")
+	private WebElement contactInfoTextArea;
 	
 	public void clickCalledButton() {
 		calledButton.click();
@@ -40,6 +46,14 @@ public class ContactVendorPopup extends PageObject {
 	
 	public void clickVendorIsNotAvailableOnThisDay() {
 		vendorIsNotAvailableOnThisDay.click();
+	}
+	
+	public void setContactInformation(String text) {
+		contactInfoTextArea.sendKeys(text);
+	}
+	
+	public void clickSubmitButton() {
+		submitButton.click();
 	}
 
 }
