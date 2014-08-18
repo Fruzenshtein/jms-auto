@@ -222,12 +222,9 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		//Activate streaming for scheduling firm
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.pause(3);
-<<<<<<< HEAD
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
-=======
 		expectedServicesSteps.clickOnVendorSection(3);
 		globalSteps.pause(3);
->>>>>>> c6ffce63e6381bedaf86947da5b03e01302c1436
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 2);
 		//Contributing firm
 		expectedServicesSteps.goToFirmTab(2);
