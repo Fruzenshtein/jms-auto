@@ -93,6 +93,26 @@ public class ExpectedServicesSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void clickVideoConferenceNeededCheckBox(int order) {
+		expectedServicesPopup().clickVideoConferenceNeededCheckBox(order);
+	}
+	
+	@Step
+	public void clickInitiatesConferenceCheckBox(int order) {
+		expectedServicesPopup().clickInitiatesConferenceCheckBox(order);
+	}
+	
+	@Step
+	public void clickTSGProvidingBridgeCheckBox(int order) {
+		expectedServicesPopup().clickTSGProvidingBridgeCheckBox(order);
+	}
+	
+	@Step
+	public void clickCameoCheckBox(int order) {
+		expectedServicesPopup().clickCameoCheckBox(order);
+	}
+	
+	@Step
 	public void isDisplayedReportingServiceCheckBox(ReportingService service, boolean is) {
 		assertEquals(is, expectedServicesPopup().isDisplayedReportingServiceCheckBox(service));
 	}

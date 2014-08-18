@@ -156,7 +156,23 @@ public class ExpectedServicesPopup extends PageObject {
 	}
 	
 	public void clickReportingServiceCheckBox(ExpectedServiceOption service, int order) {
-			$("(//span[text()='"+service.getService()+"'])["+order+"]").click();
+			$("(//span[text()='"+service.getService()+"']/../img)["+order+"]").click();
+	}
+	
+	public void clickVideoConferenceNeededCheckBox(int order) {
+		$("(//div[@data-test='conferenceservices-expectedservices-module']//img[@data-test='videoconferenceneeded-expectedservices-cbx'])["+order+"]").click();
+	}
+	
+	public void clickInitiatesConferenceCheckBox(int order) {
+		$("(//div[@data-test='conferenceservices-expectedservices-module']//img[@data-test='initiatesconference-expectedservices-cbx'])["+order+"]").click();
+	}
+	
+	public void clickTSGProvidingBridgeCheckBox(int order) {
+		$("(//div[@data-test='conferenceservices-expectedservices-module']//img[@data-test='tsgprovidingbridge-expectedservices-cbx'])["+order+"]").click();
+	}
+	
+	public void clickCameoCheckBox(int order) {
+		$("(//div[@data-test='conferenceservices-expectedservices-module']//img[@data-test='conferencehascammeo-expectedservices-cbx'])["+order+"]").click();
 	}
 	
 	public boolean isDisplayedReportingServiceCheckBox(ReportingService service) {

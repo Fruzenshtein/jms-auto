@@ -191,15 +191,8 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.pause(3);
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
-		expectedServicesSteps.goToFirmTab(2);
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(5);
-	//	jobDetailSteps.isServiceIconInWitnessInfo(VendorService.STREAMING, true);
-	//	jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, true);
+		globalSteps.pause(2);
 		
-		jobDetailSteps.clickExpectedServicesButton();
-		globalSteps.pause(5);
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.INTERNET_REALTIME, 2);
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.CHAT_ROOM_NEEDED, 2);
 		expectedServicesSteps.clickUpdate();
@@ -211,6 +204,8 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.pause(3);
 		expectedServicesSteps.goToFirmTab(2);
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
+		globalSteps.pause(2);
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 2);
 		expectedServicesSteps.clickUpdate();
 		globalSteps.pause(15);
