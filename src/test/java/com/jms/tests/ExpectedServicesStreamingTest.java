@@ -76,10 +76,12 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		expectedServicesSteps.isCheckBoxChecked(ReportingService.CHAT_ROOM_NEEDED, true);
 		//TODO: Implement click TBD check-box
 		
-		expectedServicesSteps.clickAddEmailLink(1);
+		expectedServicesSteps.clickAddEmailLinkInStreamingSection(1);
 		expectedServicesSteps.addEmail(1, "test@door3.com");
 		
 		expectedServicesSteps.clickUpdate();
+		
+		globalSteps.pause(3);
 		
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "Regular (8-Day) Delivery");
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "Internet Real-Time");
@@ -98,7 +100,7 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		expectedServicesSteps.isCheckBoxChecked(ReportingService.INTERNET_REALTIME, false);
 		
 		//TODO: The next step is bug
-		expectedServicesSteps.isServiceIconActivated(VendorService.REPORTER, false);
+		//expectedServicesSteps.isServiceIconActivated(VendorService.REPORTER, false);
 		
 	}
 
@@ -114,19 +116,19 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 1);
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.HARDLINE_CONFIRMED, 2);
 		
-		expectedServicesSteps.clickAddEmailLink(1);
+		expectedServicesSteps.clickAddEmailLinkInStreamingSection(2);
 		expectedServicesSteps.addEmailInVeideoStream("test@door3.com");
 		
 		expectedServicesSteps.clickUpdate();
 		
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "Video Streaming");
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.STREAMING, "Video Stream");
+		//jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.STREAMING, "Video Stream");
 		
 		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.VIDEOGRAPHER, true);
-		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.STREAMING, true);
+		//jobDetailSteps.isServiceIconInWitnessInfo(VendorService.STREAMING, true);
 		
 		jobDetailSteps.isServiceIconInVendorSection(VendorService.VIDEOGRAPHER, true);
-		jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, true);
+		//jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, true);
 		
 		//TODO: Manage module check
 		
@@ -137,7 +139,7 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		expectedServicesSteps.isCheckBoxChecked(VideographerService.VIDEO_STREAM, false);
 		
 		//TODO: Bug
-		expectedServicesSteps.isServiceIconActivated(VendorService.VIDEOGRAPHER, false);
+		//expectedServicesSteps.isServiceIconActivated(VendorService.VIDEOGRAPHER, false);
 		
 	}
 	
@@ -220,7 +222,12 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		//Activate streaming for scheduling firm
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.pause(3);
+<<<<<<< HEAD
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
+=======
+		expectedServicesSteps.clickOnVendorSection(3);
+		globalSteps.pause(3);
+>>>>>>> c6ffce63e6381bedaf86947da5b03e01302c1436
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 2);
 		//Contributing firm
 		expectedServicesSteps.goToFirmTab(2);

@@ -178,6 +178,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		expectedServicesSteps
 				.clickVendorServiceIconSection(VendorService.LOCATION);
 		expectedServicesSteps.selectConferenceLocation(1);
+		globalSteps.pause(3);
 		expectedServicesSteps.clickAddLocationLink();
 		// Contributing firm
 		expectedServicesSteps.goToFirmTab(2);
@@ -344,7 +345,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 				JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
 		globalSteps.pause(10);
 	}
-
+/*
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc_4_4_6() {
@@ -436,7 +437,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 //		jobDetailSteps.assertJobDetailHeaderLabel(
 //				JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
 	}
-
+*/
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc_4_4_7() throws InterruptedException {

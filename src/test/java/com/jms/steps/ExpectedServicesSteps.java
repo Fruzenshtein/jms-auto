@@ -138,6 +138,11 @@ public class ExpectedServicesSteps extends ScenarioSteps {
 	}
 	
 	@Step
+	public void clickAddEmailLinkInStreamingSection(int index) {
+		expectedServicesPopup().clickAddEmailLinkInStreamingSection(index);
+	}
+	
+	@Step
 	public void addEmail(int index, String email) {
 		expectedServicesPopup().addEmail(index,email);
 	}
