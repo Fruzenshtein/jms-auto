@@ -262,7 +262,7 @@ public class ExpectedServicesReporterTest extends BasicTest {
 		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.EXHIBIT_HARD_COPY, 1);
 		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.EXHIBIT_SCANED_LINKED, 1);
 		expectedServicesSteps.setReporterInstructions("Reporter instructions");
-		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.EXHIBITS, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.EXHIBITS, 1);   //error
 		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.CHAT_ROOM_NEEDED, 1);
 		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.TRANSCRIPTS, 1);
 		expectedServicesSteps.clickReportingServiceCheckBox(ReportingService.TABBED, 1);

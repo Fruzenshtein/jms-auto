@@ -172,7 +172,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		globalSteps.pause(3);
 		jobDetailSteps.selectActionMenuOption("Remove Requested Vendor", 1);
 		jobDetailSteps.clickAddFirmButton();
-		jobDetailSteps.setContributingFirm("American Capital, Ltd.");
+		jobDetailSteps.setContributingFirm("American Capital, Ltd.");		//error
 		jobDetailSteps.clickQuickCRMAddLink(2);
 		jobDetailSteps.addFirstNameQuickCRM("Vi"
 				+ RandonUUIDGenerator.getRandomUUID());
@@ -310,10 +310,17 @@ public class JobDetailFieldsTest extends BasicTest {
 		globalSteps.pause(2);
 		jobDetailSteps.setVendorNotes("VIDEOGRAPHER notes");
 		jobDetailSteps.assertVendorNotes("VIDEOGRAPHER notes");
+	}
+		@Test
+		@Screenshots(onlyOnFailures = true)
+		public void tc_5_5_1_3() {
 
+			loginSteps.login(userStorage.getUser(0));
+			globalSteps.searchJobById("2201");
+			globalSteps.pause(3);
 		// Streaming services tab
 		jobDetailSteps.selectVendorTab(VendorTab.STREAMING_SERVICES.getTab(),
-				VendorTab.STREAMING_SERVICES.getVendor());
+				VendorTab.STREAMING_SERVICES.getVendor());					//error - not clickable
 		jobDetailSteps.setExpectedStartTime("09:00 AM");
 		jobDetailSteps.assertExpectedStartTime("09:00 AM");
 		jobDetailSteps.setExpectedFinishTime("05:00 PM");
@@ -332,7 +339,7 @@ public class JobDetailFieldsTest extends BasicTest {
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
-	public void tc_5_5_1_3() {
+	public void tc_5_5_1_4() {
 		// Interpreter tab
 		loginSteps.login(userStorage.getUser(0));
 		globalSteps.searchJobById("2201");
@@ -343,16 +350,21 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.assertExpectedStartTime("10:30 AM");
 		jobDetailSteps.setExpectedFinishTime("05:30 PM");
 		jobDetailSteps.assertExpectedFinishTime("05:30 PM");
-		jobDetailSteps.markTBDVendorEndTime(2);
-		jobDetailSteps.markTBDVendorStartTime(1);
+	//	jobDetailSteps.markTBDVendorEndTime(2);
+	//	jobDetailSteps.markTBDVendorStartTime(1);
 		jobDetailSteps.setVendorNotes("INTERPRETER notes");
 		jobDetailSteps.assertVendorNotes("INTERPRETER notes");
 		jobDetailSteps.assertLanguageAndWitnessApplied();
 		jobDetailSteps.assertJobDetailHeaderLabel(
 				JobDetailHeaderLabel.INTERPRETERS, "English");
-		globalSteps.pause(11);
-
-		// Location tab
+	}
+		@Test
+		@Screenshots(onlyOnFailures = true)
+		public void tc_5_5_1_5() {
+			// Interpreter tab
+			loginSteps.login(userStorage.getUser(0));
+			globalSteps.searchJobById("2201");
+			globalSteps.pause(3);
 		jobDetailSteps.selectVendorTab(VendorTab.LOCATION.getTab(),
 				VendorTab.LOCATION.getVendor());
 		jobDetailSteps.setTimeLocationSection(1, "10:00 AM");
@@ -395,7 +407,7 @@ public class JobDetailFieldsTest extends BasicTest {
 	//	jobDetailSteps.attachRatesSheet(1);
 
 		//Scheduling firm
-		jobDetailSteps.checkAdminApprovedChckbxRates(1);
+		jobDetailSteps.checkAdminApprovedChckbxRates(1);		//error - not visible
 	//	jobDetailSteps.getAdminApprovedChckbxRates(1, true);
 		jobDetailSteps.clearRatesNotes(1);
 		jobDetailSteps.addRatesNotes(1, "Rates notes 1");

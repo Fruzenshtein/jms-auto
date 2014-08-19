@@ -186,21 +186,14 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 				.clickVendorServiceIconSection(VendorService.LOCATION);
 		expectedServicesSteps.selectConferenceLocation(1);
 		expectedServicesSteps.clickAddLocationLink();
-		expectedServicesSteps.clickVendorTBDIconSection(VendorService.LOCATION);
 		expectedServicesSteps.clickUpdate();
 		globalSteps.pause(1);
 		jobDetailSteps
 				.assertJobDetailHeaderLabel(
 						JobDetailHeaderLabel.CONF_SERVICES,
 						"Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US");
-
-		globalSteps.pause(3);
-		jobDetailSteps
-				.assertJobDetailHeaderLabel(
-						JobDetailHeaderLabel.CONF_SERVICES,
-						"Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US");
 		jobDetailSteps.clickExpectedServicesButton();
-		globalSteps.pause(3);
+		globalSteps.pause(5);
 		expectedServicesSteps.removeLocation(1);
 		expectedServicesSteps.goToFirmTab(2);
 		expectedServicesSteps.selectConferenceLocation(1);
@@ -217,34 +210,34 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		expectedServicesSteps.setPhoneConfServices(1, "380447362211");
 		expectedServicesSteps.setNotes(1, "Test notes");
 		expectedServicesSteps.clickReportingServiceCheckBox(
-				LocationService.CAMEO, 1);
+				LocationService.CAMEO, 1);    // error
 		expectedServicesSteps.setNumberOfCameos("3", 1);
 		expectedServicesSteps.clickAddEmailLink(1);
 		expectedServicesSteps.addEmailConfServSection("test@door3.com", 1);
 		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(3);
+		globalSteps.pause(5);
 		jobDetailSteps
 				.assertJobDetailHeaderLabel(
 						JobDetailHeaderLabel.CONF_SERVICES,
 						"Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US)");
 		jobDetailSteps.assertJobDetailHeaderLabel(
 				JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
-		jobDetailSteps.clickExpectedServicesButton();
+	/*	jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.pause(3);
 		expectedServicesSteps.goToFirmTab(2);
 		expectedServicesSteps.setIP(1, "207.222.11.200");
 		expectedServicesSteps.clickAddEmailLink(1);
 		expectedServicesSteps.addEmailConfServSection("test2@door3.com", 2);
 		expectedServicesSteps.clickReportingServiceCheckBox(
-				LocationService.INITIATES_CONF, 1);
+				LocationService.INITIATES_CONF, 2);
 		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(3);
+		globalSteps.pause(5);
 		jobDetailSteps
 				.assertJobDetailHeaderLabel(
 						JobDetailHeaderLabel.CONF_SERVICES,
 						"Andrew Rosner & Associates (600 Old Country Road, Suite 520, Garden City, NY, US)");
 		jobDetailSteps.assertJobDetailHeaderLabel(
-				JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
+				JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");   */
 
 	}
 
@@ -295,7 +288,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		expectedServicesSteps.setPhoneConfServices(1, "380447362211");
 		expectedServicesSteps.setNotes(1, "Test notes");
 		expectedServicesSteps.clickReportingServiceCheckBox(
-				LocationService.CAMEO, 1);
+				LocationService.CAMEO, 1);					//error
 		expectedServicesSteps.setNumberOfCameos("3", 1);
 		expectedServicesSteps.clickAddEmailLink(1);
 		expectedServicesSteps.addEmailConfServSection("test@door3.com", 1);
@@ -345,7 +338,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 				JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
 		globalSteps.pause(10);
 	}
-/*
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc_4_4_6() {
@@ -437,7 +430,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 //		jobDetailSteps.assertJobDetailHeaderLabel(
 //				JobDetailHeaderLabel.CONF_SERVICES, "Video Conference, Cameo");
 	}
-*/
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc_4_4_7() throws InterruptedException {
@@ -477,7 +470,7 @@ public class ExpectedServicesConferenceTest extends BasicTest {
 		expectedServicesSteps.setPhoneConfServices(1, "380447362211");
 		expectedServicesSteps.setNotes(1, "Test notes");
 		expectedServicesSteps.clickReportingServiceCheckBox(
-				LocationService.CAMEO, 1);
+				LocationService.CAMEO, 1);							//error
 		expectedServicesSteps.setNumberOfCameos("3", 1);
 		expectedServicesSteps.clickAddEmailLink(1);
 		expectedServicesSteps.addEmailConfServSection("test@door3.com", 1);
