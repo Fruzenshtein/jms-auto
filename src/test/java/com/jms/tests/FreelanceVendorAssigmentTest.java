@@ -41,7 +41,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 	public ContactVendorSteps contactVendorSteps;
 	
 	//Another jobs which can be used: 1608, 1591, 1590, 1592
-	private String jobId = "1590";
+	private String jobId = "1608";
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
