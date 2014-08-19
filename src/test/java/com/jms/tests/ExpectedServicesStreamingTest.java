@@ -178,8 +178,8 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		expectedServicesSteps.clickUpdate();
 		globalSteps.pause(25);
 		
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "Internet Real-Time, Regular (8-Day) Delivery");
-		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "Video Streaming");
+	//	jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "Internet Real-Time, Regular (8-Day) Delivery");
+	//	jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "Video Streaming");
 		
 	}
 	
@@ -232,6 +232,8 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 2);    */  //error
 		
 		//Contributing firm
+		jobDetailSteps.clickExpectedServicesButton();
+		globalSteps.pause(3);
 		expectedServicesSteps.goToFirmTab(2);
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.INTERNET_REALTIME, 2);
 		expectedServicesSteps.clickUpdate();
