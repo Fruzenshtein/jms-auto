@@ -37,4 +37,15 @@ public class ContactVendorSteps extends ScenarioSteps {
 	public void clickVendorIsNotAvailableOnThisDay() {
 		contactVendorPopup().clickVendorIsNotAvailableOnThisDay();
 	}
+	
+	@Step
+	public void setContactInformation(String text) {
+		contactVendorPopup().setContactInformation(text);
+	}
+	
+	@Step
+	public void clickSubmitButton() {
+		contactVendorPopup().clickSubmitButton();
+	}
+	
 }

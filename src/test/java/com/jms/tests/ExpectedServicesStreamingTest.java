@@ -113,7 +113,7 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		jobDetailSteps.clickExpectedServicesButton();
 		
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
-		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 1);
+		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 2);
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.HARDLINE_CONFIRMED, 2);
 		
 		expectedServicesSteps.clickAddEmailLinkInStreamingSection(2);
@@ -223,12 +223,14 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.pause(3);
 
+
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
 
 		expectedServicesSteps.clickOnVendorSection(3);  // wrong section is clicked here because of the design of the expected services pop-up
 		globalSteps.pause(3);
 
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 2);    */  //error
+		
 		//Contributing firm
 		expectedServicesSteps.goToFirmTab(2);
 		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.INTERNET_REALTIME, 2);

@@ -178,7 +178,7 @@ public class ExpectedServicesReporterTest extends BasicTest {
 		};
 	
 		loginSteps.login(userStorage.getUser(0));
-		globalSteps.searchJobById(jobId);
+		globalSteps.searchJobById("274");
 		globalSteps.pause(3);
 		Calendar cal = new GregorianCalendar(2016, Calendar.MAY, 12);
 		
@@ -192,11 +192,8 @@ public class ExpectedServicesReporterTest extends BasicTest {
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.pause(3);
 		
-		List<String> realDates = expectedServicesSteps.getDeliveryOptions();
+		expectedServicesSteps.assertDeliveryDates(dates);
 		
-		for (String date : dates) {
-			assertTrue("The Delivery list doesn't contain: "+date, realDates.contains(date));
-		}
 	}
 	
 	@Test
