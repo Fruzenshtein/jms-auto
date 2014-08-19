@@ -128,7 +128,7 @@ public class ExpectedServicesInterpreterTest extends BasicTest {
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "German");
 		//Delete French
 		jobDetailSteps.clickExpectedServicesButton();
-		globalSteps.pause(3);
+		globalSteps.pause(5);
 		expectedServicesSteps.deleteLanguage(2);
 		expectedServicesSteps.clickUpdate();
 		globalSteps.pause(5);

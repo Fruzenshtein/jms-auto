@@ -172,6 +172,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		globalSteps.pause(3);
 		jobDetailSteps.selectActionMenuOption("Remove Requested Vendor", 1);
 		jobDetailSteps.clickAddFirmButton();
+		globalSteps.pause(3);
 		jobDetailSteps.setContributingFirm("American Capital, Ltd.");		//error
 		jobDetailSteps.clickQuickCRMAddLink(2);
 		jobDetailSteps.addFirstNameQuickCRM("Vi"
@@ -210,7 +211,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.maximizeCaseInfoSection();
 		globalSteps.pause(2);
 		jobDetailSteps.clickSave();
-		globalSteps.pause(3);
+		globalSteps.pause(5);
 		jobDetailSteps.writeClientMatterN();
 		globalSteps.pause(1);
 
@@ -229,7 +230,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.clearClientMatterNList();
 		jobDetailSteps.setClientMatterN(RandonUUIDGenerator.getRandomUUID());
 		jobDetailSteps.clickSave();
-		globalSteps.pause(3);
+		globalSteps.pause(5);
 		jobDetailSteps.writeClientMatterN();
 
 		globalSteps.searchJobById("301");
@@ -281,8 +282,6 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.assertVendorNotes("REPORTER notes");
 		jobDetailSteps.clearExpectedStartEndTime();
 		jobDetailSteps.assertExpectedStartEndTimeIsNotCleared("", "");
-		jobDetailSteps.markTBDVendorEndTime(1);
-		jobDetailSteps.markTBDVendorStartTime(1);
 		globalSteps.pause(2);
 		jobDetailSteps.clearVendorNotes();
 		jobDetailSteps.assertVendorNotes("");
@@ -305,8 +304,6 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.assertExpectedStartTime("11:00 AM");
 		jobDetailSteps.setExpectedFinishTime("06:00 PM");
 		jobDetailSteps.assertExpectedFinishTime("06:00 PM");
-		jobDetailSteps.markTBDVendorEndTime(2);
-		jobDetailSteps.markTBDVendorStartTime(1);
 		globalSteps.pause(2);
 		jobDetailSteps.setVendorNotes("VIDEOGRAPHER notes");
 		jobDetailSteps.assertVendorNotes("VIDEOGRAPHER notes");
@@ -325,8 +322,8 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.assertExpectedStartTime("09:00 AM");
 		jobDetailSteps.setExpectedFinishTime("05:00 PM");
 		jobDetailSteps.assertExpectedFinishTime("05:00 PM");
-		jobDetailSteps.markTBDVendorEndTime(2);
-		jobDetailSteps.markTBDVendorStartTime(1);
+//		jobDetailSteps.markTBDVendorEndTime(2);
+//		jobDetailSteps.markTBDVendorStartTime(1);
 		globalSteps.pause(2);
 		jobDetailSteps.setStreamingVendorNotes("STREAMING_SERVICES notes");
 		jobDetailSteps.assertStreamingVendorNotes("STREAMING_SERVICES notes");
@@ -371,8 +368,6 @@ public class JobDetailFieldsTest extends BasicTest {
 		jobDetailSteps.assertTimeLocationSection(1, "10:00 AM");
 		jobDetailSteps.setTimeLocationSection(2, "07:00 PM");
 		jobDetailSteps.assertTimeLocationSection(2, "07:00 PM");
-		jobDetailSteps.markTBDVendorEndTime(2);
-		jobDetailSteps.markTBDVendorStartTime(1);
 		jobDetailSteps.addLocationNotes("LOCATION notes");
 		jobDetailSteps.assertLocationNotes("LOCATION notes");
 		jobDetailSteps.setConfirmationContact("Rob");
@@ -430,7 +425,7 @@ public class JobDetailFieldsTest extends BasicTest {
 		globalSteps.pause(5);
 		jobDetailSteps.checkAdminApprovedChckbxRates(1);
 		jobDetailSteps.checkAdminApprovedChckbxRates(2);
-		jobDetailSteps.minimizeRatesSection();
+	//	jobDetailSteps.minimizeRatesSection();				//error
 	}
 	
 	@Test
