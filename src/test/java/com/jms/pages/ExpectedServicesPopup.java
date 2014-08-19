@@ -144,7 +144,7 @@ public class ExpectedServicesPopup extends PageObject {
 	}
 	
 	public void selectDelivery(String delivery) {
-		$(deliveryDropDown).selectByVisibleText(delivery);
+		deliveryDropDown.sendKeys(delivery);
 	}
 	
 	public List<String> getDeliveryOptions() {

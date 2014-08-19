@@ -169,12 +169,12 @@ public class ExpectedServicesReporterTest extends BasicTest {
 	public void tc_4_1_4() throws InterruptedException {
 		
 		String[] dates = {
-				"Immediate (05/12/2016)",
-				"Daily (05/13/2016)", "2-Day (05/16/2016)",
-				"3-Day (05/17/2016)", "4-Day (05/18/2016)",
-				"5-Day (05/19/2016)", "6-Day (05/20/2016)",
-				"7-Day (05/23/2016)", "Regular (7-Day) (05/23/2016)",
-				"Regular (9-Day) (05/25/2016)", "Regular (10-Day) (05/26/2016)"
+				"Immediate",
+				"Daily", "2-Day",
+				"3-Day", "4-Day",
+				"5-Day", "6-Day",
+				"7-Day", "Regular (7-Day)",
+				"Regular (9-Day)", "Regular (10-Day)"
 		};
 	
 		loginSteps.login(userStorage.getUser(0));
@@ -192,7 +192,7 @@ public class ExpectedServicesReporterTest extends BasicTest {
 		jobDetailSteps.clickExpectedServicesButton();
 		globalSteps.pause(3);
 		
-		expectedServicesSteps.assertDeliveryDates(dates);
+		expectedServicesSteps.selectDeliveryDates(dates);
 		
 	}
 	
