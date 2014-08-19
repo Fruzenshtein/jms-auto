@@ -68,10 +68,9 @@ public class ExpectedServicesSteps extends ScenarioSteps {
 	}
 	
 	@Step
-	public void assertDeliveryDates(String[] dates) {
-		List<String> realDates = expectedServicesPopup().getDeliveryOptions();
+	public void selectDeliveryDates(String[] dates) {
 		for (String date : dates) {
-			assertTrue("The Delivery list doesn't contain: "+date, realDates.contains(date));
+			expectedServicesPopup().selectDelivery(date);
 		}
 	}
 	
