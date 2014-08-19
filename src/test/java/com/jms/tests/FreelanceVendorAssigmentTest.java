@@ -41,7 +41,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 	public ContactVendorSteps contactVendorSteps;
 	
 	//Another jobs which can be used: 1608, 1591, 1590, 1592
-	private String jobId = "1608";
+	private String jobId = "1590";
 
 	@Test
 	@Screenshots(onlyOnFailures = true)
@@ -240,7 +240,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
 		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(10);
+		globalSteps.pause(14);
 		
 		jobDetailSteps.clickSave();
 		
@@ -301,7 +301,7 @@ public class FreelanceVendorAssigmentTest extends BasicTest {
 		globalSteps.waitUntilTextAppear("Special Instructions / Job Info");
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.REPORTER);
 		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(10);
+		globalSteps.pause(14);
 		
 		jobDetailSteps.clickSave();
 		
