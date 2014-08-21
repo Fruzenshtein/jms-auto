@@ -152,10 +152,14 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		jobDetailSteps.clickExpectedServicesButton();
 		
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
+		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.INTERNET_REALTIME, 2);
+		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 2);
 		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(5);
+		globalSteps.pause(25);
 		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.STREAMING, true);
 		jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, true);
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "Internet Real-Time, Regular (8-Day) Delivery");
+		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "Video Streaming");
 		//Deactivate services
 		jobDetailSteps.clickExpectedServicesButton();
 		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
@@ -163,24 +167,7 @@ public class ExpectedServicesStreamingTest extends BasicTest {
 		globalSteps.pause(5);
 		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.STREAMING, false);
 		jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, false);
-		//Activate services by clicking on the section
-		jobDetailSteps.clickExpectedServicesButton();
-		expectedServicesSteps.clickOnVendorSection(3);
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(5);
-		jobDetailSteps.isServiceIconInWitnessInfo(VendorService.STREAMING, true);   //error - no such element
-		jobDetailSteps.isServiceIconInVendorSection(VendorService.STREAMING, true);
-		//Deactivate services
-		jobDetailSteps.clickExpectedServicesButton();
-		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.INTERNET_REALTIME, 2);
-		expectedServicesSteps.clickReportingServiceCheckBox(StreamServices.VIDEO_STREAM, 2);
-		expectedServicesSteps.clickVendorServiceIconSection(VendorService.STREAMING);
-		expectedServicesSteps.clickUpdate();
-		globalSteps.pause(25);
-		
-	//	jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.REPORTERS, "Internet Real-Time, Regular (8-Day) Delivery");
-	//	jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.VIDEOGRAPHERS, "Video Streaming");
-		
+
 	}
 	
 	
