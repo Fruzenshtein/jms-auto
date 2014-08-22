@@ -260,6 +260,11 @@ public class JobDetailSteps extends ScenarioSteps {
 	public void maximizeCaseInfoSection() {
 		jobDetailPage().maximizeCaseInfoSection();
 	}
+	
+	@Step
+	public void maximizeWitnessInfosection() {
+		jobDetailPage().maximizeWitnessInfosection();
+	}
 
 	@Step
 	public void writeClientMatterN() {
@@ -924,5 +929,10 @@ public class JobDetailSteps extends ScenarioSteps {
 	@Step
 	public void provideInfoForAssignmentConfirmedVendor(String contact, String notes) {
 		jobDetailPage().provideInfoForAssignmentConfirmedVendor(contact, notes);
+	}
+	
+	@Step
+	public void checkLanguageWitnessSection(int index, String expectedLanguages) {
+		assertEquals(expectedLanguages, jobDetailPage().checkLanguageWitnessSection(index));
 	}
 }

@@ -145,8 +145,7 @@ public class ExpectedServicesInterpreterTest extends BasicTest {
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "Spanish");
 		
 	}
-	/*
-	@Pending
+	
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc_4_5_4() {
@@ -162,6 +161,7 @@ public class ExpectedServicesInterpreterTest extends BasicTest {
 		expectedServicesSteps.selectAppliedWitness(2, 0);
 		//Contributing firm tab
 		expectedServicesSteps.goToFirmTab(2);
+		expectedServicesSteps.clickVendorServiceIconSection(VendorService.INTERPRETER);
 		expectedServicesSteps.clickAddLanguageLink();
 		expectedServicesSteps.selectLanguage(1, 2);
 		expectedServicesSteps.selectAppliedWitness(2, 0);
@@ -185,9 +185,11 @@ public class ExpectedServicesInterpreterTest extends BasicTest {
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "French");
 		jobDetailSteps.assertJobDetailHeaderLabel(JobDetailHeaderLabel.INTERPRETERS, "Spanish");
 		//TODO: check languages applied to each witness
-		globalSteps.pause(5);
+		jobDetailSteps.maximizeWitnessInfosection();
+		jobDetailSteps.checkLanguageWitnessSection(1, "English, French");
+		jobDetailSteps.checkLanguageWitnessSection(2, "Spanish, English");
 	}
-*/
+
 	@Test
 	@Screenshots(onlyOnFailures = true)
 	public void tc_4_5_5() {

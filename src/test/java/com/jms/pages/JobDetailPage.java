@@ -461,6 +461,10 @@ public class JobDetailPage extends PageObject {
 	public void maximizeCaseInfoSection() {
 		caseInfoMaximizeIcon.click();
 	}
+	
+	public void maximizeWitnessInfosection(){
+		$("//span[text()='Witness Info']/../div[contains(@class, 'collapsed')]").click();
+	}
 
 	public void clearClientMatterNumber() {
 		clientMatterNField.clear();
@@ -556,12 +560,12 @@ public class JobDetailPage extends PageObject {
 
 	public void setVendorNotes(String notes) {
 		$("//textarea[@class='tabnotes']").sendKeys(notes);
-		;
+		
 	}
 
 	public void setStreamingVendorNotes(String notes) {
 		$("//textarea[@class='notesb']").sendKeys(notes);
-		;
+		
 	}
 
 	public String getVendorNotes() {
@@ -1102,6 +1106,10 @@ public class JobDetailPage extends PageObject {
 		$("//span[text()='Contact:']/../input[@type='text']").sendKeys(contact);
 		$("//div[@class='modal-content confirmationdetails-view']//textarea").sendKeys(notes);
 		$("//button//span[text()='Submit']").click();
+	}
+	
+	public String checkLanguageWitnessSection(int index) {
+		return $("(//span[@data-test='jobwitness-languages-text'])[" + index +"]").getTextValue();
 	}
 	
 }
