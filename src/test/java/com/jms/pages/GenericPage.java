@@ -148,5 +148,4 @@ public class GenericPage extends PageObject {
 	public void activeWidget() {
 		$(jobDetailWidget).waitUntilPresent();
 	}
-
 }
